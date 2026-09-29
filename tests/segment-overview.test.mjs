@@ -160,7 +160,11 @@ test("9. the overview chrome is translated into every locale", () => {
     assert.ok(overviewCopy[locale], `no overview copy for ${locale}`);
     for (const key of keys) {
       const value = overviewCopy[locale][key];
-      assert.ok(typeof value === "string" && value.length > 0, `${locale}.${key} is empty`);
+      // The About facts are a list; every entry in it must be filled.
+      const filled = Array.isArray(value)
+        ? value.length === overviewCopy.en[key].length && value.every((f) => f.title && f.text)
+        : typeof value === "string" && value.length > 0;
+      assert.ok(filled, `${locale}.${key} is empty`);
     }
   }
 });
@@ -243,5 +247,50 @@ test("13. every approved brochure route follows the release switch; review route
   // The per-scene review routes are not the brochure and stay development-only.
   for (const route of ["retail-park-unit-visits", "shopping-centre-entrances", "unified-intro"]) {
     assert.match(read(`app/preview/${route}/page.tsx`), /process\.env\.NODE_ENV === "production"/, route);
+  }
+});
+
+/* "About PFM" (product lead, 2026-09-29). Every claim is traced in
+   docs/content/PFM-COMPANY-FACTS.md, and the customer logos are approved for
+   this use by the product lead (DECISION-LOG) — the documented approval the
+   AGENTS.md truth rules require. */
+test("12. the overview says who PFM is, in every language, from sourced facts only", async () => {
+  const { customerLogos } = await import("../app/content/customer-logos.ts");
+  const facts = read("docs/content/PFM-COMPANY-FACTS.md");
+  assert.match(overview(), /copy\.aboutFacts\.map/);
+  assert.match(overview(), /customerLogos\.map/);
+  assert.match(read("app/i18n/overview.ts"), /PFM-COMPANY-FACTS\.md/);
+  assert.match(read("docs/decisions/DECISION-LOG.md"), /customer logos[^\n]*approved/i);
+
+  // Every logo is on disk, named, and one of the approved set.
+  assert.equal(customerLogos.length, 14);
+  for (const customer of customerLogos) {
+    assert.ok(existsSync(publicFile(customer.assetPath)), `${customer.name}'s logo is not on disk`);
+    assert.match(facts, new RegExp(customer.name.replace(/[&']/g, ".")), `${customer.name} is not in the approved set`);
+  }
+
+  for (const locale of locales) {
+    const copy = overviewCopy[locale];
+    assert.equal(copy.aboutFacts.length, 3, `${locale} does not carry the three facts`);
+    const all = [copy.aboutTitle, copy.aboutLead, ...copy.aboutFacts.flatMap((f) => [f.title, f.text])].join(" ");
+    for (const office of ["Alphen aan den Rijn", "Birmingham", "Paris", "Berlin"]) {
+      assert.match(all, new RegExp(office), `${locale} drops the ${office} office`);
+    }
+    for (const standard of ["ISO/IEC 27001", "ISO 9001", "ISO 14001"]) {
+      assert.ok(all.includes(standard), `${locale} drops ${standard}`);
+    }
+  }
+});
+
+/* The installation accreditations are about installing, not about who PFM is,
+   so they close the drawer's Requirements answer instead (2026-09-29). */
+test("13. installation accreditations sit with installation, in every language", async () => {
+  const { installationAccreditations } = await import("../app/content/installation-accreditations.ts");
+  assert.match(read("app/components/redesign/DepthPanel.tsx"), /hasAnyImplementation && \(\s*<>\s*<p className="rd-depth__kicker">\{installationAccreditations\[locale\]\.heading\}/);
+  assert.doesNotMatch(overview(), /installationAccreditations|NICEIC|SafeContractor/);
+  for (const locale of locales) {
+    const names = installationAccreditations[locale].items.map((item) => item.name);
+    assert.deepEqual(names, ["NICEIC approved contractor", "SafeContractor (SSIP)", "VCA", "RI&E"]);
+    assert.ok(installationAccreditations[locale].items.every((item) => item.text.length > 20));
   }
 });

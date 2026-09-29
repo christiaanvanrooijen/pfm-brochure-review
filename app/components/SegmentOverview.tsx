@@ -36,6 +36,7 @@ import { getMessages } from "../i18n/messages";
 import { overviewCopy } from "../i18n/overview";
 import { startCopy, startScenes } from "../i18n/starts";
 import { shellRunsSegment } from "../lib/segment-journey";
+import { customerLogos } from "../content/customer-logos";
 import { brochureRouteAvailable } from "../content/release";
 
 export function SegmentOverview({ initialLocale }: { initialLocale: Locale }) {
@@ -186,12 +187,43 @@ export function SegmentOverview({ initialLocale }: { initialLocale: Locale }) {
                   {face}
                 </span>
               )}
-
             </li>
             );
           })}
         </ul>
 
+        {/* Who is speaking, once the reader has seen what we can show. Every
+            claim is sourced in docs/content/PFM-COMPANY-FACTS.md; the logos are
+            approved for use here (product lead, 2026-09-29). */}
+        <section className="ov__about" aria-labelledby="ov-about-title">
+          <div className="ov__about-intro">
+            <p className="rd__eyebrow">
+              <span className="rd__eyebrow-rule" aria-hidden="true" />
+              {copy.aboutLabel}
+            </p>
+            <h2 id="ov-about-title" className="ov__about-title">{copy.aboutTitle}</h2>
+            <p className="ov__about-lead">{copy.aboutLead}</p>
+          </div>
+          <ul className="ov__about-facts">
+            {copy.aboutFacts.map((fact) => (
+              <li key={fact.title}>
+                <strong>{fact.title}</strong>
+                <span>{fact.text}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="ov__logos">
+            <p className="ov__logos-label">{copy.aboutLogosLabel}</p>
+            <ul>
+              {customerLogos.map((customer) => (
+                <li key={customer.name}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={customer.assetPath} alt={customer.name} loading="lazy" />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
       </main>
     </div>
   );

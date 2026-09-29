@@ -6821,6 +6821,35 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
 .ov__question { font-size: 14px; line-height: 1.45; color: #475467; }
 .ov__open { margin-top: auto; padding-top: 6px; font-size: 12px; font-weight: 600; color: var(--pfm-purple-deep); }
 
+/* Who PFM is: a quiet close under the five cards, never competing with them. */
+.ov__about {
+  margin: clamp(32px, 4vw, 56px) 0 0; padding-top: clamp(24px, 3vw, 36px); border-top: 1px solid #e4e7ec;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(20px, 4vw, 64px);
+}
+.ov__about-title { margin: 12px 0 0; font-size: clamp(20px, 1.9vw, 26px); line-height: 1.15; letter-spacing: -0.03em; font-weight: 600; color: var(--pfm-black); }
+.ov__about-lead { margin: 10px 0 0; font-size: 14px; line-height: 1.55; color: #475467; }
+.ov__about-facts { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-self: end; }
+.ov__about-facts li { display: grid; gap: 6px; align-content: start; padding-left: 14px; border-left: 2px solid var(--pfm-purple); }
+.ov__about-facts strong { font-size: 13.5px; font-weight: 600; color: var(--pfm-black); }
+.ov__about-facts span { font-size: 13px; line-height: 1.5; color: #475467; }
+.ov__logos { grid-column: 1 / -1; padding-top: clamp(18px, 2vw, 26px); border-top: 1px solid #f2f4f7; }
+.ov__logos-label { margin: 0 0 14px; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pfm-purple-deep); }
+.ov__logos ul {
+  margin: 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 18px 28px; align-items: center;
+}
+.ov__logos li { display: flex; justify-content: center; align-items: center; height: 44px; }
+.ov__logos img { max-width: 100%; max-height: 38px; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; opacity: 0.85; }
+@media (max-width: 1099px) {
+  .ov__about { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 720px) {
+  .ov__about-facts { grid-template-columns: minmax(0, 1fr); }
+  /* Fourteen logos: seven by two as on the source slide, or two by seven on a
+     phone — never a row with one or two left over. */
+  .ov__logos ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ov__link { transition: none; }
   .ov__link:hover { transform: none; }

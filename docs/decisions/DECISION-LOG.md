@@ -323,3 +323,15 @@ Removed from the overview (`app/components/SegmentOverview.tsx`), with their thr
 Unchanged: `/shell` keeps its own address and still works. If the release switch (`brochureApprovedForProduction`) is set to false, the cards fall back to the shell exactly as before.
 
 **Open — a short "who is PFM" on the overview.** The product lead suggested using the freed space for who PFM is and where it operates from. No company facts (history, offices, markets, scale) are recorded in `03-shared/brand/` or this project, and AGENTS.md forbids inventing claims, so this needs source-backed copy from the product lead or an approved source first.
+
+## 2026-09-29 — "About PFM" on the overview; customer logos approved; installation accreditations in the drawer
+
+Status: **DECIDED by the product lead; applied.**
+
+Input: the product lead supplied four PFM deck slides and the Dutch website copy, and decided: (1) "we mogen klantlogo's gebruiken" — the customer logos are approved for use in this brochure; (2) the installation accreditations belong elsewhere than the front door.
+
+- **About PFM** closes the segment overview (the space the shell link left): one line on what PFM does, three facts (offices, in-country teams, ISO/IEC 27001 · ISO 9001 · ISO 14001) and the fourteen customer logos. Every claim is traced in `docs/content/PFM-COMPANY-FACTS.md`.
+- **Customer logos approved** by the product lead for this brochure. This is the documented approval the AGENTS.md truth rule asks for; it covers these fourteen organisations as shown on the source slide, not customer results or quotes.
+- **Installation accreditations** (NICEIC, SafeContractor/SSIP, VCA, RI&E) close the drawer's Requirements tab on every scene that needs installed hardware.
+
+Open: the logo files are cut from a slide screenshot; replace with originals when available. FR/DE wording is part of the open FR/DE copy review. Supersedes the "who is PFM" open item of the entry above.

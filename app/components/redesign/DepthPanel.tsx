@@ -61,6 +61,7 @@ import {
 } from "../../content/technology-presentation";
 import { getDrawerMethodCopy } from "../../content/drawer-method-copy";
 import { getDrawerLimitation } from "../../content/drawer-limitations";
+import { installationAccreditations } from "../../content/installation-accreditations";
 import type { Locale } from "../../i18n/locales";
 import {
   resolveCapabilityCopy,
@@ -713,6 +714,22 @@ function RequirementsTab({
               <strong>{staffExclusion.name}</strong>
               <span>{staffExclusion.body}</span>
             </li>
+          </ul>
+        </>
+      )}
+
+      {/* How we install, wherever the scene needs something installed. About
+          PFM rather than this scene, so it closes the installation answer. */}
+      {hasAnyImplementation && (
+        <>
+          <p className="rd-depth__kicker">{installationAccreditations[locale].heading}</p>
+          <ul className="rd-depth__list">
+            {installationAccreditations[locale].items.map((item) => (
+              <li key={item.name}>
+                <strong>{item.name}</strong>
+                <span>{item.text}</span>
+              </li>
+            ))}
           </ul>
         </>
       )}

@@ -44,6 +44,16 @@ export interface OverviewCopy {
   openUnavailable: string;
   /** How long this segment's Core journey is. `{count}` is the scene total. */
   sceneCount: string;
+  /**
+   * Who PFM is, at the foot of the page. Every claim is sourced in
+   * docs/content/PFM-COMPANY-FACTS.md. The logos themselves are listed in
+   * `app/content/customer-logos.ts`; only their heading is copy.
+   */
+  aboutLabel: string;
+  aboutTitle: string;
+  aboutLead: string;
+  aboutFacts: readonly { title: string; text: string }[];
+  aboutLogosLabel: string;
 }
 
 export const overviewCopy: Readonly<Record<Locale, OverviewCopy>> = {
@@ -55,6 +65,22 @@ export const overviewCopy: Readonly<Record<Locale, OverviewCopy>> = {
     openJourney: "Open the journey",
     openUnavailable: "Not available in this build",
     sceneCount: "{count} Core scenes",
+    aboutLabel: "About PFM",
+    aboutTitle: "Every movement leaves data. We turn it into insight you can act on.",
+    aboutLead:
+      "With movement data and historical context, we help commercial locations make the right choices. Trusted by retailers, landlords and advisors across Europe.",
+    aboutFacts: [
+      { title: "Local presence", text: "Offices in Alphen aan den Rijn, Birmingham, Paris and Berlin." },
+      {
+        title: "In your language",
+        text: "In-country teams in the Netherlands, Belgium, the UK, France and Germany, backed by a trusted partner network.",
+      },
+      {
+        title: "Accredited",
+        text: "ISO/IEC 27001 for information security, ISO 9001 for quality and ISO 14001 for environmental management.",
+      },
+    ],
+    aboutLogosLabel: "Trusted by leading organisations",
   },
   fr: {
     eyebrow: "Expérience commerciale",
@@ -64,6 +90,22 @@ export const overviewCopy: Readonly<Record<Locale, OverviewCopy>> = {
     openJourney: "Ouvrir le parcours",
     openUnavailable: "Indisponible dans cette version",
     sceneCount: "{count} scènes Core",
+    aboutLabel: "À propos de PFM",
+    aboutTitle: "Chaque mouvement laisse des données. Nous en faisons des insights exploitables.",
+    aboutLead:
+      "Grâce aux données de mouvement et au contexte historique, nous aidons les lieux commerciaux à faire les bons choix. Retailers, propriétaires et conseils nous font confiance partout en Europe.",
+    aboutFacts: [
+      { title: "Présence locale", text: "Bureaux à Alphen aan den Rijn, Birmingham, Paris et Berlin." },
+      {
+        title: "Dans votre langue",
+        text: "Des équipes locales aux Pays-Bas, en Belgique, au Royaume-Uni, en France et en Allemagne, appuyées par un réseau de partenaires de confiance.",
+      },
+      {
+        title: "Certifiés",
+        text: "ISO/IEC 27001 pour la sécurité de l'information, ISO 9001 pour la qualité et ISO 14001 pour le management environnemental.",
+      },
+    ],
+    aboutLogosLabel: "Ils nous font confiance",
   },
   de: {
     eyebrow: "Commercial Experience",
@@ -73,5 +115,21 @@ export const overviewCopy: Readonly<Record<Locale, OverviewCopy>> = {
     openJourney: "Journey öffnen",
     openUnavailable: "In diesem Build nicht verfügbar",
     sceneCount: "{count} Core-Szenen",
+    aboutLabel: "Über PFM",
+    aboutTitle: "Jede Bewegung hinterlässt Daten. Wir machen daraus Erkenntnisse, mit denen Sie handeln können.",
+    aboutLead:
+      "Mit Bewegungsdaten und historischem Kontext helfen wir Handelsstandorten, die richtigen Entscheidungen zu treffen. Händler, Eigentümer und Berater in ganz Europa vertrauen uns.",
+    aboutFacts: [
+      { title: "Vor Ort präsent", text: "Büros in Alphen aan den Rijn, Birmingham, Paris und Berlin." },
+      {
+        title: "In Ihrer Sprache",
+        text: "Teams vor Ort in den Niederlanden, Belgien, Großbritannien, Frankreich und Deutschland, unterstützt von einem bewährten Partnernetzwerk.",
+      },
+      {
+        title: "Zertifiziert",
+        text: "ISO/IEC 27001 für Informationssicherheit, ISO 9001 für Qualität und ISO 14001 für Umweltmanagement.",
+      },
+    ],
+    aboutLogosLabel: "Sie vertrauen uns",
   },
 };
