@@ -299,16 +299,6 @@ const rpEntrance = schematic(
   "A sensor above a unit's entrance watches the full width of the door. Each person crossing the line beneath it is counted, in or out, at exactly the entrances chosen for measurement. The rest of the park is not counted by it.",
 );
 
-const rpReid = schematic(
-  "retail-park",
-  "TECH-05",
-  "rp-anonymous-reid",
-  "retail-park-anonymous-re-id-explainer.svg",
-  "Anonymous re-identification between units",
-  "Two views side by side, with a gap between them, each showing the entrance of a different unit in a retail park — one beside the car park, the other with a canopy and a trolley bay. The same figure, seen from behind, is framed in both views and a dotted arc links the two frames. Nothing is labelled.",
-  "The same observed appearance is matched between two separate views — here the entrances of two units — within a short window and inside configured coverage only. That match turns two observations into one anonymous movement, so unit-to-unit movement and time on site can be measured without learning who anyone is.",
-);
-
 const ocEntrance = schematic(
   "outlet-centre",
   "TECH-02",
@@ -329,15 +319,57 @@ const ocZoneLines = schematic(
   "Visitors are counted as they cross configured lines where one street, zone or anchor meets the next. Counting happens only inside the covered views; the street between them is not measured, and nothing is reconstructed across the gaps.",
 );
 
-const ocReid = schematic(
-  "outlet-centre",
-  "TECH-05",
-  "oc-anonymous-reid",
-  "outlet-centre-anonymous-re-id-explainer.svg",
-  "Anonymous re-identification between stores",
-  "Two views side by side, with a gap between them, each showing a different store front in an outlet village — pitched-roof units in one, a wider unit with an awning in the other. The same figure, seen from behind, is framed in both views and a dotted arc links the two frames. Nothing is labelled.",
-  "The same observed appearance is matched at the next store's view, within a short window and inside configured coverage only. That match turns two observations into one anonymous movement, so brand-to-brand movement and time in the outlet can be measured without learning who anyone is.",
-);
+/* Product lead review, 2026-09-29.
+
+   RE-IDENTIFICATION: the approved photographic re-identification explainer is
+   the explainer for every segment that measures it, replacing the schematic
+   Retail Park and Outlet drawings. The same picture and words, attached to each
+   segment explicitly, so a segment still only shows what it was given.
+
+   VEHICLES: arrival is measured with an ANPR sensor or an outdoor IP detection
+   sensor, so each open-air segment shows both principles. The pictures are the
+   product lead's candidates with every store sign blurred: a real retailer's
+   logo in a PFM brochure reads as a customer (AGENTS.md). Their plates, times
+   and detection scores are illustrative and flagged as embedded text. */
+const reidPhotoFor = (segment: SegmentId): CapabilityExplainerVisual => ({ ...scReid, segment });
+
+const vehicleNote =
+  "Illustration of the measurement principle. The place, plates, times and scores are illustrative, store signs are blurred, and it is not customer data.";
+
+const vehicleExplainers = (segment: SegmentId): CapabilityExplainerVisual[] => [
+  {
+    capabilityId: "TECH-06",
+    segment,
+    approachId: "vehicle-anpr-plate-reading",
+    approachName: "Registration-plate reading at access points",
+    assetPath: "/assets/technology/explainers/vehicle-anpr-plate-reading-explainer.png",
+    altText:
+      "A retail-park access road at sunset. Cars heading in are each framed with their registration plate read beside them; one plate is enlarged with its country, date and time. Store signs are blurred.",
+    explanation:
+      "An ANPR sensor reads the registration plate of each vehicle crossing a configured access point, with its time. That gives vehicle arrivals and, where the plate is read again on leaving, a vehicle's time on site. A plate is not anonymous and a vehicle is not a visitor: it says nothing about who, or how many people, are inside.",
+    illustrationNote: vehicleNote,
+    illustratesImplementationId: "impl-tattile-anpr-vehicle",
+    showsSensorHardware: false,
+    illustrative: true,
+    hasEmbeddedText: true,
+  },
+  {
+    capabilityId: "TECH-06",
+    segment,
+    approachId: "vehicle-object-detection",
+    approachName: "Object detection in a camera view",
+    assetPath: "/assets/technology/explainers/vehicle-object-detection-explainer.png",
+    altText:
+      "A retail park seen from the pavement at sunset. Cars in the car park and people walking to the stores are each framed and labelled as a car, a person or a trolley, with a detection score. Store signs are blurred.",
+    explanation:
+      "An IP detection sensor recognises objects in its configured view — vehicles, people, trolleys — and counts them as they cross configured lines. A detection is an object class, not an identity, and the scores are the model's confidence in a detection, not a measured result.",
+    illustrationNote: vehicleNote,
+    illustratesImplementationId: "impl-ip-detection-outdoor",
+    showsSensorHardware: false,
+    illustrative: true,
+    hasEmbeddedText: true,
+  },
+];
 
 /* The indoor IP detection sensor serves the indoor segments (Retail, Shopping
    Centre), the outdoor one the open-air segments (Retail Park, Outlet Centre).
@@ -396,13 +428,21 @@ export const segmentDrawerSettings: readonly SegmentDrawerSetting[] = [
     segment: "retail-park",
     capabilityId: "TECH-05",
     implementationIds: ["impl-ip-detection-outdoor"],
-    explainerVisuals: [rpReid],
+    explainerVisuals: [reidPhotoFor("retail-park")],
     purpose: {
       en: "Explain how IP detection sensors anonymously re-identify the same observed appearance at different units, so time on site and movement from unit to unit can be measured inside configured coverage.",
       fr: "Expliquer comment des capteurs de détection IP ré-identifient anonymement la même apparence observée à différentes cellules, afin de mesurer le temps passé sur site et le mouvement d'une cellule à l'autre, dans la couverture configurée.",
       de: "Erklären, wie IP-Detektionssensoren dieselbe beobachtete Erscheinung an verschiedenen Einheiten anonym wiedererkennen, sodass Aufenthaltsdauer und Bewegung von Einheit zu Einheit innerhalb der konfigurierten Abdeckung gemessen werden können.",
     },
+  },  {
+    // Product lead review, 2026-09-29: arrival is measured with the outdoor IP
+    // detection sensor or the ANPR sensor — the two devices, not method classes.
+    segment: "retail-park",
+    capabilityId: "TECH-06",
+    implementationIds: ["impl-ip-detection-outdoor", "impl-tattile-anpr-vehicle"],
+    explainerVisuals: vehicleExplainers("retail-park"),
   },
+
   {
     // Open-air entrances: the outdoor Premium 3D sensor, not the indoor one.
     segment: "outlet-centre",
@@ -433,13 +473,33 @@ export const segmentDrawerSettings: readonly SegmentDrawerSetting[] = [
     segment: "outlet-centre",
     capabilityId: "TECH-05",
     implementationIds: ["impl-ip-detection-outdoor"],
-    explainerVisuals: [ocReid],
+    explainerVisuals: [reidPhotoFor("outlet-centre")],
     purpose: {
       en: "Explain how an IP detection sensor at each store anonymously re-identifies the same observed appearance at the next, so movement between brands and time in the destination can be measured inside configured coverage.",
       fr: "Expliquer comment un capteur de détection IP à chaque magasin ré-identifie anonymement la même apparence observée au magasin suivant, afin de mesurer le mouvement entre marques et le temps passé dans la destination, dans la couverture configurée.",
       de: "Erklären, wie ein IP-Detektionssensor an jedem Store dieselbe beobachtete Erscheinung am nächsten anonym wiedererkennt, sodass Bewegung zwischen Marken und Aufenthaltsdauer im Outlet innerhalb der konfigurierten Abdeckung gemessen werden können.",
     },
+  },  {
+    // Same as Retail Park (product lead review, 2026-09-29).
+    segment: "outlet-centre",
+    capabilityId: "TECH-06",
+    implementationIds: ["impl-ip-detection-outdoor", "impl-tattile-anpr-vehicle"],
+    explainerVisuals: vehicleExplainers("outlet-centre"),
   },
+  {
+    // Shopping Centre was not part of that review. Its list is stated so the
+    // outdoor sensor, newly linked to vehicle intelligence, does not appear
+    // here by inheritance: this is exactly what it showed before.
+    segment: "shopping-centre",
+    capabilityId: "TECH-06",
+    implementationIds: [
+      "impl-vehicle-arrival-method",
+      "impl-parking-occupancy-method",
+      "impl-lawful-anpr-lpr",
+      "impl-tattile-anpr-vehicle",
+    ],
+  },
+
 ];
 
 export function getSegmentDrawerSetting(

@@ -47,9 +47,15 @@ export interface DemoPlace {
   locale: Locale;
 }
 
-/** Where the picker lives, in this language. */
+/**
+ * Where the picker lives, in this language.
+ *
+ * The front door opens on the Unified PFM Intro. A reader coming back from a
+ * journey has already seen it, so "All segments" asks the front door to open
+ * straight on the picker (`start=segments`).
+ */
 export function pickerUrl(locale: Locale): string {
-  return `${PICKER_PATH}?locale=${locale}`;
+  return `${PICKER_PATH}?start=segments&locale=${locale}`;
 }
 
 /**

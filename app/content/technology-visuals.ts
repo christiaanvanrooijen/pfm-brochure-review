@@ -97,6 +97,14 @@ export const implementationVisuals: readonly ImplementationVisual[] = [
     showsInfrastructureOnly: true,
   },
   {
+    // Supplied among the content candidates; placed by the product lead's
+    // review of 2026-09-29, which asked for the sensor's photograph.
+    implementationId: "impl-tattile-anpr-vehicle",
+    assetPath: "/assets/technology/anpr/tattile-basic-mk2.png",
+    altText: "A compact ANPR camera in a blue housing, seen from the front, with its lens and a ring of infrared illuminators.",
+    showsInfrastructureOnly: false,
+  },
+  {
     // Supplied by the product lead, 2026-09-27: the outdoor PC2SE-O.
     implementationId: "impl-xovis-3d-entrance-outdoor",
     assetPath: "/assets/technology/entrance/xovis-pc2se-o.png",

@@ -564,8 +564,9 @@ test("22. there is one picker, and the demo route does not render a second", () 
   assert.match(page, /if \(!segment\) return <SegmentOverview initialLocale=\{locale\} \/>/);
   assert.match(page, /import \{ SegmentOverview \} from "\.\.\/\.\.\/components\/SegmentOverview"/);
   assert.equal(PICKER_PATH, "/");
-  // And the way back from a journey points at the front door itself.
-  assert.match(pickerUrl("en"), /^\/\?locale=en$/);
+  // And the way back from a journey points at the front door itself, opened on
+  // the picker rather than the cover the reader has already passed.
+  assert.match(pickerUrl("en"), /^\/\?start=segments&locale=en$/);
 
   // The demo's own grid of segments is gone, not merely hidden.
   for (const gone of ["rd-demo__picker", "rd-demo__grid", "rd-demo__card", "SEGMENT_LABEL"]) {

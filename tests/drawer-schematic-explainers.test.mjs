@@ -1,5 +1,7 @@
 /**
- * The seven schematic explainers drawn on 2026-09-28.
+ * The schematic explainers drawn on 2026-09-28 (five since 2026-09-29, when the
+ * photographic re-identification explainer replaced the Retail Park and Outlet
+ * drawings).
  *
  * Six close the gaps in docs/content/EXPLAINER-BRIEF.md; the seventh is the
  * Retail classification gap (CONTENT-REVIEW-2026-09-27.md, proposal 5). These
@@ -28,10 +30,8 @@ const expected = new Map([
     "shopping-centre-entrances",
   ]],
   ["retail-park-unit-entrance-counting-explainer.svg", ["retail-park-unit-visits", "retail-park-unit-category-exposure"]],
-  ["retail-park-anonymous-re-id-explainer.svg", ["retail-park-cross-visitation", "retail-park-time-on-site"]],
   ["outlet-centre-entrance-counting-explainer.svg", ["outlet-centre-entrances", "outlet-centre-brand-counting"]],
   ["outlet-centre-zone-counting-lines-explainer.svg", ["outlet-centre-circulation", "outlet-centre-zone-exposure-dwell"]],
-  ["outlet-centre-anonymous-re-id-explainer.svg", ["outlet-centre-brand-flow", "outlet-centre-time-in-destination"]],
 ]);
 
 const schematic = drawerExplainerVisuals.filter((v) => v.assetPath.endsWith(".svg"));

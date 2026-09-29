@@ -395,9 +395,12 @@ test("Classification capability (TECH-03) has implementations", () => {
 
 test("Vehicle/parking capability (TECH-06) has implementations", () => {
   const impls = getVehicleParkingImplementations();
-  assert.equal(impls.length, 4);
+  // The outdoor IP detection sensor joined on 2026-09-29 (product lead review:
+  // open-air vehicle arrival is measured with it or with the ANPR sensor).
+  assert.equal(impls.length, 5);
   const ids = impls.map((i) => i.id).sort();
   assert.deepEqual(ids, [
+    "impl-ip-detection-outdoor",
     "impl-lawful-anpr-lpr",
     "impl-parking-occupancy-method",
     "impl-tattile-anpr-vehicle",

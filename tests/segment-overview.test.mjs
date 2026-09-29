@@ -183,7 +183,9 @@ test("11. the front door is the cover, then the overview, and the approved shell
   // The root renders the gateway, and the gateway renders the Unified Intro
   // first and the overview after Explore — nothing else.
   const home = read("app/page.tsx");
-  assert.match(home, /<RootGateway initialLocale=\{isLocale\(rawLocale\) \? rawLocale : defaultLocale\} \/>/);
+  assert.match(home, /<RootGateway\s+initialLocale=\{isLocale\(rawLocale\) \? rawLocale : defaultLocale\}\s+startAtSegments=\{startAtSegments\}\s+\/>/);
+  assert.match(home, /const startAtSegments = first\(params\.start\) === "segments";/);
+  assert.match(read("app/components/RootGateway.tsx"), /useState\(startAtSegments\)/);
   assert.doesNotMatch(home, /CommercialExperience/);
   const gateway = read("app/components/RootGateway.tsx");
   assert.match(gateway, /if \(!exploring\) \{\s*return <UnifiedIntro locale=\{locale\} onLocaleChange=\{setLocale\} onExplore=\{\(\) => setExploring\(true\)\} \/>;/);

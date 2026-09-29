@@ -3,14 +3,16 @@ Schematic measurement-principle explainers for the "How does this work?" drawer.
 
     python3 scripts/explainer-illustrations.py
 
-Writes seven SVGs to public/assets/technology/explainers/. They close the
+Writes five SVGs to public/assets/technology/explainers/. They close the
 illustration gaps named in docs/content/EXPLAINER-BRIEF.md (six) and the Retail
 classification gap (CONTENT-REVIEW-2026-09-27.md, proposal 5).
 
 What they are: axonometric line drawings on the PFM black canvas, with the
 measurement principle drawn as the brand's glass layers in the red-to-purple
 range (03-shared/brand/visual-style.md, "Use glass layers for concept
-explanation"). They are NOT the photographic artwork the brief asks for; that
+explanation"). The Retail Park and Outlet re-identification drawings were
+retired on 2026-09-29: the product lead chose the photographic
+re-identification explainer for every segment. They are NOT the photographic artwork the brief asks for; that
 remains a production task, and these carry an illustration note saying they are
 schematic.
 
@@ -401,41 +403,6 @@ def frame_top(sc: Scene, x, y):
     return bx + bw / 2, by
 
 
-def retail_park_reid() -> str:
-    # View 1: one unit's entrance, seen from the car park.
-    a = Scene()
-    a.floor(0, 0, 12, 8, fill=N900)
-    a.box(0, -4, 0, 12, 4, 6, top=N800)
-    a.wall_y(0, 12, 0, 6, fill=N900, openings=[(1, 4.5, 0.6, 4, "url(#pane)"), (5.2, 8.2, 0, 3.4, N950), (9, 11.5, 0.6, 4, "url(#pane)")])
-    for i in range(4):
-        a.line((1.5 + i * 2.6, 5.2), (1.5 + i * 2.6, 8), stroke=N700)
-    a.car(1.85, 5.4)
-    a.person(3.2, 3.0)
-    a.frame(a.bbox(6.7, 2.2), color=P400)
-    a.person(6.7, 2.2, tone=P300, bag=True)
-    a.person(10.5, 3.6)
-    a.focus((3, 0, 6.2), (12, 0, 6.2), (3, 5, 0), (12, 5, 0))
-    # View 2: a different unit across the park — lower, glazed, with a canopy.
-    b = Scene()
-    b.floor(0, 0, 12, 8, fill=N900)
-    b.floor(0, 0, 12, 2.4, fill=N800, stroke=N700)
-    b.box(0, -4, 0, 12, 4, 4.5, top=N800)
-    b.wall_y(0, 12, 0, 4.5, fill=N900, openings=[(0.8, 5.5, 0.5, 2.9, "url(#pane)"), (6.2, 8.8, 0, 2.9, N950), (9.4, 11.4, 0.5, 2.9, "url(#pane)")])
-    b.box(0, 0, 3.1, 12, 1.4, 0.25, top=N700)
-    for (x, y) in [(9.8, 5.0), (10.4, 5.0), (11.0, 5.0)]:
-        b.box(x, y, 0, 0.5, 1.1, 0.9, top=N600, left=N800, right=N700, sw=1)  # trolley bay
-    b.person(2.6, 4.2)
-    b.frame(b.bbox(7.4, 2.4), color=P400)
-    b.person(7.4, 2.4, tone=P300, bag=True)
-    b.focus((2, 0, 4.8), (12, 0, 4.8), (2, 6, 0), (12, 6, 0))
-    return two_views(a, b, "The same figure in two views at different units of a retail park",
-                     frame_top(a, 6.7, 2.2), frame_top(b, 7.4, 2.4))
-
-
-# ---------------------------------------------------------------------------
-# Outlet Centre · shared village architecture
-# ---------------------------------------------------------------------------
-
 def village_unit(s: Scene, x, y, w, d, h, ridge, door=True):
     """A pitched-roof outlet unit with an awning and a blank fascia."""
     s.box(x, y, 0, w, d, h, top=N800, left=N900, right=N800)
@@ -504,41 +471,12 @@ def outlet_zone_lines() -> str:
     return document(s.render(96, 64, W - 192, H - 128), "Counting lines between the streets and zones of an outlet village")
 
 
-def outlet_reid() -> str:
-    a = Scene(scale=34)
-    a.floor(0, 0, 14, 8, fill=N900)
-    a.floor(0, 5.5, 14, 8, fill=N800, stroke=N700)
-    village_unit(a, 0.5, -4, 6, 4, 4.5, 2.2)
-    village_unit(a, 7, -4, 6.5, 4, 5.0, 2.4)
-    a.person(3.0, 4.0)
-    a.frame(a.bbox(9.3, 2.6), color=P400)
-    a.person(9.3, 2.6, tone=P300, bag=True)
-    a.person(5.0, 6.8)
-    a.focus((4, -1, 7.2), (14, -1, 7.2), (4, 6, 0), (14, 6, 0))
-    b = Scene(scale=34)
-    b.floor(0, 0, 14, 8, fill=N900)
-    b.floor(0, 5.5, 14, 8, fill=N800, stroke=N700)
-    b.box(0.5, -4, 0, 13, 4, 5.5, top=N800)
-    b.wall_y(0.5, 13.5, 0, 5.5, fill=N900, openings=[(1.2, 6.5, 0.5, 3.6, "url(#pane)"), (7.4, 10.0, 0, 3.4, N950), (10.8, 13.0, 0.5, 3.6, "url(#pane)")])
-    b.poly([(0.8, 0, 4.1), (13.2, 0, 4.1), (13.2, 1.3, 3.5), (0.8, 1.3, 3.5)], fill=N700, stroke=N600, sw=1)
-    b.frame(b.bbox(8.6, 2.2), color=P400)
-    b.person(8.6, 2.2, tone=P300, bag=True)
-    b.person(3.2, 5.0)
-    b.person(11.6, 6.4)
-    b.person(12.4, 6.8)
-    b.focus((3, 0, 5.8), (13.5, 0, 5.8), (3, 6.5, 0), (13.5, 6.5, 0))
-    return two_views(a, b, "The same figure in two views at different stores of an outlet village",
-                     frame_top(a, 9.3, 2.6), frame_top(b, 8.6, 2.2))
-
-
 FILES = {
     "retail-anonymous-classification-explainer.svg": retail_classification,
     "shopping-centre-threshold-counting-explainer.svg": shopping_centre_threshold,
     "retail-park-unit-entrance-counting-explainer.svg": retail_park_entrance,
-    "retail-park-anonymous-re-id-explainer.svg": retail_park_reid,
     "outlet-centre-entrance-counting-explainer.svg": outlet_entrance,
     "outlet-centre-zone-counting-lines-explainer.svg": outlet_zone_lines,
-    "outlet-centre-anonymous-re-id-explainer.svg": outlet_reid,
 }
 
 if __name__ == "__main__":

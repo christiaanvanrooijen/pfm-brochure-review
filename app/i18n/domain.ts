@@ -369,7 +369,25 @@ const explainerTranslations: Readonly<
       illustrationNote: "Illustration du principe de mesure. Pas des données client ni la représentation d'une implémentation matérielle particulière.",
       altText:
         "Une rue d'outlet à ciel ouvert au coucher du soleil, vue derrière les visiteurs. De légers cadres colorés entourent une personne seule, un couple portant des sacs et une personne poussant une poussette. Aucun visage n'est visible et rien n'est étiqueté.",
+    },    "vehicle-anpr-plate-reading": {
+      approachName: "Lecture de plaques aux points d'accès",
+      explanation:
+        "Un capteur ANPR lit la plaque d'immatriculation de chaque véhicule qui franchit un point d'accès configuré, avec l'heure. On obtient les arrivées de véhicules et, lorsque la plaque est relue à la sortie, la durée de présence d'un véhicule. Une plaque n'est pas anonyme et un véhicule n'est pas un visiteur : elle ne dit rien de qui se trouve à bord, ni de combien de personnes.",
+      illustrationNote:
+        "Illustration du principe de mesure. Le lieu, les plaques, les heures et les scores sont illustratifs, les enseignes sont floutées, et ce ne sont pas des données client.",
+      altText:
+        "L'accès d'un retail park au coucher du soleil. Les voitures qui entrent sont encadrées, avec leur plaque lue à côté ; une plaque est agrandie avec son pays, sa date et son heure. Les enseignes sont floutées.",
     },
+    "vehicle-object-detection": {
+      approachName: "Détection d'objets dans une vue caméra",
+      explanation:
+        "Un capteur de détection IP reconnaît les objets dans sa vue configurée — véhicules, personnes, chariots — et les compte lorsqu'ils franchissent des lignes configurées. Une détection est une classe d'objet, pas une identité, et les scores sont la confiance du modèle dans une détection, pas un résultat mesuré.",
+      illustrationNote:
+        "Illustration du principe de mesure. Le lieu, les plaques, les heures et les scores sont illustratifs, les enseignes sont floutées, et ce ne sont pas des données client.",
+      altText:
+        "Un retail park vu depuis le trottoir au coucher du soleil. Les voitures du parking et les personnes qui se dirigent vers les magasins sont encadrées et étiquetées comme voiture, personne ou chariot, avec un score de détection. Les enseignes sont floutées.",
+    },
+
     "retail-anonymous-classification": {
       approachName: "Groupes de visiteurs anonymes",
       explanation:
@@ -394,14 +412,7 @@ const explainerTranslations: Readonly<
       altText:
         "Un dessin au trait d'un retail park à ciel ouvert : deux façades de cellules, un trottoir et un parking devant. Un petit capteur sous l'auvent de l'entrée d'une cellule projette un cône léger sur la porte, avec une ligne au sol en dessous. Une personne entre, une autre sort ; d'autres traversent le parking.",
     },
-    "rp-anonymous-reid": {
-      approachName: "Ré-identification anonyme entre cellules",
-      explanation:
-        "Une même apparence observée est appariée entre deux vues distinctes — ici les entrées de deux cellules — dans une courte fenêtre et uniquement dans la couverture configurée. Cet appariement transforme deux observations en un seul mouvement anonyme, ce qui permet de mesurer le passage d'une cellule à l'autre et le temps passé sur site sans savoir qui est qui.",
-      illustrationNote: "Illustration schématique du principe de mesure. Pas des données client, pas un lieu réel et pas la représentation d'un matériel particulier.",
-      altText:
-        "Deux vues côte à côte, séparées par un espace, montrant chacune l'entrée d'une cellule différente d'un retail park — l'une près du parking, l'autre avec un auvent et un abri à chariots. La même silhouette, vue de dos, est encadrée dans les deux vues et un arc en pointillés relie les deux cadres. Rien n'est étiqueté.",
-    },
+
     "oc-entrance-counting": {
       approachName: "Comptage à l'entrée de l'outlet",
       explanation:
@@ -418,14 +429,7 @@ const explainerTranslations: Readonly<
       altText:
         "Un dessin au trait d'une rue d'outlet à ciel ouvert vue d'en haut, bordée d'une rangée de magasins à toits en pente. Trois petits dômes sur les bâtiments couvrent chacun une portion de la rue, avec du pavage non couvert entre elles. Une ligne lumineuse traverse la rue dans chaque portion couverte, et les visiteurs qui la franchissent sont mis en évidence.",
     },
-    "oc-anonymous-reid": {
-      approachName: "Ré-identification anonyme entre magasins",
-      explanation:
-        "Une même apparence observée est appariée dans la vue du magasin suivant, dans une courte fenêtre et uniquement dans la couverture configurée. Cet appariement transforme deux observations en un seul mouvement anonyme, ce qui permet de mesurer le passage d'une marque à l'autre et le temps passé dans l'outlet sans savoir qui est qui.",
-      illustrationNote: "Illustration schématique du principe de mesure. Pas des données client, pas un lieu réel et pas la représentation d'un matériel particulier.",
-      altText:
-        "Deux vues côte à côte, séparées par un espace, montrant chacune une vitrine différente d'un village outlet — des magasins à toits en pente dans l'une, un magasin plus large avec un auvent dans l'autre. La même silhouette, vue de dos, est encadrée dans les deux vues et un arc en pointillés relie les deux cadres. Rien n'est étiqueté.",
-    },
+
     "camera-coverage-anonymous-reid": {
       approachName: "Couverture caméra et ré-identification anonyme",
       explanation:
@@ -537,7 +541,25 @@ const explainerTranslations: Readonly<
       illustrationNote: "Illustration des Messprinzips. Keine Kundendaten und keine Darstellung einer bestimmten Hardware-Implementierung.",
       altText:
         "Eine offene Outlet-Straße bei Sonnenuntergang, von hinten gesehen. Dezente farbige Rahmen umgeben eine allein gehende Person, ein Paar mit Einkaufstaschen und eine Person mit Kinderwagen. Kein Gesicht ist sichtbar und nichts ist beschriftet.",
+    },    "vehicle-anpr-plate-reading": {
+      approachName: "Kennzeichenerfassung an Zufahrtspunkten",
+      explanation:
+        "Ein ANPR-Sensor liest das Kennzeichen jedes Fahrzeugs, das einen konfigurierten Zufahrtspunkt überquert, mit Uhrzeit. So entstehen Fahrzeugankünfte und, wenn das Kennzeichen bei der Ausfahrt erneut gelesen wird, die Aufenthaltsdauer eines Fahrzeugs. Ein Kennzeichen ist nicht anonym, und ein Fahrzeug ist kein Besucher: Es sagt nichts darüber, wer oder wie viele Personen darin sitzen.",
+      illustrationNote:
+        "Illustration des Messprinzips. Ort, Kennzeichen, Uhrzeiten und Werte sind illustrativ, Ladenschilder sind unkenntlich gemacht, und es handelt sich nicht um Kundendaten.",
+      altText:
+        "Die Zufahrt eines Fachmarktzentrums bei Sonnenuntergang. Einfahrende Autos sind jeweils gerahmt, ihr Kennzeichen daneben gelesen; ein Kennzeichen ist mit Land, Datum und Uhrzeit vergrößert. Ladenschilder sind unkenntlich gemacht.",
     },
+    "vehicle-object-detection": {
+      approachName: "Objekterkennung in einer Kameraansicht",
+      explanation:
+        "Ein IP-Detektionssensor erkennt Objekte in seiner konfigurierten Ansicht — Fahrzeuge, Personen, Einkaufswagen — und zählt sie, wenn sie konfigurierte Linien überqueren. Eine Erkennung ist eine Objektklasse, keine Identität, und die Werte sind die Sicherheit des Modells bei einer Erkennung, kein Messergebnis.",
+      illustrationNote:
+        "Illustration des Messprinzips. Ort, Kennzeichen, Uhrzeiten und Werte sind illustrativ, Ladenschilder sind unkenntlich gemacht, und es handelt sich nicht um Kundendaten.",
+      altText:
+        "Ein Fachmarktzentrum vom Gehweg aus bei Sonnenuntergang. Autos auf dem Parkplatz und Menschen auf dem Weg zu den Geschäften sind jeweils gerahmt und als Auto, Person oder Einkaufswagen beschriftet, mit einem Erkennungswert. Ladenschilder sind unkenntlich gemacht.",
+    },
+
     "retail-anonymous-classification": {
       approachName: "Anonyme Besuchergruppen",
       explanation:
@@ -562,14 +584,7 @@ const explainerTranslations: Readonly<
       altText:
         "Eine Strichzeichnung eines Fachmarktzentrums unter freiem Himmel: zwei Fassaden von Einheiten, ein Gehweg und davor ein Parkplatz. Ein kleiner Sensor unter dem Vordach eines Eingangs wirft einen weichen Kegel über die Tür, mit einer Linie auf dem Boden darunter. Eine Person geht hinein, eine hinaus; andere überqueren den Parkplatz.",
     },
-    "rp-anonymous-reid": {
-      approachName: "Anonyme Wiedererkennung zwischen Einheiten",
-      explanation:
-        "Dieselbe beobachtete Erscheinung wird zwischen zwei getrennten Ansichten abgeglichen — hier den Eingängen zweier Einheiten — innerhalb eines kurzen Zeitfensters und nur in der konfigurierten Abdeckung. Dieser Abgleich macht aus zwei Beobachtungen eine anonyme Bewegung, sodass Wege von Einheit zu Einheit und die Aufenthaltsdauer gemessen werden können, ohne zu wissen, wer jemand ist.",
-      illustrationNote: "Schematische Illustration des Messprinzips. Keine Kundendaten, kein realer Ort und keine Darstellung bestimmter Hardware.",
-      altText:
-        "Zwei Ansichten nebeneinander, durch einen Abstand getrennt, jede mit dem Eingang einer anderen Einheit eines Fachmarktzentrums — eine neben dem Parkplatz, die andere mit Vordach und Einkaufswagenstation. Dieselbe Figur, von hinten gesehen, ist in beiden Ansichten gerahmt, und ein gepunkteter Bogen verbindet die beiden Rahmen. Nichts ist beschriftet.",
-    },
+
     "oc-entrance-counting": {
       approachName: "Zählung am Outlet-Eingang",
       explanation:
@@ -586,14 +601,7 @@ const explainerTranslations: Readonly<
       altText:
         "Eine Strichzeichnung einer Outlet-Straße unter freiem Himmel aus erhöhtem Blickwinkel, gesäumt von einer Reihe Stores mit Satteldächern. Drei kleine Kuppeln an den Gebäuden decken je einen Straßenabschnitt ab, mit nicht abgedecktem Pflaster dazwischen. In jedem abgedeckten Abschnitt verläuft eine leuchtende Linie quer über die Straße, und die Besucher, die sie überqueren, sind hervorgehoben.",
     },
-    "oc-anonymous-reid": {
-      approachName: "Anonyme Wiedererkennung zwischen Stores",
-      explanation:
-        "Dieselbe beobachtete Erscheinung wird in der Ansicht des nächsten Stores abgeglichen, innerhalb eines kurzen Zeitfensters und nur in der konfigurierten Abdeckung. Dieser Abgleich macht aus zwei Beobachtungen eine anonyme Bewegung, sodass Wege von Marke zu Marke und die Aufenthaltsdauer im Outlet gemessen werden können, ohne zu wissen, wer jemand ist.",
-      illustrationNote: "Schematische Illustration des Messprinzips. Keine Kundendaten, kein realer Ort und keine Darstellung bestimmter Hardware.",
-      altText:
-        "Zwei Ansichten nebeneinander, durch einen Abstand getrennt, jede mit einer anderen Storefront in einem Outlet-Village — Stores mit Satteldächern in der einen, ein breiterer Store mit Markise in der anderen. Dieselbe Figur, von hinten gesehen, ist in beiden Ansichten gerahmt, und ein gepunkteter Bogen verbindet die beiden Rahmen. Nichts ist beschriftet.",
-    },
+
     "camera-coverage-anonymous-reid": {
       approachName: "Kameraabdeckung und anonyme Re-Identifikation",
       explanation:

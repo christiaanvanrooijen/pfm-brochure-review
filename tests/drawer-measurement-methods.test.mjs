@@ -174,11 +174,23 @@ test("6. every explanation the drawer adds exists in all three languages", () =>
 
 test("7. each drawer explainer is true of its own segment, and on disk", () => {
   const root = fileURLToPath(new URL("../public", import.meta.url));
+  /* Pictures the product lead chose to share across segments (review of
+     2026-09-29): the photographic re-identification explainer, and the two
+     vehicle principles for the open-air segments. Each is still attached to
+     each segment explicitly; nothing is inherited. */
+  const shared = new Set([
+    "/assets/technology/explainers/shopping-centre-anonymous-re-id-explainer.png",
+    "/assets/technology/explainers/vehicle-anpr-plate-reading-explainer.png",
+    "/assets/technology/explainers/vehicle-object-detection-explainer.png",
+  ]);
   for (const visual of drawerExplainerVisuals) {
     assert.ok(existsSync(root + visual.assetPath), `${visual.assetPath} is not on disk`);
     const owner = segmentDrawerSettings.find((s) => (s.explainerVisuals ?? []).includes(visual));
     assert.equal(owner.segment, visual.segment, `${visual.approachId} is attached to another segment`);
-    assert.ok(visual.assetPath.includes(visual.segment), `${visual.assetPath} does not say whose it is`);
+    assert.ok(
+      visual.assetPath.includes(visual.segment) || shared.has(visual.assetPath),
+      `${visual.assetPath} does not say whose it is`,
+    );
     assert.equal(visual.illustrative, true);
     assert.doesNotMatch(`${visual.approachName} ${visual.explanation}`, /\d+\s*%|accuracy|guarantee/i);
   }
@@ -218,4 +230,43 @@ test("9. both sensors carry installation essentials the product lead wrote, and 
     assert.match(blocked, /legally compliant/);
     assert.equal(impl.technicalDetailStatus, "requires_source_mapping");
   }
+});
+
+test("9b. product lead review 2026-09-29: vehicles by device, re-identification by photograph", () => {
+  // Open-air vehicle arrival: the two devices, and both principles explained.
+  for (const [segment, sceneId] of [
+    ["retail-park", "retail-park-vehicle-arrival"],
+    ["outlet-centre", "outlet-centre-vehicle-coach-arrival"],
+  ]) {
+    const view = drawer(sceneId).view("TECH-06");
+    assert.deepEqual(view.implementations.map((i) => i.id), [OUT, ANPR], `${segment} vehicle devices`);
+    assert.deepEqual(
+      view.explainerVisuals.map((v) => v.approachId),
+      ["vehicle-anpr-plate-reading", "vehicle-object-detection"],
+    );
+    for (const visual of view.explainerVisuals) {
+      assert.equal(visual.hasEmbeddedText, true, "plates, times and scores are flagged");
+      assert.match(visual.altText, /Store signs are blurred/);
+    }
+  }
+  // Shopping Centre was not part of that review and shows what it showed.
+  assert.ok(!drawer("shopping-centre-parking-arrival").all.includes(OUT));
+  // The ANPR sensor now has its photograph.
+  assert.ok(technologyImplementations.find((i) => i.id === ANPR));
+  // Re-identification: the photographic explainer, for every segment that measures it.
+  for (const sceneId of ["retail-park-cross-visitation", "outlet-centre-brand-flow", "shopping-centre-brand-flow"]) {
+    assert.ok(
+      drawer(sceneId).explainers.includes("/assets/technology/explainers/shopping-centre-anonymous-re-id-explainer.png"),
+      `${sceneId} lacks the re-identification photograph`,
+    );
+  }
+});
+
+test("9c. only the outdoor IP detection sensor claims vehicle events", () => {
+  const vehicleClaim = /detect vehicles crossing access lines/;
+  const byId = (id) => technologyImplementations.find((i) => i.id === id);
+  assert.ok(byId(OUT).supportedClaims.some((c) => vehicleClaim.test(c)));
+  assert.ok(byId(OUT).capabilityIds.includes("TECH-06"));
+  assert.ok(!byId(IN).supportedClaims.some((c) => vehicleClaim.test(c)), "the indoor sensor claims vehicles");
+  assert.ok(!byId(IN).capabilityIds.includes("TECH-06"));
 });

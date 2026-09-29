@@ -255,7 +255,9 @@ export const technologyImplementations: readonly TechnologyImplementationDefinit
     // 2026-09-27. Same honesty as its indoor counterpart: nothing is asserted
     // that a mapped document does not yet support.
     id: "impl-ip-detection-outdoor",
-    capabilityIds: ["TECH-02", "TECH-03", "TECH-04", "TECH-05"],
+    // TECH-06 added 2026-09-29: the product lead measures vehicle arrival at an
+    // open-air site with this sensor or with the ANPR sensor.
+    capabilityIds: ["TECH-02", "TECH-03", "TECH-04", "TECH-05", "TECH-06"],
     supplier: "Bosch",
     product: "FLEXIDOME 5100i",
     implementationRole: "IP detection sensor for outdoor counting and anonymous re-identification",
@@ -273,6 +275,7 @@ export const technologyImplementations: readonly TechnologyImplementationDefinit
       "Which of those a deployment answers is decided by configuration and camera placement, per site",
       "The manufacturer describes optional privacy masking on this camera platform: blurring or masking people, faces or vehicles, or hiding the video while keeping its metadata",
       "The manufacturer describes these settings per video stream, on supported firmware and analytics variants, and only as configured",
+      "At an open-air site, configured views can also detect vehicles crossing access lines — as vehicle events, not visitors and not plates",
     ],
     unsupportedClaims: [
       "A count or a route outside the configured views — where there is no view, there is no measurement",
@@ -950,6 +953,8 @@ export const technologyCapabilities: readonly TechnologyCapabilityDefinition[] =
       "impl-parking-occupancy-method",
       "impl-lawful-anpr-lpr",
       "impl-tattile-anpr-vehicle",
+      // Product lead review, 2026-09-29: open-air vehicle arrival.
+      "impl-ip-detection-outdoor",
     ],
     sourceRefs: [`${matrix}: Technology library!A10:G10`],
   },

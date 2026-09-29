@@ -163,6 +163,8 @@ const supportedClaimTranslations: Readonly<Record<Exclude<Locale, "en">, Readonl
       "Le fabricant décrit un masquage optionnel de la confidentialité sur cette plateforme de caméra : flouter ou masquer des personnes, des visages ou des véhicules, ou masquer la vidéo en conservant ses métadonnées",
     "impl-ip-detection-outdoor:3":
       "Le fabricant décrit ces réglages par flux vidéo, sur des versions de firmware et d'analytique prises en charge, et uniquement tels que configurés",
+    "impl-ip-detection-outdoor:4":
+      "Sur un site à ciel ouvert, les vues configurées peuvent aussi détecter les véhicules qui franchissent les lignes d'accès — comme événements de véhicule, ni visiteurs ni plaques",
     "impl-milesight-vs361-passerby:0": "Détecte un passant en émettant un faisceau infrarouge et en enregistrant son reflet",
     "impl-milesight-vs361-passerby:1":
       "Monté en façade à 0,7–1,2 m, avec une distance de détection réglable de 1 à 9 m",
@@ -221,6 +223,8 @@ const supportedClaimTranslations: Readonly<Record<Exclude<Locale, "en">, Readonl
       "Der Hersteller beschreibt eine optionale Privatsphäre-Maskierung auf dieser Kameraplattform: Personen, Gesichter oder Fahrzeuge unscharf machen oder maskieren, oder das Video ausblenden und seine Metadaten behalten",
     "impl-ip-detection-outdoor:3":
       "Der Hersteller beschreibt diese Einstellungen je Videostream, auf unterstützten Firmware- und Analytikvarianten und nur wie konfiguriert",
+    "impl-ip-detection-outdoor:4":
+      "An einem Standort unter freiem Himmel können konfigurierte Ansichten auch Fahrzeuge erkennen, die Zufahrtslinien überqueren — als Fahrzeugereignisse, weder Besucher noch Kennzeichen",
     "impl-milesight-vs361-passerby:0":
       "Erkennt einen Passanten, indem ein Infrarotstrahl ausgesendet und dessen Reflexion registriert wird",
     "impl-milesight-vs361-passerby:1":

@@ -284,3 +284,14 @@ What that changed. A production build previously showed prospects only the appro
 Unchanged: the per-scene review routes under /preview and the intro review route stay development-only; they are review tools, not the brochure. The approved shell and its own production rule (`shellRunsSegment`) are untouched. Setting the switch to false restores the previous production behaviour exactly.
 
 Verified in a local production build: the picker shows five linked segments and no inert card; the six stage routes answer 200; a scene review route and the intro review route answer 404.
+
+## 2026-09-29 — Review of the deployed brochure: vehicles, re-identification, "All segments"
+
+Status: **DECIDED by the product lead (review deck "brochure verbetering.pptx"); applied.**
+
+- **"All segments" returns to the picker, not the cover.** Since the Unified Intro became the front door, `/?locale=` opened the cover. The picker link is now `/?start=segments&locale=`, which opens the front door on the picker; `/` alone still opens on the cover.
+- **Vehicle arrival (Retail Park, Outlet Centre).** Measured with the outdoor IP detection sensor or the ANPR sensor. The drawer's Technology tab shows those two devices, not the vehicle-arrival and parking-occupancy method classes; `impl-ip-detection-outdoor` is linked to TECH-06 with one claim (vehicle events at access lines — not visitors, not plates). The ANPR sensor has its photograph (`technology/anpr/tattile-basic-mk2.png`, from the content candidates). "How it works" shows two principles: plate reading and object detection.
+- **Those two pictures carry real retailers' signs** in the candidates (`retail-park-anpr-lane-wide-reference.png`, `retail-park-people-vehicle-detection-wide-reference.png`). AGENTS.md forbids real customer names or logos without documented approval, and a retailer's sign in a PFM brochure reads as a customer, so the signs are blurred in the published copies. Their plates, dates and detection scores stay, flagged as embedded text and described as illustrative. Shopping Centre was not part of this review and keeps its vehicle list.
+- **Re-identification.** The approved photographic explainer (`shopping-centre-anonymous-re-id-explainer.png`) is the explainer for every segment that measures re-identification; the schematic Retail Park and Outlet drawings of 2026-09-28 are retired.
+
+Checked: every image path in the app matches its file exactly, including case, so a Linux host serves them all. The gaps seen in the review were places with no image assigned, not broken links.

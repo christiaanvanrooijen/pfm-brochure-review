@@ -538,6 +538,8 @@ test("the six what-is-needed implementations are unchanged by the asset move", (
       "impl-xovis-3d-entrance",
       "impl-milesight-vs125p-entrance",
       "impl-isarsoft-camera-analytics",
+      // Added 2026-09-29: the ANPR sensor's photograph, from the candidates.
+      "impl-tattile-anpr-vehicle",
       // Added 2026-09-27 with their own product photographs. Additions, not
       // reorderings: the six that were here are unchanged and in place.
       "impl-xovis-3d-entrance-outdoor",

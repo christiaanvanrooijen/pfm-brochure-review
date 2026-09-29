@@ -25,6 +25,13 @@ export default async function Home({
 }) {
   const params = await searchParams;
   const rawLocale = first(params.locale);
+  // A reader returning from a journey ("All segments") skips the cover.
+  const startAtSegments = first(params.start) === "segments";
 
-  return <RootGateway initialLocale={isLocale(rawLocale) ? rawLocale : defaultLocale} />;
+  return (
+    <RootGateway
+      initialLocale={isLocale(rawLocale) ? rawLocale : defaultLocale}
+      startAtSegments={startAtSegments}
+    />
+  );
 }
