@@ -295,3 +295,15 @@ Status: **DECIDED by the product lead (review deck "brochure verbetering.pptx");
 - **Re-identification.** The approved photographic explainer (`shopping-centre-anonymous-re-id-explainer.png`) is the explainer for every segment that measures re-identification; the schematic Retail Park and Outlet drawings of 2026-09-28 are retired.
 
 Checked: every image path in the app matches its file exactly, including case, so a Linux host serves them all. The gaps seen in the review were places with no image assigned, not broken links.
+
+## 2026-09-29 — "Beyond Core" leaves the scene page; the branch scenes still need a home
+
+Status: **DECIDED by the product lead; applied. Follow-up open.**
+
+Input: the product lead's review of the deployed Shopping Centre catchment scene — the block under the dark source rail looked out of place.
+
+What it was. On eleven scenes (Retail 4, Shopping Centre 1, QSR 6) the journey listed the model's branch scenes (`branchFromSceneIds`) under the source rail, as "Beyond Core — Defined in the model and reachable from this scene. Not part of the Core walkthrough." It sat below the journey footer, so the footer no longer closed the page; nothing in it was clickable; the heading and note were model wording; and the branch titles and questions stayed English in FR and DE.
+
+Decided. The block is removed from the scene page (`app/preview/demo/journey.tsx`), with its styles and its three-locale strings. The branch scenes stay in the typed model, unchanged.
+
+**Open — the product lead wants these branches placed somewhere they add value.** They are useful in a sales conversation ("we can also show…"). Candidate: the closing review, as "What else we can show", translated, linked where a branch scene can be shown. Not started; needs its own task and FR/DE copy.

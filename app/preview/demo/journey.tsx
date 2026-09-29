@@ -3,17 +3,17 @@
 /**
  * One journey component, five segments.
  *
- * Order, scene count, branches and next destinations are read from the typed
- * model. Media comes from the registry beside this file; copy from the accepted
- * modules for Shopping Centre and QSR, and from the resolver for Retail, Retail
- * Park and Outlet.
+ * Order, scene count and next destinations are read from the typed model.
+ * Branch scenes are not shown on the scene page (see DECISION-LOG,
+ * 2026-09-29, "Beyond Core"). Media comes from the registry beside this file;
+ * copy from the accepted modules for Shopping Centre and QSR, and from the
+ * resolver for Retail, Retail Park and Outlet.
  *
  * TWO THINGS THIS DELIBERATELY DOES NOT DO
  *
  * It does not remount on a language change — the reader keeps the scene, the
  * focus and the open point they had, and only the words change. And it does not
- * put branch scenes into Core order: they are surfaced where the model attaches
- * them, named and reachable to read, without being walked through as if they
+ * put branch scenes into Core order: they are never walked through as if they
  * were part of the route.
  */
 
@@ -143,17 +143,6 @@ export function DemoJourney({
   const index = route.indexOf(sceneId);
   const media = demoMedia[segmentId][sceneId];
   const ending = demoEnding[segmentId];
-
-  /* Branch scenes the model attaches to THIS scene. Surfaced, never inserted. */
-  const branches = useMemo(
-    () =>
-      allScenes.filter(
-        (candidate) =>
-          candidate.segment === segmentId &&
-          ((candidate.branchFromSceneIds ?? []) as readonly string[]).includes(sceneId),
-      ),
-    [segmentId, sceneId],
-  );
 
   const goTo = useCallback(
     (next: SceneId) => {
@@ -348,21 +337,6 @@ export function DemoJourney({
             </li>
           ))}
         </ol>
-
-        {branches.length > 0 && (
-          <section className="rd-demo__branches">
-            <h2>{t.demoBeyond}</h2>
-            <p>{t.demoBeyondNote}</p>
-            <ul>
-              {branches.map((branch) => (
-                <li key={branch.id}>
-                  <strong>{branch.title}</strong>
-                  <span>{branch.commercialQuestion}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
 
         {depthOpen && (
           <DepthPanel

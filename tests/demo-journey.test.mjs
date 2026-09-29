@@ -248,9 +248,12 @@ test("10. changing language does not remount the journey or reset the scene", ()
   assert.match(demo, /exitHref=\{pickerUrl\(locale\)\}/);
 });
 
-test("11. branches are surfaced where the model attaches them, and never in Core order", () => {
+/* The "Beyond Core" list under the source rail was removed on 2026-09-29
+   (DECISION-LOG): it sat below the footer, linked nowhere and stayed English in
+   FR and DE. The branch scenes stay in the model and still need a home. */
+test("11. branches are never in Core order, and the scene page does not list them", () => {
   const journey = read("app/preview/demo/journey.tsx");
-  assert.match(journey, /branchFromSceneIds/);
+  assert.doesNotMatch(journey, /rd-demo__branches|demoBeyond/);
   for (const segment of segmentDefinitions) {
     const core = new Set(segment.coreRoute);
     const branches = [...segment.optionalBranches, ...segment.advancedBranches];

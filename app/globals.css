@@ -6441,17 +6441,6 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
    offering a control that goes nowhere. */
 .rd-demo__bar-next.is-inert { background: #f2f4f7; color: #98a2b3; cursor: default; }
 
-.rd-demo__branches { padding: 22px 40px 34px; border-bottom: 1px solid #f2f4f7; }
-.rd-demo__branches h2 {
-  margin: 0 0 4px; font-size: 10.5px; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--pfm-purple-deep);
-}
-.rd-demo__branches > p { margin: 0 0 12px; font-size: 12px; color: #98a2b3; }
-.rd-demo__branches ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.rd-demo__branches li { display: grid; gap: 2px; padding-left: 12px; border-left: 2px solid #eaecf0; }
-.rd-demo__branches strong { font-size: 13.5px; }
-.rd-demo__branches span { font-size: 12.5px; color: #667085; }
-
 .rd-demo__summary { min-height: 100vh; background: var(--pfm-white); }
 .rd-demo__summary-body { padding: 44px 40px 60px; max-width: 78ch; }
 .rd-demo__summary-body h1 {
@@ -6485,7 +6474,6 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
     gap: 6px 14px;
   }
   .rd-demo__bar-left { grid-column: 1 / -1; }
-  .rd-demo__branches { padding: 16px 26px 24px; }
   .rd-demo__summary-body { padding: 28px 26px 40px; }
   .rd-demo__summary-body h1 { font-size: 27px; }
 }
