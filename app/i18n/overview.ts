@@ -3,8 +3,7 @@
  *
  * WHAT IS AUTHORED HERE AND WHAT IS NOT
  *
- * Only the chrome: the page's own title, its lead, the destination labels and
- * the link to the approved shell. Everything that describes a SEGMENT is read
+ * Only the chrome: the page's own title, its lead and the destination labels. Everything that describes a SEGMENT is read
  * from that segment's typed model at render time — its name from
  * `segmentDefinitions`, its opening question from `startCopy`, its cover and
  * the cover's alt text from `segment-start-visuals.ts`.
@@ -18,9 +17,10 @@
  *
  * Every segment has a complete Core journey to preview, and exactly one is
  * implementation-ready. Those are different facts and the copy keeps them
- * apart: the card states how many Core scenes the journey holds, and `statusNote`
- * says once, in plain words, that a complete preview is not implemented product.
- * A presenter needs that distinction before the click, not after it.
+ * apart: the card states how many Core scenes the journey holds. The page no
+ * longer carries a note on implementation readiness or a link to the approved
+ * shell: the product lead removed both on 2026-09-29 (DECISION-LOG), after
+ * approving the brochure itself for production.
  */
 
 import type { Locale } from "./locales.ts";
@@ -42,15 +42,8 @@ export interface OverviewCopy {
   openJourney: string;
   /** Production only: the card has no destination this build can offer. */
   openUnavailable: string;
-  /** The approved sales experience, where it runs this segment. */
-  alsoShell: string;
   /** How long this segment's Core journey is. `{count}` is the scene total. */
   sceneCount: string;
-  /** One line on what the journeys are, and what they are not. */
-  statusNote: string;
-  /** The link to the approved shell, which is a different thing from a start. */
-  shellLabel: string;
-  shellNote: string;
 }
 
 export const overviewCopy: Readonly<Record<Locale, OverviewCopy>> = {
@@ -61,12 +54,7 @@ export const overviewCopy: Readonly<Record<Locale, OverviewCopy>> = {
     segmentsLabel: "Segments",
     openJourney: "Open the journey",
     openUnavailable: "Not available in this build",
-    alsoShell: "Approved sales experience",
     sceneCount: "{count} Core scenes",
-    statusNote:
-      "Each journey walks that segment's Core route end to end, from the typed model. These are local previews of the measurement story, not implemented product: only Retail is implementation-ready, and where the approved sales experience runs a segment it is linked separately.",
-    shellLabel: "Open the approved sales shell",
-    shellNote: "The account-led go-demo, with Retail and Shopping Centre running end to end.",
   },
   fr: {
     eyebrow: "Expérience commerciale",
@@ -75,13 +63,7 @@ export const overviewCopy: Readonly<Record<Locale, OverviewCopy>> = {
     segmentsLabel: "Segments",
     openJourney: "Ouvrir le parcours",
     openUnavailable: "Indisponible dans cette version",
-    alsoShell: "Expérience commerciale approuvée",
     sceneCount: "{count} scènes Core",
-    statusNote:
-      "Chaque parcours suit la route Core du segment de bout en bout, depuis le modèle typé. Ce sont des aperçus locaux de l'histoire de mesure, pas un produit implémenté : seul Retail est prêt pour l'implémentation, et là où l'expérience commerciale approuvée couvre un segment, elle est liée séparément.",
-    shellLabel: "Ouvrir l'application commerciale approuvée",
-    shellNote:
-      "La démo pilotée par compte, avec Retail et Shopping Centre exécutables de bout en bout.",
   },
   de: {
     eyebrow: "Commercial Experience",
@@ -90,12 +72,6 @@ export const overviewCopy: Readonly<Record<Locale, OverviewCopy>> = {
     segmentsLabel: "Segmente",
     openJourney: "Journey öffnen",
     openUnavailable: "In diesem Build nicht verfügbar",
-    alsoShell: "Freigegebene Vertriebserfahrung",
     sceneCount: "{count} Core-Szenen",
-    statusNote:
-      "Jede Journey durchläuft die Core-Route des Segments vollständig, aus dem typisierten Modell. Das sind lokale Vorschauen der Messgeschichte, kein implementiertes Produkt: nur Retail ist implementierungsbereit, und wo die freigegebene Vertriebserfahrung ein Segment abdeckt, ist sie separat verlinkt.",
-    shellLabel: "Die freigegebene Vertriebsanwendung öffnen",
-    shellNote:
-      "Die accountgeführte Go-Demo, mit Retail und Shopping Centre durchgängig lauffähig.",
   },
 };

@@ -57,9 +57,9 @@ export function SegmentOverview({ initialLocale }: { initialLocale: Locale }) {
    * preview journeys in a place the overview never mentioned.
    *
    * `runsInShell` — whether the APPROVED sales experience runs this segment.
-   * That is a different and much stronger claim, so it is a separate line on
-   * the card and a separate link. A complete preview is not an implementation:
-   * the two must never be able to borrow each other's words.
+   * It is used only as the fallback destination when the brochure is not
+   * approved for production; with the brochure approved, the overview links
+   * to no shell at all (product lead, 2026-09-29).
    *
    * The demo journeys are the destination wherever the brochure is approved:
    * outside production always, and in production since the product lead
@@ -89,9 +89,6 @@ export function SegmentOverview({ initialLocale }: { initialLocale: Locale }) {
         : runsInShell
           ? `/shell?segment=${segment.id}`
           : null,
-      /* The approved shell, offered beside the preview rather than instead of
-         it, and only where it genuinely runs this segment. */
-      shellHref: previewable && runsInShell ? `/shell?segment=${segment.id}` : null,
     };
   });
 
@@ -190,33 +187,11 @@ export function SegmentOverview({ initialLocale }: { initialLocale: Locale }) {
                 </span>
               )}
 
-              {/* Outside the card's own link, because a link inside a link is
-                  not a thing a browser can render. A separate claim, too: the
-                  approved experience is not the same thing as a complete
-                  preview, and it does not get to share the card's arrow.
-
-                  The slot is rendered for every card, empty or not, so that two
-                  segments having somewhere extra to go does not make the other
-                  three look shorter than their peers. */}
-              <span className="ov__also-slot">
-                {card.shellHref && (
-                  <Link className="ov__also" href={card.shellHref}>
-                    {copy.alsoShell}
-                  </Link>
-                )}
-              </span>
             </li>
             );
           })}
         </ul>
 
-        <footer className="ov__foot">
-          <p className="ov__status-note">{copy.statusNote}</p>
-          <p className="ov__shell">
-            <Link href="/shell">{copy.shellLabel}</Link>
-            <span>{copy.shellNote}</span>
-          </p>
-        </footer>
       </main>
     </div>
   );

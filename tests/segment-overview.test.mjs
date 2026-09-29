@@ -121,17 +121,13 @@ test("7. a complete preview is never presented as an implemented segment", () =>
   assert.match(source, /const runsInShell = shellRunsSegment\(segment\)/);
   assert.doesNotMatch(source, /implementation_ready/);
 
-  // The approved experience is a separate link with its own words, never the
-  // card's own arrow.
-  assert.match(source, /shellHref: previewable && runsInShell/);
-  assert.match(source, /copy\.alsoShell/);
-
-  // And the page says once, in prose, what these journeys are not.
+  // With the brochure approved, the overview offers no second link to the
+  // approved shell and no internal readiness note (product lead, 2026-09-29):
+  // the shell is only the fallback when the brochure is not approved.
+  assert.doesNotMatch(source, /shellHref|copy\.alsoShell|copy\.shellLabel|copy\.statusNote|href="\/shell"/);
   for (const locale of locales) {
-    assert.ok(
-      overviewCopy[locale].statusNote.length > 80,
-      `${locale} has no readable note separating preview from implementation`,
-    );
+    assert.equal(overviewCopy[locale].statusNote, undefined);
+    assert.equal(overviewCopy[locale].shellLabel, undefined);
   }
 });
 
@@ -214,8 +210,9 @@ test("11. the front door is the cover, then the overview, and the approved shell
     assert.match(href, /&locale=\$\{locale\}/, `a journey link drops the language: ${href}`);
   }
 
-  // And the overview says where the shell is, rather than stranding it.
-  assert.match(overview(), /href="\/shell"/);
+  // The shell keeps its own address, but the overview no longer links to it
+  // (product lead, 2026-09-29): it is reachable at /shell for those who need it.
+  assert.doesNotMatch(overview(), /href="\/shell"/);
 });
 
 test("12. a cover carries no scene geometry", () => {

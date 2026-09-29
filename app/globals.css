@@ -6821,26 +6821,6 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
 .ov__question { font-size: 14px; line-height: 1.45; color: #475467; }
 .ov__open { margin-top: auto; padding-top: 6px; font-size: 12px; font-weight: 600; color: var(--pfm-purple-deep); }
 
-/* The second destination, deliberately quieter than the card's own: an
-   alternative telling of the opening, not a competing call to action. */
-/* Reserved on every card so the five stay level, whether or not this
-   particular segment has a second destination. */
-.ov__also-slot { display: block; min-height: 30px; padding-top: 8px; }
-.ov__also {
-  align-self: flex-start; padding: 2px 0;
-  font-size: 12px; color: #667085; text-decoration: none;
-  border-bottom: 1px dotted #d0d5dd;
-}
-.ov__also:hover { color: var(--pfm-purple-deep); border-bottom-color: var(--pfm-purple); }
-.ov__also:focus-visible { outline: 2px solid var(--pfm-purple-deep); outline-offset: 3px; }
-
-.ov__foot { margin: clamp(26px, 3vw, 40px) 0 0; padding-top: 20px; border-top: 1px solid #e4e7ec; display: grid; gap: 14px; }
-.ov__status-note { margin: 0; max-width: 78ch; font-size: 12px; line-height: 1.5; color: #667085; }
-.ov__shell { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
-.ov__shell a { font-size: 13px; font-weight: 600; color: var(--pfm-black); text-underline-offset: 3px; }
-.ov__shell a:hover { color: var(--pfm-purple-deep); }
-.ov__shell span { font-size: 12px; color: #98a2b3; }
-
 @media (prefers-reduced-motion: reduce) {
   .ov__link { transition: none; }
   .ov__link:hover { transform: none; }

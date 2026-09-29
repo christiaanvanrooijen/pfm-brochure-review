@@ -307,3 +307,19 @@ What it was. On eleven scenes (Retail 4, Shopping Centre 1, QSR 6) the journey l
 Decided. The block is removed from the scene page (`app/preview/demo/journey.tsx`), with its styles and its three-locale strings. The branch scenes stay in the typed model, unchanged.
 
 **Open — the product lead wants these branches placed somewhere they add value.** They are useful in a sales conversation ("we can also show…"). Candidate: the closing review, as "What else we can show", translated, linked where a branch scene can be shown. Not started; needs its own task and FR/DE copy.
+
+## 2026-09-29 — The segment overview no longer links to the approved shell
+
+Status: **DECIDED by the product lead; applied.**
+
+Input: the product lead, reviewing the deployed overview — "Open the approved sales shell" leads to a separate page that no longer matters.
+
+Removed from the overview (`app/components/SegmentOverview.tsx`), with their three-locale strings and styles:
+
+- the footer link "Open the approved sales shell" and its note;
+- the per-card link "Approved sales experience" (Retail, Shopping Centre);
+- the note that the journeys are "local previews … not implemented product". It was internal readiness wording, written before the brochure was approved for production.
+
+Unchanged: `/shell` keeps its own address and still works. If the release switch (`brochureApprovedForProduction`) is set to false, the cards fall back to the shell exactly as before.
+
+**Open — a short "who is PFM" on the overview.** The product lead suggested using the freed space for who PFM is and where it operates from. No company facts (history, offices, markets, scale) are recorded in `03-shared/brand/` or this project, and AGENTS.md forbids inventing claims, so this needs source-backed copy from the product lead or an approved source first.
