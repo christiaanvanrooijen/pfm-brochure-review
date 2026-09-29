@@ -335,3 +335,9 @@ Input: the product lead supplied four PFM deck slides and the Dutch website copy
 - **Installation accreditations** (NICEIC, SafeContractor/SSIP, VCA, RI&E) close the drawer's Requirements tab on every scene that needs installed hardware.
 
 Open: the logo files are cut from a slide screenshot; replace with originals when available. FR/DE wording is part of the open FR/DE copy review. Supersedes the "who is PFM" open item of the entry above.
+
+## 2026-09-29 — Customer logos: the product lead's set of twenty
+
+Status: **DECIDED by the product lead; applied.**
+
+The product lead supplied black, transparent logo files and asked for them to be used, choosing how many fit. All twenty are shown: the slide's set without C&A (withdrawn), plus Pearle Opticiens, GrandOptical, KFC, Odido, Ace & Tate, Future Stores and MADAQ. The approval recorded above extends to these twenty. They are drawn at equal area rather than equal height, five to a row (two on a phone), so no single brand dominates. Origins are in `docs/content/PFM-COMPANY-FACTS.md`; the slide-screenshot crops are gone.

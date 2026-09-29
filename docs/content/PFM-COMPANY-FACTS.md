@@ -26,11 +26,11 @@ Used by: `app/i18n/overview.ts` (`about*` fields) and `app/content/customer-logo
 
 ## Customer logos
 
-Approved for use in the brochure by the product lead on 2026-09-29 (DECISION-LOG). Set and order from `pfm-deck-scope-to-scale`, "Trusted by leading organisations":
+Approved for use in the brochure by the product lead on 2026-09-29 (DECISION-LOG). The set is the product lead's: the "Trusted by leading organisations" slide (`pfm-deck-scope-to-scale`) without C&A (withdrawn), plus seven added by the product lead.
 
-Suitsupply, British Land, C&A, ASICS, CBRE, Eurocommercial, Specsavers, Vodafone, Coolblue, Rituals, GrandVision, Value Retail, McDonald's, Wereldhave.
+Suitsupply, British Land, ASICS, CBRE, Eurocommercial, Specsavers, Vodafone, Coolblue, Rituals, GrandVision, Value Retail, McDonald's, Wereldhave, Pearle Opticiens, GrandOptical, KFC, Odido, Ace & Tate, Future Stores, MADAQ.
 
-Files: `public/assets/customers/`, cut from the slide screenshot (about 160 px wide). Replace with original logo files when available, keeping the file names.
+Files: `public/assets/customers/`, black on transparent, supplied by the product lead on 2026-09-29 (`brand-logos-black-transparent`, collected that day). Its README records each file's origin: official brand sites or CDNs where available; logotyp.us vectors for ASICS, CBRE, Specsavers, Vodafone, Coolblue and Ace & Tate; Simple Icons for McDonald's. Changes made here: SVG viewBoxes trimmed to the artwork, large PNGs scaled down, and the Vodafone speech mark set back to white so it stays visible inside the black roundel.
 
 ## Used elsewhere
 

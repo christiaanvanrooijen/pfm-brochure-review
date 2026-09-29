@@ -36,7 +36,7 @@ import { getMessages } from "../i18n/messages";
 import { overviewCopy } from "../i18n/overview";
 import { startCopy, startScenes } from "../i18n/starts";
 import { shellRunsSegment } from "../lib/segment-journey";
-import { customerLogos } from "../content/customer-logos";
+import { customerLogos, logoWidth } from "../content/customer-logos";
 import { brochureRouteAvailable } from "../content/release";
 
 export function SegmentOverview({ initialLocale }: { initialLocale: Locale }) {
@@ -218,7 +218,12 @@ export function SegmentOverview({ initialLocale }: { initialLocale: Locale }) {
               {customerLogos.map((customer) => (
                 <li key={customer.name}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={customer.assetPath} alt={customer.name} loading="lazy" />
+                  <img
+                    src={customer.assetPath}
+                    alt={customer.name}
+                    loading="lazy"
+                    style={{ width: logoWidth(customer) }}
+                  />
                 </li>
               ))}
             </ul>

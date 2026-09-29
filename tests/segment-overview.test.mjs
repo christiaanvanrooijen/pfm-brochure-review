@@ -262,12 +262,15 @@ test("12. the overview says who PFM is, in every language, from sourced facts on
   assert.match(read("app/i18n/overview.ts"), /PFM-COMPANY-FACTS\.md/);
   assert.match(read("docs/decisions/DECISION-LOG.md"), /customer logos[^\n]*approved/i);
 
-  // Every logo is on disk, named, and one of the approved set.
-  assert.equal(customerLogos.length, 14);
+  // Every logo is on disk, named, sized from its own proportions, and one of
+  // the approved set; C&A was withdrawn from the set by the product lead.
+  assert.equal(customerLogos.length, 20);
   for (const customer of customerLogos) {
     assert.ok(existsSync(publicFile(customer.assetPath)), `${customer.name}'s logo is not on disk`);
     assert.match(facts, new RegExp(customer.name.replace(/[&']/g, ".")), `${customer.name} is not in the approved set`);
+    assert.ok(customer.aspect > 0.5 && customer.aspect < 15, `${customer.name} has no real aspect ratio`);
   }
+  assert.ok(!customerLogos.some((c) => c.name === "C&A"));
 
   for (const locale of locales) {
     const copy = overviewCopy[locale];
