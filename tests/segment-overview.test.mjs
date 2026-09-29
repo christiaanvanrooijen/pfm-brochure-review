@@ -264,7 +264,7 @@ test("12. the overview says who PFM is, in every language, from sourced facts on
 
   // Every logo is on disk, named, sized from its own proportions, and one of
   // the approved set; C&A was withdrawn from the set by the product lead.
-  assert.equal(customerLogos.length, 20);
+  assert.equal(customerLogos.length, 21);
   for (const customer of customerLogos) {
     assert.ok(existsSync(publicFile(customer.assetPath)), `${customer.name}'s logo is not on disk`);
     assert.match(facts, new RegExp(customer.name.replace(/[&']/g, ".")), `${customer.name} is not in the approved set`);

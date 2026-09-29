@@ -4,7 +4,7 @@
  * Use approved by the product lead on 2026-09-29 (DECISION-LOG), which is the
  * documented approval AGENTS.md asks for. The set is the product lead's own:
  * the "Trusted by leading organisations" slide (`pfm-deck-scope-to-scale`)
- * without C&A, plus seven the product lead added. Files are black on
+ * without C&A, plus eight the product lead added. Files are black on
  * transparent, supplied by the product lead with their origins in
  * docs/content/PFM-COMPANY-FACTS.md.
  *
@@ -47,6 +47,7 @@ export const customerLogos: readonly CustomerLogo[] = [
   logo("Ace & Tate", "ace-tate.svg", 6.24),
   logo("Future Stores", "future-stores.svg", 11.3),
   logo("MADAQ", "madaq.png", 3.7),
+  logo("Pon Automotive", "pon.svg", 4.18),
 ];
 
 /** The area, in CSS pixels, every logo is drawn at. */

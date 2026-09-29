@@ -6836,7 +6836,7 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
 .ov__logos-label { margin: 0 0 14px; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pfm-purple-deep); }
 .ov__logos ul {
   margin: 0; padding: 0; list-style: none;
-  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px 32px; align-items: center;
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 22px 28px; align-items: center;
 }
 .ov__logos li { display: flex; justify-content: center; align-items: center; height: 46px; min-width: 0; }
 /* Width comes from the logo's own proportions (equal area, customer-logos.ts);
@@ -6847,9 +6847,9 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
 }
 @media (max-width: 720px) {
   .ov__about-facts { grid-template-columns: minmax(0, 1fr); }
-  /* Twenty logos: five by four, or two by ten on a phone — never a row
-     with one left over. */
-  .ov__logos ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; }
+  /* Twenty-one logos: seven by three, or three by seven on a phone — never
+     a row with one left over. */
+  .ov__logos ul { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

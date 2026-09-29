@@ -26,11 +26,13 @@ Used by: `app/i18n/overview.ts` (`about*` fields) and `app/content/customer-logo
 
 ## Customer logos
 
-Approved for use in the brochure by the product lead on 2026-09-29 (DECISION-LOG). The set is the product lead's: the "Trusted by leading organisations" slide (`pfm-deck-scope-to-scale`) without C&A (withdrawn), plus seven added by the product lead.
+Approved for use in the brochure by the product lead on 2026-09-29 (DECISION-LOG). The set is the product lead's: the "Trusted by leading organisations" slide (`pfm-deck-scope-to-scale`) without C&A (withdrawn), plus eight added by the product lead.
 
-Suitsupply, British Land, ASICS, CBRE, Eurocommercial, Specsavers, Vodafone, Coolblue, Rituals, GrandVision, Value Retail, McDonald's, Wereldhave, Pearle Opticiens, GrandOptical, KFC, Odido, Ace & Tate, Future Stores, MADAQ.
+Suitsupply, British Land, ASICS, CBRE, Eurocommercial, Specsavers, Vodafone, Coolblue, Rituals, GrandVision, Value Retail, McDonald's, Wereldhave, Pearle Opticiens, GrandOptical, KFC, Odido, Ace & Tate, Future Stores, MADAQ, Pon Automotive.
 
 Files: `public/assets/customers/`, black on transparent, supplied by the product lead on 2026-09-29 (`brand-logos-black-transparent`, collected that day). Its README records each file's origin: official brand sites or CDNs where available; logotyp.us vectors for ASICS, CBRE, Specsavers, Vodafone, Coolblue and Ace & Tate; Simple Icons for McDonald's. Changes made here: SVG viewBoxes trimmed to the artwork, large PNGs scaled down, and the Vodafone speech mark set back to white so it stays visible inside the black roundel.
+
+Pon Automotive: the Pon group wordmark, `https://upload.wikimedia.org/wikipedia/commons/b/b2/Pon_logo.svg` (Wikimedia Commons, public domain as simple text/shapes; trademark rights remain Pon's), fetched 2026-09-29 at the product lead's request, recoloured black and trimmed.
 
 ## Used elsewhere
 
