@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1672 941" width="1672" height="941" role="img">
+<!-- Counting at the gateway of an outlet village -->
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#0C111D"/><stop offset="1" stop-color="#161B26"/>
+  </linearGradient>
+  <radialGradient id="halo" cx="0.5" cy="0.45" r="0.6">
+    <stop offset="0" stop-color="#6941C6" stop-opacity="0.28"/><stop offset="1" stop-color="#6941C6" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="coneGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#D6BBFB" stop-opacity="0.55"/><stop offset="1" stop-color="#9E77ED" stop-opacity="0.08"/>
+  </linearGradient>
+  <linearGradient id="coneGradRed" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FDA29B" stop-opacity="0.5"/><stop offset="1" stop-color="#F04438" stop-opacity="0.06"/>
+  </linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#9E77ED" stop-opacity="0.16"/><stop offset="1" stop-color="#F04438" stop-opacity="0.08"/>
+  </linearGradient>
+  <linearGradient id="pane" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#7F56D9" stop-opacity="0.35"/><stop offset="1" stop-color="#6941C6" stop-opacity="0.12"/>
+  </linearGradient>
+  <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+<rect width="1672" height="941" fill="url(#bg)"/>
+<rect width="1672" height="941" fill="url(#halo)"/>
+<g transform="translate(708.8 83.6) scale(1.3060)">
+<polygon points="0.0,0.0 649.5,375.0 155.9,660.0 -493.6,285.0" fill="#161B26" stroke="#1F242F" stroke-width="1.5" stroke-linejoin="round" opacity="1.0" />
+<polygon points="-129.9,105.0 52.0,210.0 52.0,75.0 -129.9,-30.0" fill="#161B26" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="181.9,135.0 52.0,210.0 52.0,75.0 181.9,0.0" fill="#1F242F" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="0.0,-105.0 181.9,0.0 52.0,75.0 -129.9,-30.0" fill="#1F242F" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="-129.9,-30.0 52.0,75.0 116.9,-28.5 -65.0,-133.5" fill="#1F242F" stroke="#333741" stroke-width="1.5" stroke-linejoin="round" opacity="1.0" />
+<polygon points="181.9,0.0 52.0,75.0 116.9,-28.5" fill="#333741" stroke="#61646C" stroke-width="1.5" stroke-linejoin="round" opacity="1.0" />
+<polygon points="-129.9,105.0 52.0,210.0 52.0,75.0 -129.9,-30.0" fill="#161B26" stroke="#333741" stroke-width="1.5" stroke-linejoin="round" opacity="1.0" />
+<polygon points="-114.3,96.0 -48.1,134.2 -48.1,68.5 -114.3,30.3" fill="url(#pane)" stroke="#61646C" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="-29.9,162.8 24.7,194.2 24.7,113.3 -29.9,81.8" fill="#0C111D" stroke="#61646C" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="-122.1,15.0 44.2,111.0 18.2,142.2 -148.1,46.2" fill="#333741" stroke="#61646C" stroke-width="1" stroke-linejoin="round" opacity="1.0" />
+<polygon points="77.9,225.0 233.8,315.0 233.8,165.0 77.9,75.0" fill="#161B26" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="363.7,240.0 233.8,315.0 233.8,165.0 363.7,90.0" fill="#1F242F" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="207.8,0.0 363.7,90.0 233.8,165.0 77.9,75.0" fill="#1F242F" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="77.9,75.0 233.8,165.0 298.8,55.5 142.9,-34.5" fill="#1F242F" stroke="#333741" stroke-width="1.5" stroke-linejoin="round" opacity="1.0" />
+<polygon points="363.7,90.0 233.8,165.0 298.8,55.5" fill="#333741" stroke="#61646C" stroke-width="1.5" stroke-linejoin="round" opacity="1.0" />
+<polygon points="77.9,225.0 233.8,315.0 233.8,165.0 77.9,75.0" fill="#161B26" stroke="#333741" stroke-width="1.5" stroke-linejoin="round" opacity="1.0" />
+<polygon points="93.5,216.0 148.1,247.5 148.1,172.5 93.5,141.0" fill="url(#pane)" stroke="#61646C" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="163.7,274.5 210.4,301.5 210.4,211.5 163.7,184.5" fill="#0C111D" stroke="#61646C" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="85.7,124.5 226.0,205.5 200.1,238.5 59.8,157.5" fill="#333741" stroke="#61646C" stroke-width="1" stroke-linejoin="round" opacity="1.0" />
+<polygon points="285.8,345.0 467.7,450.0 467.7,315.0 285.8,210.0" fill="#161B26" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="597.6,375.0 467.7,450.0 467.7,315.0 597.6,240.0" fill="#1F242F" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="415.7,135.0 597.6,240.0 467.7,315.0 285.8,210.0" fill="#1F242F" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="285.8,210.0 467.7,315.0 532.6,211.5 350.7,106.5" fill="#1F242F" stroke="#333741" stroke-width="1.5" stroke-linejoin="round" opacity="1.0" />
+<polygon points="597.6,240.0 467.7,315.0 532.6,211.5" fill="#333741" stroke="#61646C" stroke-width="1.5" stroke-linejoin="round" opacity="1.0" />
+<polygon points="285.8,345.0 467.7,450.0 467.7,315.0 285.8,210.0" fill="#161B26" stroke="#333741" stroke-width="1.5" stroke-linejoin="round" opacity="1.0" />
+<polygon points="301.4,336.0 367.6,374.2 367.6,308.6 301.4,270.3" fill="url(#pane)" stroke="#61646C" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="385.8,402.8 440.4,434.2 440.4,353.2 385.8,321.8" fill="#0C111D" stroke="#61646C" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="293.6,255.0 459.9,351.0 433.9,382.2 267.6,286.2" fill="#333741" stroke="#61646C" stroke-width="1" stroke-linejoin="round" opacity="1.0" />
+<polygon points="103.9,240.0 363.7,390.0 26.0,585.0 -233.8,435.0" fill="#1F242F" stroke="#333741" stroke-width="1.5" stroke-linejoin="round" opacity="1.0" />
+<line x1="52.0" y1="270.0" x2="311.8" y2="420.0" stroke="#333741" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+<line x1="0.0" y1="300.0" x2="259.8" y2="450.0" stroke="#333741" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+<line x1="-52.0" y1="330.0" x2="207.8" y2="480.0" stroke="#333741" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+<line x1="-103.9" y1="360.0" x2="155.9" y2="510.0" stroke="#333741" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+<line x1="-155.9" y1="390.0" x2="103.9" y2="540.0" stroke="#333741" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+<line x1="-207.8" y1="420.0" x2="52.0" y2="570.0" stroke="#333741" stroke-width="1" stroke-linecap="round" opacity="0.6" />
+<polygon points="-103.9,366.0 -72.7,384.0 -72.7,219.0 -103.9,201.0" fill="#161B26" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="-41.6,366.0 -72.7,384.0 -72.7,219.0 -41.6,201.0" fill="#1F242F" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="-72.7,183.0 -41.6,201.0 -72.7,219.0 -103.9,201.0" fill="#333741" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="114.3,492.0 145.5,510.0 145.5,345.0 114.3,327.0" fill="#161B26" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="176.7,492.0 145.5,510.0 145.5,345.0 176.7,327.0" fill="#1F242F" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="145.5,309.0 176.7,327.0 145.5,345.0 114.3,327.0" fill="#333741" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="-103.9,201.0 145.5,345.0 145.5,318.0 -103.9,174.0" fill="#1F242F" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="176.7,327.0 145.5,345.0 145.5,318.0 176.7,300.0" fill="#333741" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<polygon points="-72.7,156.0 176.7,300.0 145.5,318.0 -103.9,174.0" fill="#333741" stroke="#333741" stroke-width="1.2" stroke-linejoin="round" opacity="1.0" />
+<circle cx="36.4" cy="265.5" r="15.6" fill="#9E77ED" opacity="0.25" filter="url(#blur)"/>
+<ellipse cx="36.4" cy="265.5" rx="6.0" ry="3.3" fill="#CECFD2" stroke="#D6BBFB" stroke-width="1.5"/>
+<polygon points="-36.4,363.0 150.7,471.0 72.7,516.0 -114.3,408.0" fill="#9E77ED" fill-opacity="0.22" stroke="#B692F6" stroke-width="1.5" stroke-dasharray="6 6"/>
+<polygon points="36.4,267.0 -114.3,408.0 72.7,516.0 150.7,471.0" fill="url(#coneGrad)" stroke="none"/>
+<line x1="-72.7" y1="384.0" x2="114.3" y2="492.0" stroke="#B692F6" stroke-width="12" stroke-linecap="round" opacity="0.35" filter="url(#blur)"/>
+<line x1="-72.7" y1="384.0" x2="114.3" y2="492.0" stroke="#B692F6" stroke-width="4" stroke-linecap="round" opacity="1.0" />
+<ellipse cx="-26.0" cy="393.0" rx="12.2" ry="5.2" fill="#0C111D" opacity="0.7"/>
+<rect x="-34.7" y="349.7" width="17.4" height="43.3" rx="8.7" fill="#D6BBFB"/>
+<circle cx="-26.0" cy="345.0" r="5.7" fill="#CECFD2"/>
+<polyline points="-70.7,408.3 -50.7,407.2 -52.5,418.8" fill="none" stroke="#D6BBFB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+<ellipse cx="-20.8" cy="438.0" rx="12.2" ry="5.2" fill="#0C111D" opacity="0.7"/>
+<rect x="-29.5" y="394.7" width="17.4" height="43.3" rx="8.7" fill="#D6BBFB"/>
+<circle cx="-20.8" cy="390.0" r="5.7" fill="#CECFD2"/>
+<polyline points="-65.5,453.3 -45.5,452.2 -47.3,463.8" fill="none" stroke="#D6BBFB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+<ellipse cx="88.3" cy="447.0" rx="12.2" ry="5.2" fill="#0C111D" opacity="0.7"/>
+<rect x="79.6" y="403.7" width="17.4" height="43.3" rx="8.7" fill="#D6BBFB"/>
+<circle cx="88.3" cy="399.0" r="5.7" fill="#CECFD2"/>
+<rect x="96.2" y="425.3" width="8.7" height="10.4" rx="3" fill="#CECFD2" opacity="0.85"/>
+<polyline points="47.3,460.2 45.5,471.8 65.5,470.7" fill="none" stroke="#D6BBFB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+<ellipse cx="72.7" cy="486.0" rx="12.2" ry="5.2" fill="#0C111D" opacity="0.7"/>
+<rect x="64.0" y="442.7" width="17.4" height="43.3" rx="8.7" fill="#D6BBFB"/>
+<circle cx="72.7" cy="438.0" r="5.7" fill="#CECFD2"/>
+<polyline points="28.1,501.3 48.1,500.2 46.2,511.8" fill="none" stroke="#D6BBFB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+<ellipse cx="-90.9" cy="457.5" rx="12.2" ry="5.2" fill="#0C111D" opacity="0.7"/>
+<rect x="-99.6" y="414.2" width="17.4" height="43.3" rx="8.7" fill="#94969C"/>
+<circle cx="-90.9" cy="409.5" r="5.7" fill="#CECFD2"/>
+<ellipse cx="-52.0" cy="510.0" rx="12.2" ry="5.2" fill="#0C111D" opacity="0.7"/>
+<rect x="-60.7" y="466.7" width="17.4" height="43.3" rx="8.7" fill="#94969C"/>
+<circle cx="-52.0" cy="462.0" r="5.7" fill="#CECFD2"/>
+<ellipse cx="77.9" cy="315.0" rx="12.2" ry="5.2" fill="#0C111D" opacity="0.7"/>
+<rect x="69.2" y="271.7" width="17.4" height="43.3" rx="8.7" fill="#94969C"/>
+<circle cx="77.9" cy="267.0" r="5.7" fill="#CECFD2"/>
+<ellipse cx="233.8" cy="390.0" rx="12.2" ry="5.2" fill="#0C111D" opacity="0.7"/>
+<rect x="225.1" y="346.7" width="17.4" height="43.3" rx="8.7" fill="#94969C"/>
+<circle cx="233.8" cy="342.0" r="5.7" fill="#CECFD2"/>
+</g>
+</svg>

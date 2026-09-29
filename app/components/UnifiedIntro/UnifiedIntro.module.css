@@ -1,0 +1,60 @@
+.intro {
+  --intro-white: #fff;
+  --intro-black: #0c111d;
+  --intro-purple: #9e77ed;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--intro-black);
+  color: var(--intro-white);
+  font-family: "Instrument Sans", Helvetica, Arial, sans-serif;
+}
+.scene { position: absolute; inset: 0; z-index: -2; animation: placeIn 1.2s ease-out both; }
+.basePlate { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 85% center; }
+.scene canvas { position: relative; display: block; width: 100%; height: 100%; pointer-events: none; }
+@keyframes placeIn { from { opacity: 0; } to { opacity: 1; } }
+.vignette {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(12,17,29,.85) 0%, rgba(12,17,29,.7) 28%, rgba(12,17,29,.3) 48%, rgba(12,17,29,.03) 74%),
+    linear-gradient(0deg, rgba(12,17,29,.74) 0%, transparent 20%, transparent 82%, rgba(12,17,29,.22) 100%);
+}
+.header { position: relative; display: flex; align-items: center; gap: 20px; padding: 42px clamp(44px, 5.5vw, 88px); }
+.header img { display: block; object-fit: contain; width: 72px; height: auto; }
+.headerRule { height: 19px; width: 1px; background: rgba(255,255,255,.24); }
+.headerLabel { color: rgba(255,255,255,.65); font-size: 12px; letter-spacing: .025em; }
+/* Language: editorial, secondary, in the header line's own type. No fills, no
+   borders, no chrome — the active code is white, the others recede. */
+.locales { display: flex; align-items: center; gap: 20px; margin-left: auto; }
+.locale { padding: 6px 2px; border: 0; background: none; color: rgba(255,255,255,.45); font: inherit; font-size: 12px; font-weight: 500; letter-spacing: .08em; cursor: pointer; transition: color .2s ease; }
+.locale[aria-pressed="true"] { color: #fff; font-weight: 600; }
+.locale:hover, .locale:focus-visible { color: #d6bbfb; }
+.locale:focus-visible { outline: 2px solid #d6bbfb; outline-offset: 4px; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.content { position: relative; width: min(720px, 55%); margin: clamp(190px, 29vh, 290px) 0 0 clamp(44px, 5.5vw, 88px); }
+.eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 28px; color: #d6bbfb; font-size: 11px; font-weight: 600; letter-spacing: .19em; text-transform: uppercase; }
+.eyebrow span { width: 24px; height: 1px; background: #9e77ed; }
+.content h1 { margin: 0; font-size: clamp(56px, 5vw, 72px); font-weight: 600; line-height: 1.015; letter-spacing: -.055em; }
+.lead { margin: 28px 0 0; max-width: 550px; color: rgba(255,255,255,.75); font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; letter-spacing: -.006em; }
+.cta { display: inline-flex; align-items: center; justify-content: space-between; gap: 48px; min-height: 54px; margin-top: 34px; padding: 0 20px; border: 1px solid rgba(255,255,255,.5); background: rgba(12,17,29,.42); color: #fff; font: inherit; font-size: 14px; font-weight: 600; transition: background .2s ease, transform .2s ease; }
+.cta:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+.cta:focus-visible { outline: 3px solid #d6bbfb; outline-offset: 4px; }
+.cta span { font-size: 22px; font-weight: 400; line-height: 1; }
+.footer { position: absolute; bottom: 42px; left: clamp(44px, 5.5vw, 88px); right: clamp(44px, 5.5vw, 88px); display: flex; align-items: center; justify-content: space-between; gap: 24px; color: rgba(255,255,255,.48); font-size: 11px; letter-spacing: .11em; text-transform: uppercase; }
+.footer > span:first-child { display: inline-flex; align-items: center; gap: 12px; }
+.footer b { width: 16px; height: 1px; background: rgba(255,255,255,.35); }
+.footerRight { letter-spacing: .045em; text-transform: none; }
+@media (max-width: 1100px) {
+  .basePlate { object-position: 100% center; }
+  .content { width: 62%; margin-top: clamp(105px, 14vh, 145px); }
+  .content h1 { font-size: clamp(56px, 6.1vw, 70px); }
+  .vignette { background: linear-gradient(90deg, rgba(12,17,29,.91) 0%, rgba(12,17,29,.75) 36%, rgba(12,17,29,.27) 70%, transparent 100%), linear-gradient(0deg, rgba(12,17,29,.74) 0%, transparent 22%, transparent 83%, rgba(12,17,29,.22) 100%); }
+}
+@media (max-height: 800px) {
+  .header { padding-top: 30px; }
+  .content { margin-top: clamp(165px, 25vh, 210px); }
+  .footer { bottom: 28px; }
+}
+@media (prefers-reduced-motion: reduce) { .scene { animation: none; } .cta, .locale { transition: none; } .cta:hover { transform: none; } }

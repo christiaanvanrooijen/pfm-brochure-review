@@ -1,0 +1,19 @@
+# dependencies and generated output
+/node_modules
+/.next
+/.vinext
+/dist
+/.wrangler
+/coverage
+/outputs
+/work
+
+# local environment and editor files
+.env*
+.DS_Store
+*.pem
+npm-debug.log*
+
+# generated TypeScript support
+next-env.d.ts
+*.tsbuildinfo
