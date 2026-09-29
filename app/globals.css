@@ -6001,6 +6001,11 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
   background: var(--pfm-black);
   color: var(--pfm-white);
 }
+/* The footer — the journey bar where there is one, then the rail — sits at
+   the bottom of the page. On a screen taller than the content the spare
+   height goes between the scene and the footer, never as a white strip
+   below the rail. On a shorter screen nothing moves. */
+.rd > .rd__main + * { margin-top: auto; }
 .rd__rail li {
   display: grid; gap: 5px; align-content: center;
   padding: 20px 28px;
