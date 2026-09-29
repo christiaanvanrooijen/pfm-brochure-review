@@ -5868,12 +5868,23 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
 /* No destination, so no affordance: it states the next step without pretending
    to be a way of getting there. */
 .rd__cta.is-inert { background: #f2f4f7; color: #98a2b3; cursor: default; }
+/* A real button, in the journey's own button style (the "Next" control):
+   read as plain text, the drawer was found only by those who already knew it
+   was there (product lead review, 2026-09-29). */
 .rd__depth-trigger {
-  display: inline-flex; align-items: center; gap: 10px;
-  border: 0; background: transparent; padding: 6px 0;
-  font: inherit; font-size: 14px; color: var(--pfm-black); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 12px;
+  border: 0; background: var(--pfm-purple-deep); color: var(--pfm-white);
+  /* Compact on purpose: the same height as the text link it replaced, so no
+     scene at 1024 × 768 grows by a single pixel. */
+  padding: 6px 14px;
+  font: inherit; font-size: 13.5px; font-weight: 600; line-height: 1.25; cursor: pointer;
+  transition: background 160ms ease;
 }
-.rd__depth-trigger:focus-visible { outline: 2px solid var(--pfm-purple-deep); outline-offset: 3px; }
+.rd__depth-trigger > span { font-size: 16px; font-weight: 400; line-height: 1; }
+.rd__depth-trigger:hover,
+.rd__depth-trigger[aria-expanded="true"] { background: #6941c6; }
+.rd__depth-trigger:focus-visible { outline: 2px solid var(--pfm-black); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .rd__depth-trigger { transition: none; } }
 .rd__cta-note { margin: 12px 0 0; font-size: 12px; line-height: 1.45; color: #667085; max-width: 52ch; }
 
 /* --------------------------------------------------------------------------
