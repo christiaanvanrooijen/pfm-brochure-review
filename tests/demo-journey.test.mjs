@@ -325,13 +325,30 @@ test("14. every capability the demo can reach is translated", async () => {
    Back left the demo and a copied link never named the scene on screen.
    =================================================================== */
 
-test("15. one bar carries position, both directions, the way out and restart", () => {
+test("15. the bar moves through the story; the header leaves and resets it", () => {
   const journey = read("app/preview/demo/journey.tsx");
 
   assert.match(journey, /<nav className="rd-demo__bar" aria-label=\{t\.demoJourneyNav\}/);
-  for (const control of ["t.demoBack", "t.demoRestart", "t.demoPrev", "t.demoNext"]) {
-    assert.ok(journey.includes(control), `the bar does not carry ${control}`);
+
+  /* The bar carries the two steps and the position, and nothing else.
+     "All segments" and Restart used to sit in it, in the same grey as
+     Previous and behind the same left-pointing arrow, so the control that
+     clears the session read as the mildest of three ways back. They are in
+     the header now — but they must still EXIST, which the two checks below
+     pin, so this rearrangement can never become a quiet removal. */
+  const bar = journey.slice(
+    journey.indexOf('<nav className="rd-demo__bar"'),
+    journey.indexOf("</nav>"),
+  );
+  for (const control of ["t.demoPrev", "t.demoNext"]) {
+    assert.ok(bar.includes(control), `the bar does not carry ${control}`);
   }
+  for (const moved of ["t.demoBack", "t.demoRestart"]) {
+    assert.ok(!bar.includes(moved), `${moved} is back in the bar it was moved out of`);
+  }
+  // The way out is the logo, and Restart is the header's own control.
+  assert.match(journey, /homeHref=\{exitHref\}/);
+  assert.match(journey, /className="rd__header-restart"[\s\S]*?t\.demoRestart/);
 
   // Position as a number AND as a bar, with the number readable aloud.
   assert.match(journey, /pad\(index \+ 1\)/);
@@ -576,8 +593,13 @@ test("22. there is one picker, and the demo route does not render a second", () 
     assert.ok(!demo.includes(gone), `the demo still renders its own picker (${gone})`);
   }
 
-  // And the way out is a real link, so it behaves like one.
-  assert.match(read("app/preview/demo/journey.tsx"), /<a className="rd-demo__bar-quiet" href=\{exitHref\}>/);
+  // And the way out is still a real link, so it behaves like one — it is
+  // the brand block now, which is where readers reached for it first.
+  assert.match(
+    read("app/components/redesign/SceneFrame.tsx"),
+    /<a className="rd__brand rd__brand--home" href=\{homeHref\}/,
+  );
+  assert.match(read("app/preview/demo/journey.tsx"), /homeHref=\{exitHref\}/);
 });
 
 /* ===================================================================
@@ -924,7 +946,9 @@ test("34. the empty state renders only its explanation and a way in", () => {
   assert.ok(branch.length > 0, "the empty state is no longer an early return");
   assert.match(branch, /t\.reviewEmpty/);
   assert.match(branch, /t\.reviewStart/);
-  assert.match(branch, /href=\{exitHref\}/);
+  // The way out is the logo in the shared header, not a grey word trailing
+  // the one real action.
+  assert.match(read("app/preview/demo/review.tsx"), /rd__brand--home" href=\{exitHref\}/);
 
   // None of the things a review WITH content carries.
   for (const forbidden of [
@@ -965,8 +989,19 @@ test("35. the first viewport carries identity, count, picture and actions", asyn
   assert.match(hero, /t\.reviewCoverage/);
   assert.match(hero, /rd-review__visual/);
   assert.match(hero, /t\.reviewResume/);
-  assert.match(hero, /t\.demoRestart/);
-  assert.match(hero, /href=\{exitHref\}/);
+  assert.match(hero, /t\.briefCta/);
+
+  /* What the hero must NOT carry. Four controls in three weights used to end
+     this row, and the two a reader at the end of a journey actually wants —
+     reset, and out — were the two faintest, with the second wrapping onto a
+     line of its own. Both now live in the header, at one weight, in the same
+     place they occupy on every scene. */
+  for (const moved of ["t.demoRestart", "t.demoBack"]) {
+    assert.ok(!hero.includes(moved), `${moved} is back in the hero action row`);
+  }
+  const reviewHeader = review.slice(review.indexOf("const header = ("), review.indexOf("const configureHref"));
+  assert.match(reviewHeader, /rd__header-restart"[\s\S]*?t\.demoRestart/);
+  assert.match(reviewHeader, /rd__brand--home" href=\{exitHref\}/);
 
   /* The picture is a COVER — orientation that proves nothing — never a scene
      hero, which is evidence for the scene it belongs to. Every segment has one
@@ -1339,7 +1374,21 @@ test("43. Restart begins a genuinely new conversation", async () => {
   assert.deepEqual(reset, { visited: ["retail-street-opportunity"], note: "" });
   const demo = read("app/preview/demo/demo.tsx");
   assert.match(demo, /const forget = useCallback/);
-  assert.match(demo, /onRestart=\{forget\}/);
+  /* And they cannot ASK differently either: both controls call the same
+     guard, and the guard is the only caller of the one reset. A second
+     entry point is how the two paths would drift apart again.
+
+     The guard is narrow on purpose: an empty note restarts silently, a
+     written one is worth one question, because the scenes can be walked
+     again and the typed words cannot. */
+  assert.equal(
+    (demo.match(/onRestart=\{requestRestart\}/g) ?? []).length,
+    2,
+    "the journey and the review no longer share one Restart entry point",
+  );
+  assert.ok(!/onRestart=\{forget\}/.test(demo), "a Restart path still bypasses the guard");
+  assert.match(demo, /if \(note\.trim\(\) === ""\) restart\(\);/);
+  assert.match(demo, /else setRestartAsked\(true\);/);
   assert.match(demo, /forget\(route\[0\]\)/);
   // Nothing else forgets: Back, Forward and a language change never reset.
   assert.equal((demo.match(/setNote\(/g) ?? []).length, 1);

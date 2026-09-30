@@ -17,9 +17,12 @@
  * were part of the route.
  */
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { SceneFrame, type Hotspot, type StageMarker } from "../../components/redesign/SceneFrame";
 import { DepthPanel } from "../../components/redesign/DepthPanel";
+import { WhatYouGet } from "../../components/redesign/WhatYouGet";
+import { CatchmentReportSpecimen } from "../../components/redesign/CatchmentReportSpecimen";
+import { reportCopy, type ReportCopy, type ReportFocus } from "../../components/redesign/catchment-report-copy";
 import type { Locale } from "../../i18n/locales";
 import { getMessages } from "../../i18n/messages";
 import { sceneCopy } from "../../i18n/scenes";
@@ -31,9 +34,23 @@ import { outletJourneyCopy } from "../../i18n/journey-outlet";
 import { allScenes, segmentDefinitions } from "../../content/segments";
 import type { SceneDefinition, SceneId, SegmentId } from "../../content/types";
 import { demoEnding, demoFocusOrder, demoMedia } from "./registry";
-import { openingScene } from "./navigation";
+import { demoUrl, openingScene } from "./navigation";
 import { SceneDiagram } from "./diagrams";
 import type { SceneCopy } from "../../i18n/messages";
+
+/**
+ * Scenes with a "What you get" specimen. A spike: one scene, to judge the
+ * pattern before it becomes a family. The specimen renders in the reader's
+ * locale and takes the reading guide's current focus.
+ */
+const SPECIMENS: Partial<
+  Record<SceneId, { copy: (locale: Locale) => ReportCopy; render: (locale: Locale, focus: ReportFocus | null) => ReactNode }>
+> = {
+  "shopping-centre-catchment-area": {
+    copy: reportCopy,
+    render: (locale, focus) => <CatchmentReportSpecimen locale={locale} focus={focus} />,
+  },
+};
 
 const STAGE_IDS = ["context", "measure", "understand", "prove", "configure", "act"] as const;
 const pct = (v: number, total: number) => `${(v / total) * 100}%`;
@@ -105,7 +122,8 @@ export function DemoJourney({
    */
   onVisit: (sceneId: SceneId) => void;
   /** Restart is the one move that deliberately forgets. */
-  onRestart: (firstSceneId: SceneId) => void;
+  /** Ask the parent to restart. It owns the note, so it owns the question. */
+  onRestart: () => void;
   /**
    * The close of the journey, for every segment.
    *
@@ -132,6 +150,7 @@ export function DemoJourney({
   const [focusId, setFocusId] = useState<string | null>(initialFocusId);
   const [pointOpen, setPointOpen] = useState(initialPointOpen);
   const [depthOpen, setDepthOpen] = useState(initialDepthSection !== null);
+  const [outputOpen, setOutputOpen] = useState(false);
   const depthRef = useRef<HTMLElement>(null);
 
   const t = getMessages(locale).ui;
@@ -150,16 +169,19 @@ export function DemoJourney({
       setFocusId(null);
       setPointOpen(false);
       setDepthOpen(false);
+      setOutputOpen(false);
       onVisit(next);
       onNavigate?.(next, locale, "step");
     },
     [locale, onNavigate, onVisit],
   );
 
-  const restart = useCallback(() => {
-    onRestart(route[0]);
-    goTo(route[0]);
-  }, [goTo, onRestart, route]);
+  /* Asked for, not done here. Restart clears the note as well as the scenes,
+     so whether it happens at all is the parent's to decide — it owns the note
+     and the one question worth asking about it. The parent remounts this
+     journey at scene one when it goes ahead, which is why there is no local
+     navigation left to do. */
+  const restart = onRestart;
 
   /* The scene this journey opened on counts as seen — including on a deep link,
      where it is the only scene seen so far, and on a remount after Back, where
@@ -206,6 +228,8 @@ export function DemoJourney({
     const target = allScenes.find((s) => s.id === id);
     return target ? copyFor(segmentId, target, locale).eyebrow : null;
   };
+  const specimen = SPECIMENS[sceneId] ?? null;
+  const closeOutput = useCallback(() => setOutputOpen(false), []);
   const prevSceneId = index > 0 ? route[index - 1] : null;
   const nextSceneId = isFinal ? null : (scene.nextSceneId ?? route[index + 1]) as SceneId;
 
@@ -240,6 +264,32 @@ export function DemoJourney({
            because it explains what the step IS. */
         ctaPlacement="external"
         ctaNote={null}
+        homeHref={exitHref}
+        segmentHref={demoUrl(segmentId, null, locale)}
+        headerAction={
+          <button type="button" className="rd__header-restart" onClick={restart}>
+            {t.demoRestart}
+          </button>
+        }
+        outputLabel={specimen ? specimen.copy(locale).trigger : null}
+        outputOpen={outputOpen}
+        onOutput={setOutputOpen}
+        output={
+          specimen ? (
+            <WhatYouGet
+              eyebrow={specimen.copy(locale).eyebrow}
+              sentence={specimen.copy(locale).sentence}
+              stepsLabel={specimen.copy(locale).stepsLabel}
+              steps={specimen.copy(locale).steps}
+              back={specimen.copy(locale).back}
+              heroSrc={media.hero}
+              question={copy.question}
+              onClose={closeOutput}
+            >
+              {(focus) => specimen.render(locale, focus)}
+            </WhatYouGet>
+          ) : null
+        }
         depthRef={depthRef}
         diagram={
           media.diagram ? (
@@ -273,15 +323,6 @@ export function DemoJourney({
             makes that a guess.
             --------------------------------------------------------------- */}
         <nav className="rd-demo__bar" aria-label={t.demoJourneyNav}>
-          <div className="rd-demo__bar-left">
-            <a className="rd-demo__bar-quiet" href={exitHref}>
-              <span aria-hidden="true">←</span> {t.demoBack}
-            </a>
-            <button type="button" className="rd-demo__bar-quiet" onClick={restart}>
-              {t.demoRestart}
-            </button>
-          </div>
-
           <button
             type="button"
             className="rd-demo__bar-step"

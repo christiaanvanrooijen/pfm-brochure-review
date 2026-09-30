@@ -48,6 +48,7 @@ import { getSegmentStartVisual } from "../../content/segment-start-visuals";
 import type { SceneId, SegmentId } from "../../content/types";
 import { localeLabels, locales, type Locale } from "../../i18n/locales";
 import { getMessages, type SceneCopy } from "../../i18n/messages";
+import { demoUrl } from "./navigation";
 import { startCoverCopy } from "../../i18n/starts";
 import { buildReview, configureOffer } from "./review-content";
 
@@ -99,17 +100,27 @@ export function ConversationReview({
 
   const header = (
     <header className="rd__header">
-      <div className="rd__brand">
+      {/* The logo is the way home across the whole demo, not just the
+          scenes — a reader who learns it on one screen must not lose it
+          on the next. */}
+      <a className="rd__brand rd__brand--home" href={exitHref} aria-label={t.demoBack} title={t.demoBack}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="rd__logo" src="/assets/logo/pfm-logo-black.png" alt="PFM" width={54} height={16} />
+        <img className="rd__logo" src="/assets/logo/pfm-logo-black.png" alt="" width={54} height={16} />
         <span className="rd__product">{t.productName}</span>
-      </div>
+      </a>
       <p className="rd__where">
-        <span>{segmentLabel}</span>
+        <a className="rd__where-link" href={demoUrl(segmentId, null, locale)} title={t.demoJourneyStart}>
+          {segmentLabel}
+        </a>
         <span aria-hidden="true">/</span>
         <span>{t.reviewTitle}</span>
       </p>
       <div className="rd__header-right">
+        {/* Restart sits where it sits on every scene, so the reader who
+            learned it there does not hunt for it here. */}
+        <button type="button" className="rd__header-restart" onClick={onRestart}>
+          {t.demoRestart}
+        </button>
         <div className="rd__locales" role="group" aria-label={t.languageLabel}>
           {locales.map((id) => (
             <button
@@ -149,9 +160,6 @@ export function ConversationReview({
             <button type="button" className="rd__cta" onClick={onRestart}>
               {t.reviewStart} <span aria-hidden="true">→</span>
             </button>
-            <a className="rd-review__quiet" href={exitHref}>
-              {t.demoBack}
-            </a>
           </div>
         </main>
       </div>
@@ -200,12 +208,11 @@ export function ConversationReview({
               <button type="button" className="rd-review__secondary" onClick={onPrepareBrief}>
                 {t.briefCta}
               </button>
-              <button type="button" className="rd-review__quiet" onClick={onRestart}>
-                {t.demoRestart}
-              </button>
-              <a className="rd-review__quiet" href={exitHref}>
-                {t.demoBack}
-              </a>
+              {/* Restart and the way out used to trail this row as two grey
+                  words, the weakest things on the screen and the two a reader
+                  at the end of a journey is actually looking for. Restart is
+                  in the header now; the way out is the logo. What is left
+                  here are the two onward choices. */}
             </div>
           </div>
 

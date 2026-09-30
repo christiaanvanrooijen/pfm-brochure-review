@@ -39,6 +39,7 @@ import { segmentDefinitions } from "../../content/segments";
 import type { SceneId, SegmentId } from "../../content/types";
 import { localeLabels, locales, type Locale } from "../../i18n/locales";
 import { getMessages, type SceneCopy } from "../../i18n/messages";
+import { demoUrl } from "./navigation";
 import { buildReview } from "./review-content";
 import { briefExportJson, briefSummaryText, buildBriefExport } from "./brief-content";
 
@@ -143,13 +144,18 @@ export function ConversationBrief({
   return (
     <div className="rd rd-brief">
       <header className="rd__header">
-        <div className="rd__brand">
+        {/* The logo is the way home across the whole demo, not just the
+            scenes — a reader who learns it on one screen must not lose it
+            on the next. */}
+        <a className="rd__brand rd__brand--home" href={exitHref} aria-label={t.demoBack} title={t.demoBack}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="rd__logo" src="/assets/logo/pfm-logo-black.png" alt="PFM" width={54} height={16} />
+          <img className="rd__logo" src="/assets/logo/pfm-logo-black.png" alt="" width={54} height={16} />
           <span className="rd__product">{t.productName}</span>
-        </div>
+        </a>
         <p className="rd__where">
-          <span>{segmentLabel}</span>
+          <a className="rd__where-link" href={demoUrl(segmentId, null, locale)} title={t.demoJourneyStart}>
+            {segmentLabel}
+          </a>
           <span aria-hidden="true">/</span>
           <span>{t.briefTitle}</span>
         </p>
@@ -245,9 +251,6 @@ export function ConversationBrief({
           <button type="button" className="rd-brief__quiet" onClick={onBack}>
             {t.briefBack}
           </button>
-          <a className="rd-brief__quiet" href={exitHref}>
-            {t.demoBack}
-          </a>
         </div>
 
         {/* One live region for both actions, so a copy is confirmed rather

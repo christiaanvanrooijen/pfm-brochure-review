@@ -341,3 +341,21 @@ Open: the logo files are cut from a slide screenshot; replace with originals whe
 Status: **DECIDED by the product lead; applied.**
 
 The product lead supplied black, transparent logo files and asked for them to be used, choosing how many fit. All twenty are shown: the slide's set without C&A (withdrawn), plus Pearle Opticiens, GrandOptical, KFC, Odido, Ace & Tate, Future Stores and MADAQ. The approval recorded above extends to these twenty. They are drawn at equal area rather than equal height, five to a row (two on a phone), so no single brand dominates. Origins are in `docs/content/PFM-COMPANY-FACTS.md`; the slide-screenshot crops are gone.
+
+## 2026-09-29 — "What you get": a proof level beside the scene (spike, Shopping Centre catchment)
+
+Status: **SPIKE — under review by the product lead; not committed.**
+
+Input: the product lead's UX concept — three information levels per capability: Discover (the scene), Proof ("what do I actually get?"), Explain (the depth drawer). A secondary "See what you get" control on the scene swaps its two columns, in place, for the output; Back or Escape returns to the same scene state.
+
+- **Version 1, editorial specimen — PARKED.** A dark, brochure-styled report with Reach / Visit pattern / Change lenses. The product lead liked it but ruled it too far from what customers receive: it could set expectations the product cannot meet. Kept in `app/components/redesign/CatchmentSpecimenEditorial.tsx` (styles `.spec*` in globals.css) to fall back on.
+- **Version 2, the real report — CURRENT.** `CatchmentReportSpecimen.tsx` follows the actual catchment report ("Demografie" overview: KPI cards vs LY, average visit duration, day of week, postcode table, change-in-catchment map). The product lead's rule: "voor nu moet ik het echt met de werkelijke rapportages/dashboards doen".
+- The data is illustrative for a fictional centre, **Centrum Lindenhaven**; the real customer's name from the reference screenshot is not used. The product lead approved showing postcodes, and waived the truth rules for this spike (illustrative figures are fine). The map is a neutral stand-in for the report's basemap with invented place names.
+
+Open: English UI copy only (the report itself is in its own Dutch/English mix); whether this becomes a family across Outlet, Shopping Centre and Retail Park; the reference screenshot stays out of the repo.
+
+Update 2026-09-30 (product lead review of version 2):
+
+- The report sits flush left and the reading column takes the remaining width. The report scales to both the width left and the window height, so opening it never makes the page scroll.
+- The report and everything around it follow the journey's locale (EN, FR, DE), including number formatting. Translations are in `app/components/redesign/catchment-report-copy.ts`; the FR and DE report wording needs the same native review as the rest of the FR/DE copy.
+- **Reading guide (example of "more impact"):** three numbered points beside the report (visit quality · when they come · where they come from). Each lights up its part of the report with a matching number; on open they play through once. They point at what the report already shows and add no capability. Status: example for the product lead to judge.

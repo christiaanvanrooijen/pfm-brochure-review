@@ -138,6 +138,47 @@ interface SceneFrameProps {
    */
   ctaPlacement?: "column" | "external";
   ctaNote: string | null;
+  /**
+   * Where "home" is, for the callers that have one.
+   *
+   * Readers reach for the logo to get out of a journey long before they find
+   * a worded control lower down the page — feedback from the go-demo was that
+   * the bar's "All segments" is read as chrome, not as the way back. So the
+   * brand block becomes the link where a caller passes this, and stays the
+   * inert block it was signed off as where a caller does not: the approved
+   * segment starts share this frame and have nowhere to go.
+   */
+  homeHref?: string | null;
+  /**
+   * The journey's own first scene, for the middle step of the breadcrumb.
+   *
+   * With `homeHref` on the logo, the header reads as the trail it already
+   * looked like: PFM, this journey, this scene. Callers with one scene and
+   * no journey behind it pass nothing and keep a plain label.
+   */
+  segmentHref?: string | null;
+  /**
+   * One caller-owned control in the header's right group, before the language
+   * switcher.
+   *
+   * It exists for Restart. Restart used to sit in the journey bar between two
+   * back-arrows, where the control that clears the session read as the mildest
+   * of three ways back. The header is where a reader looks to leave or reset a
+   * thing, and the bar is left to move through it.
+   */
+  headerAction?: ReactNode;
+  /**
+   * The optional proof level: "what do I actually get?".
+   *
+   * Where a scene has a product specimen, the column carries one more control
+   * beside the depth trigger, and opening it swaps the two columns for the
+   * caller's `output` in place — no navigation, and the journey bar below stays
+   * where it is. Scenes without a specimen pass nothing and are unchanged.
+   */
+  outputLabel?: string | null;
+  outputOpen?: boolean;
+  onOutput?: (open: boolean) => void;
+  output?: ReactNode;
   depthRef: RefObject<HTMLElement | null>;
   children: ReactNode;
 }
@@ -172,11 +213,27 @@ export function SceneFrame({
   onCta,
   ctaPlacement = "column",
   ctaNote,
+  homeHref = null,
+  segmentHref = null,
+  headerAction = null,
+  outputLabel = null,
+  outputOpen = false,
+  onOutput,
+  output = null,
   depthRef,
   children,
 }: SceneFrameProps) {
   const t = getMessages(locale).ui;
   const depthTrigger = useRef<HTMLButtonElement>(null);
+  const outputTrigger = useRef<HTMLButtonElement>(null);
+  const showOutput = outputOpen && output !== null;
+
+  /* Back from the specimen lands on the control that opened it. */
+  const wasOutput = useRef(false);
+  useEffect(() => {
+    if (wasOutput.current && !showOutput) outputTrigger.current?.focus({ preventScroll: true });
+    wasOutput.current = showOutput;
+  }, [showOutput]);
 
   /* The drawer is modal: it dims the page behind it, takes focus when it opens,
      keeps Tab inside itself while it is open, and gives focus back to the
@@ -236,29 +293,53 @@ export function SceneFrame({
   return (
     <div className={`rd${depthOpen ? " rd--dimmed" : ""}`}>
       <header className="rd__header">
-        {/* Not a link. This frame is shared by the approved starts and the
-            preview journeys alike, so a way out added here would be added to
-            every caller at once. Where a caller needs one it owns it — the
-            demo's journey bar carries its own. */}
-        <div className="rd__brand">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="rd__logo"
-            src="/assets/logo/pfm-logo-black.png"
-            alt="PFM"
-            width={54}
-            height={16}
-          />
-          <span className="rd__product">{t.productName}</span>
-        </div>
+        {/* A link only where the caller has somewhere to go. This frame is
+            shared by the approved starts and the preview journeys alike, so a
+            way out added unconditionally would be added to every caller at
+            once; `homeHref` makes it the demo's choice. The logo artwork is
+            untouched either way — the link wraps it, and the hover and focus
+            affordances sit in the padding around it, so its clear space is
+            widened rather than crowded. */}
+        {homeHref ? (
+          <a className="rd__brand rd__brand--home" href={homeHref} aria-label={t.demoBack} title={t.demoBack}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="rd__logo"
+              src="/assets/logo/pfm-logo-black.png"
+              alt=""
+              width={54}
+              height={16}
+            />
+            <span className="rd__product">{t.productName}</span>
+          </a>
+        ) : (
+          <div className="rd__brand">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="rd__logo"
+              src="/assets/logo/pfm-logo-black.png"
+              alt="PFM"
+              width={54}
+              height={16}
+            />
+            <span className="rd__product">{t.productName}</span>
+          </div>
+        )}
 
         <p className="rd__where">
-          <span>{segmentLabel}</span>
+          {segmentHref ? (
+            <a className="rd__where-link" href={segmentHref} title={t.demoJourneyStart}>
+              {segmentLabel}
+            </a>
+          ) : (
+            <span>{segmentLabel}</span>
+          )}
           <span aria-hidden="true">/</span>
           <span>{copy.eyebrow}</span>
         </p>
 
         <div className="rd__header-right">
+          {headerAction}
           <div className="rd__locales" role="group" aria-label={t.languageLabel}>
             {locales.map((id) => (
               <button
@@ -296,6 +377,9 @@ export function SceneFrame({
         </p>
       </nav>
 
+      {showOutput ? (
+        <div className="rd__main rd__main--output">{output}</div>
+      ) : (
       <div className="rd__main">
         {/* ---------------------------------------------------------------
             THE NARRATIVE COLUMN — white, restrained, and the thing that
@@ -356,6 +440,21 @@ export function SceneFrame({
               <span className="rd__cta is-inert" aria-disabled="true">
                 {copy.nextCta}
               </span>
+            )}
+            {outputLabel && onOutput && (
+              <button
+                type="button"
+                ref={outputTrigger}
+                className="rd__output-trigger"
+                aria-expanded={outputOpen}
+                onClick={() => onOutput(true)}
+              >
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                  <rect x="1.75" y="2.75" width="12.5" height="10.5" />
+                  <path d="M1.75 6h12.5M6.5 6v7.25" />
+                </svg>
+                {outputLabel}
+              </button>
             )}
             <button
               type="button"
@@ -485,6 +584,7 @@ export function SceneFrame({
           )}
         </figure>
       </div>
+      )}
 
       {children}
     </div>

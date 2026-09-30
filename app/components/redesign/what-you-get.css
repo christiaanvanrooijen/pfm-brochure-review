@@ -1,0 +1,88 @@
+/* ==========================================================================
+   WHAT YOU GET — the proof level between a scene and its depth drawer.
+   The output sits flush left, where the narrative column was; the reading
+   column takes whatever width is left. Kept beside WhatYouGet.tsx.
+   ========================================================================== */
+
+.wyg {
+  /* The reading column gets real room; the report scales to what is left. */
+  --wyg-lead-min: clamp(300px, 28vw, 440px);
+  /* Height of the parked editorial specimen (CatchmentSpecimenEditorial). */
+  --wyg-h: clamp(430px, calc(100vh - 372px), 600px);
+  display: grid;
+  grid-template-columns: auto minmax(var(--wyg-lead-min), 1fr);
+  column-gap: 48px;
+  align-items: start;
+}
+.wyg__specimen { min-width: 0; }
+
+/* Size-contained: the column takes the report's height and never sets it, so
+   the reading guide can never be what makes the page scroll. */
+.wyg__lead {
+  contain: size; align-self: stretch; overflow-y: auto;
+  display: flex; flex-direction: column; min-width: var(--wyg-lead-min); animation: wygLead 420ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.wyg__sentence {
+  margin: 0; max-width: 30ch;
+  font-size: clamp(22px, 1.95vw, 34px); line-height: 1.12; font-weight: 640; letter-spacing: -0.025em;
+  color: var(--pfm-black); outline: none;
+}
+
+.wyg__steps-label {
+  margin: 22px 0 6px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #98a2b3;
+}
+.wyg__steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; max-width: 46ch; }
+.wyg__step {
+  width: 100%; display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; align-items: start;
+  border: 0; border-left: 2px solid #eaecf0; background: transparent; cursor: pointer;
+  padding: 8px 10px 8px 12px; text-align: left; font: inherit; color: inherit;
+  transition: border-color 250ms ease, background 250ms ease;
+}
+.wyg__step-n {
+  width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+  background: #f2f4f7; color: #475467; font-size: 12px; font-weight: 700;
+  transition: background 250ms ease, color 250ms ease;
+}
+.wyg__step-text { display: grid; gap: 3px; }
+.wyg__step-text strong { font-size: 15px; font-weight: 620; color: var(--pfm-black); }
+.wyg__step-text span { font-size: 13px; line-height: 1.45; color: #667085; }
+.wyg__step:hover, .wyg__step.is-active { border-left-color: var(--pfm-purple-deep); background: var(--pfm-purple-soft); }
+.wyg__step.is-active .wyg__step-n { background: var(--pfm-purple-deep); color: #fff; }
+.wyg__step:focus-visible { outline: 2px solid var(--pfm-purple-deep); outline-offset: 2px; }
+
+.wyg__back {
+  align-self: flex-start; margin: 0 0 18px; padding: 0; border: 0; background: transparent; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 10px; font: inherit; color: inherit;
+}
+.wyg__back img {
+  width: 54px; aspect-ratio: 16 / 9; object-fit: cover; display: block;
+  filter: saturate(0.6) brightness(0.72); transition: filter 200ms ease;
+  animation: wygHero 420ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.wyg__back:hover img { filter: none; }
+.wyg__back-kind { font-size: 13.5px; font-weight: 600; color: var(--pfm-purple-deep); }
+.wyg__back:hover .wyg__back-kind { text-decoration: underline; }
+.wyg__back:focus-visible { outline: 2px solid var(--pfm-purple-deep); outline-offset: 4px; }
+
+@keyframes wygLead { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+@keyframes wygHero { from { opacity: 0.3; transform: translateX(-40px); } to { opacity: 1; transform: none; } }
+@keyframes wygSpec { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 1200px) {
+  .wyg { --wyg-lead-min: 230px; column-gap: 26px; }
+  .wyg__sentence { font-size: 20px; }
+  .wyg__steps-label { margin-top: 16px; }
+  .wyg__step { padding: 7px 8px 7px 10px; gap: 9px; grid-template-columns: 22px minmax(0, 1fr); }
+  .wyg__step-n { width: 21px; height: 21px; font-size: 11px; }
+  .wyg__step-text strong { font-size: 13.5px; }
+  .wyg__step-text span { font-size: 12px; }
+  .wyg__back { margin-bottom: 12px; }
+}
+/* Short windows: the reading column must never be what makes the page scroll. */
+@media (max-height: 820px) {
+  .wyg__step-text span { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wyg__lead, .wyg__back img { animation: none; }
+  .wyg__step, .wyg__step-n, .wyg__back img { transition: none; }
+}

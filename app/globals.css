@@ -5754,6 +5754,30 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
   padding: 0 40px;
 }
 .rd__brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+
+/* The brand block as the way home.
+   The logo artwork is never touched: the hover tint and the focus ring sit in
+   padding added around it, which widens its clear space rather than crowding
+   it, and a negative margin keeps the header's own alignment identical to the
+   inert version used by the approved starts. */
+.rd__brand--home {
+  text-decoration: none;
+  color: inherit;
+  margin: -6px -10px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  transition: background-color 120ms ease;
+}
+.rd__brand--home:hover { background: var(--pfm-purple-soft); }
+.rd__brand--home:hover .rd__product { color: var(--pfm-purple-deep); }
+.rd__brand--home:focus-visible {
+  outline: 2px solid var(--pfm-purple-deep);
+  outline-offset: 2px;
+  background: var(--pfm-purple-soft);
+}
+@media (prefers-reduced-motion: reduce) {
+  .rd__brand--home { transition: none; }
+}
 .rd__logo { width: 54px; height: 16px; flex: none; display: block; object-fit: contain; }
 .rd__product {
   font-size: 13px;
@@ -5770,7 +5794,110 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
   margin: 0; font-size: 13.5px; color: #475467; white-space: nowrap;
 }
 .rd__where span[aria-hidden] { color: #d0d5dd; }
+
+/* The middle step of the breadcrumb: PFM / this journey / this scene.
+   Quiet until pointed at, because it is orientation first and a control
+   second — the reader should be able to read where they are without being
+   sold a click. */
+.rd__where-link {
+  color: inherit;
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 2px 6px;
+  margin: -2px -6px;
+  transition: color 120ms ease, background-color 120ms ease;
+}
+.rd__where-link:hover { color: var(--pfm-purple-deep); background: var(--pfm-purple-soft); }
+.rd__where-link:focus-visible {
+  outline: 2px solid var(--pfm-purple-deep);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) { .rd__where-link { transition: none; } }
 .rd__header-right { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
+
+/* Restart, in the header rather than the journey bar.
+   It reads at the same weight as the language switcher beside it: a control
+   that acts on the whole session, not a step within it. It is deliberately
+   NOT styled like the bar's step controls — the point of moving it is that it
+   stopped looking like one of them. */
+.rd__header-restart {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #667085;
+  cursor: pointer;
+  padding: 5px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.rd__header-restart:hover { color: var(--pfm-black); background: #f9fafb; }
+
+/* ---------------------------------------------------------------------------
+   Restart's one question.
+
+   It is asked only where a written note would be cleared, so it is allowed to
+   be a real interruption rather than a toast: a reader who sees this has
+   something to lose, and the two answers say what happens rather than "OK"
+   and "Cancel". Keeping is the safe answer and holds the focus on open.
+   --------------------------------------------------------------------------- */
+.rd-demo__confirm {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(12, 17, 29, 0.45);
+}
+.rd-demo__confirm-panel {
+  background: var(--pfm-white, #fff);
+  border-radius: 14px;
+  padding: 28px 28px 22px;
+  max-width: 430px;
+  width: 100%;
+  box-shadow: 0 24px 60px -20px rgba(12, 17, 29, 0.45);
+}
+.rd-demo__confirm-title {
+  margin: 0 0 10px;
+  font-size: 19px;
+  line-height: 1.25;
+  color: var(--pfm-black);
+}
+.rd-demo__confirm-body {
+  margin: 0 0 22px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #475467;
+}
+.rd-demo__confirm-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.rd-demo__confirm-keep,
+.rd-demo__confirm-discard {
+  font: inherit;
+  font-size: 13.5px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.rd-demo__confirm-keep {
+  border: 1px solid #d0d5dd;
+  background: var(--pfm-white, #fff);
+  color: var(--pfm-black);
+}
+.rd-demo__confirm-keep:hover { border-color: var(--pfm-black); }
+/* Red, because this is the destructive answer and the palette has a word for
+   that. It is the second button, not the default one. */
+.rd-demo__confirm-discard {
+  border: 1px solid var(--pfm-red);
+  background: var(--pfm-red);
+  color: var(--pfm-white, #fff);
+}
+.rd-demo__confirm-discard:hover { background: var(--pfm-red-dark); border-color: var(--pfm-red-dark); }
+.rd-demo__confirm-keep:focus-visible,
+.rd-demo__confirm-discard:focus-visible { outline: 2px solid var(--pfm-purple-deep); outline-offset: 2px; }
+.rd__header-restart:focus-visible { outline: 2px solid var(--pfm-purple-deep); outline-offset: 1px; }
 
 .rd__locales { display: inline-flex; gap: 2px; }
 .rd__locale {
@@ -6384,7 +6511,9 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
    =================================================================== */
 .rd-demo__bar {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr);
+  /* Previous, position, Next. The fourth column held the way out and
+     Restart; both moved to the header, where leaving and resetting live. */
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 10px 20px;
   padding: 14px 40px 16px;
@@ -6855,4 +6984,190 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
 @media (prefers-reduced-motion: reduce) {
   .ov__link { transition: none; }
   .ov__link:hover { transform: none; }
+}
+
+/* ==========================================================================
+   WHAT YOU GET — the proof level between a scene and its depth drawer.
+   Spike: Shopping Centre catchment only.
+   ========================================================================== */
+
+.rd__output-trigger {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid var(--pfm-black); background: var(--pfm-white); color: var(--pfm-black);
+  padding: 5px 14px 5px 12px;
+  font: inherit; font-size: 13.5px; font-weight: 600; line-height: 1.25; cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+.rd__output-trigger:hover { background: var(--pfm-black); color: var(--pfm-white); }
+.rd__output-trigger:focus-visible { outline: 2px solid var(--pfm-purple-deep); outline-offset: 2px; }
+
+.rd__main--output { display: block; }
+
+
+/* ---------------------------------------------------------- THE SPECIMEN */
+.spec {
+  height: var(--wyg-h);
+  display: grid; grid-template-rows: auto minmax(0, 1fr) auto;
+  background: var(--pfm-black); color: #f2f4f7;
+  box-shadow: 0 24px 60px -28px rgba(12, 17, 29, 0.55);
+  font-variant-numeric: tabular-nums;
+}
+.spec__bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 14px 22px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.spec__title { display: flex; align-items: baseline; gap: 14px; min-width: 0; white-space: nowrap; }
+.spec__product { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #9e77ed; }
+.spec__location { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; color: #fff; }
+.spec__location svg { color: #98a2b3; }
+.spec__period { font-size: 12.5px; color: #98a2b3; }
+.spec__period i { font-style: normal; color: #667085; }
+.spec__tabs { display: flex; gap: 2px; padding: 3px; background: rgba(255, 255, 255, 0.06); }
+.spec__tab {
+  border: 0; background: transparent; color: #98a2b3; cursor: pointer;
+  font: inherit; font-size: 13px; font-weight: 500; padding: 6px 14px;
+  transition: background 200ms ease, color 200ms ease;
+}
+.spec__tab:hover { color: #fff; }
+.spec__tab.is-active { background: #fff; color: var(--pfm-black); font-weight: 600; }
+.spec__tab:focus-visible { outline: 2px solid #9e77ed; outline-offset: 1px; }
+
+.spec__body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr); min-height: 0; }
+
+/* The map */
+.spec__map { position: relative; margin: 0; padding: 14px 10px 38px 18px; min-height: 0; }
+.spec__map > svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.spec__cell {
+  stroke: var(--pfm-black); stroke-width: 0.06;
+  transition: fill 450ms ease, opacity 200ms ease;
+}
+.spec__cell.is-hover { stroke: #fff; stroke-width: 0.16; }
+.spec__rings { transition: opacity 300ms ease; }
+.spec__rings ellipse { fill: none; stroke: rgba(255, 255, 255, 0.38); stroke-width: 0.06; }
+.spec__rings text { fill: rgba(255, 255, 255, 0.72); font-size: 0.62px; font-weight: 600; }
+.spec[data-lens="pattern"] .spec__rings,
+.spec[data-lens="change"] .spec__rings { opacity: 0; }
+.spec__pin circle:first-child { fill: rgba(255, 255, 255, 0.18); }
+.spec__pin circle:last-child { fill: #fff; stroke: var(--pfm-black); stroke-width: 0.12; }
+.spec__pin-label {
+  position: absolute; transform: translate(14px, -50%); pointer-events: none;
+  font-size: 11.5px; font-weight: 600; color: #fff; white-space: nowrap;
+  text-shadow: 0 1px 6px rgba(12, 17, 29, 0.9);
+}
+.spec__tip {
+  position: absolute; z-index: 2; transform: translate(-50%, calc(-100% - 12px)); pointer-events: none;
+  display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; white-space: nowrap;
+  background: #fff; color: var(--pfm-black); font-size: 11.5px; line-height: 1.35;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.spec__tip strong { font-size: 13px; }
+.spec__tip .is-up { color: #c4320a; font-weight: 600; }
+.spec__tip .is-down { color: #6941c6; font-weight: 600; }
+.spec__legend {
+  position: absolute; left: 18px; bottom: 12px;
+  display: flex; align-items: center; gap: 8px; font-size: 11px; color: #98a2b3;
+}
+.spec__legend-ramp { display: flex; }
+.spec__legend-ramp i { width: 14px; height: 8px; display: block; transition: background 450ms ease; }
+
+/* The reading */
+.spec__read {
+  min-height: 0; overflow: hidden;
+  padding: 18px 22px 12px 20px; border-left: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex; flex-direction: column;
+  animation: specRead 380ms ease both;
+}
+@keyframes specRead { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.spec__kicker { margin: 0; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #98a2b3; }
+.spec__headline { margin: 10px 0 0; display: flex; align-items: baseline; gap: 12px; }
+.spec__headline strong { font-size: 44px; line-height: 1; font-weight: 640; letter-spacing: -0.03em; color: #fff; }
+.spec__headline span { font-size: 13.5px; line-height: 1.35; color: #d0d5dd; max-width: 26ch; }
+.spec__sub { margin: 18px 0 8px; font-size: 12px; color: #98a2b3; }
+
+.spec__bands { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 7px; }
+.spec__bands li { display: grid; grid-template-columns: 70px minmax(0, 1fr) 36px; align-items: center; gap: 10px; font-size: 12px; color: #d0d5dd; }
+.spec__bands b { text-align: right; font-weight: 600; color: #fff; }
+.spec__band-track { height: 8px; background: rgba(255, 255, 255, 0.06); }
+.spec__band-track span { display: block; height: 100%; background: linear-gradient(90deg, #842681, #f56b5c); animation: specGrow 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both; transform-origin: left; }
+@keyframes specGrow { from { transform: scaleX(0); } to { transform: none; } }
+
+.spec__table { margin-top: 18px; width: 100%; border-collapse: collapse; font-size: 12px; }
+.spec__table th, .spec__table td { padding: 5px 0; text-align: right; border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
+.spec__table thead th { font-weight: 500; font-size: 11px; color: #98a2b3; }
+.spec__table th:first-child { text-align: left; }
+.spec__table tbody th { font-weight: 600; color: #fff; }
+.spec__table td { color: #d0d5dd; }
+.spec__table tbody tr { cursor: default; transition: background 150ms ease; }
+.spec__table tbody tr.is-hover { background: rgba(158, 119, 237, 0.16); }
+
+.spec__kpis { margin: 14px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255, 255, 255, 0.08); }
+.spec__kpis > div { background: var(--pfm-black); padding: 10px 12px 10px 0; }
+.spec__kpis > div:nth-child(even) { padding-left: 14px; }
+.spec__kpis dt { font-size: 11.5px; color: #98a2b3; }
+.spec__kpis dd { margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+.spec__kpis strong { font-size: 24px; font-weight: 620; letter-spacing: -0.02em; color: #fff; }
+.spec__kpis small { flex-basis: 100%; font-size: 11px; color: #667085; }
+.is-up { color: #fc8b62; }
+.is-down { color: #b692f6; }
+.spec__kpis span, .spec__mover b { font-size: 12px; font-weight: 600; }
+
+.spec__days { position: relative; flex: 1; min-height: 110px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; padding-bottom: 18px; }
+.spec__day { display: grid; grid-template-rows: auto 1fr auto; gap: 4px; text-align: center; min-height: 0; }
+.spec__day-value { font-size: 11px; color: #98a2b3; }
+.spec__day-col { position: relative; display: block; min-height: 50px; }
+.spec__day-bar { position: absolute; left: 0; right: 0; bottom: 0; background: #5b167e; animation: specRise 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both; transform-origin: bottom; }
+.spec__day.is-peak .spec__day-bar { background: #f56b5c; }
+.spec__day.is-peak .spec__day-value { color: #fff; font-weight: 600; }
+.spec__day-ly { position: absolute; left: -2px; right: -2px; height: 2px; background: rgba(255, 255, 255, 0.55); }
+.spec__day-label { font-size: 11px; color: #d0d5dd; }
+.spec__day-key { position: absolute; right: 0; bottom: -4px; margin: 0; font-size: 10.5px; color: #98a2b3; display: flex; align-items: center; gap: 6px; }
+.spec__day-key i { width: 12px; height: 2px; background: rgba(255, 255, 255, 0.55); display: block; }
+@keyframes specRise { from { transform: scaleY(0); } to { transform: none; } }
+
+.spec__trend { width: 100%; height: auto; max-height: 120px; display: block; overflow: visible; }
+.spec__trend-base { stroke: rgba(255, 255, 255, 0.12); stroke-width: 1; }
+.spec__trend-prev { fill: none; stroke: rgba(255, 255, 255, 0.45); stroke-width: 1.5; stroke-dasharray: 3 4; }
+.spec__trend-cur { fill: none; stroke: #f56b5c; stroke-width: 2.2; stroke-linejoin: round; stroke-dasharray: 600; animation: specDraw 800ms ease-out both; }
+.spec__trend-dot { fill: #f56b5c; }
+.spec__trend text { fill: #fff; font-size: 11px; font-weight: 600; }
+.spec__trend text.is-prev { fill: #98a2b3; font-weight: 500; }
+.spec__trend text.is-axis { fill: #667085; font-size: 10px; font-weight: 500; }
+@keyframes specDraw { from { stroke-dashoffset: 600; } to { stroke-dashoffset: 0; } }
+
+.spec__movers { margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.spec__mover p { margin: 0 0 4px; font-size: 11px; color: #98a2b3; }
+.spec__mover ul { list-style: none; margin: 0; padding: 0; }
+.spec__mover li { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.07); font-size: 12px; transition: background 150ms ease; }
+.spec__mover li.is-hover { background: rgba(158, 119, 237, 0.16); }
+
+.spec__foot {
+  display: flex; justify-content: space-between; gap: 16px;
+  padding: 9px 22px; border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 11px; color: #667085;
+}
+
+@media (max-width: 1200px) {
+  .spec__bar { padding: 10px 14px; gap: 12px; }
+  .spec__title { gap: 10px; }
+  .spec__period { display: none; }
+  .spec__tab { padding: 5px 10px; font-size: 12.5px; }
+  .spec__body { grid-template-columns: minmax(0, 1fr) minmax(250px, 0.8fr); }
+  .spec__map { padding: 10px 6px 32px 12px; }
+  .spec__read { padding: 12px 14px 8px 14px; }
+  .spec__headline strong { font-size: 34px; }
+  .spec__headline span { font-size: 12.5px; }
+  .spec__bands { margin-top: 12px; gap: 5px; }
+  .spec__table { margin-top: 12px; font-size: 11.5px; }
+  .spec__table th, .spec__table td { padding: 3px 0; }
+  .spec__kpis strong { font-size: 20px; }
+  .spec__kpis > div { padding-top: 7px; padding-bottom: 7px; }
+  .spec__sub { margin: 12px 0 6px; }
+  .spec__foot { padding: 7px 14px; font-size: 10.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spec__read,
+  .spec__band-track span, .spec__day-bar, .spec__trend-cur { animation: none; }
+  .spec__cell, .spec__rings, .spec__legend-ramp i, .spec__tab,
+  .rd__output-trigger { transition: none; }
 }

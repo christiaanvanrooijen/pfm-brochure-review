@@ -24,6 +24,7 @@ import { useCallback, useEffect, useState } from "react";
 import { DemoJourney, journeySceneCopy } from "./journey";
 import { ConversationReview } from "./review";
 import { ConversationBrief } from "./brief";
+import { RestartConfirm } from "./restart-confirm";
 import { demoEnding } from "./registry";
 import { defaultLocale, type Locale } from "../../i18n/locales";
 import { segmentDefinitions } from "../../content/segments";
@@ -186,6 +187,21 @@ export function Demo({
     goToPlace(route[0], "scene");
   }, [forget, goToPlace, route]);
 
+  /**
+   * Restart, asked for rather than done — but only where it would cost
+   * something that cannot be got back.
+   *
+   * `forget` clears the scenes AND the note. Scenes can be walked again; the
+   * words cannot, so an empty note restarts silently and a written one is
+   * worth one question. Both Restart controls come through here, so the two
+   * paths cannot ask differently any more than they can forget differently.
+   */
+  const [restartAsked, setRestartAsked] = useState(false);
+  const requestRestart = useCallback(() => {
+    if (note.trim() === "") restart();
+    else setRestartAsked(true);
+  }, [note, restart]);
+
   /* A brief of nothing is a document that reports a conversation which did not
      happen. Asked for one — by a hand-typed address, or a Restart that has not
      been walked yet — the demo answers with the review, which says honestly
@@ -195,75 +211,96 @@ export function Demo({
   const wantsBrief = place.view === "brief" && visited.length > 0;
   const view: DemoView = place.view === "brief" && !wantsBrief ? "review" : place.view;
 
+  /* One question, rendered over whichever of the three views is on screen.
+     It is the same element in each because it is the same question. */
+  const confirm = restartAsked ? (
+    <RestartConfirm
+      locale={locale}
+      onCancel={() => setRestartAsked(false)}
+      onConfirm={() => {
+        setRestartAsked(false);
+        restart();
+      }}
+    />
+  ) : null;
   if (wantsBrief) {
     return (
-      <ConversationBrief
-        segmentId={segmentId}
-        locale={locale}
-        visited={visited}
-        copyFor={(sceneId, briefLocale) => journeySceneCopy(segmentId, sceneId, briefLocale)}
-        note={note}
-        onNote={setNote}
-        onLocale={(next) => {
-          setLocale(next);
-          window.history.replaceState(null, "", briefUrl(segmentId, next));
-        }}
-        onBack={() => goToPlace(null, "review")}
-        exitHref={pickerUrl(locale)}
-      />
+      <>
+        <ConversationBrief
+          segmentId={segmentId}
+          locale={locale}
+          visited={visited}
+          copyFor={(sceneId, briefLocale) => journeySceneCopy(segmentId, sceneId, briefLocale)}
+          note={note}
+          onNote={setNote}
+          onLocale={(next) => {
+            setLocale(next);
+            window.history.replaceState(null, "", briefUrl(segmentId, next));
+          }}
+          onBack={() => goToPlace(null, "review")}
+          exitHref={pickerUrl(locale)}
+        />
+        {confirm}
+      </>
     );
   }
 
   if (view === "review") {
     const ending = demoEnding[segmentId];
     return (
-      <ConversationReview
-        segmentId={segmentId}
-        locale={locale}
-        visited={visited}
-        copyFor={(sceneId, reviewLocale) => journeySceneCopy(segmentId, sceneId, reviewLocale)}
-        onLocale={(next) => {
-          setLocale(next);
-          /* Same place, other words — it rewrites the entry rather than adding
-             one, exactly as a language change does inside a scene. */
-          window.history.replaceState(null, "", reviewUrl(segmentId, next));
-        }}
-        /* Back into the conversation at its furthest point, which is where the
-           reader left it. */
-        onResume={() => goToPlace(visited[visited.length - 1] ?? route[0], "scene")}
-        onRestart={restart}
-        onPrepareBrief={() => goToPlace(null, "brief")}
-        exitHref={pickerUrl(locale)}
-        /* Only where one genuinely exists. Outlet Centre and QSR have none, and
-           are offered nothing rather than something that looks like it. */
-        configureHref={ending.kind === "configure" ? ending.href : null}
-      />
+      <>
+        <ConversationReview
+          segmentId={segmentId}
+          locale={locale}
+          visited={visited}
+          copyFor={(sceneId, reviewLocale) => journeySceneCopy(segmentId, sceneId, reviewLocale)}
+          onLocale={(next) => {
+            setLocale(next);
+            /* Same place, other words — it rewrites the entry rather than adding
+               one, exactly as a language change does inside a scene. */
+            window.history.replaceState(null, "", reviewUrl(segmentId, next));
+          }}
+          /* Back into the conversation at its furthest point, which is where the
+             reader left it. */
+          onResume={() => goToPlace(visited[visited.length - 1] ?? route[0], "scene")}
+          onRestart={requestRestart}
+          onPrepareBrief={() => goToPlace(null, "brief")}
+          exitHref={pickerUrl(locale)}
+          /* Only where one genuinely exists. Outlet Centre and QSR have none, and
+             are offered nothing rather than something that looks like it. */
+          configureHref={ending.kind === "configure" ? ending.href : null}
+        />
+        {confirm}
+      </>
     );
   }
 
   return (
-    <DemoJourney
-      /* Keyed on the history position, not only the segment: a Back into a
-         different scene of the SAME segment has to re-enter it there. */
-      key={`${segmentId}-${place.epoch}`}
-      segmentId={segmentId}
-      initialLocale={locale}
-      initialSceneId={place.sceneId ?? initialScene}
-      initialFocusId={initialFocus}
-      initialPointOpen={initialPointOpen}
-      initialDepthSection={initialDepthSection}
-      exitHref={pickerUrl(locale)}
-      onVisit={noteVisit}
-      onRestart={forget}
-      onOpenReview={() => goToPlace(null, "review")}
-      onNavigate={(sceneId, sceneLocale, move) => {
-        setLocale(sceneLocale);
-        /* Every move the reader makes is written, whatever the move before it
-           was. Only moves the reader makes reach here. */
-        const next = addressAfter(move, segmentId, sceneId, sceneLocale);
-        if (next.mode === "push") window.history.pushState(null, "", next.url);
-        else window.history.replaceState(null, "", next.url);
-      }}
-    />
+    <>
+      <DemoJourney
+        /* Keyed on the history position, not only the segment: a Back into a
+           different scene of the SAME segment has to re-enter it there. */
+        key={`${segmentId}-${place.epoch}`}
+        segmentId={segmentId}
+        initialLocale={locale}
+        initialSceneId={place.sceneId ?? initialScene}
+        initialFocusId={initialFocus}
+        initialPointOpen={initialPointOpen}
+        initialDepthSection={initialDepthSection}
+        exitHref={pickerUrl(locale)}
+        onVisit={noteVisit}
+        onRestart={requestRestart}
+        onOpenReview={() => goToPlace(null, "review")}
+        onNavigate={(sceneId, sceneLocale, move) => {
+          setLocale(sceneLocale);
+          /* Every move the reader makes is written, whatever the move before it
+             was. Only moves the reader makes reach here. */
+          const next = addressAfter(move, segmentId, sceneId, sceneLocale);
+          if (next.mode === "push") window.history.pushState(null, "", next.url);
+          else window.history.replaceState(null, "", next.url);
+        }}
+      />
+      {confirm}
+    </>
   );
 }
