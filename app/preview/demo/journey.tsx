@@ -22,7 +22,9 @@ import { SceneFrame, type Hotspot, type StageMarker } from "../../components/red
 import { DepthPanel } from "../../components/redesign/DepthPanel";
 import { WhatYouGet } from "../../components/redesign/WhatYouGet";
 import { CatchmentReportSpecimen } from "../../components/redesign/CatchmentReportSpecimen";
-import { reportCopy, type ReportCopy, type ReportFocus } from "../../components/redesign/catchment-report-copy";
+import { reportCopy, type ReportFocus } from "../../components/redesign/catchment-report-copy";
+import { StoreReportSpecimen } from "../../components/redesign/StoreReportSpecimen";
+import { storeGuide, type StoreFocus } from "../../components/redesign/store-report-copy";
 import type { Locale } from "../../i18n/locales";
 import { getMessages } from "../../i18n/messages";
 import { sceneCopy } from "../../i18n/scenes";
@@ -43,12 +45,32 @@ import type { SceneCopy } from "../../i18n/messages";
  * pattern before it becomes a family. The specimen renders in the reader's
  * locale and takes the reading guide's current focus.
  */
+/** What the reading guide beside a specimen needs; every report's copy has it. */
+interface SpecimenGuide {
+  trigger: string;
+  eyebrow: string;
+  sentence: string;
+  stepsLabel: string;
+  steps: ReadonlyArray<{ id: string; title: string; body: string }>;
+  back: string;
+}
+
 const SPECIMENS: Partial<
-  Record<SceneId, { copy: (locale: Locale) => ReportCopy; render: (locale: Locale, focus: ReportFocus | null) => ReactNode }>
+  Record<SceneId, { copy: (locale: Locale) => SpecimenGuide; render: (locale: Locale, focus: string | null) => ReactNode }>
 > = {
   "shopping-centre-catchment-area": {
     copy: reportCopy,
-    render: (locale, focus) => <CatchmentReportSpecimen locale={locale} focus={focus} />,
+    render: (locale, focus) => <CatchmentReportSpecimen locale={locale} focus={focus as ReportFocus | null} />,
+  },
+  /* The retail store report: one component, the page that answers each
+     scene's question. */
+  "retail-conversion-sales-context": {
+    copy: (locale) => storeGuide(locale, "insights"),
+    render: (locale, focus) => <StoreReportSpecimen locale={locale} page="insights" focus={focus as StoreFocus | null} />,
+  },
+  "retail-visitor-composition": {
+    copy: (locale) => storeGuide(locale, "demographics"),
+    render: (locale, focus) => <StoreReportSpecimen locale={locale} page="demographics" focus={focus as StoreFocus | null} />,
   },
 };
 

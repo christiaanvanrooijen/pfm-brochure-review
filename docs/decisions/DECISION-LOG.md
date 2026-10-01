@@ -359,3 +359,12 @@ Update 2026-09-30 (product lead review of version 2):
 - The report sits flush left and the reading column takes the remaining width. The report scales to both the width left and the window height, so opening it never makes the page scroll.
 - The report and everything around it follow the journey's locale (EN, FR, DE), including number formatting. Translations are in `app/components/redesign/catchment-report-copy.ts`; the FR and DE report wording needs the same native review as the rest of the FR/DE copy.
 - **Reading guide (example of "more impact"):** three numbered points beside the report (visit quality · when they come · where they come from). Each lights up its part of the report with a matching number; on open they play through once. They point at what the report already shows and add no capability. Status: example for the product lead to judge.
+
+
+## 2026-10-01 — "What you get": retail store report (Insights, Demographics)
+
+- **Decision:** Two retail scenes get a store-report specimen, built as ONE component (`StoreReportSpecimen`) with a `page` prop, because both screenshots are tabs of the same report. `retail-conversion-sales-context` → Insights; `retail-visitor-composition` → Demographics.
+- **Source:** product-lead request 2026-09-30 with 15 dashboard screenshots, filed (git-ignored) under `work/dashboard-screenshots/`; see its README for which scene each page belongs to.
+- **Data:** fictional store (Northstar Utrecht), seeded fixture `app/content/output-specimens/store-fixture.ts`. Opportunity cards are derived from the daily rows (turnover = footfall × conversion × ATV; missed = potential at period averages − actual), so the cards and chart always agree. Truth rules waived for this work per the 2026-09-29 ruling.
+- **Not reproduced:** the real report's unexplained second bar colour is kept as a colour (days below the period's average conversion are pink) without adding a legend item it does not have. STAR is shown under the report's own label; no definition is added because none is sourced in this repo.
+- **FR/DE terms for native review:** Insights → FR "Insights", DE "Insights"; ATV → FR "Panier moyen", DE "ATV"; Missed turnover → FR "CA manqué", DE "Entgangener Umsatz"; Best opportunity date → FR "Meilleure date d'opportunité", DE "Tag mit größtem Potenzial"; Capture rate → FR "Taux de captation", DE "Capture Rate"; Rolling period → FR "Période glissante", DE "Rollierender Zeitraum".
