@@ -37,6 +37,11 @@ import {
   STORE_WEEKS,
   STORE_YEAR,
   STORE_AVG_CONVERSION,
+  STORE_HEAT,
+  STORE_HEAT_HOURS,
+  STORE_HOUR_CAPTURE,
+  STORE_INDEPTH_KPIS,
+  STORE_WEEK_ROW,
 } from "../../content/output-specimens/store-fixture";
 import type { Locale } from "../../i18n/locales";
 import { storeCopy, type StoreCopy, type StoreFocus, type StorePage } from "./store-report-copy";
@@ -406,6 +411,125 @@ function DemographicsPage({ copy, focus }: { copy: StoreCopy; focus: StoreFocus 
   );
 }
 
+
+/* --------------------------------------------------------------- IN-DEPTH */
+
+function InDepthPage({ copy, focus }: { copy: StoreCopy; focus: StoreFocus | null }) {
+  const f = fmt(copy);
+  const K = STORE_INDEPTH_KPIS;
+  const kpis: Array<[string, string, number | null]> = [
+    [copy.footfall, f.num(K.footfall.value), K.footfall.delta],
+    [copy.index, f.signed(K.index.value), K.index.delta],
+    [copy.turnover, f.eur(K.turnover.value), K.turnover.delta],
+    [copy.conversion, f.pct(K.conversion.value), K.conversion.delta],
+    [copy.capture, f.pct(K.capture.value), K.capture.delta],
+    [copy.atv, f.eur(K.atv.value), K.atv.delta],
+  ];
+  const max = Math.max(...STORE_HEAT.flat());
+  const heat = (v: number) => `rgba(123, 35, 130, ${(v === 0 ? 0 : 0.1 + (v / max) * 0.8).toFixed(2)})`;
+  const hourFoot = STORE_HEAT_HOURS.map((_, i) => STORE_HEAT.reduce((s, row) => s + row[i], 0));
+  const w = 400;
+  const h = 130;
+  const x = (i: number) => 28 + ((w - 50) / (hourFoot.length - 1)) * i;
+  const yF = (v: number) => 14 + (h - 30) * (1 - v / 4000);
+  const yC = (v: number) => 14 + (h - 30) * (1 - (v - 8) / 10);
+  const area = `M${x(0)},${yF(0)} ${hourFoot.map((v, i) => `L${x(i)},${yF(v)}`).join(" ")} L${x(hourFoot.length - 1)},${yF(0)} Z`;
+  const cap = STORE_HOUR_CAPTURE.map((v, i) => `${i ? "L" : "M"}${x(i)},${yC(v)}`).join(" ");
+  return (
+    <div className="str__demo">
+      <div className="str__kpis str__kpis--six" data-area="kpis">
+        <Marker n={1} area="kpis" focus={focus} />
+        {kpis.map(([label, value, delta]) => (
+          <div key={label} className="str__kpi">
+            <span>{label}</span>
+            <b>{value}</b>
+            {delta !== null && <em className={delta >= 0 ? "is-up" : "is-down"}>{f.signed(delta)}</em>}
+          </div>
+        ))}
+      </div>
+      <div className="str__demo-grid">
+        <section className="str__card" data-area="capture">
+          <Marker n={2} area="capture" focus={focus} />
+          <h4>{copy.footfall} · {copy.byDateShort}</h4>
+          <svg viewBox="0 0 400 130" className="str__svg" role="img" aria-label={copy.footfall}>
+            {[0, 500, 1000].map((v) => (
+              <text key={v} x={22} y={14 + (h - 30) * (1 - v / 1300) + 3} textAnchor="end" className="str__axis">{v === 0 ? "0K" : v === 500 ? "0.5K" : "1K"}</text>
+            ))}
+            {STORE_DAYS.map((d, i) => {
+              const bx = 28 + (360 / STORE_DAYS.length) * i;
+              const by = 14 + (h - 30) * (1 - d.footfall / 1300);
+              return (
+                <g key={d.day}>
+                  <rect x={bx} width={(360 / STORE_DAYS.length) * 0.78} y={by} height={h - 16 - by} fill={PURPLE} />
+                  {d.weekday === 6 && (
+                    <text x={bx + 4} y={by - 4} textAnchor="middle" className="str__axis" style={{ fontSize: 8 }}>{f.num(d.footfall / 1000, 1)}K</text>
+                  )}
+                  {d.weekday === 1 && <text x={bx + 4} y={h - 3} textAnchor="middle" className="str__axis">{String(d.day).padStart(2, "0")} {copy.monthShort}</text>}
+                </g>
+              );
+            })}
+          </svg>
+        </section>
+        <section className="str__card" data-area="capture">
+          <h4>{copy.captureTitle}</h4>
+          <p className="str__legend"><i style={{ background: PURPLE }} /> {copy.footfall} <i style={{ background: ORANGE }} /> {copy.capture}</p>
+          <svg viewBox="0 0 400 130" className="str__svg" role="img" aria-label={copy.captureTitle}>
+            <path d={area} fill={PINK} fillOpacity={0.25} stroke={PURPLE} strokeWidth={2} />
+            <path d={cap} fill="none" stroke={ORANGE} strokeWidth={2} />
+            {STORE_HEAT_HOURS.map((hh, i) => (
+              <text key={hh} x={x(i)} y={h - 2} textAnchor="middle" className="str__axis">{hh}</text>
+            ))}
+          </svg>
+        </section>
+        <section className="str__card" data-area="capture">
+          <h4>{copy.rolling}</h4>
+          <table className="str__table str__rolling">
+            <thead>
+              <tr><th>{copy.rollingMonth}</th><th>{copy.selectedShort}</th><th>{copy.compShort}</th><th>{copy.varShort}</th></tr>
+            </thead>
+            <tbody>
+              {STORE_WEEK_ROW.map((r) => (
+                <tr key={r.month}>
+                  <td>{r.month}</td><td>{f.num(r.selected)}</td><td>{f.num(r.comp)}</td>
+                  <td><b className="is-down">{f.signed(-16.8)}</b></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+        <section className="str__card" data-area="heat">
+          <Marker n={3} area="heat" focus={focus} />
+          <table className="str__table str__heat">
+            <thead>
+              <tr>
+                <th>{copy.dayName}</th>
+                {STORE_HEAT_HOURS.map((hh) => <th key={hh}>{String(hh).padStart(2, "0")}</th>)}
+                <th>{copy.periods[0] === "Day" ? "Total" : "Total"}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {STORE_HEAT.map((row, d) => (
+                <tr key={copy.weekdays[d]}>
+                  <td>{copy.weekdays[d]}</td>
+                  {row.map((v, i) => (
+                    <td key={i} style={{ background: heat(v) }} />
+                  ))}
+                  <td>{f.num(row.reduce((s, v) => s + v, 0))}</td>
+                </tr>
+              ))}
+              <tr>
+                <td>Total</td>
+                {hourFoot.map((v, i) => <td key={i}>{f.num(v)}</td>)}
+                <td>{f.num(hourFoot.reduce((s, v) => s + v, 0))}</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------ PAGE */
 
 export function StoreReportSpecimen({
@@ -420,7 +544,7 @@ export function StoreReportSpecimen({
   const copy = storeCopy(locale);
   const host = useRef<HTMLDivElement>(null);
   const scale = useFitScale(host);
-  const activeTab = page === "insights" ? 3 : 2;
+  const activeTab = page === "insights" ? 3 : page === "indepth" ? 1 : 2;
 
   let body: ReactNode;
   let slicers: ReactNode;
@@ -431,6 +555,17 @@ export function StoreReportSpecimen({
         <Slicer label={copy.locations} value={STORE_REGION} note={STORE_NAME} />
         <Slicer label={copy.year} value={copy.currentYear} />
         <Slicer label={copy.month} value={copy.monthValue} />
+      </>
+    );
+  } else if (page === "indepth") {
+    body = <InDepthPage copy={copy} focus={focus} />;
+    slicers = (
+      <>
+        <Slicer label={copy.locations} value={STORE_REGION} note={STORE_NAME} />
+        <Slicer label={copy.year} value={copy.currentYear} />
+        <Slicer label={copy.comparedYear} value={String(STORE_YEAR - 1)} />
+        <Slicer label={copy.month} value={copy.monthValue} />
+        <Slicer label={copy.type} value={copy.people} />
       </>
     );
   } else {

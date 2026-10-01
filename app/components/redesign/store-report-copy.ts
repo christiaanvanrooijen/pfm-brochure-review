@@ -9,10 +9,11 @@
 
 import type { Locale } from "../../i18n/locales";
 
-export type StorePage = "insights" | "demographics";
+export type StorePage = "insights" | "demographics" | "indepth";
 export type InsightsFocus = "pattern" | "opportunity" | "missed";
 export type DemographicsFocus = "who" | "hours" | "weeks";
-export type StoreFocus = InsightsFocus | DemographicsFocus;
+export type InDepthFocus = "kpis" | "capture" | "heat";
+export type StoreFocus = InsightsFocus | DemographicsFocus | InDepthFocus;
 
 export interface StoreGuide {
   trigger: string;
@@ -67,6 +68,13 @@ export interface StoreCopy {
   adults: string;
   avgGroup: string;
   byTime: string;
+  index: string;
+  byDateShort: string;
+  captureTitle: string;
+  rollingMonth: string;
+  selectedShort: string;
+  compShort: string;
+  varShort: string;
 }
 
 const en: StoreCopy = {
@@ -81,6 +89,18 @@ const en: StoreCopy = {
         { id: "pattern", title: "Footfall against conversion, day by day", body: "Bars are visits through the door; the line is the share that bought. Busy days that convert worse stand out at once." },
         { id: "opportunity", title: "The best opportunity date", body: "The day with the most turnover left on the table, with its own footfall, conversion, ATV and turnover." },
         { id: "missed", title: "Potential and missed turnover", body: "What that day would have turned over at the period's average conversion and ATV — and the gap." },
+      ],
+      back: "Back to insight",
+    },
+    indepth: {
+      trigger: "See what you get",
+      eyebrow: "What you get",
+      sentence: "The store report's In-Depth page as customers receive it — shown with illustrative data for a fictional store.",
+      stepsLabel: "What you read in it",
+      steps: [
+        { id: "kpis", title: "The store's six numbers, against last year", body: "Store footfall, index, turnover, conversion rate, capture rate and ATV, each with its change." },
+        { id: "capture", title: "Footfall and capture, hour by hour", body: "Footfall by date, and footfall against the capture rate through the day, with the rolling month." },
+        { id: "heat", title: "The busiest hours of the week", body: "Footfall for every weekday and time block, with totals, so the peaks are visible at a glance." },
       ],
       back: "Back to insight",
     },
@@ -136,6 +156,13 @@ const en: StoreCopy = {
   adults: "Adults",
   avgGroup: "Avg. group size",
   byTime: "Demographics by time",
+  index: "Index",
+  byDateShort: "by date",
+  captureTitle: "Footfall vs. Capture rate",
+  rollingMonth: "Month Year",
+  selectedShort: "Selected period",
+  compShort: "Comp. period",
+  varShort: "% Var",
 };
 
 const fr: StoreCopy = {
@@ -151,6 +178,18 @@ const fr: StoreCopy = {
         { id: "pattern", title: "Fréquentation et taux de conversion, jour par jour", body: "Les barres sont les entrées ; la ligne, la part qui a acheté. Les jours chargés qui convertissent moins ressortent immédiatement." },
         { id: "opportunity", title: "La meilleure date d'opportunité", body: "Le jour où le plus de chiffre d'affaires a été manqué, avec sa fréquentation, sa conversion, son panier moyen et son chiffre d'affaires." },
         { id: "missed", title: "Chiffre d'affaires potentiel et manqué", body: "Ce que ce jour aurait réalisé avec la conversion et le panier moyens de la période — et l'écart." },
+      ],
+      back: "Retour à l'insight",
+    },
+    indepth: {
+      trigger: "Voir ce que vous obtenez",
+      eyebrow: "Ce que vous obtenez",
+      sentence: "La page Détail du rapport magasin telle que les clients la reçoivent — avec des données illustratives pour un magasin fictif.",
+      stepsLabel: "Ce que vous y lisez",
+      steps: [
+        { id: "kpis", title: "Les six chiffres du magasin, face à l'an dernier", body: "Fréquentation, indice, chiffre d'affaires, taux de conversion, taux de captation et panier moyen, chacun avec son évolution." },
+        { id: "capture", title: "Fréquentation et captation, heure par heure", body: "La fréquentation par date, et face au taux de captation au fil de la journée, avec le mois glissant." },
+        { id: "heat", title: "Les heures les plus chargées de la semaine", body: "La fréquentation par jour et par créneau, avec les totaux : les pics se voient d'un coup d'œil." },
       ],
       back: "Retour à l'insight",
     },
@@ -205,6 +244,13 @@ const fr: StoreCopy = {
   adults: "Adultes",
   avgGroup: "Taille moy. groupe",
   byTime: "Démographie par heure",
+  index: "Indice",
+  byDateShort: "par date",
+  captureTitle: "Fréquentation et taux de captation",
+  rollingMonth: "Mois Année",
+  selectedShort: "Période sélectionnée",
+  compShort: "Période comp.",
+  varShort: "% Évol.",
 };
 
 const de: StoreCopy = {
@@ -220,6 +266,18 @@ const de: StoreCopy = {
         { id: "pattern", title: "Frequenz und Conversion Rate, Tag für Tag", body: "Die Balken sind Besuche durch die Tür, die Linie ist der Anteil, der gekauft hat. Volle Tage mit schwächerer Conversion fallen sofort auf." },
         { id: "opportunity", title: "Der Tag mit dem größten Potenzial", body: "Der Tag, an dem am meisten Umsatz liegen blieb – mit seiner Frequenz, Conversion, ATV und seinem Umsatz." },
         { id: "missed", title: "Potenzieller und entgangener Umsatz", body: "Was dieser Tag bei durchschnittlicher Conversion und ATV des Zeitraums umgesetzt hätte – und die Differenz." },
+      ],
+      back: "Zurück zum Insight",
+    },
+    indepth: {
+      trigger: "Sehen, was Sie erhalten",
+      eyebrow: "Was Sie erhalten",
+      sentence: "Die Detail-Seite des Filialberichts, wie Kunden sie erhalten – gezeigt mit illustrativen Daten für eine fiktive Filiale.",
+      stepsLabel: "Was Sie darin lesen",
+      steps: [
+        { id: "kpis", title: "Die sechs Kennzahlen der Filiale im Vorjahresvergleich", body: "Frequenz, Index, Umsatz, Conversion Rate, Capture Rate und ATV, jeweils mit Veränderung." },
+        { id: "capture", title: "Frequenz und Capture, Stunde für Stunde", body: "Die Frequenz nach Datum und gegen die Capture Rate im Tagesverlauf, mit dem rollierenden Monat." },
+        { id: "heat", title: "Die stärksten Stunden der Woche", body: "Die Frequenz je Wochentag und Zeitblock mit Summen – die Spitzen sind auf einen Blick sichtbar." },
       ],
       back: "Zurück zum Insight",
     },
@@ -274,6 +332,13 @@ const de: StoreCopy = {
   adults: "Erwachsene",
   avgGroup: "Ø Gruppengröße",
   byTime: "Demografie nach Uhrzeit",
+  index: "Index",
+  byDateShort: "nach Datum",
+  captureTitle: "Frequenz vs. Capture Rate",
+  rollingMonth: "Monat Jahr",
+  selectedShort: "Gewählter Zeitraum",
+  compShort: "Vgl.-Zeitraum",
+  varShort: "% Abw.",
 };
 
 const table: Record<Locale, StoreCopy> = { en, fr, de };

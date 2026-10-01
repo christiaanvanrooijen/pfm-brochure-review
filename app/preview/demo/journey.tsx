@@ -24,6 +24,12 @@ import { WhatYouGet } from "../../components/redesign/WhatYouGet";
 import { CatchmentReportSpecimen } from "../../components/redesign/CatchmentReportSpecimen";
 import { reportCopy, type ReportFocus } from "../../components/redesign/catchment-report-copy";
 import { StoreReportSpecimen } from "../../components/redesign/StoreReportSpecimen";
+import { StoreMapSpecimen } from "../../components/redesign/StoreMapSpecimen";
+import { FootfallReportSpecimen } from "../../components/redesign/FootfallReportSpecimen";
+import { LandlordReportSpecimen } from "../../components/redesign/LandlordReportSpecimen";
+import { LocationReportSpecimen } from "../../components/redesign/LocationReportSpecimen";
+import { PortfolioSpecimen } from "../../components/redesign/PortfolioSpecimen";
+import { reportGuide } from "../../components/redesign/report-copy";
 import { storeGuide, type StoreFocus } from "../../components/redesign/store-report-copy";
 import type { Locale } from "../../i18n/locales";
 import { getMessages } from "../../i18n/messages";
@@ -71,6 +77,34 @@ const SPECIMENS: Partial<
   "retail-visitor-composition": {
     copy: (locale) => storeGuide(locale, "demographics"),
     render: (locale, focus) => <StoreReportSpecimen locale={locale} page="demographics" focus={focus as StoreFocus | null} />,
+  },
+  "retail-store-visits": {
+    copy: (locale) => storeGuide(locale, "indepth"),
+    render: (locale, focus) => <StoreReportSpecimen locale={locale} page="indepth" focus={focus as StoreFocus | null} />,
+  },
+  "retail-zone-engagement": {
+    copy: (locale) => reportGuide("storemap", locale),
+    render: (locale, focus) => <StoreMapSpecimen locale={locale} focus={focus} />,
+  },
+  "shopping-centre-entrances": {
+    copy: (locale) => reportGuide("footfall", locale),
+    render: (locale, focus) => <FootfallReportSpecimen locale={locale} focus={focus} />,
+  },
+  "shopping-centre-visitor-composition": {
+    copy: (locale) => reportGuide("landlord", locale),
+    render: (locale, focus) => <LandlordReportSpecimen locale={locale} focus={focus} />,
+  },
+  "shopping-centre-brand-counting": {
+    copy: (locale) => reportGuide("location", locale),
+    render: (locale, focus) => <LocationReportSpecimen locale={locale} focus={focus} />,
+  },
+  "shopping-centre-brand-flow": {
+    copy: (locale) => reportGuide("retailer", locale),
+    render: (locale, focus) => <PortfolioSpecimen locale={locale} page="retailer" focus={focus} />,
+  },
+  "shopping-centre-zone-anchor-exposure": {
+    copy: (locale) => reportGuide("mall", locale),
+    render: (locale, focus) => <PortfolioSpecimen locale={locale} page="mall" focus={focus} />,
   },
 };
 

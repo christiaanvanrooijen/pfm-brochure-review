@@ -95,7 +95,10 @@
 .str[data-focus="missed"] [data-area="missed"],
 .str[data-focus="who"] [data-area="who"],
 .str[data-focus="hours"] [data-area="hours"],
-.str[data-focus="weeks"] [data-area="weeks"] { opacity: 1; filter: none; box-shadow: 0 0 0 2px #6941c6, 0 8px 24px -10px rgba(105, 65, 198, 0.45); }
+.str[data-focus="weeks"] [data-area="weeks"],
+.str[data-focus="kpis"] [data-area="kpis"],
+.str[data-focus="capture"] [data-area="capture"],
+.str[data-focus="heat"] [data-area="heat"] { opacity: 1; filter: none; box-shadow: 0 0 0 2px #6941c6, 0 8px 24px -10px rgba(105, 65, 198, 0.45); }
 .str__marker {
   position: absolute; z-index: 4; left: -8px; top: -8px;
   width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center;
@@ -108,3 +111,7 @@
   .str-host { animation: none; }
   .str [data-area], .str__marker { transition: none; }
 }
+
+/* In-Depth page: six KPI cards instead of seven, and a per-hour table. */
+.str__kpis--six { grid-template-columns: repeat(6, 1fr); }
+.str__table td { min-width: 0; }

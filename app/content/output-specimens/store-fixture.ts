@@ -135,3 +135,32 @@ export const STORE_WEEKS = (() => {
     };
   });
 })();
+
+/* --------------------------------------------------------------- IN-DEPTH */
+
+/** Total footfall for the month, from the daily rows the Insights page draws. */
+export const STORE_MONTH_FOOTFALL = totalFootfall;
+export const STORE_MONTH_TURNOVER = Math.round(turnover * 100) / 100;
+export const STORE_CAPTURE_RATE = 14.0;
+
+export const STORE_INDEPTH_KPIS = {
+  footfall: { value: totalFootfall, delta: -16.8 },
+  index: { value: 12.7, delta: null as number | null },
+  turnover: { value: STORE_MONTH_TURNOVER, delta: 2.5 },
+  conversion: { value: STORE_AVG_CONVERSION, delta: -0.8 },
+  capture: { value: STORE_CAPTURE_RATE, delta: 0.2 },
+  atv: { value: STORE_AVG_ATV, delta: 13.1 },
+} as const;
+
+/** Capture rate by hour of the day (percent): rises toward the early afternoon. */
+export const STORE_HOUR_CAPTURE = [11.2, 12.0, 13.1, 14.6, 15.2, 14.3, 12.6, 11.1] as const;
+
+export const STORE_HEAT_HOURS = [8, 10, 12, 14, 16, 18, 20, 22] as const;
+/** Footfall for each weekday (Monday first) and two-hour block. Sunday is closed. */
+export const STORE_HEAT = (() => {
+  const random = rng(60517);
+  const shape = [0, 0.38, 0.72, 0.6, 0.55, 0.88, 1, 0.3];
+  const day = [0.55, 0.38, 0.32, 0.4, 0.6, 1.4, 0];
+  return day.map((d) => shape.map((s) => (d === 0 ? 0 : Math.round(d * s * 1100 * (0.9 + random() * 0.2)))));
+})();
+export const STORE_WEEK_ROW = [{ month: "Mar 2026", selected: totalFootfall, comp: Math.round(totalFootfall / (1 - 0.168)), ytd: 53478, compYtd: 55882 }];
