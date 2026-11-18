@@ -1,0 +1,253 @@
+{
+  "locale": "en",
+  "language": "English",
+  "title": "PFM Automotive review proposal",
+  "status": "Draft for review",
+  "date": "5 November 2026",
+  "questionLabel": "Question for the dealer",
+  "detailLabel": "Sources and measurement conditions",
+  "illustration": "Illustrative visual - not a measurement result",
+  "truth": "Draft for review - no customer data or live integrations",
+  "scenes": [
+    {
+      "id": "context",
+      "stage": "Context",
+      "title": "Turn showroom insight into commercial action.",
+      "intro": "Identify contact gaps. Respond. Evaluate what changes.",
+      "body": "Give the dealer a practical view of where contact opportunities are missed, when staff coverage is stretched and how model exploration progresses towards registered follow-up.",
+      "question": "Where could better timing or follow-up improve your showroom process?",
+      "detail": "PFM combines measurement design, operational insight and dealer reviews. Commercial improvement is the goal; demonstrated results require a baseline and comparable follow-up.",
+      "source": "Context for the discussion",
+      "image": "automotive-showroom-overview-wide.png",
+      "alt": "Illustrative showroom with vehicle zones, visitors, a sales desk and service reception."
+    },
+    {
+      "id": "entrance",
+      "stage": "Measure",
+      "title": "How many people enter?",
+      "intro": "A reliable baseline starts at the entrance.",
+      "body": "Count entries and exits at each selected entrance and time window. Distinguish people, repeat crossings and derived visits. Group detection is a separate analysis that requires validation.",
+      "question": "Which entrances and opening hours should be included?",
+      "detail": "Proposed entrance options: Xovis or Milesight. Product selection, coverage and staff exclusion require a site assessment.",
+      "source": "Physically measured",
+      "image": "automotive-entrance-wide.png",
+      "alt": "Illustrative arrival of individual visitors and groups in a car showroom."
+    },
+    {
+      "id": "destinations",
+      "stage": "Understand",
+      "title": "Which destinations do visitors reach?",
+      "intro": "Showroom, service and reception each have a distinct role.",
+      "body": "Show which defined zones are reached and how journeys continue. Reaching a service zone identifies a destination; it does not establish why someone entered.",
+      "question": "Can we define zones and visit purposes separately?",
+      "detail": "A confirmed service purpose requires additional appointment or registration data. Keep mixed-purpose and unknown visits visible.",
+      "source": "Physical routes + dealer floor plan → derived insight",
+      "image": "automotive-destinations-wide.png",
+      "alt": "Illustrative showroom routes towards service, reception and the sales area."
+    },
+    {
+      "id": "routes",
+      "stage": "Understand",
+      "title": "How do visitors move from model to model?",
+      "intro": "Explore the route through the showroom.",
+      "body": "Follow transitions between model zones within validated measurement coverage. Show which combinations occur, without presenting a route as personal preference or purchase intent.",
+      "question": "Which model zones and transitions matter to the dealer?",
+      "detail": "Proposed deeper analysis: LiDAR or a suitable Xovis 3D configuration. Sensor handover, obstructions and sight lines require validation.",
+      "source": "Physical trajectories + model zones → derived insight",
+      "image": "automotive-model-routes-portrait.png",
+      "alt": "Illustrative overhead view of a route between vehicle zones in a showroom."
+    },
+    {
+      "id": "dwell",
+      "stage": "Understand",
+      "title": "Which models do visitors spend time near?",
+      "intro": "See model dwell patterns and identify where to investigate.",
+      "body": "Compare zone reach and dwell time to test model placement and campaign focus. A configured dwell threshold can flag a contact opportunity; it does not establish purchase intent.",
+      "question": "Which models need a different placement or more timely staff coverage?",
+      "detail": "Define zone boundaries, minimum dwell time, return visits and passing trajectories before showing model comparisons.",
+      "source": "Physical zone events + model layout → derived insight",
+      "image": "automotive-model-dwell-portrait.png",
+      "alt": "Illustrative visitors in defined zones around showroom vehicles."
+    },
+    {
+      "id": "contact",
+      "stage": "Understand",
+      "title": "Who leaves without a contact signal?",
+      "intro": "Make potential contact gaps visible while there is still time to respond.",
+      "body": "Separate qualifying visits with contact, visitors still present without contact and completed visits without a detected contact indicator. Use these groups to investigate coverage and improve the greeting process.",
+      "question": "Where should a salesperson respond sooner?",
+      "detail": "Qualifying means a validated dwell rule, not a proven buyer. Contact requires validated staff distinction and proximity/duration rules; no detected signal does not prove no conversation occurred.",
+      "source": "Physical trajectories + staff distinction → derived insight",
+      "image": "automotive-staff-contact-wide.png",
+      "alt": "Illustration of visitors and a salesperson beside a showroom vehicle, with purple markers."
+    },
+    {
+      "id": "desk",
+      "stage": "Understand",
+      "title": "Does the visit reach the sales desk?",
+      "intro": "From the showroom floor to the next observable step.",
+      "body": "Measure presence in the agreed desk zone and examine progression after contact signals. Sitting at a desk does not prove a quotation, lead or sale.",
+      "question": "Which desk zones and follow-up actions should we track separately?",
+      "detail": "A contact-to-desk rate requires the same valid trajectories and observation period. A quotation requires a separate CRM or DMS record.",
+      "source": "Physical desk zone + zone definitions → derived insight",
+      "image": "automotive-sales-desk-wide.png",
+      "alt": "Illustrative showroom with model exploration on the left and visitors at a sales desk on the right."
+    },
+    {
+      "id": "prove",
+      "stage": "Prove",
+      "title": "What changes after a campaign or process change?",
+      "intro": "Connect showroom patterns with marketing and registered follow-up.",
+      "body": "Compare campaign dates, visit volumes, model-zone dwell and contact coverage. Add CRM/DMS leads, quotations and orders to review the process with the dealer.",
+      "question": "Which campaign or operational change should we evaluate first?",
+      "detail": "Keep source periods, channels and definitions aligned. Without valid visit-cohort linkage, CRM totals remain separate series. Campaign association is not proof of campaign impact.",
+      "source": "Physical measurement + business data → comparison",
+      "image": "automotive-business-context-portrait.png",
+      "alt": "Conceptual illustration of showroom contact and commercial records; not a measured funnel."
+    },
+    {
+      "id": "configure",
+      "stage": "Configure",
+      "title": "Which measurement design fits your question?",
+      "intro": "Start small, with clear dependencies.",
+      "body": "Select entrance counting, showroom zones, validated staff distinction and an alert workflow. Add staffing schedules, campaign calendars and permitted CRM/DMS links where the chosen question needs them.",
+      "question": "Which measurement, response and review workflow should we configure?",
+      "detail": "Phone or smartwatch alerts are available according to supplied product input, subject to a compatible delivery channel, configured rule and operational ownership. No notification or integration is triggered by this review.",
+      "source": "Proposed scope for a site assessment",
+      "image": "automotive-showroom-overview-wide.png",
+      "alt": "Illustrative showroom with different measurement areas for a proposed measurement design."
+    },
+    {
+      "id": "act",
+      "stage": "Act",
+      "title": "From insight to action to evaluated results.",
+      "intro": "Agree the response, the owner and the evidence of change.",
+      "body": "Test a greeting alert, adjust peak-hour coverage or review campaign follow-up. PFM and the dealer agree a baseline, action owner and evaluation date, then compare contact and commercial indicators.",
+      "question": "Next step: choose one improvement experiment and a review date.",
+      "detail": "Compare matched periods and sufficiently mature cohorts, accounting for channel mix, staffing and seasonality. Describe observed change first; claim impact only when the evaluation supports it. System actions in this review are simulated.",
+      "source": "Proposed next step",
+      "image": "automotive-staff-contact-wide.png",
+      "alt": "Illustrative meeting between showroom visitors and a member of staff."
+    }
+  ],
+  "geo": {
+    "title": "Where does showroom demand come from?",
+    "intro": "Add origin areas, brand-related visitation patterns and aggregate visits to other showrooms when a suitable source supports the analysis. These describe a panel or modelled population, not every visitor counted at the entrance.",
+    "articles": [
+      {
+        "title": "Origins and reach",
+        "body": "Use aggregate origin areas with the source population, period and area definition visible. Do not link an individual origin to a sensor trajectory."
+      },
+      {
+        "title": "Affinity and other showrooms",
+        "body": "Visits to brand-related locations are a contextual signal. The term brand affinity requires an explicit provider definition; it does not establish preference, ownership or purchase intent."
+      }
+    ],
+    "note": "Availability, representativeness, minimum counts and location attribution must be confirmed with the data provider. This proposal therefore contains no map or fictional percentages for this analysis."
+  },
+  "review": {
+    "title": "Review before implementation",
+    "items": [
+      "Does the story make the dealer value clear: contact gaps, timely response and evaluated improvement?",
+      "Which alert channels, recipients and escalation rules fit the dealer’s operation?",
+      "Which staffing, model-presentation or campaign question should be tested first?",
+      "Which group, contact and CRM cohort definitions can be validated?",
+      "Do the proposed visuals and illustrative output reflect what PFM can deliver in the selected scope?"
+    ],
+    "note": "The existing brochure has not been changed. No customer results, prices, uplift, benchmarks or live system actions have been added to this proposal."
+  },
+  "gallery": {
+    "title": "Supplied Automotive visuals",
+    "intro": "The scenes show a proposed selection for review. All images below remain candidates. Purple markers are conceptual and do not prove sensor coverage, identity or measurement performance.",
+    "note": "The supplied street image with pedestrians outside a shop is excluded from Automotive: it depicts Retail and does not support this showroom story.",
+    "captions": [
+      "Overview of showroom, sales and service",
+      "Welcome for a visitor group",
+      "Arrival and movement",
+      "Reference only: undefined scores and eye symbols",
+      "Illustration of contact with staff",
+      "Showroom and sales desk",
+      "Routes to showroom, service and reception",
+      "Entrance and visitor groups",
+      "Entrance portrait candidate; low source resolution",
+      "Occupancy portrait candidate; low source resolution",
+      "Destinations portrait candidate; low source resolution",
+      "Model routes portrait candidate; low source resolution",
+      "Model dwell portrait candidate; low source resolution",
+      "Staff contact portrait candidate; low source resolution",
+      "Desk progression portrait candidate; low source resolution",
+      "Business context portrait candidate; low source resolution"
+    ]
+  },
+  "labels": {
+    "geo": "Geo exploration",
+    "review": "Review points",
+    "visuals": "Visuals",
+    "language": "Language",
+    "optional": "Optional exploration",
+    "gallery": "Asset selection",
+    "page": "Page",
+    "output": "What do we get?",
+    "action": "From insight to action"
+  },
+  "output": {
+    "title": "What do we get?",
+    "intro": "An illustrative showroom performance view for daily prioritisation and dealer review.",
+    "scope": "Northstar Retail Group | Showroom A | 5 Nov 2026 | 09:00-14:05 CET | Illustrative snapshot",
+    "definition": "Unit: deduplicated person-visits, not groups or identified people. Qualifying: at least 60 seconds in a model zone; example rule, not buying intent. Contact: validated staff-contact indicator.",
+    "metricLabels": [
+      "Showroom visits",
+      "Contact signal coverage",
+      "Avg time to contact",
+      "Departed, no contact signal"
+    ],
+    "metricNotes": [
+      "Illustrative measured visits",
+      "40 / 68 qualifying visits",
+      "Among 40 contacted visits",
+      "22 completed qualifying visits"
+    ],
+    "physicalTitle": "Showroom contact view",
+    "rowLabels": [
+      "Showroom visits",
+      "Qualifying dwell visits",
+      "With contact indicator",
+      "Departed, no contact signal",
+      "Still present, no contact signal"
+    ],
+    "reconciliation": "68 qualifying visits = 40 with contact + 22 departed without a detected contact signal + 6 still present without a detected contact signal. Contact coverage = 40 / 68 = 58.8%, rounded to 59%.",
+    "crmTitle": "Dealer CRM / DMS",
+    "crmBody": "7 quotations | 3 orders. Illustrative registrations during the reporting day. These are separate totals, not conversions from today’s visit cohort.",
+    "alertTitle": "Response example - simulated",
+    "alertBody": "Model zone 4: dwell 2m 05s, no detected contact signal. Example alert threshold: 90s. Route to a configured phone or smartwatch; no message is sent here.",
+    "actionsTitle": "Dealer review questions",
+    "actions": [
+      "Coverage: compare visit demand, contact signals and available staff by time window.",
+      "Model presentation: investigate dwell and coverage by zone before changing the layout.",
+      "Marketing: align campaign dates and channels with showroom patterns and CRM follow-up."
+    ],
+    "note": "Fictional output specimen inspired by the supplied dashboard; the values are independently created fixtures. No customer data, benchmark, live feed or guaranteed product screen. CRM snapshot: 14:00 CET; physical snapshot: 14:05 CET."
+  },
+  "action": {
+    "title": "Act during the visit. Learn after the change.",
+    "intro": "Operational alerts and structured dealer reviews turn measurement into a repeatable improvement process.",
+    "articles": [
+      {
+        "title": "Respond to a contact opportunity",
+        "body": "A configured dwell-without-contact rule can trigger a phone or smartwatch notification. Assign an available recipient, acknowledge the alert, provide cover and review the response.",
+        "detail": "Product input: alerts are already possible. Confirm channel compatibility, staff distinction, zones, latency, repeat-alert suppression and escalation for the selected deployment. This example is simulated."
+      },
+      {
+        "title": "Improve coverage and model presentation",
+        "body": "Use busy time windows, time to first contact and zone dwell to choose a staffing or layout experiment. Give the action an owner and compare the same definitions before and after.",
+        "detail": "Keep visits without a contact signal visible. Interpret time to contact among contacted visits separately. A longer model dwell is not proven interest."
+      },
+      {
+        "title": "Evaluate marketing and commercial follow-up",
+        "body": "Combine campaign calendars, channel tags and approved CRM/DMS records with aggregate showroom patterns. Review whether visits, model dwell, contacts and registered follow-up change together.",
+        "detail": "Use consented or otherwise permitted linkage, deduplication and a fixed outcome horizon. Without linkage, compare aggregate series; do not attribute individual orders or claim causal uplift."
+      }
+    ],
+    "note": "Agree a baseline, action log and review date. Demonstrated results require comparable evidence; increased sales, ROI and payback are not promised."
+  }
+}

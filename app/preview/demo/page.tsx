@@ -37,11 +37,12 @@ export default async function Page({
     : undefined;
   const rawLocale = first(params.locale);
   const locale = isLocale(rawLocale) ? rawLocale : defaultLocale;
+  const integratedShell = first(params.integrated) === "1";
 
   /* No segment, or one that does not exist: the reader is choosing, and
      choosing happens in ONE place. This renders that same picker rather than a
      second one of its own — same component, same design, same words. */
-  if (!segment) return <SegmentOverview initialLocale={locale} />;
+  if (!segment) return <SegmentOverview initialLocale={locale} integratedShell={integratedShell} />;
 
   /* Addressable so a capture, or a check, can reproduce one scene exactly
      instead of clicking its way there. */

@@ -1,0 +1,253 @@
+{
+  "locale": "fr",
+  "language": "Français",
+  "title": "Proposition PFM Automotive à examiner",
+  "status": "Projet à examiner",
+  "date": "5 novembre 2026",
+  "questionLabel": "Question pour le concessionnaire",
+  "detailLabel": "Sources et conditions de mesure",
+  "illustration": "Visuel illustratif - aucun résultat de mesure",
+  "truth": "Projet à examiner - aucune donnée client ni connexion en direct",
+  "scenes": [
+    {
+      "id": "context",
+      "stage": "Context",
+      "title": "Transformez les constats de la concession en actions commerciales.",
+      "intro": "Repérez les occasions de contact manquées. Réagissez. Évaluez les changements.",
+      "body": "Offrez au concessionnaire une vue pratique des occasions de contact manquées, des moments où la couverture du personnel est tendue et de la progression de l'exploration des modèles vers un suivi enregistré.",
+      "question": "À quel moment un meilleur timing ou un meilleur suivi pourrait-il améliorer votre processus en concession ?",
+      "detail": "PFM associe la conception de la mesure, l'analyse opérationnelle et les revues avec le concessionnaire. L'amélioration commerciale est l'objectif ; pour démontrer des résultats, il faut une mesure de référence et un suivi comparable.",
+      "source": "Contexte pour l'échange",
+      "image": "automotive-showroom-overview-wide.png",
+      "alt": "Concession illustrative avec zones de véhicules, visiteurs, bureau des ventes et accueil du service après-vente."
+    },
+    {
+      "id": "entrance",
+      "stage": "Measure",
+      "title": "Combien de personnes entrent ?",
+      "intro": "Une base fiable commence à l'entrée.",
+      "body": "Comptez les passages entrants et sortants pour chaque entrée et plage horaire retenues. Distinguez les personnes, les passages répétés et les visites déduites. La formation de groupes constitue une analyse distincte à valider.",
+      "question": "Quelles entrées et quelles heures d'ouverture faut-il inclure ?",
+      "detail": "Options d'entrée proposées : Xovis ou Milesight. Le choix du produit, la couverture et l'exclusion du personnel nécessitent une vérification sur site.",
+      "source": "Mesure physique",
+      "image": "automotive-entrance-wide.png",
+      "alt": "Entrée illustrative de visiteurs seuls et de groupes dans une concession automobile."
+    },
+    {
+      "id": "destinations",
+      "stage": "Understand",
+      "title": "Quelle destination les visiteurs atteignent-ils ?",
+      "intro": "La salle d'exposition, le service et l'accueil ont chacun leur rôle.",
+      "body": "Montrez quelles zones définies sont atteintes et comment les parcours se poursuivent. La visite de la zone de service est une destination ; elle ne prouve pas la raison de l'entrée.",
+      "question": "Pouvons-nous définir séparément les zones et les motifs de visite ?",
+      "detail": "Confirmer un motif lié au service nécessite des données supplémentaires de rendez-vous ou d'enregistrement. Gardez visibles les visites mixtes et inconnues.",
+      "source": "Parcours physiques + plan de concession → analyse dérivée",
+      "image": "automotive-destinations-wide.png",
+      "alt": "Parcours illustratifs dans une concession vers le service, l'accueil et l'espace de vente."
+    },
+    {
+      "id": "routes",
+      "stage": "Understand",
+      "title": "Comment les visiteurs passent-ils d'un modèle à l'autre ?",
+      "intro": "Observez le parcours dans la concession.",
+      "body": "Dans la couverture de mesure validée, suivez les transitions entre les zones des modèles. Montrez les combinaisons observées sans présenter un parcours comme une préférence personnelle ou une intention d'achat.",
+      "question": "Quelles zones de modèles et quelles transitions sont pertinentes pour le concessionnaire ?",
+      "detail": "Approfondissement proposé : LiDAR ou configuration 3D Xovis adaptée. Le transfert entre capteurs, les occultations et les lignes de vue doivent être validés.",
+      "source": "Trajectoires physiques + zonage des modèles → analyse dérivée",
+      "image": "automotive-model-routes-portrait.png",
+      "alt": "Parcours illustratif entre des zones de véhicules dans une concession, vu du dessus."
+    },
+    {
+      "id": "dwell",
+      "stage": "Understand",
+      "title": "Près de quels modèles les visiteurs passent-ils du temps ?",
+      "intro": "Observez le temps passé auprès des modèles et repérez les points à examiner.",
+      "body": "Comparez les zones atteintes et le temps passé pour évaluer l'emplacement des modèles et l'orientation des campagnes. Un seuil configuré de temps passé peut signaler une occasion de contact ; il ne prouve pas une intention d'achat.",
+      "question": "Quels modèles nécessitent un emplacement différent ou une présence plus rapide du personnel ?",
+      "detail": "Définissez les limites des zones, le temps minimal passé, les visites répétées et les trajectoires de passage avant de présenter des comparaisons entre modèles.",
+      "source": "Événements de zones physiques + plan des modèles → analyse dérivée",
+      "image": "automotive-model-dwell-portrait.png",
+      "alt": "Visiteurs illustratifs dans des zones délimitées autour de véhicules exposés."
+    },
+    {
+      "id": "contact",
+      "stage": "Understand",
+      "title": "Quelles visites se terminent sans indicateur de contact ?",
+      "intro": "Rendez visibles les lacunes potentielles de contact tant qu'il est encore possible d'agir.",
+      "body": "Distinguez les visites répondant au critère avec un indicateur de contact, les visiteurs encore présents sans indicateur de contact et les visites terminées sans indicateur détecté. Utilisez ces groupes pour examiner la couverture du personnel et améliorer l'accueil.",
+      "question": "Dans quelles situations un vendeur devrait-il réagir plus tôt ?",
+      "detail": "Répondre au critère signifie satisfaire à une règle validée de temps passé, et ne prouve pas que la personne soit un acheteur. Le contact nécessite une distinction validée du personnel et des règles de proximité et de durée validées ; l'absence de signal détecté ne prouve pas qu'aucune conversation n'a eu lieu.",
+      "source": "Trajectoires physiques + distinction du personnel → analyse dérivée",
+      "image": "automotive-staff-contact-wide.png",
+      "alt": "Visiteurs et vendeur près d'un véhicule dans une concession, avec des repères violets illustratifs."
+    },
+    {
+      "id": "desk",
+      "stage": "Understand",
+      "title": "La visite mène-t-elle au bureau des ventes ?",
+      "intro": "De la salle d'exposition à la prochaine étape observable.",
+      "body": "Mesurez la présence dans la zone de bureau convenue et étudiez la suite des signaux de contact. Le fait de s'asseoir au bureau ne prouve ni un devis, ni un prospect enregistré, ni une vente.",
+      "question": "Quelles zones de bureau et quelles actions suivantes souhaitons-nous suivre séparément ?",
+      "detail": "Un pourcentage de passage du contact au bureau nécessite les mêmes trajectoires valides et la même période d'observation. Un devis nécessite un enregistrement CRM ou DMS distinct.",
+      "source": "Zone physique du bureau + zonage → analyse dérivée",
+      "image": "automotive-sales-desk-wide.png",
+      "alt": "Concession illustrative avec visite d'un modèle à gauche et visiteurs au bureau des ventes à droite."
+    },
+    {
+      "id": "prove",
+      "stage": "Prove",
+      "title": "Qu'est-ce qui change après une campagne ou une évolution du processus ?",
+      "intro": "Mettez en relation les tendances observées en concession avec le marketing et le suivi enregistré.",
+      "body": "Comparez les dates de campagne, les volumes de visites, le temps passé dans les zones de modèles et la couverture des contacts. Ajoutez les prospects, devis et commandes du CRM/DMS pour examiner le processus avec le concessionnaire.",
+      "question": "Quelle campagne ou évolution opérationnelle devrions-nous évaluer en premier ?",
+      "detail": "Alignez les périodes des sources, les canaux et les définitions. Sans rapprochement valide des cohortes de visites, les totaux du CRM restent des séries distinctes. Une association avec une campagne ne prouve pas son effet.",
+      "source": "Mesure physique + données métier → comparaison",
+      "image": "automotive-business-context-portrait.png",
+      "alt": "Illustration conceptuelle du contact en concession et des enregistrements commerciaux ; aucun entonnoir mesuré."
+    },
+    {
+      "id": "configure",
+      "stage": "Configure",
+      "title": "Quel dispositif de mesure répond à votre question ?",
+      "intro": "Commencez modestement, avec des dépendances claires.",
+      "body": "Sélectionnez le comptage aux entrées, les zones de la concession, une distinction validée du personnel et un circuit d'alerte. Ajoutez les plannings du personnel, les calendriers de campagne et les liens CRM/DMS autorisés si la question choisie le nécessite.",
+      "question": "Quel dispositif de mesure, de réaction et de revue devons-nous configurer ?",
+      "detail": "D'après les informations produit fournies, des alertes sur téléphone ou montre connectée sont possibles, sous réserve d'un canal de diffusion compatible, d'une règle configurée et d'un responsable opérationnel. Cette revue ne déclenche aucune notification ni intégration.",
+      "source": "Périmètre proposé pour l'étude du site",
+      "image": "automotive-showroom-overview-wide.png",
+      "alt": "Concession illustrative avec différentes zones de mesure pour un dispositif proposé."
+    },
+    {
+      "id": "act",
+      "stage": "Act",
+      "title": "Agissez pendant la visite. Tirez des enseignements après le changement.",
+      "intro": "Convenez de la réaction, du responsable et des éléments qui permettront d'évaluer le changement.",
+      "body": "Testez une alerte d'accueil, adaptez la couverture aux heures de pointe ou examinez le suivi des campagnes. PFM et le concessionnaire conviennent d'une mesure de référence, d'un responsable de l'action et d'une date d'évaluation, puis comparent les indicateurs de contact et commerciaux.",
+      "question": "Prochaine étape : choisir une expérience d'amélioration et une date de revue.",
+      "detail": "Comparez des périodes comparables et des cohortes dont les résultats sont suffisamment mûrs, en tenant compte des canaux, du personnel et de la saisonnalité. Décrivez d'abord les changements observés ; ne revendiquez un effet que si l'évaluation l'étaye. Les actions système de cette revue sont simulées.",
+      "source": "Prochaine étape proposée",
+      "image": "automotive-staff-contact-wide.png",
+      "alt": "Rencontre illustrative entre des visiteurs de la concession et un membre du personnel."
+    }
+  ],
+  "geo": {
+    "title": "D'où vient la demande pour la concession ?",
+    "intro": "Ajoutez des zones de provenance, des tendances de visite liées à la marque et les visites agrégées d'autres concessions lorsqu'une source adaptée permet cette analyse. Cela décrit un panel ou une population modélisée, pas chaque visiteur compté à l'entrée.",
+    "articles": [
+      {
+        "title": "Provenance et zone de chalandise",
+        "body": "Utilisez des zones de provenance agrégées en indiquant la population source, la période et la définition des zones. N'associez aucune provenance individuelle à une trajectoire de capteur."
+      },
+      {
+        "title": "Affinité et autres concessions",
+        "body": "Les visites de lieux liés à la marque sont un signal contextuel. Le terme affinité pour la marque nécessite une définition explicite du fournisseur ; il ne permet aucune conclusion sur les préférences, la possession ou l'intention d'achat."
+      }
+    ],
+    "note": "La disponibilité, la représentativité, les seuils minimaux et l'attribution des lieux doivent être confirmés avec le fournisseur de données. Cette proposition ne contient donc ni carte ni pourcentages fictifs à ce sujet."
+  },
+  "review": {
+    "title": "À examiner avant la mise en œuvre",
+    "items": [
+      "Le récit met-il clairement en évidence la valeur pour le concessionnaire : lacunes de contact, réaction au bon moment et amélioration évaluée ?",
+      "Quels canaux d'alerte, destinataires et règles d'escalade conviennent au fonctionnement du concessionnaire ?",
+      "Quelle question concernant le personnel, la présentation des modèles ou les campagnes faut-il tester en premier ?",
+      "Quelles définitions des groupes, des contacts et des cohortes CRM peuvent être validées ?",
+      "Les visuels et l'exemple de résultat proposés reflètent-ils ce que PFM peut fournir dans le périmètre retenu ?"
+    ],
+    "note": "La brochure existante n'a pas été modifiée. Aucun résultat client, prix, gain, référence comparative ni action système en direct n'a été ajouté à cette proposition."
+  },
+  "gallery": {
+    "title": "Visuels automobiles fournis",
+    "intro": "Les scènes ci-dessus présentent une sélection privilégiée pour examen. Toutes les images ci-dessous sont des candidates. Les repères violets sont conceptuels et ne prouvent ni la couverture des capteurs, ni l'identité, ni les performances de mesure.",
+    "note": "La scène de rue fournie avec des passants reste hors du périmètre automobile : elle montre le commerce de détail et ne sert pas le récit de la concession.",
+    "captions": [
+      "Vue d'ensemble de la concession, des ventes et du service",
+      "Accueil d'un groupe de visiteurs",
+      "Entrée et déplacements",
+      "Ne pas utiliser comme visuel principal : scores non définis et symboles d'œil",
+      "Illustration d'un contact avec un membre du personnel",
+      "Concession et bureau des ventes",
+      "Parcours vers la salle d'exposition, le service et l'accueil",
+      "Entrée et groupes de visiteurs",
+      "Candidate au format portrait pour l'entrée ; faible résolution de la source",
+      "Candidate au format portrait pour l'occupation ; faible résolution de la source",
+      "Candidate au format portrait pour les destinations ; faible résolution de la source",
+      "Candidate au format portrait pour les parcours entre modèles ; faible résolution de la source",
+      "Candidate au format portrait pour le temps passé devant les modèles ; faible résolution de la source",
+      "Candidate au format portrait pour le contact avec le personnel ; faible résolution de la source",
+      "Candidate au format portrait pour le passage au bureau ; faible résolution de la source",
+      "Candidate au format portrait pour le contexte commercial ; faible résolution de la source"
+    ]
+  },
+  "labels": {
+    "geo": "Approfondissement géographique",
+    "review": "Points à examiner",
+    "visuals": "Visuels",
+    "language": "Langue",
+    "optional": "Approfondissement facultatif",
+    "gallery": "Sélection des visuels",
+    "page": "Page",
+    "output": "Que nous apporte cette vue ?",
+    "action": "De l'analyse à l'action"
+  },
+  "output": {
+    "title": "Que nous apporte cette vue ?",
+    "intro": "Vue illustrative des performances de la concession, pour prioriser au quotidien et effectuer une revue avec le concessionnaire.",
+    "scope": "Northstar Retail Group | Concession A | 5 nov. 2026 | 09:00-14:05 CET | Instantané illustratif",
+    "definition": "Unité : visites de personnes après déduplication, et non groupes ou personnes identifiées. Visite répondant au critère : au moins 60 secondes dans une zone de modèle ; règle donnée à titre d'exemple, qui n'indique pas une intention d'achat. Contact : indicateur validé de contact avec le personnel.",
+    "metricLabels": [
+      "Visites de la concession",
+      "Couverture par signal de contact",
+      "Temps moyen jusqu'au contact",
+      "Partis sans signal de contact"
+    ],
+    "metricNotes": [
+      "Visites mesurées (données illustratives)",
+      "40 / 68 visites répondant au critère",
+      "Parmi les 40 visites avec indicateur de contact",
+      "22 visites répondant au critère et terminées"
+    ],
+    "physicalTitle": "Vue des contacts en concession",
+    "rowLabels": [
+      "Visites en concession",
+      "Visites répondant au critère de temps passé",
+      "Avec indicateur de contact",
+      "Partis sans signal de contact",
+      "Toujours présents, sans signal de contact"
+    ],
+    "reconciliation": "68 visites répondant au critère = 40 avec indicateur de contact + 22 terminées sans indicateur de contact détecté + 6 toujours présentes sans indicateur détecté. Couverture des contacts = 40 / 68 = 58,8 %, arrondie à 59 %.",
+    "crmTitle": "CRM / DMS du concessionnaire",
+    "crmBody": "7 devis | 3 commandes. Enregistrements illustratifs effectués pendant la journée de reporting. Il s'agit de totaux distincts, et non de conversions issues de la cohorte des visites du jour.",
+    "alertTitle": "Exemple de réaction - simulé",
+    "alertBody": "Zone de modèle 4 : temps passé de 2 min 05 s, sans signal de contact détecté. Seuil d’alerte donné à titre d’exemple : 90 s. Acheminement configuré vers un téléphone ou une montre connectée ; aucun message n’est envoyé ici.",
+    "actionsTitle": "Questions pour la revue avec le concessionnaire",
+    "actions": [
+      "Couverture : comparez la demande de visites, les signaux de contact et le personnel disponible par plage horaire.",
+      "Présentation des modèles : examinez le temps passé et la couverture par zone avant de modifier l'agencement.",
+      "Marketing : mettez les dates et les canaux des campagnes en regard des tendances de la concession et du suivi CRM."
+    ],
+    "note": "Exemple fictif inspiré du tableau de bord ; valeurs créées indépendamment. Aucune donnée client, référence comparative, diffusion en direct ou vue produit garantie. CRM à 14:00 CET ; mesure physique à 14:05 CET."
+  },
+  "action": {
+    "title": "Agissez pendant la visite. Apprenez après le changement.",
+    "intro": "Les alertes opérationnelles et les revues structurées avec le concessionnaire font de la mesure un processus d'amélioration reproductible.",
+    "articles": [
+      {
+        "title": "Réagir à une occasion de contact",
+        "body": "Une règle configurée définissant un temps passé sans signal de contact peut déclencher une notification sur téléphone ou montre connectée. Attribuez un destinataire disponible, faites-lui accuser réception de l'alerte, prévoyez une personne en renfort et examinez la réaction.",
+        "detail": "D'après les informations produit fournies, les alertes sont possibles. Confirmez la compatibilité du canal, la distinction du personnel, les zones, la latence, la suppression des alertes répétées et l'escalade pour le déploiement retenu. Cet exemple est simulé."
+      },
+      {
+        "title": "Améliorer la couverture et la présentation des modèles",
+        "body": "Utilisez les plages horaires chargées, le délai avant le premier contact et le temps passé dans les zones pour choisir une expérience sur le personnel ou l'agencement. Désignez un responsable et comparez les mêmes définitions avant et après.",
+        "detail": "Gardez visibles les visites sans signal de contact. Analysez séparément le délai avant le contact parmi les visites avec indicateur de contact. Un temps plus long passé devant un modèle ne prouve pas un intérêt."
+      },
+      {
+        "title": "Évaluer le suivi marketing et commercial",
+        "body": "Associez les calendriers de campagne, les balises de canal et les données CRM/DMS autorisées aux tendances agrégées de la concession. Examinez si les visites, le temps passé dans les zones de modèles, les contacts et le suivi enregistré évoluent ensemble.",
+        "detail": "Utilisez un rapprochement avec consentement ou autrement autorisé, une déduplication et un horizon de résultat défini. Sans rapprochement, comparez les séries agrégées ; n'attribuez pas de commandes individuelles et ne revendiquez pas d'effet causal de la campagne."
+      }
+    ],
+    "note": "Convenez d'une mesure de référence, d'un journal des actions et d'une date de revue. Démontrer des résultats exige des éléments comparables ; aucune hausse des ventes, aucun retour sur investissement ni délai de retour sur investissement ne sont promis."
+  }
+}

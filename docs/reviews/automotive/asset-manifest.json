@@ -1,0 +1,178 @@
+[
+  {
+    "source": "/Users/cvrooijen/Downloads/Futuristische Autowelt mit violetter Datenanalyse.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-showroom-overview-wide.png",
+    "purpose": "Overzicht van showroom, sales en service",
+    "status": "review-candidate",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "c8fde477358d2b1bf1216ba1fa5901400d99aff7b4e6a11be63ab3a593f8e0c9"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/Gezinsontvangst in moderne autoshowroom.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-welcome-wide.png",
+    "purpose": "Ontvangst van bezoekersgroep",
+    "status": "review-candidate",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "c75b43720010c8b43c7d669aea3b58b350c0469120f053af1b9ec58313257bb3"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/Gouden showroom met paarse tracking-AR.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-arrival-wide.png",
+    "purpose": "Binnenkomst en beweging",
+    "status": "review-candidate",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "57fc4e657a0aff2e5793b98befe84aaaf80ef92aec282e4dcaa8085a314bf76f"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/Luxe Showroom met Paarse Auto-Analyses.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-undefined-scores-reference.png",
+    "purpose": "Niet gebruiken als hero: ongedefinieerde scores en oogsymbolen",
+    "status": "review-candidate",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "3e90ac50ecd6f5b05dac6eb40f585f19a992e89b1cef8cea20776d07c5a37dc5"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/Luxe showroom met paarse interactie-highlights.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-staff-contact-wide.png",
+    "purpose": "Illustratie van contact met medewerker",
+    "status": "review-candidate",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "45c3a5fabbdb11158505088f00ed36f42b29af8ba726fd03d190354d1f4c8ff0"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/Moderne autodealer met AI-analyse_overlay.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-sales-desk-wide.png",
+    "purpose": "Showroom en salesdesk",
+    "status": "review-candidate",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "35fa24d1bd01372e23275533410d876dd562cbd3e0f16e28301260a927f84f7a"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/Moderne autodealer met paarse bezoekersroutes.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-destinations-wide.png",
+    "purpose": "Routes naar showroom, service en ontvangst",
+    "status": "review-candidate",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "160e245db83ed33f81e670df2e5da19d9df7f64df34bd9b23b33e1e1a0b76d71"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/Technologie in de luxe showroom.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-entrance-wide.png",
+    "purpose": "Entree en bezoekersgroepen",
+    "status": "review-candidate",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "62e5eea9aa3439fc3e283fc4302618d17c38e30ea37f2324a6932913ee476d1d"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/PFM_Automotive_8_Visuals/PFM_Automotive_01_Who_enters_the_showroom.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-entrance-portrait.png",
+    "purpose": "Portretkandidaat voor entrance; lage bronresolutie",
+    "status": "review-candidate",
+    "dimensions": [
+      408,
+      459
+    ],
+    "sha256": "ab8f7bfd3e1a27e7025df3481d0d1da7fc60f8bee198218d59f6cf1d3f8dfeb0"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/PFM_Automotive_8_Visuals/PFM_Automotive_02_How_busy_is_the_showroom.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-occupancy-portrait.png",
+    "purpose": "Portretkandidaat voor occupancy; lage bronresolutie",
+    "status": "review-candidate",
+    "dimensions": [
+      402,
+      459
+    ],
+    "sha256": "6b514e9b03eeff385f8655da78dc2346d50c1630e2a56d41df156eda78107275"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/PFM_Automotive_8_Visuals/PFM_Automotive_03_Which_destinations_do_visitors_reach.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-destinations-portrait.png",
+    "purpose": "Portretkandidaat voor destinations; lage bronresolutie",
+    "status": "review-candidate",
+    "dimensions": [
+      403,
+      459
+    ],
+    "sha256": "7306efc8320b7a18fa7bc873d67b04426fb5dca9f01c6d3aa5ba3f223f63bc58"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/PFM_Automotive_8_Visuals/PFM_Automotive_04_Where_do_visitors_go.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-model-routes-portrait.png",
+    "purpose": "Portretkandidaat voor model-routes; lage bronresolutie",
+    "status": "review-candidate",
+    "dimensions": [
+      429,
+      459
+    ],
+    "sha256": "41da67e993b3261e4339257c50e26bac2605c7dfcb05f089ba13d36cf01af6eb"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/PFM_Automotive_8_Visuals/PFM_Automotive_05_Which_vehicles_hold_attention.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-model-dwell-portrait.png",
+    "purpose": "Portretkandidaat voor model-dwell; lage bronresolutie",
+    "status": "review-candidate",
+    "dimensions": [
+      408,
+      471
+    ],
+    "sha256": "98ddf67a26661514abe8dd21ddcb0032329cddbdaffdd374b8712cae115cc1f1"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/PFM_Automotive_8_Visuals/PFM_Automotive_06_Do_visitors_get_staff_engagement.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-staff-contact-portrait.png",
+    "purpose": "Portretkandidaat voor staff-contact; lage bronresolutie",
+    "status": "review-candidate",
+    "dimensions": [
+      402,
+      471
+    ],
+    "sha256": "2e03b75068dfde2e6a15b2b2bfcbfb7429cdb1309a8bcabbf21e435346f16d21"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/PFM_Automotive_8_Visuals/PFM_Automotive_07_Does_engagement_reach_sales_desk.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-desk-progression-portrait.png",
+    "purpose": "Portretkandidaat voor desk-progression; lage bronresolutie",
+    "status": "review-candidate",
+    "dimensions": [
+      403,
+      471
+    ],
+    "sha256": "0763a051335e153b46a03a3514f27d6aa470742a9aabc3b16410aff1e5858302"
+  },
+  {
+    "source": "/Users/cvrooijen/Downloads/PFM_Automotive_8_Visuals/PFM_Automotive_08_Commercial_outcome.png",
+    "asset": "public/assets/content-candidates/automotive/automotive-business-context-portrait.png",
+    "purpose": "Portretkandidaat voor business-context; lage bronresolutie",
+    "status": "review-candidate",
+    "dimensions": [
+      429,
+      471
+    ],
+    "sha256": "fe697463d595251e7b2333527329e017b62d69c29f8ce87eb0768b3fa7c6a9a7"
+  }
+]

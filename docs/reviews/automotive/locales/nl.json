@@ -1,0 +1,253 @@
+{
+  "locale": "nl",
+  "language": "Nederlands",
+  "title": "PFM Automotive reviewvoorstel",
+  "status": "Concept ter review",
+  "date": "5 november 2026",
+  "questionLabel": "Vraag voor de dealer",
+  "detailLabel": "Bronnen en meetvoorwaarden",
+  "illustration": "Illustratieve visual - geen meetresultaat",
+  "truth": "Concept ter review - geen klantdata of live koppelingen",
+  "scenes": [
+    {
+      "id": "context",
+      "stage": "Context",
+      "title": "Van showroominzicht naar commerciële actie.",
+      "intro": "Maak contactkansen zichtbaar. Reageer. Evalueer wat verandert.",
+      "body": "Geef de dealer grip op waar contactkansen blijven liggen, wanneer de bezetting onder druk staat en hoe modelbezoek doorloopt naar geregistreerde opvolging.",
+      "question": "Waar kunnen betere timing of opvolging uw showroomproces verbeteren?",
+      "detail": "PFM combineert meetontwerp, operationeel inzicht en dealerreviews. Commerciële verbetering is het doel; aantoonbare resultaten vragen een nulmeting en vergelijkbare opvolging.",
+      "source": "Context voor het gesprek",
+      "image": "automotive-showroom-overview-wide.png",
+      "alt": "Illustratieve showroom met autozones, bezoekers, salesdesk en servicereceptie."
+    },
+    {
+      "id": "entrance",
+      "stage": "Measure",
+      "title": "Hoeveel mensen komen binnen?",
+      "intro": "Een betrouwbare basis begint bij de entree.",
+      "body": "Tel in- en uitgaande passages per gekozen entree en tijdvak. Houd personen, herhaalpassages en afgeleide bezoeken uit elkaar. Groepsvorming is een afzonderlijke, te valideren analyse.",
+      "question": "Welke entrees en openingstijden moeten worden meegenomen?",
+      "detail": "Voorgestelde entreeopties: Xovis of Milesight. Productkeuze, dekking en uitsluiting van personeel vragen een locatiecheck.",
+      "source": "Fysiek gemeten",
+      "image": "automotive-entrance-wide.png",
+      "alt": "Illustratieve binnenkomst van losse bezoekers en groepen in een autoshowroom."
+    },
+    {
+      "id": "destinations",
+      "stage": "Understand",
+      "title": "Welke bestemming bereiken bezoekers?",
+      "intro": "Showroom, service en ontvangst hebben elk een eigen rol.",
+      "body": "Maak zichtbaar welke gedefinieerde zones worden bereikt en hoe routes doorlopen. Een bezoek aan de servicezone is een bestemming; het bewijst niet waarom iemand binnenkwam.",
+      "question": "Kunnen we zones en bezoekdoelen afzonderlijk definiëren?",
+      "detail": "Een bevestigd servicedoel vraagt aanvullende afspraak- of registratiegegevens. Houd gemengde en onbekende bezoeken zichtbaar.",
+      "source": "Fysieke routes + dealerplattegrond → afgeleid inzicht",
+      "image": "automotive-destinations-wide.png",
+      "alt": "Illustratieve showroomroutes richting service, ontvangst en verkoopruimte."
+    },
+    {
+      "id": "routes",
+      "stage": "Understand",
+      "title": "Hoe bewegen bezoekers van model naar model?",
+      "intro": "Bekijk de route door de showroom.",
+      "body": "Volg binnen de gevalideerde meetdekking overgangen tussen modelzones. Laat zien welke combinaties voorkomen, zonder een route als persoonlijke voorkeur of koopintentie te presenteren.",
+      "question": "Welke modelzones en overgangen zijn voor de dealer relevant?",
+      "detail": "Voorgestelde verdieping: LiDAR of een geschikte Xovis 3D-opstelling. Overdracht tussen sensoren, afscherming en zichtlijnen moeten worden gevalideerd.",
+      "source": "Fysieke trajecten + modelzonering → afgeleid inzicht",
+      "image": "automotive-model-routes-portrait.png",
+      "alt": "Illustratieve route tussen autozones in een showroom, gezien van bovenaf."
+    },
+    {
+      "id": "dwell",
+      "stage": "Understand",
+      "title": "Bij welke modellen blijven bezoekers staan?",
+      "intro": "Bekijk modelverblijf en kies waar nader onderzoek nodig is.",
+      "body": "Vergelijk zonebereik en verblijfsduur om modelplaatsing en campagnefocus te toetsen. Een ingestelde verblijfsdrempel kan een contactkans signaleren; dit bewijst geen koopintentie.",
+      "question": "Welke modellen vragen een andere plaatsing of tijdiger personeelsdekking?",
+      "detail": "Leg zonegrenzen, minimale verblijfsduur, terugkeer en passerende trajecten vast voordat modelvergelijkingen worden getoond.",
+      "source": "Fysieke zone-events + modelindeling → afgeleid inzicht",
+      "image": "automotive-model-dwell-portrait.png",
+      "alt": "Illustratieve bezoekers in afgebakende zones rondom showroomauto’s."
+    },
+    {
+      "id": "contact",
+      "stage": "Understand",
+      "title": "Wie vertrekt zonder contactsignaal?",
+      "intro": "Maak mogelijke contactgaten zichtbaar terwijl reageren nog kan.",
+      "body": "Scheid geldige bezoeken met contact, nog aanwezige bezoekers zonder contact en afgeronde bezoeken zonder gedetecteerde contactindicator. Onderzoek daarmee de dekking en verbeter het ontvangstproces.",
+      "question": "Waar zou een verkoper eerder moeten reageren?",
+      "detail": "Geldig betekent hier een gevalideerde verblijfsregel, geen bewezen koper. Contact vraagt personeelsonderscheid en nabijheids-/duurregels; geen signaal bewijst niet dat er geen gesprek was.",
+      "source": "Fysieke trajecten + personeelsonderscheid → afgeleid inzicht",
+      "image": "automotive-staff-contact-wide.png",
+      "alt": "Illustratie van bezoekers en een verkoper bij een showroomauto, met paarse markeringen."
+    },
+    {
+      "id": "desk",
+      "stage": "Understand",
+      "title": "Komt het bezoek bij de salesdesk?",
+      "intro": "Van de showroomvloer naar de volgende zichtbare stap.",
+      "body": "Meet aanwezigheid in de afgesproken deskzone en onderzoek vervolg op contactsignalen. Aan de desk zitten bewijst geen offerte, lead of verkoop.",
+      "question": "Welke deskzones en vervolgacties willen we apart volgen?",
+      "detail": "Een contact-naar-deskpercentage vraagt dezelfde geldige trajecten en observatieperiode. Een offerte vraagt een apart CRM- of DMS-record.",
+      "source": "Fysieke deskzone + zonering → afgeleid inzicht",
+      "image": "automotive-sales-desk-wide.png",
+      "alt": "Illustratieve showroom met modelbezoek links en bezoekers bij een salesdesk rechts."
+    },
+    {
+      "id": "prove",
+      "stage": "Prove",
+      "title": "Wat verandert na een campagne of procesaanpassing?",
+      "intro": "Verbind showroompatronen met marketing en geregistreerde opvolging.",
+      "body": "Vergelijk campagnedata, bezoekvolumes, modelverblijf en contactdekking. Voeg CRM/DMS-leads, offertes en orders toe om samen met de dealer het proces te beoordelen.",
+      "question": "Welke campagne of operationele verandering willen we als eerste evalueren?",
+      "detail": "Stem bronperioden, kanalen en definities af. Zonder geldige bezoekcohortkoppeling blijven CRM-totalen aparte reeksen. Samenhang met een campagne bewijst geen campagne-effect.",
+      "source": "Fysieke meting + bedrijfsdata → vergelijking",
+      "image": "automotive-business-context-portrait.png",
+      "alt": "Conceptuele illustratie van showroomcontact en commerciële registraties; geen gemeten funnel."
+    },
+    {
+      "id": "configure",
+      "stage": "Configure",
+      "title": "Welke meetopzet past bij uw vraag?",
+      "intro": "Begin klein, met duidelijke afhankelijkheden.",
+      "body": "Kies entreetelling, showroomzones, gevalideerd personeelsonderscheid en een meldingsproces. Voeg roosters, campagnekalenders en toegestane CRM/DMS-koppelingen toe waar de gekozen vraag dat vraagt.",
+      "question": "Welk meet-, reactie- en reviewproces willen we inrichten?",
+      "detail": "Meldingen op telefoon of smartwatch zijn volgens aangeleverde productinput mogelijk, bij een geschikt kanaal, ingestelde regel en operationeel eigenaarschap. Deze review verstuurt geen melding en start geen koppeling.",
+      "source": "Voorgestelde scope voor locatieonderzoek",
+      "image": "automotive-showroom-overview-wide.png",
+      "alt": "Illustratieve showroom met verschillende meetgebieden voor een voorgestelde meetopzet."
+    },
+    {
+      "id": "act",
+      "stage": "Act",
+      "title": "Van inzicht naar actie naar geëvalueerd resultaat.",
+      "intro": "Spreek de reactie, de eigenaar en het bewijs van verandering af.",
+      "body": "Test een ontvangstmelding, pas piekbezetting aan of beoordeel campagneopvolging. PFM en de dealer bepalen nulmeting, actie-eigenaar en evaluatiemoment en vergelijken contact- en commerciële indicatoren.",
+      "question": "Volgende stap: kies één verbeterexperiment en een reviewdatum.",
+      "detail": "Vergelijk passende perioden en voldoende oude cohorten, met aandacht voor kanalen, bezetting en seizoen. Beschrijf eerst de waargenomen verandering; claim effect pas met onderbouwing. Systeemacties in deze review zijn gesimuleerd.",
+      "source": "Voorgestelde vervolgstap",
+      "image": "automotive-staff-contact-wide.png",
+      "alt": "Illustratieve ontmoeting tussen showroombezoekers en een medewerker."
+    }
+  ],
+  "geo": {
+    "title": "Waar komt de showroomvraag vandaan?",
+    "intro": "Voeg herkomstgebieden, merkgerelateerde bezoekpatronen en geaggregeerd bezoek aan andere showrooms toe wanneer een geschikte bron deze analyse ondersteunt. Dit beschrijft een panel of gemodelleerde populatie, niet iedere getelde bezoeker aan de entree.",
+    "articles": [
+      {
+        "title": "Herkomst en bereik",
+        "body": "Gebruik geaggregeerde herkomstgebieden met de bronpopulatie, periode en gebiedsdefinitie zichtbaar. Geen individuele herkomst aan een sensortraject koppelen."
+      },
+      {
+        "title": "Affiniteit en andere showrooms",
+        "body": "Bezoek aan merkgerelateerde locaties is een contextsignaal. De term merkaffiniteit vraagt een expliciete providerdefinitie; geen uitspraak over voorkeur, bezit of koopintentie."
+      }
+    ],
+    "note": "Beschikbaarheid, representativiteit, minimumaantallen en locatietoewijzing moeten met de dataleverancier worden bevestigd. Daarom bevat dit voorstel hiervoor geen kaart of fictieve percentages."
+  },
+  "review": {
+    "title": "Te beoordelen vóór implementatie",
+    "items": [
+      "Is de dealerwaarde duidelijk: contactgaten, tijdige reactie en geëvalueerde verbetering?",
+      "Welke meldingskanalen, ontvangers en escalatieregels passen bij de dealer?",
+      "Welke bezettings-, modelpresentatie- of campagnevraag toetsen we als eerste?",
+      "Welke groeps-, contact- en CRM-cohortdefinities kunnen worden gevalideerd?",
+      "Passen visuals en illustratieve output bij wat PFM binnen de gekozen scope kan leveren?"
+    ],
+    "note": "De bestaande brochure is niet aangepast. Er zijn geen klantresultaten, prijzen, uplift, benchmarks of live systeemacties aan dit voorstel toegevoegd."
+  },
+  "gallery": {
+    "title": "Aangeleverde Automotive visuals",
+    "intro": "De scènes hierboven tonen een voorkeursselectie ter review. Alle onderstaande beelden zijn kandidaten. Paarse markeringen zijn conceptueel en vormen geen bewijs van sensorbereik, identiteit of meetprestaties.",
+    "note": "Het aangeleverde straatbeeld met winkelpassanten blijft buiten Automotive: het toont Retail en ondersteunt dit showroomverhaal niet.",
+    "captions": [
+      "Overzicht van showroom, sales en service",
+      "Ontvangst van bezoekersgroep",
+      "Binnenkomst en beweging",
+      "Niet gebruiken als hero: ongedefinieerde scores en oogsymbolen",
+      "Illustratie van contact met medewerker",
+      "Showroom en salesdesk",
+      "Routes naar showroom, service en ontvangst",
+      "Entree en bezoekersgroepen",
+      "Portretkandidaat voor entrance; lage bronresolutie",
+      "Portretkandidaat voor occupancy; lage bronresolutie",
+      "Portretkandidaat voor destinations; lage bronresolutie",
+      "Portretkandidaat voor model-routes; lage bronresolutie",
+      "Portretkandidaat voor model-dwell; lage bronresolutie",
+      "Portretkandidaat voor staff-contact; lage bronresolutie",
+      "Portretkandidaat voor desk-progression; lage bronresolutie",
+      "Portretkandidaat voor business-context; lage bronresolutie"
+    ]
+  },
+  "labels": {
+    "geo": "Geo verdieping",
+    "review": "Reviewpunten",
+    "visuals": "Visuals",
+    "language": "Taal",
+    "optional": "Optionele verdieping",
+    "gallery": "Assetselectie",
+    "page": "Pagina",
+    "output": "Wat krijgen we?",
+    "action": "Van inzicht naar actie"
+  },
+  "output": {
+    "title": "Wat krijgen we?",
+    "intro": "Een illustratief showroomperformance-overzicht voor dagelijkse prioriteiten en dealerreviews.",
+    "scope": "Northstar Retail Group | Showroom A | 5 nov 2026 | 09:00-14:05 CET | Illustratief momentbeeld",
+    "definition": "Eenheid: ontdubbelde persoonsbezoeken, geen groepen of geïdentificeerde personen. Geldig: minimaal 60 seconden in een modelzone; voorbeeldregel, geen koopintentie. Contact: gevalideerde medewerkercontactindicator.",
+    "metricLabels": [
+      "Showroombezoeken",
+      "Contactsignaaldekking",
+      "Gem. tijd tot contact",
+      "Vertrokken zonder contactsignaal"
+    ],
+    "metricNotes": [
+      "Illustratief gemeten bezoeken",
+      "40 / 68 geldige bezoeken",
+      "Onder 40 bezoeken met contact",
+      "22 afgeronde geldige bezoeken"
+    ],
+    "physicalTitle": "Showroomcontact",
+    "rowLabels": [
+      "Showroombezoeken",
+      "Bezoeken met geldig verblijf",
+      "Met contactindicator",
+      "Vertrokken zonder contactsignaal",
+      "Nog aanwezig, geen contactsignaal"
+    ],
+    "reconciliation": "68 geldige bezoeken = 40 met contact + 22 vertrokken zonder gedetecteerd contactsignaal + 6 nog aanwezig zonder gedetecteerd contactsignaal. Contactdekking = 40 / 68 = 58,8%, afgerond 59%.",
+    "crmTitle": "Dealer CRM / DMS",
+    "crmBody": "7 offertes | 3 orders. Illustratieve registraties op de rapportagedag. Dit zijn aparte totalen, geen conversies uit het bezoekcohort van vandaag.",
+    "alertTitle": "Reactievoorbeeld - gesimuleerd",
+    "alertBody": "Modelzone 4: verblijf 2m 05s, geen gedetecteerd contactsignaal. Voorbeelddrempel: 90s. Routeer naar een ingestelde telefoon of smartwatch; hier wordt niets verstuurd.",
+    "actionsTitle": "Vragen voor de dealerreview",
+    "actions": [
+      "Dekking: vergelijk bezoekdrukte, contactsignalen en beschikbaar personeel per tijdvak.",
+      "Modelpresentatie: onderzoek verblijf en dekking per zone voordat de opstelling verandert.",
+      "Marketing: leg campagnedata en kanalen naast showroompatronen en CRM-opvolging."
+    ],
+    "note": "Fictief outputvoorbeeld geïnspireerd op het dashboard; de waarden zijn onafhankelijk aangemaakte fixtures. Geen klantdata, benchmark, live feed of gegarandeerd productscherm. CRM-peildatum: 14:00 CET; fysiek momentbeeld: 14:05 CET."
+  },
+  "action": {
+    "title": "Reageer tijdens het bezoek. Leer na de verandering.",
+    "intro": "Operationele meldingen en vaste dealerreviews maken van meting een herhaalbaar verbeterproces.",
+    "articles": [
+      {
+        "title": "Reageer op een contactkans",
+        "body": "Een ingestelde regel voor verblijf zonder contact kan een telefoon- of smartwatchmelding activeren. Wijs een beschikbare ontvanger toe, bevestig de melding, organiseer dekking en beoordeel de reactie.",
+        "detail": "Productinput: meldingen zijn al mogelijk. Bevestig kanaalcompatibiliteit, personeelsonderscheid, zones, vertraging, onderdrukking van herhaalmeldingen en escalatie per implementatie. Dit voorbeeld is gesimuleerd."
+      },
+      {
+        "title": "Verbeter dekking en modelpresentatie",
+        "body": "Gebruik drukke tijdvakken, tijd tot contact en zoneverblijf om een rooster- of opstellingsexperiment te kiezen. Wijs een eigenaar aan en vergelijk dezelfde definities vóór en na.",
+        "detail": "Houd bezoeken zonder contactsignaal zichtbaar. Beoordeel de contacttijd onder bezoeken mét contact apart. Langer modelverblijf is geen bewezen interesse."
+      },
+      {
+        "title": "Evalueer marketing en commerciële opvolging",
+        "body": "Combineer campagnekalenders, kanaallabels en toegestane CRM/DMS-registraties met geaggregeerde showroompatronen. Beoordeel of bezoek, modelverblijf, contact en geregistreerde opvolging samen veranderen.",
+        "detail": "Gebruik toegestane koppelingen, ontdubbeling en een vaste uitkomsthorizon. Vergelijk zonder koppeling alleen aggregaten; schrijf geen individuele orders toe en claim geen causale uplift."
+      }
+    ],
+    "note": "Spreek nulmeting, actielog en reviewdatum af. Aantoonbare resultaten vragen vergelijkbaar bewijs; extra verkopen, ROI en terugverdientijd worden niet beloofd."
+  }
+}

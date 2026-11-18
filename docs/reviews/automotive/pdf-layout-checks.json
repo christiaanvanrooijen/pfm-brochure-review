@@ -1,0 +1,32 @@
+[
+  {
+    "locale": "en",
+    "pdf": "output/pdf/PFM-Automotive-Review-EN.pdf",
+    "pages": 16,
+    "layoutAssertions": "passed"
+  },
+  {
+    "locale": "nl",
+    "pdf": "output/pdf/PFM-Automotive-Review-NL.pdf",
+    "pages": 16,
+    "layoutAssertions": "passed"
+  },
+  {
+    "locale": "de",
+    "pdf": "output/pdf/PFM-Automotive-Review-DE.pdf",
+    "pages": 16,
+    "layoutAssertions": "passed"
+  },
+  {
+    "locale": "fr",
+    "pdf": "output/pdf/PFM-Automotive-Review-FR.pdf",
+    "pages": 16,
+    "layoutAssertions": "passed"
+  },
+  {
+    "locale": "es",
+    "pdf": "output/pdf/PFM-Automotive-Review-ES.pdf",
+    "pages": 16,
+    "layoutAssertions": "passed"
+  }
+]

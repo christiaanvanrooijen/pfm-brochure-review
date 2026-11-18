@@ -1,0 +1,37 @@
+[
+  {
+    "locale": "en",
+    "pages": 16,
+    "text": "complete",
+    "newFixture": "verified",
+    "sha256": "9efa7fb114c743ccba2cd2e84e88f4202e255588ea12d2823ec48c9b3a82fca2"
+  },
+  {
+    "locale": "nl",
+    "pages": 16,
+    "text": "complete",
+    "newFixture": "verified",
+    "sha256": "4ffc33c98f3f3641af1bb57bd7cb61f6fd9e90457d069d48e9af35e06ae3e785"
+  },
+  {
+    "locale": "de",
+    "pages": 16,
+    "text": "complete",
+    "newFixture": "verified",
+    "sha256": "fb0af3a1072b565593b44850004aad3666b10bf95ef00e232ffc3fe6fafb5bb5"
+  },
+  {
+    "locale": "fr",
+    "pages": 16,
+    "text": "complete",
+    "newFixture": "verified",
+    "sha256": "7303aabfc9938bafd01957905a28886a802114241ef6275653af216fd0e36291"
+  },
+  {
+    "locale": "es",
+    "pages": 16,
+    "text": "complete",
+    "newFixture": "verified",
+    "sha256": "a3090580798fee42f9630c85f304a78482899308ddfab1f36ff0acdba451f3b6"
+  }
+]

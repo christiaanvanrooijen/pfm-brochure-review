@@ -1,0 +1,253 @@
+{
+  "locale": "de",
+  "language": "Deutsch",
+  "title": "PFM Automotive - Vorschlag zur Prüfung",
+  "status": "Entwurf zur Prüfung",
+  "date": "5. November 2026",
+  "questionLabel": "Frage an den Händler",
+  "detailLabel": "Quellen und Messbedingungen",
+  "illustration": "Illustrative Visualisierung - kein Messergebnis",
+  "truth": "Entwurf zur Prüfung - keine Kundendaten oder Live-Integrationen",
+  "scenes": [
+    {
+      "id": "context",
+      "stage": "Context",
+      "title": "Erkenntnisse aus dem Ausstellungsbereich in geschäftliche Maßnahmen umsetzen.",
+      "intro": "Lücken beim Kontakt erkennen. Reagieren. Veränderungen auswerten.",
+      "body": "Geben Sie dem Händler einen praktischen Überblick darüber, wo Kontaktmöglichkeiten ungenutzt bleiben, wann die Personalabdeckung knapp ist und wie die Erkundung der Modelle in eine dokumentierte Nachverfolgung übergeht.",
+      "question": "Wo könnten ein besserer Zeitpunkt oder eine konsequentere Nachverfolgung Ihren Ablauf im Ausstellungsbereich verbessern?",
+      "detail": "PFM verbindet Messkonzeption, operative Erkenntnisse und Auswertungen mit dem Händler. Geschäftliche Verbesserungen sind das Ziel; belegte Ergebnisse erfordern eine Ausgangsmessung und vergleichbare Folgemessungen.",
+      "source": "Gesprächskontext",
+      "image": "automotive-showroom-overview-wide.png",
+      "alt": "Illustrativer Ausstellungsbereich mit Autozonen, Besuchern, Beratungstisch und Serviceannahme."
+    },
+    {
+      "id": "entrance",
+      "stage": "Measure",
+      "title": "Wie viele Menschen kommen herein?",
+      "intro": "Eine verlässliche Grundlage beginnt am Eingang.",
+      "body": "Zählen Sie ein- und ausgehende Passagen je ausgewähltem Eingang und Zeitfenster. Halten Sie Personen, wiederholte Passagen und abgeleitete Besuche getrennt. Gruppenbildung ist eine separate Analyse, die erst validiert werden muss.",
+      "question": "Welche Eingänge und Öffnungszeiten sollen berücksichtigt werden?",
+      "detail": "Vorgeschlagene Optionen für die Eingangsmessung: Xovis oder Milesight. Produktauswahl, Abdeckung und Ausschluss von Mitarbeitenden müssen vor Ort geprüft werden.",
+      "source": "Physisch gemessen",
+      "image": "automotive-entrance-wide.png",
+      "alt": "Illustrativer Eintritt einzelner Besucher und von Gruppen in ein Autohaus."
+    },
+    {
+      "id": "destinations",
+      "stage": "Understand",
+      "title": "Welche Bereiche erreichen die Besucher?",
+      "intro": "Ausstellung, Service und Empfang erfüllen jeweils eine eigene Funktion.",
+      "body": "Machen Sie sichtbar, welche definierten Zonen erreicht werden und wie sich die Wege fortsetzen. Die Servicezone ist ein möglicher Zielbereich; ihr Besuch belegt nicht, aus welchem Grund jemand gekommen ist.",
+      "question": "Können wir Zonen und Besuchsziele getrennt definieren?",
+      "detail": "Ein bestätigter Serviceanlass erfordert zusätzliche Termin- oder Registrierungsdaten. Gemischte und unbekannte Besuche müssen sichtbar bleiben.",
+      "source": "Physische Wege + Händlergrundriss → abgeleitete Erkenntnis",
+      "image": "automotive-destinations-wide.png",
+      "alt": "Illustrative Wege im Autohaus zu Service, Empfang und Verkaufsbereich."
+    },
+    {
+      "id": "routes",
+      "stage": "Understand",
+      "title": "Wie bewegen sich Besucher von Modell zu Modell?",
+      "intro": "Betrachten Sie die Wege durch den Ausstellungsbereich.",
+      "body": "Erfassen Sie innerhalb der validierten Messabdeckung die Übergänge zwischen Modellzonen. Zeigen Sie, welche Kombinationen vorkommen, ohne einen Weg als persönliche Präferenz oder Kaufabsicht darzustellen.",
+      "question": "Welche Modellzonen und Übergänge sind für den Händler relevant?",
+      "detail": "Vorgeschlagene Erweiterung: LiDAR oder eine geeignete Xovis-3D-Konfiguration. Übergaben zwischen Sensoren, Abschirmungen und Sichtlinien müssen validiert werden.",
+      "source": "Physische Bewegungsverläufe + Modellzonen → abgeleitete Erkenntnis",
+      "image": "automotive-model-routes-portrait.png",
+      "alt": "Illustrativer Weg zwischen Autozonen in einem Ausstellungsbereich, von oben gesehen."
+    },
+    {
+      "id": "dwell",
+      "stage": "Understand",
+      "title": "Bei welchen Modellen halten sich Besucher auf?",
+      "intro": "Erkennen Sie Verweilmuster an den Modellen und wo sich weitere Untersuchungen lohnen.",
+      "body": "Vergleichen Sie das Erreichen von Zonen und die Verweildauer, um die Platzierung von Modellen und den Schwerpunkt von Kampagnen zu prüfen. Ein festgelegter Verweilschwellenwert kann eine Kontaktmöglichkeit anzeigen; er belegt keine Kaufabsicht.",
+      "question": "Bei welchen Modellen sollte die Platzierung verändert oder die Personalabdeckung verbessert werden?",
+      "detail": "Legen Sie Zonengrenzen, Mindestverweildauer, Wiederholungsbesuche und vorbeiführende Wege fest, bevor Sie Modellvergleiche zeigen.",
+      "source": "Physische Zonenereignisse + Modelleinteilung → abgeleitete Erkenntnis",
+      "image": "automotive-model-dwell-portrait.png",
+      "alt": "Illustrative Besucher in abgegrenzten Zonen rund um Autos im Ausstellungsbereich."
+    },
+    {
+      "id": "contact",
+      "stage": "Understand",
+      "title": "Wer verlässt das Autohaus ohne Kontaktsignal?",
+      "intro": "Machen Sie mögliche Kontaktlücken sichtbar, solange noch Zeit zum Reagieren bleibt.",
+      "body": "Unterscheiden Sie drei Gruppen: Besuche, die die Verweildauerregel erfüllen und ein Kontaktsignal aufweisen; noch anwesende Besucher ohne Kontaktsignal; abgeschlossene Besuche ohne erkannten Kontaktindikator. Nutzen Sie diese Gruppen, um die Personalabdeckung zu prüfen und den Begrüßungsablauf zu verbessern.",
+      "question": "Wo sollte eine Verkaufskraft früher reagieren?",
+      "detail": "In diesem Beispiel gilt ein Besuch als qualifizierend, wenn eine validierte Verweildauerregel erfüllt ist; damit ist kein Käuferstatus bestätigt. Für einen Kontakt sind eine validierte Unterscheidung von Mitarbeitenden sowie Regeln zu Nähe und Dauer erforderlich. Ein fehlendes Kontaktsignal beweist nicht, dass kein Gespräch stattgefunden hat.",
+      "source": "Physische Bewegungsverläufe + Unterscheidung von Mitarbeitenden → abgeleitete Erkenntnis",
+      "image": "automotive-staff-contact-wide.png",
+      "alt": "Illustration von Besuchern und einem Verkäufer an einem Auto im Ausstellungsbereich, mit violetten Markierungen."
+    },
+    {
+      "id": "desk",
+      "stage": "Understand",
+      "title": "Erreicht der Besuch den Beratungstisch?",
+      "intro": "Vom Ausstellungsbereich zum nächsten sichtbaren Schritt.",
+      "body": "Messen Sie die Anwesenheit in der vereinbarten Zone am Beratungstisch und untersuchen Sie, was auf Kontaktsignale folgt. Die Anwesenheit am Beratungstisch belegt weder ein Angebot noch einen Lead oder einen Verkauf.",
+      "question": "Welche Beratungsbereiche und Folgeaktionen möchten wir getrennt erfassen?",
+      "detail": "Ein Anteil der Kontakte, die zum Beratungstisch führen, setzt dieselben gültigen Bewegungsverläufe und denselben Beobachtungszeitraum voraus. Für ein Angebot ist ein separater CRM- oder DMS-Datensatz erforderlich.",
+      "source": "Physische Zone am Beratungstisch + Zoneneinteilung → abgeleitete Erkenntnis",
+      "image": "automotive-sales-desk-wide.png",
+      "alt": "Illustrativer Ausstellungsbereich mit Modellbesuch links und Besuchern an einem Beratungstisch rechts."
+    },
+    {
+      "id": "prove",
+      "stage": "Prove",
+      "title": "Was verändert sich nach einer Kampagne oder Prozessänderung?",
+      "intro": "Verknüpfen Sie Muster im Ausstellungsbereich mit Marketing und dokumentierter Nachverfolgung.",
+      "body": "Vergleichen Sie Kampagnenzeiträume, Besucherzahlen, Verweildauer in Modellzonen und Kontaktabdeckung. Ergänzen Sie Leads, Angebote und Aufträge aus CRM/DMS, um den Prozess gemeinsam mit dem Händler auszuwerten.",
+      "question": "Welche Kampagne oder betriebliche Änderung sollten wir zuerst auswerten?",
+      "detail": "Halten Sie Quellzeiträume, Kanäle und Definitionen aufeinander abgestimmt. Ohne gültige Zuordnung von Besuchen zu Kohorten bleiben CRM-Summen getrennte Datenreihen. Ein zeitlicher Zusammenhang mit einer Kampagne belegt keine Kampagnenwirkung.",
+      "source": "Physische Messung + Geschäftsdaten → Vergleich",
+      "image": "automotive-business-context-portrait.png",
+      "alt": "Konzeptionelle Illustration von Kontakten im Autohaus und geschäftlichen Einträgen; kein gemessener Verkaufstrichter."
+    },
+    {
+      "id": "configure",
+      "stage": "Configure",
+      "title": "Welches Messkonzept passt zu Ihrer Frage?",
+      "intro": "Beginnen Sie in kleinem Umfang und mit klaren Abhängigkeiten.",
+      "body": "Wählen Sie Eingangszählung, Zonen im Ausstellungsbereich, validierte Unterscheidung von Mitarbeitenden und einen Benachrichtigungsablauf. Ergänzen Sie Dienstpläne, Kampagnenkalender und zulässige CRM-/DMS-Verknüpfungen, wenn die gewählte Fragestellung dies erfordert.",
+      "question": "Welchen Mess-, Reaktions- und Auswertungsablauf sollen wir einrichten?",
+      "detail": "Telefon- oder Smartwatch-Benachrichtigungen sind laut bereitgestellter Produktinformation möglich. Voraussetzung sind ein kompatibler Zustellkanal, eine konfigurierte Regel und eine betriebliche Zuständigkeit. Im Rahmen dieser Prüfung wird weder eine Benachrichtigung noch eine Integration ausgelöst.",
+      "source": "Vorgeschlagener Umfang für die Standortprüfung",
+      "image": "automotive-showroom-overview-wide.png",
+      "alt": "Illustrativer Ausstellungsbereich mit verschiedenen Messbereichen für ein vorgeschlagenes Messkonzept."
+    },
+    {
+      "id": "act",
+      "stage": "Act",
+      "title": "Von der Erkenntnis über die Maßnahme zu ausgewerteten Ergebnissen.",
+      "intro": "Vereinbaren Sie die Reaktion, die verantwortliche Person und die Nachweise für eine Veränderung.",
+      "body": "Testen Sie eine Begrüßungsbenachrichtigung, passen Sie die Personalabdeckung zu Spitzenzeiten an oder werten Sie die Kampagnennachverfolgung aus. PFM und der Händler vereinbaren eine Ausgangsmessung, eine verantwortliche Person und einen Auswertungstermin und vergleichen anschließend Kontakt- und Geschäftsindikatoren.",
+      "question": "Nächster Schritt: Wählen Sie ein Verbesserungsexperiment und einen Auswertungstermin.",
+      "detail": "Vergleichen Sie passende Zeiträume und ausreichend ausgereifte Kohorten und berücksichtigen Sie dabei Kanal-Mix, Personalbesetzung und Saisonalität. Beschreiben Sie zunächst die beobachtete Veränderung; behaupten Sie eine Wirkung nur, wenn die Auswertung sie stützt. Systemaktionen in dieser Prüfung sind simuliert.",
+      "source": "Vorgeschlagener nächster Schritt",
+      "image": "automotive-staff-contact-wide.png",
+      "alt": "Illustrative Begegnung zwischen Besuchern im Autohaus und einem Mitarbeitenden."
+    }
+  ],
+  "geo": {
+    "title": "Woher kommen die Besucher des Autohauses?",
+    "intro": "Ergänzen Sie Herkunftsgebiete, markenbezogene Besuchsmuster und aggregierte Besuche anderer Autohäuser, wenn eine geeignete Quelle diese Analyse unterstützt. Dies beschreibt ein Panel oder eine modellierte Grundgesamtheit, nicht jede am Eingang gezählte Person.",
+    "articles": [
+      {
+        "title": "Herkunft und Reichweite",
+        "body": "Verwenden Sie aggregierte Herkunftsgebiete und machen Sie die Quellpopulation, den Zeitraum und die Gebietsdefinition sichtbar. Verknüpfen Sie keine individuelle Herkunft mit einem Sensor-Bewegungsverlauf."
+      },
+      {
+        "title": "Affinität und andere Autohäuser",
+        "body": "Besuche markenbezogener Standorte sind ein Kontextsignal. Der Begriff Markenaffinität setzt eine ausdrückliche Definition des Anbieters voraus; treffen Sie keine Aussage über Präferenz, Besitz oder Kaufabsicht."
+      }
+    ],
+    "note": "Verfügbarkeit, Repräsentativität, Mindestfallzahlen und Standortzuordnung müssen mit dem Datenanbieter bestätigt werden. Deshalb enthält dieser Vorschlag hierzu weder eine Karte noch fiktive Prozentwerte."
+  },
+  "review": {
+    "title": "Vor der Implementierung zu prüfen",
+    "items": [
+      "Wird der Nutzen für den Händler deutlich: Kontaktlücken, rechtzeitige Reaktion und ausgewertete Verbesserungen?",
+      "Welche Benachrichtigungskanäle, Empfänger und Eskalationsregeln passen zum Betriebsablauf des Autohauses?",
+      "Welche Frage zu Personalbesetzung, Fahrzeugpräsentation oder Kampagne sollte zuerst getestet werden?",
+      "Welche Definitionen für Gruppen, Kontakte und CRM-Kohorten lassen sich validieren?",
+      "Entsprechen die vorgeschlagenen Visualisierungen und illustrativen Ausgaben dem, was PFM im gewählten Umfang liefern kann?"
+    ],
+    "note": "Die bestehende Broschüre wurde nicht geändert. Diesem Vorschlag wurden keine Kundenergebnisse, Preise, Steigerungen, Benchmarks oder Live-Systemaktionen hinzugefügt."
+  },
+  "gallery": {
+    "title": "Bereitgestellte Automotive-Bilder",
+    "intro": "Die Szenen oben zeigen eine bevorzugte Auswahl zur Prüfung. Alle unten gezeigten Bilder sind Kandidaten. Violette Markierungen sind konzeptionell und belegen weder Sensorabdeckung noch Identität oder Messleistung.",
+    "note": "Das bereitgestellte Straßenmotiv mit Passanten bleibt außerhalb des Bereichs Automotive: Es zeigt Retail und unterstützt die Geschichte rund um das Autohaus nicht.",
+    "captions": [
+      "Übersicht über Ausstellungsbereich, Verkauf und Service",
+      "Empfang einer Besuchergruppe",
+      "Eintritt und Bewegung",
+      "Nicht als Titelmotiv verwenden: undefinierte Bewertungen und Augensymbole",
+      "Illustration eines Kontakts mit einem Mitarbeitenden",
+      "Ausstellungsbereich und Beratungstisch",
+      "Wege zu Ausstellung, Service und Empfang",
+      "Eingang und Besuchergruppen",
+      "Hochformatmotiv für den Eingangsbereich; geringe Originalauflösung",
+      "Hochformatmotiv für das Besucheraufkommen; geringe Originalauflösung",
+      "Hochformatmotiv für Zielbereiche; geringe Originalauflösung",
+      "Hochformatmotiv für Modellrouten; geringe Originalauflösung",
+      "Hochformatmotiv für die Verweildauer an Modellen; geringe Originalauflösung",
+      "Hochformatmotiv für den Kontakt mit Verkaufspersonal; geringe Originalauflösung",
+      "Hochformatmotiv für den Weg zum Beratungstisch; geringe Originalauflösung",
+      "Hochformatmotiv für den Geschäftskontext; geringe Originalauflösung"
+    ]
+  },
+  "labels": {
+    "geo": "Geo-Vertiefung",
+    "review": "Prüfpunkte",
+    "visuals": "Bilder",
+    "language": "Sprache",
+    "optional": "Optionale Vertiefung",
+    "gallery": "Bildauswahl",
+    "page": "Seite",
+    "output": "Was erhalten wir?",
+    "action": "Von der Erkenntnis zur Maßnahme"
+  },
+  "output": {
+    "title": "Was erhalten wir?",
+    "intro": "Eine illustrative Übersicht zu Kennzahlen im Ausstellungsbereich für die tägliche Priorisierung und die gemeinsame Auswertung mit dem Händler.",
+    "scope": "Northstar Retail Group | Ausstellungsbereich A | 5. November 2026 | 09:00-14:05 MEZ | Illustrative Momentaufnahme",
+    "definition": "Einheit: deduplizierte Personenbesuche, keine Gruppen und keine identifizierten Personen. Qualifizierend: mindestens 60 Sekunden in einer Modellzone; die Beispielregel belegt weder Käuferstatus noch Kaufabsicht. Kontakt: validierter Kontaktindikator auf Basis der Unterscheidung von Mitarbeitenden.",
+    "metricLabels": [
+      "Besuche im Ausstellungsbereich",
+      "Abdeckung durch Kontaktsignale",
+      "Durchschnittliche Zeit bis zum Kontakt",
+      "Abgereist ohne Kontaktsignal"
+    ],
+    "metricNotes": [
+      "Illustrative Zahl gemessener Personenbesuche",
+      "40 von 68 Besuchen mit erfüllter Verweildauerregel",
+      "Bei 40 Besuchen mit Kontaktsignal",
+      "22 abgeschlossene Besuche mit erfüllter Verweildauerregel"
+    ],
+    "physicalTitle": "Kontaktübersicht im Ausstellungsbereich",
+    "rowLabels": [
+      "Besuche im Ausstellungsbereich",
+      "Besuche mit erfüllter Verweildauerregel",
+      "Mit Kontaktindikator",
+      "Abgereist ohne Kontaktsignal",
+      "Noch anwesend, ohne Kontaktsignal"
+    ],
+    "reconciliation": "68 Besuche mit erfüllter Verweildauerregel = 40 mit Kontaktsignal + 22 abgeschlossene Besuche ohne Kontaktsignal + 6 weiterhin anwesende Besuche ohne Kontaktsignal. Kontaktabdeckung = 40 / 68 = 58,8 %, gerundet 59 %.",
+    "crmTitle": "Händler-CRM / DMS",
+    "crmBody": "7 Angebote | 3 Aufträge. Illustrative Registrierungen während des Berichtstags. Dies sind getrennte Summen und keine Konversionen aus der heutigen Besuchskohorte.",
+    "alertTitle": "Benachrichtigungsbeispiel - simuliert",
+    "alertBody": "Modellzone 4: Verweildauer 2 Min. 05 Sek., kein erkanntes Kontaktsignal. Beispielschwelle: 90 Sek. Weiterleitung an ein konfiguriertes Telefon oder eine Smartwatch; hier wird keine Nachricht gesendet.",
+    "actionsTitle": "Fragen für das Händlergespräch",
+    "actions": [
+      "Abdeckung: Besucheraufkommen, Kontaktsignale und verfügbares Personal je Zeitfenster vergleichen.",
+      "Modellpräsentation: Verweildauer und Abdeckung je Zone prüfen, bevor das Layout verändert wird.",
+      "Marketing: Kampagnenzeiträume und Kanäle mit Mustern im Ausstellungsbereich und der CRM-Nachverfolgung abgleichen."
+    ],
+    "note": "Fiktives Ausgabebeispiel, inspiriert vom Dashboard; unabhängig erstellte Beispielwerte. Keine Kundendaten, Benchmarks, Live-Daten oder garantierte Produktansicht. CRM-Stand: 14:00 MEZ; physischer Stand: 14:05 MEZ."
+  },
+  "action": {
+    "title": "Während des Besuchs reagieren. Nach Änderungen daraus lernen.",
+    "intro": "Operative Benachrichtigungen und strukturierte Auswertungen mit dem Händler machen aus der Messung einen wiederholbaren Verbesserungsprozess.",
+    "articles": [
+      {
+        "title": "Auf eine Kontaktmöglichkeit reagieren",
+        "body": "Eine konfigurierte Verweildauerregel ohne Kontaktsignal kann Telefon oder Smartwatch benachrichtigen. Weisen Sie eine verfügbare Person zu, bestätigen Sie die Meldung, organisieren Sie die Betreuung und werten Sie die Reaktion aus.",
+        "detail": "Laut Produktinput bereits möglich. Prüfen Sie Kanal, Personalunterscheidung, Zonen, Latenz, Wiederholungsunterdrückung und Eskalation für die Installation. Dieses Beispiel ist simuliert."
+      },
+      {
+        "title": "Personal und Modellpräsentation verbessern",
+        "body": "Nutzen Sie Stoßzeiten, Kontaktzeit und Zonenverweildauer für ein Personal- oder Layoutexperiment. Benennen Sie eine verantwortliche Person und vergleichen Sie dieselben Definitionen vor und nach der Änderung.",
+        "detail": "Behalten Sie Besuche ohne Kontaktsignal im Blick. Werten Sie die Zeit bis zum Kontakt bei Besuchen mit Kontaktsignal getrennt aus. Eine längere Verweildauer an einem Modell ist kein Beleg für Interesse."
+      },
+      {
+        "title": "Marketing und Folgekontakte auswerten",
+        "body": "Verbinden Sie Kampagnenkalender, Kanalzuordnungen und freigegebene CRM-/DMS-Daten mit aggregierten Besuchsmustern. Prüfen Sie, ob sich Besuche, Modellverweildauer, Kontakt und dokumentierte Nachverfolgung gemeinsam verändern.",
+        "detail": "Verwenden Sie eine einwilligungsbasierte oder anderweitig zulässige Verknüpfung, Deduplizierung und einen festgelegten Ergebniszeitraum. Ohne Verknüpfung vergleichen Sie aggregierte Datenreihen; ordnen Sie keine einzelnen Aufträge zu und behaupten Sie keine kausale Steigerung."
+      }
+    ],
+    "note": "Vereinbaren Sie eine Ausgangsmessung, ein Maßnahmenprotokoll und einen Auswertungstermin. Nachgewiesene Ergebnisse erfordern vergleichbare Belege; Umsatzsteigerungen, Rendite (ROI) und Amortisationszeiten werden nicht versprochen."
+  }
+}

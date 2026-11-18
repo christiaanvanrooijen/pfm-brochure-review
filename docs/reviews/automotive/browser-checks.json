@@ -1,0 +1,26 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 900,
+      "scenes": 10,
+      "sections": 13,
+      "overflow": false,
+      "images": "loaded",
+      "reducedMotion": "auto",
+      "keyboardFocus": "Context"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "scenes": 10,
+      "sections": 13,
+      "overflow": false,
+      "images": "loaded",
+      "reducedMotion": "auto",
+      "keyboardFocus": "Measure"
+    }
+  ],
+  "keyboardNavigation": "passed",
+  "keyboardDisclosure": "passed"
+}

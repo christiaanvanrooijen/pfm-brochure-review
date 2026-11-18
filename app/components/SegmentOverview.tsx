@@ -39,7 +39,7 @@ import { shellRunsSegment } from "../lib/segment-journey";
 import { customerLogos, logoWidth } from "../content/customer-logos";
 import { brochureRouteAvailable } from "../content/release";
 
-export function SegmentOverview({ initialLocale }: { initialLocale: Locale }) {
+export function SegmentOverview({ initialLocale, integratedShell = false }: { initialLocale: Locale; integratedShell?: boolean }) {
   const [locale, setLocale] = useState<Locale>(initialLocale);
 
   const t = getMessages(locale).ui;
@@ -95,7 +95,7 @@ export function SegmentOverview({ initialLocale }: { initialLocale: Locale }) {
 
   return (
     <div className="ov">
-      <header className="rd__header">
+      <header className="rd__header" style={integratedShell ? { display: "none" } : undefined}>
         <div className="rd__brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -138,7 +138,7 @@ export function SegmentOverview({ initialLocale }: { initialLocale: Locale }) {
             {copy.segmentsLabel}
           </p>
           <h1 className="ov__title">{copy.title}</h1>
-          <p className="ov__lead">{copy.lead}</p>
+          <p className="ov__lead">{integratedShell ? ({en: "Choose the kind of location you want to explore.", de: "Wählen Sie den Standorttyp, den Sie erkunden möchten.", fr: "Choisissez le type de lieu que vous souhaitez explorer."})[locale] : copy.lead}</p>
         </section>
 
         <ul className="ov__grid">
@@ -190,6 +190,21 @@ export function SegmentOverview({ initialLocale }: { initialLocale: Locale }) {
             </li>
             );
           })}
+          {integratedShell && (
+            <li className="ov__card">
+              <a className="ov__link" href="/preview/integrated#automotive" data-integrated-automotive="true">
+                <span className="ov__figure">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/assets/content-candidates/automotive/automotive-showroom-overview-wide.png" alt="Illustrative automotive showroom" />
+                </span>
+                <span className="ov__body">
+                  <span className="ov__head"><span className="ov__name">Automotive</span><span className="ov__status">NL · REVIEW</span></span>
+                  <span className="ov__question">Hoe wordt showroombezoek een commercieel gesprek?</span>
+                  <span className="ov__open">Open de journey →</span>
+                </span>
+              </a>
+            </li>
+          )}
         </ul>
 
         {/* Who is speaking, once the reader has seen what we can show. Every

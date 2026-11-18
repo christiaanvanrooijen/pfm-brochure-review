@@ -56,3 +56,8 @@ const LOGO_AREA = 2600;
 /** Width that gives this logo the common area; CSS caps height and cell width. */
 export const logoWidth = (customer: CustomerLogo): number =>
   Math.round(Math.sqrt(LOGO_AREA * customer.aspect));
+
+/** Compact, approved portfolio selection shared by the PFM page and sales export. */
+export const customerProofLogos = customerLogos.filter(customer =>
+  ["Suitsupply", "ASICS", "CBRE", "Specsavers", "Rituals", "McDonald's"].includes(customer.name)
+);

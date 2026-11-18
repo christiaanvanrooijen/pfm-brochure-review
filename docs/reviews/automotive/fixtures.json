@@ -1,0 +1,22 @@
+{
+  "schema_version": "automotive-review-fixture-v1",
+  "status": "fictional-illustrative",
+  "organisation": "Northstar Retail Group",
+  "location": "Showroom A",
+  "period_start": "2026-11-05T09:00:00+01:00",
+  "physical_as_of": "2026-11-05T14:05:00+01:00",
+  "crm_as_of": "2026-11-05T14:00:00+01:00",
+  "unit": "deduplicated-person-visits",
+  "visits": 96,
+  "qualifying": 68,
+  "contacted": 40,
+  "departed_without_signal": 22,
+  "present_without_signal": 6,
+  "mean_contact_seconds": 102,
+  "crm_quotations": 7,
+  "crm_orders": 3,
+  "qualifying_dwell_seconds": 60,
+  "alert_threshold_seconds": 90,
+  "alert_example_zone": 4,
+  "alert_example_dwell_seconds": 125
+}

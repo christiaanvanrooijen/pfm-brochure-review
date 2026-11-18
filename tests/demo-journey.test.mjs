@@ -581,7 +581,7 @@ test("22. there is one picker, and the demo route does not render a second", () 
   // No segment in the address means the reader is choosing, and choosing
   // happens in exactly one place — the SAME component the front door renders,
   // not a second grid that merely serves the same purpose.
-  assert.match(page, /if \(!segment\) return <SegmentOverview initialLocale=\{locale\} \/>/);
+  assert.match(page, /if \(!segment\) return <SegmentOverview initialLocale=\{locale\} integratedShell=\{integratedShell\} \/>/);
   assert.match(page, /import \{ SegmentOverview \} from "\.\.\/\.\.\/components\/SegmentOverview"/);
   assert.equal(PICKER_PATH, "/");
   // And the way back from a journey points at the front door itself, opened on

@@ -381,3 +381,8 @@ Update 2026-09-30 (product lead review of version 2):
 ## 2026-11-18 — Retail passer-by wording and source boundary
 
 The Retail scenes label the radar method as “Radar mmWave” across How it works, Technology and Privacy, in all supported locales. A supplied SensMax family datasheet is retained as reference, but its TAC-B model specifications are not assigned to the confirmed installation without a model-specific source match. The supplied Bosch datasheet and image support the FLEXIDOME micro 3100i outdoor option.
+
+
+## 2026-11-18 — Integrated review and Automotive preview boundary
+
+The approved v4 navigation and PFM, platform, service-package and follow-up content are available through the local `/preview/integrated` review route, alongside the existing segment journeys. Per the user's current direction, the route also contains a Dutch Automotive review journey. This is local review material, not a launch or production integration; Retail remains the only complete go-demo vertical.

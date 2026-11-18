@@ -62,12 +62,15 @@ export interface ImplementationVisual {
    * data in any particular way.
    */
   showsInfrastructureOnly: boolean;
+  /** Original product photograph retained as provenance for the transparent variant. */
+  sourceAssetPath?: string;
 }
 
 export const implementationVisuals: readonly ImplementationVisual[] = [
   {
     implementationId: "impl-xovis-3d-entrance",
-    assetPath: "/assets/technology/entrance/xovis-pc2se.jpg",
+    assetPath: "/assets/technology/entrance/xovis-pc2se-transparent.png",
+    sourceAssetPath: "/assets/technology/entrance/xovis-pc2se.jpg",
     altText: "An overhead 3D stereo vision sensor, seen from the front.",
     showsInfrastructureOnly: false,
   },
@@ -142,13 +145,15 @@ export const implementationVisuals: readonly ImplementationVisual[] = [
   },
   {
     implementationId: "impl-lidar-spatial",
-    assetPath: "/assets/technology/spatial/robosense-airy.webp",
+    assetPath: "/assets/technology/spatial/robosense-airy-transparent.png",
+    sourceAssetPath: "/assets/technology/spatial/robosense-airy.webp",
     altText: "A LiDAR unit, a compact cylindrical sensor.",
     showsInfrastructureOnly: false,
   },
   {
     implementationId: "impl-xovis-3d-spatial",
-    assetPath: "/assets/technology/spatial/xovis-pf-l.jpg",
+    assetPath: "/assets/technology/spatial/xovis-pf-l-transparent.png",
+    sourceAssetPath: "/assets/technology/spatial/xovis-pf-l.jpg",
     altText: "A wide-angle 3D stereo vision sensor, seen from the front.",
     showsInfrastructureOnly: false,
   },
