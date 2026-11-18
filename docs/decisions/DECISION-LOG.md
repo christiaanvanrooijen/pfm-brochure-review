@@ -376,3 +376,8 @@ Update 2026-09-30 (product lead review of version 2):
 - **Choices to review:** where a report has several pages for one scene (footfall report Overview/In-Depth; Portfolio · Operations), the page that answers the scene's question was used; unused pages remain in `work/dashboard-screenshots/` (git-ignored). Portfolio · Country and Overview belong to no scene.
 - **Data and names:** all locations, shops, brands, regions, municipalities and sensors are fictional; figures from seeded fixtures (`report-fixtures.ts`), derived values computed from their rows. No third-party basemap: plans and maps are stylised stand-ins labelled "Map view · illustrative". The PFM logo shown in two reports is the approved logo asset, never a redraw.
 - **FR/DE terms for native review:** YTD → FR "Cumul", DE "YTD"; Capture rate → FR "Taux de captation", DE "Capture Rate"; Brand affinity → FR "Affinité entre enseignes", DE "Markenaffinität"; Trade area → FR "Zone de chalandise", DE "Einzugsgebiet"; Dwell time → FR "Durée de présence", DE "Verweildauer"; Landlord report → FR "Rapport bailleur", DE "Vermieterbericht".
+
+
+## 2026-11-18 — Retail passer-by wording and source boundary
+
+The Retail scenes label the radar method as “Radar mmWave” across How it works, Technology and Privacy, in all supported locales. A supplied SensMax family datasheet is retained as reference, but its TAC-B model specifications are not assigned to the confirmed installation without a model-specific source match. The supplied Bosch datasheet and image support the FLEXIDOME micro 3100i outdoor option.

@@ -7171,3 +7171,8 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
   .spec__cell, .spec__rings, .spec__legend-ramp i, .spec__tab,
   .rd__output-trigger { transition: none; }
 }
+
+.rd-depth__passerby-tabs { display: flex; border-bottom: 1px solid #d0d5dd; margin: 14px 0 18px; }
+.rd-depth__passerby-tabs button { border: 0; border-bottom: 2px solid transparent; background: transparent; padding: 11px 18px; color: #667085; font: inherit; font-size: 13px; cursor: pointer; }
+.rd-depth__passerby-tabs button[aria-pressed="true"] { border-bottom-color: #f04438; color: #0c111d; font-weight: 700; }
+.rd-depth__passerby-tabs button:focus-visible { outline: 2px solid #9e77ed; outline-offset: 2px; }

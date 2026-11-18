@@ -44,6 +44,7 @@
  */
 
 import { useState, type Ref } from "react";
+import { MeasurementSceneDetail, measurementDetailKind } from "./MeasurementSceneDetail";
 import type { SceneDefinition, SegmentId } from "../../content/types";
 import {
   getSceneCapabilityViews,
@@ -113,6 +114,7 @@ export function DepthPanel({
     SECTION_IDS.find((id) => id === initialSection) ?? "how",
   );
 
+  const sceneDetail = measurementDetailKind(segmentId, scene.id);
   const capabilityViews = getSceneCapabilityViews(segmentId, scene);
   const privacy = resolvePrivacyCopy(locale);
   const privacyEntries = getScenePrivacyEntries(segmentId, scene);
@@ -164,6 +166,7 @@ export function DepthPanel({
       </div>
 
       <div className="rd-depth__body">
+        {sceneDetail && section !== "practice" ? <MeasurementSceneDetail kind={sceneDetail} section={section} locale={locale} /> : <>
         {section === "how" && (
           <HowItWorksTab
             locale={locale}
@@ -182,6 +185,7 @@ export function DepthPanel({
         {section === "privacy" && (
           <PrivacyTab locale={locale} privacy={privacy} entries={privacyEntries} t={t} />
         )}
+        </>}
         {section === "practice" && <PracticeTab proofs={proofs} locale={locale} t={t} />}
       </div>
     </section>
