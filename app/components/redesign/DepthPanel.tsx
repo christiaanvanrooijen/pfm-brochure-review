@@ -43,13 +43,13 @@
  * with those. A shared TECH id never authorises shared footage.
  */
 
-import { useState, type Ref } from "react";
+import { useState, type ReactNode, type Ref } from "react";
+import { MeasurementExamples, BoschPrivacy, StereoDepth, LidarPrivacy } from "./MeasurementExamples";
 import { MeasurementSceneDetail, measurementDetailKind } from "./MeasurementSceneDetail";
 import type { SceneDefinition, SegmentId } from "../../content/types";
 import {
   getSceneCapabilityViews,
   getScenePrivacyEntries,
-  getSceneRequirementView,
   type SceneCapabilityView,
   type SceneImplementationView,
 } from "../../content/scene-technology-runtime";
@@ -58,11 +58,9 @@ import { ProofCase } from "../ProofCase";
 import {
   accessoriesFor,
   presentationNameOf,
-  staffExclusionFor,
 } from "../../content/technology-presentation";
 import { getDrawerMethodCopy } from "../../content/drawer-method-copy";
 import { getDrawerLimitation } from "../../content/drawer-limitations";
-import { installationAccreditations } from "../../content/installation-accreditations";
 import type { Locale } from "../../i18n/locales";
 import {
   resolveCapabilityCopy,
@@ -74,14 +72,12 @@ import {
   resolveWatchLabel,
 } from "../../i18n/domain";
 import {
-  resolveDataRoleCopy,
   resolveDetailLabel,
   resolveDetailValue,
   resolveEssentialBody,
   resolveEssentialLabel,
 } from "../../i18n/domain-requirements";
 import { resolveLimitationClaim, resolveSupportedClaim } from "../../i18n/domain-claims";
-import { resolveInputLabel } from "../../i18n/domain";
 import { getMessages, type SceneCopy } from "../../i18n/messages";
 
 type SectionId = "how" | "technology" | "requirements" | "privacy" | "practice";
@@ -94,6 +90,10 @@ interface DepthPanelProps {
   /** Preview-only: opens on a named section so a capture can address one. */
   initialSection?: string | null;
   onClose: () => void;
+  labels?: { title: string; lead: string; close: string; tabs: readonly string[] };
+  introduction?: ReactNode;
+  howSupplement?: ReactNode;
+  practiceIntroduction?: ReactNode;
   /** Focus lands here when the panel opens. */
   ref?: Ref<HTMLElement>;
 }
@@ -104,9 +104,12 @@ export function DepthPanel({
   locale,
   segmentId,
   scene,
-  copy,
   initialSection = null,
   onClose,
+  labels,
+  introduction,
+  howSupplement,
+  practiceIntroduction,
   ref,
 }: DepthPanelProps) {
   const t = getMessages(locale).ui;
@@ -118,7 +121,6 @@ export function DepthPanel({
   const capabilityViews = getSceneCapabilityViews(segmentId, scene);
   const privacy = resolvePrivacyCopy(locale);
   const privacyEntries = getScenePrivacyEntries(segmentId, scene);
-  const requirementView = getSceneRequirementView(scene);
   const proofs = getPlayableProofsForScene(segmentId, scene.id);
 
   const tabs: readonly { id: SectionId; label: string }[] = [
@@ -137,35 +139,39 @@ export function DepthPanel({
          open, Tab is trapped inside while it is open, and Escape or Close hands
          focus back to the trigger. */
       aria-modal="true"
-      aria-label={t.depthTitle}
+      aria-label={labels?.title ?? t.depthTitle}
       ref={ref}
       tabIndex={-1}
     >
-      <div className="rd-depth__head">
-        <h2 className="rd-depth__title">{t.howThisWorks}</h2>
-        <p className="rd-depth__lead">{t.depthLead}</p>
-        <button type="button" className="rd-depth__close" onClick={onClose}>
-          {t.close}
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-
-      <div className="rd-depth__tabs" role="tablist" aria-label={t.depthTitle}>
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            role="tab"
-            aria-selected={tab.id === section}
-            className={`rd-depth__tab${tab.id === section ? " is-active" : ""}`}
-            onClick={() => setSection(tab.id)}
-          >
-            {tab.label}
+      <div className="rd-depth__navigation">
+        <div className="rd-depth__head">
+          <h2 className="rd-depth__title">{labels?.title ?? t.howThisWorks}</h2>
+          <p className="rd-depth__lead">{labels?.lead ?? t.depthLead}</p>
+          <button type="button" className="rd-depth__close" onClick={onClose}>
+            {labels?.close ?? t.close}
+            <span aria-hidden="true">×</span>
           </button>
-        ))}
+        </div>
+
+        <div className="rd-depth__tabs" role="tablist" aria-label={labels?.title ?? t.depthTitle}>
+          {tabs.map((tab, index) => (
+            <button
+              key={tab.id}
+              type="button"
+              role="tab"
+              aria-selected={tab.id === section}
+              className={`rd-depth__tab${tab.id === section ? " is-active" : ""}`}
+              onClick={() => setSection(tab.id)}
+            >
+              {labels?.tabs[index] ?? tab.label}
+            </button>
+          ))}
+        </div>
+
       </div>
 
       <div className="rd-depth__body">
+        {introduction}
         {sceneDetail && section !== "practice" ? <MeasurementSceneDetail kind={sceneDetail} section={section} locale={locale} /> : <>
         {section === "how" && (
           <HowItWorksTab
@@ -180,13 +186,26 @@ export function DepthPanel({
           <TechnologyTab locale={locale} segmentId={segmentId} capabilityViews={capabilityViews} t={t} />
         )}
         {section === "requirements" && (
-          <RequirementsTab locale={locale} segmentId={segmentId} copy={copy} requirementView={requirementView} capabilityViews={capabilityViews} t={t} />
+          <RequirementsTab locale={locale} capabilityViews={capabilityViews} t={t} />
         )}
         {section === "privacy" && (
           <PrivacyTab locale={locale} privacy={privacy} entries={privacyEntries} t={t} />
         )}
         </>}
-        {section === "practice" && <PracticeTab proofs={proofs} locale={locale} t={t} />}
+        {section === "how" && (
+          <MeasurementExamples
+            locale={locale}
+            entranceVideo={sceneDetail === "entrance"}
+            stereo={sceneDetail === "entrance" || capabilityViews.some(view =>
+              view.implementations.some(impl => ["impl-xovis-3d-entrance", "impl-xovis-3d-spatial", "impl-milesight-vs125p-entrance"].includes(impl.id)),
+            )}
+
+          />
+        )}
+        {scene.id === "retail-visitor-composition" && section === "how" && <p>Configured visitor mix can include children, adults, group size and buying units, gender and objects such as prams, bicycles and wheelchairs. Age is not yet released. Re-identification is planned for 2027. Availability depends on the selected and validated configuration.</p>}
+        {scene.id === "retail-visitor-composition" && section === "requirements" && <p>For visitor-mix analysis, mount compatible 3D sensors between 3.3 and 3.7 metres. A wide field of view is preferred. Validate the sensor and software configuration on site.</p>}
+        {section === "how" && howSupplement}
+        {section === "practice" && <>{practiceIntroduction}<PracticeTab proofs={proofs} locale={locale} t={t} /></>}
       </div>
     </section>
   );
@@ -195,6 +214,7 @@ export function DepthPanel({
 /* ==========================================================================
    HOW IT WORKS — measurement illustration, then the video where permitted
    ========================================================================== */
+
 
 function HowItWorksTab({
   locale,
@@ -241,9 +261,9 @@ function HowItWorksTab({
     .map((cv) => (cv.contextVisual ? { view: cv, visual: cv.contextVisual } : null))
     .filter((entry): entry is { view: SceneCapabilityView; visual: NonNullable<SceneCapabilityView["contextVisual"]> } => entry !== null);
 
-  const videos = capabilityViews
-    .map((cv) => (cv.explainerVideo ? { view: cv, video: cv.explainerVideo } : null))
-    .filter((entry): entry is { view: SceneCapabilityView; video: NonNullable<SceneCapabilityView["explainerVideo"]> } => entry !== null);
+  const videos = capabilityViews.flatMap((cv) =>
+    cv.explainerVideos.map((video) => ({ view: cv, video })),
+  );
 
   // The method sentence is the text fallback for every segment + capability
   // pair. It also stays visible when an approved illustration exists, because
@@ -344,7 +364,7 @@ function HowItWorksTab({
         })}
 
       {videos.map(({ view, video }) => (
-        <ExplainerVideo key={`video-${view.capabilityId}`} locale={locale} video={video} t={t} />
+        <ExplainerVideo key={`video-${view.capabilityId}-${video.approachId ?? video.src}`} locale={locale} video={video} t={t} />
       ))}
 
       {videos.length === 0 && explainers.length > 0 && (
@@ -379,7 +399,7 @@ function ExplainerVideo({
     actionLabel: video.actionLabel,
     intro: video.intro,
     description: video.description,
-  });
+  }, video.approachId);
   const viewLabel = resolveVideoViewLabel(locale, video.viewKind, video.viewLabel);
 
   return (
@@ -582,90 +602,21 @@ function ImplementationCard({
 
 function RequirementsTab({
   locale,
-  segmentId,
-  copy,
-  requirementView,
   capabilityViews,
   t,
 }: {
   locale: Locale;
-  segmentId: SegmentId;
-  copy: SceneCopy;
-  requirementView: ReturnType<typeof getSceneRequirementView>;
   capabilityViews: readonly SceneCapabilityView[];
   t: Readonly<Record<string, string>>;
 }) {
-  const implementationIds = capabilityViews.flatMap((cv) => cv.implementations.map((i) => i.id));
-  const accessories = [...new Set(implementationIds)].flatMap((id) => accessoriesFor(id));
-  const staffExclusion = staffExclusionFor(segmentId, implementationIds);
-
-  const implementationsWithProfiles = capabilityViews.flatMap((cv) =>
-    cv.implementations.filter((impl) => impl.requirementProfile !== null),
-  );
-  const hasAnyImplementation = capabilityViews.some((cv) => cv.implementations.length > 0);
+  const implementations = new Map(capabilityViews.flatMap(view =>
+    view.implementations.map(impl => [impl.id, impl] as const),
+  ));
+  const implementationsWithProfiles = [...implementations.values()].filter(impl => impl.requirementProfile);
+  const hasAnyImplementation = implementations.size > 0;
 
   return (
     <div className="rd-depth__requirements">
-      <p className="rd-depth__kicker">{t.requiredDataHeading}</p>
-      <ul className="rd-depth__roles">
-        {requirementView.requiredRoles.map((role) => {
-          const roleCopy = resolveDataRoleCopy(locale, role);
-          return (
-            <li key={role}>
-              <strong>{roleCopy.label}</strong>
-              <span>{roleCopy.note}</span>
-            </li>
-          );
-        })}
-      </ul>
-
-      {requirementView.optionalRoles.length > 0 && (
-        <>
-          <p className="rd-depth__kicker">{t.optionalDataHeading}</p>
-          <ul className="rd-depth__roles rd-depth__roles--optional">
-            {requirementView.optionalRoles.map((role) => {
-              const roleCopy = resolveDataRoleCopy(locale, role);
-              return (
-                <li key={role}>
-                  <strong>{roleCopy.label}</strong>
-                  <span>{roleCopy.note}</span>
-                </li>
-              );
-            })}
-          </ul>
-        </>
-      )}
-
-      {requirementView.dependencies.map((dep) => (
-        <div className="rd-depth__dependency" key={dep.dependencyId}>
-          <p className="rd-depth__kicker">{dep.output}</p>
-          {dep.required.length > 0 && (
-            <>
-              <p className="rd-depth__requires-label">{t.requiresAll}:</p>
-              <ul className="rd-depth__list">
-                {dep.required.map((input) => (
-                  <li key={input.id}>
-                    <strong>{resolveInputLabel(locale, input.id, input.label)}</strong>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-          {dep.alternativeGroups.length > 0 && (
-            <>
-              <p className="rd-depth__requires-label">{t.requiresOneOf}:</p>
-              <ul className="rd-depth__alternatives">
-                {dep.alternativeGroups.map((group, index) => (
-                  <li key={index}>
-                    {group.map((input) => resolveInputLabel(locale, input.id, input.label)).join(" + ")}
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-        </div>
-      ))}
-
       <p className="rd-depth__kicker">{t.essentialsHeading}</p>
       {implementationsWithProfiles.length > 0 ? (
         implementationsWithProfiles.map((impl) => (
@@ -680,6 +631,12 @@ function RequirementsTab({
                   <span>{resolveEssentialBody(locale, impl.id, essential.label, essential.body)}</span>
                 </li>
               ))}
+              {accessoriesFor(impl.id).map(accessory => (
+                <li key={accessory.name}>
+                  <strong>{accessory.name}</strong>
+                  <span>{accessory.purpose} {accessory.condition ?? t.accessoryAlways}</span>
+                </li>
+              ))}
             </ul>
             {impl.requirementProfile!.technicalDetail.length > 0 && (
               <TechnicalDetailReveal locale={locale} impl={impl} t={t} />
@@ -690,62 +647,6 @@ function RequirementsTab({
         <p className="rd-depth__absent">{hasAnyImplementation ? t.installationNone : t.implementationsNone}</p>
       )}
 
-      {/* A device another device cannot work without. It belongs in "what would
-          we need", because leaving it out makes that answer wrong in the
-          direction that costs someone money after they have decided. */}
-      {accessories.length > 0 && (
-        <>
-          <p className="rd-depth__kicker">{t.accessoriesHeading}</p>
-          <ul className="rd-depth__list">
-            {accessories.map((accessory) => (
-              <li key={accessory.name}>
-                <strong>{accessory.name}</strong>
-                <span>
-                  {accessory.purpose} {accessory.condition ?? t.accessoryAlways}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-
-      {/* Narrow on purpose: available on one device family, in one segment. */}
-      {staffExclusion && (
-        <>
-          <p className="rd-depth__kicker">{t.staffExclusionHeading}</p>
-          <ul className="rd-depth__list">
-            <li>
-              <strong>{staffExclusion.name}</strong>
-              <span>{staffExclusion.body}</span>
-            </li>
-          </ul>
-        </>
-      )}
-
-      {/* How we install, wherever the scene needs something installed. About
-          PFM rather than this scene, so it closes the installation answer. */}
-      {hasAnyImplementation && (
-        <>
-          <p className="rd-depth__kicker">{installationAccreditations[locale].heading}</p>
-          <ul className="rd-depth__list">
-            {installationAccreditations[locale].items.map((item) => (
-              <li key={item.name}>
-                <strong>{item.name}</strong>
-                <span>{item.text}</span>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-
-      <ul className="rd-depth__sequence">
-        {copy.sequence.map((step) => (
-          <li key={step.kicker}>
-            <span>{step.kicker}</span>
-            {step.label}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
@@ -813,7 +714,9 @@ function PrivacyTab({
             <p className="rd-depth__privacy-name">
               {presentationNameOf({ id: entry.implementationId, implementationRole: entry.implementationRole })}
             </p>
-            {entry.hasPrivacyEvidence ? (
+            {entry.implementationId === "impl-lidar-spatial" ? <LidarPrivacy locale={locale} /> : entry.implementationId === "impl-ip-detection-indoor" || entry.implementationId === "impl-ip-detection-outdoor" ? (
+              <BoschPrivacy locale={locale} />
+            ) : entry.hasPrivacyEvidence ? (
               <ul className="rd-depth__list">
                 {entry.supportedClaims.map((claim, index) => (
                   <li key={claim}>
@@ -824,6 +727,7 @@ function PrivacyTab({
             ) : (
               <p className="rd-depth__absent">{t.privacyUnmapped}</p>
             )}
+            {["impl-xovis-3d-entrance", "impl-xovis-3d-spatial", "impl-milesight-vs125p-entrance"].includes(entry.implementationId) && <StereoDepth locale={locale} />}
           </div>
         ))
       ) : (

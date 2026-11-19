@@ -1,5 +1,7 @@
 "use client";
 
+import { BoschPrivacy, StereoDepth } from "./MeasurementExamples";
+
 import { useState } from "react";
 import type { Locale } from "../../i18n/locales";
 import type { SegmentId, SceneDefinition } from "../../content/types";
@@ -78,9 +80,18 @@ export function MeasurementSceneDetail({ kind, section, locale }: { kind: Kind; 
     {section === "technology" && <><p className="rd-depth__kicker">{t.technology}</p><ul className="rd-depth__cards">{(street ? [
       {title:t.radar, body:t.radarSpec, image:"/assets/retail-passersby/hardware/sensmax-tac-3dn-ewp.png"}, {title:t.ip, body:t.ipSpec, image:"/assets/retail-passersby/hardware/bosch-flexidome-micro-3100i.png"}, {title:t.infrared, body:t.irSpec, image:"/assets/technology/passerby/milesight-vs361.jpg"},
     ] : [
-      {title:t.premium,body:t.premiumSpec,image:"/assets/technology/entrance/xovis-pc2se-transparent.png"}, {title:t.basic,body:t.basicSpec,image:"/assets/technology/entrance/milesight-vs125p.png"}, {title:t.camera,body:t.cameraSpec,image:null},
+      {title:t.premium,body:t.premiumSpec,image:"/assets/technology/entrance/xovis-pc2se-transparent.png"}, {title:t.basic,body:t.basicSpec,image:"/assets/technology/entrance/milesight-vs125p.png"}, {title:t.camera,body:t.cameraSpec,image:"/assets/technology/ip-detection/bosch-flexidome-micro-3100i.png"},
     ]).map(item => <li className="rd-depth__card" key={item.title}>{item.image && <div className="rd-depth__card-visual">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={item.image} alt="" /></div>}<div className="rd-depth__card-body"><strong>{item.title}</strong><span className="rd-depth__card-role">{item.body}</span></div></li>)}</ul></>}
-    {section === "requirements" && <><p>{street ? t.streetIntro : t.entranceIntro}</p><ul className="rd-depth__list"><li><strong>{t.placement}</strong><span>{street ? t.streetPlacement : t.entrancePlacement}</span></li><li><strong>{t.power}</strong><span>{street ? t.streetPower : t.entrancePower}</span></li><li><strong>{t.definition}</strong><span>{street ? t.streetDefinition : t.entranceDefinition}</span></li><li><strong>{t.capture}</strong><span>{t.captureText}</span></li></ul></>}
-    {section === "privacy" && <><p className="rd-depth__kicker">{t.privacy}</p><ul className="rd-depth__list">{street ? <><li><strong>{t.radar}</strong><span>{t.radarPrivacy}</span></li><li><strong>{t.ip}</strong><span>{t.ipPrivacy}</span></li><li><strong>{t.infrared}</strong><span>{t.irPrivacy}</span></li></> : <li><strong>{t.entrancePrivacyTitle}</strong><span>{t.entrancePrivacy}</span></li>}</ul><p>{t.privacyNote}</p></>}
+    {section === "requirements" && (street ? <><p>{street ? t.streetIntro : t.entranceIntro}</p><ul className="rd-depth__list"><li><strong>{t.placement}</strong><span>{street ? t.streetPlacement : t.entrancePlacement}</span></li><li><strong>{t.power}</strong><span>{street ? t.streetPower : t.entrancePower}</span></li><li><strong>{t.definition}</strong><span>{street ? t.streetDefinition : t.entranceDefinition}</span></li></ul></> : <ul className="rd-depth__list">
+      <li><strong>{t.premium}</strong><span>{t.premiumSpec}</span></li>
+      <li><strong>{t.basic}</strong><span>{t.basicSpec}</span></li>
+      <li><strong>{t.camera}</strong><span>{t.cameraSpec}</span></li>
+      <li><strong>{t.definition}</strong><span>{t.entranceDefinition}</span></li>
+    </ul>)}
+    {section === "privacy" && <><p className="rd-depth__kicker">{t.privacy}</p><ul className="rd-depth__list">{street ? <><li><strong>{t.radar}</strong><span>{t.radarPrivacy}</span></li><li><strong>{t.ip}</strong><BoschPrivacy locale={locale} /></li><li><strong>{t.infrared}</strong><span>{t.irPrivacy}</span></li></> : <>
+      <li><strong>{t.premium}</strong><span>{locale === "en" ? "The PC2SE processes stereo images on the sensor. Xovis describes text-only count output and four privacy levels. Its certification covers level 2 and above." : t.entrancePrivacy}</span><StereoDepth locale={locale} /></li>
+      <li><strong>{t.basic}</strong><span>{locale === "en" ? "Milesight describes device privacy modes for stereo counting. Confirm the mode, outputs and retention for the installed sensor." : t.entrancePrivacy}</span></li>
+      <li><strong>{t.camera}</strong><BoschPrivacy locale={locale} /></li>
+    </>}</ul><p>{t.privacyNote}</p></>}
   </div>;
 }

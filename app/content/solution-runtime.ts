@@ -204,14 +204,10 @@ export interface SolutionCapabilityView {
    * never presented as a measurement or as customer data.
    */
   contextVisual: CapabilityContextVisual | null;
-  /**
-   * The capability's example video AS RESOLVED FOR THIS SEGMENT.
-   *
-   * Resolved here rather than looked up in the component, so that a segment can
-   * withhold a video whose own copy belongs to another kind of location without
-   * the presentation layer having to know which segment it is rendering.
-   */
+  /** First primary example, retained for consumers that expect one video. */
   explainerVideo: CapabilityExplainerVideoView | null;
+  /** Primary examples, one per explicitly named measurement approach. */
+  explainerVideos: readonly CapabilityExplainerVideoView[];
   /**
    * Shown where a segment resolves no implementation for this capability, so an
    * empty list reads as "not stated here" rather than as "nothing is required".
@@ -319,7 +315,11 @@ export function getSolutionTechnologyDrilldown(
         explainerVideo:
           override?.allowCapabilityVideo === false
             ? null
-            : getCapabilityExplainerVideo(capability.id),
+            : getCapabilityExplainerVideos(capability.id, direction.segment)[0] ?? null,
+        explainerVideos:
+          override?.allowCapabilityVideo === false
+            ? []
+            : getCapabilityExplainerVideos(capability.id, direction.segment),
         implementationNote: override?.note ?? null,
         name: capability.name,
         purpose: override?.purpose ?? capability.purpose,
@@ -340,9 +340,8 @@ export function getSolutionTechnologyDrilldown(
 }
 
 /* ==========================================================================
-   VISUAL EXPLANATION — one optional PRIMARY video per capability, resolved
-   beneath the capability it explains and never beneath a supplier, with an
-   optional second derived layer nested inside it
+   VISUAL EXPLANATION — primary videos resolved per segment and measurement
+   approach beneath the capability, each with an optional nested derived layer
    ========================================================================== */
 
 /**
@@ -411,60 +410,71 @@ export interface CapabilityExplainerVideoView {
  */
 export function getCapabilityExplainerVideo(
   capabilityId: TechnologyCapabilityId,
+  segmentId?: SegmentId,
 ): CapabilityExplainerVideoView | null {
-  const video = capabilityExplainerVideos.find(
-    (entry) => entry.capabilityId === capabilityId,
+  return getCapabilityExplainerVideos(capabilityId, segmentId)[0] ?? null;
+}
+
+/** All primary examples for a capability, scoped to the requested segment. */
+export function getCapabilityExplainerVideos(
+  capabilityId: TechnologyCapabilityId,
+  segmentId?: SegmentId,
+): readonly CapabilityExplainerVideoView[] {
+  const videos = capabilityExplainerVideos.filter(
+    (entry) => entry.capabilityId === capabilityId && (!segmentId || entry.segment === segmentId),
   );
-  if (!video) return null;
+  if (!videos.length) return [];
 
   const capability = getTechnologyCapability(capabilityId);
-  if (!capability) return null;
+  if (!capability) return [];
 
-  // An implementation is named only where the content names one. A missing
-  // implementation is not a failure state here — it is the honest case for
-  // footage nobody has documented a product for.
-  const impl = video.exampleImplementationId
-    ? getImplementation(video.exampleImplementationId)
-    : null;
-  if (video.exampleImplementationId && !impl) return null;
+  return videos.flatMap((video) => {
+    // An implementation is named only where the content names one. A missing
+    // implementation is not a failure state here — it is the honest case for
+    // footage nobody has documented a product for.
+    const impl = video.exampleImplementationId
+      ? getImplementation(video.exampleImplementationId)
+      : null;
+    if (video.exampleImplementationId && !impl) return [];
 
-  const approach = video.approachId
-    ? getAllCapabilityExplainerVisuals(capabilityId).find(
-        (visual) => visual.approachId === video.approachId,
-      ) ?? null
-    : null;
+    const approach = video.approachId
+      ? getCapabilityExplainerVisuals(capabilityId, video.segment).find(
+          (visual) => visual.approachId === video.approachId,
+        ) ?? null
+      : null;
 
-  return {
-    capabilityId,
-    capabilityName: capability.name,
-    approachId: video.approachId,
-    approachName: approach?.approachName ?? null,
-    src: video.src,
-    actionLabel: video.actionLabel,
-    intro: video.intro,
-    description: video.description,
-    viewKind: video.viewKind,
-    viewLabel: explainerVideoViewLabels[video.viewKind],
-    frameRatio: video.frameRatio,
-    exampleImplementationId: impl?.id ?? null,
-    exampleImplementationRole: impl?.implementationRole ?? null,
-    exampleSupplier: impl?.supplier ?? null,
-    exampleImplementationName: impl ? (implementationPresentationNames[impl.id] ?? null) : null,
-    followOn: video.followOn
-      ? {
-          src: video.followOn.src,
-          actionLabel: video.followOn.actionLabel,
-          intro: video.followOn.intro,
-          description: video.followOn.description,
-          viewKind: video.followOn.viewKind,
-          viewLabel: explainerVideoViewLabels[video.followOn.viewKind],
-          distinctionNote: video.followOn.distinctionNote,
-          frameRatio: video.followOn.frameRatio,
-          sourceRefs: video.followOn.sourceRefs,
-        }
-      : null,
-    sourceRefs: video.sourceRefs,
-  };
+    return [{
+      capabilityId,
+      capabilityName: capability.name,
+      approachId: video.approachId,
+      approachName: approach?.approachName ?? null,
+      src: video.src,
+      actionLabel: video.actionLabel,
+      intro: video.intro,
+      description: video.description,
+      viewKind: video.viewKind,
+      viewLabel: explainerVideoViewLabels[video.viewKind],
+      frameRatio: video.frameRatio,
+      exampleImplementationId: impl?.id ?? null,
+      exampleImplementationRole: impl?.implementationRole ?? null,
+      exampleSupplier: impl?.supplier ?? null,
+      exampleImplementationName: impl ? (implementationPresentationNames[impl.id] ?? null) : null,
+      followOn: video.followOn
+        ? {
+            src: video.followOn.src,
+            actionLabel: video.followOn.actionLabel,
+            intro: video.followOn.intro,
+            description: video.followOn.description,
+            viewKind: video.followOn.viewKind,
+            viewLabel: explainerVideoViewLabels[video.followOn.viewKind],
+            distinctionNote: video.followOn.distinctionNote,
+            frameRatio: video.followOn.frameRatio,
+            sourceRefs: video.followOn.sourceRefs,
+          }
+        : null,
+      sourceRefs: video.sourceRefs,
+    }];
+  });
 }
 
 /* ==========================================================================
@@ -988,12 +998,18 @@ export function validateSolutionDirections(): readonly string[] {
   // A visual explanation must hang off a real capability, must name an example
   // implementation that genuinely belongs to that capability, and must point at
   // the web-compatible derivative rather than the camera master.
-  const videoCapabilityIds = capabilityExplainerVideos.map((video) => video.capabilityId);
-  if (new Set(videoCapabilityIds).size !== videoCapabilityIds.length) {
-    errors.push("capabilityExplainerVideos: more than one video for a capability");
+  const videoIdentities = capabilityExplainerVideos.map(
+    (video) => `${video.segment}:${video.capabilityId}:${video.approachId ?? "unscoped"}`,
+  );
+  if (new Set(videoIdentities).size !== videoIdentities.length) {
+    errors.push("capabilityExplainerVideos: duplicate segment/capability/approach video");
   }
   for (const video of capabilityExplainerVideos) {
-    const path = `capabilityExplainerVideos.${video.capabilityId}`;
+    const path = `capabilityExplainerVideos.${video.segment}.${video.capabilityId}.${video.approachId ?? "unscoped"}`;
+    if (!getSegment(video.segment)) {
+      errors.push(`${path}: unknown segment`);
+      continue;
+    }
     if (!getTechnologyCapability(video.capabilityId)) {
       errors.push(`${path}: unknown capability`);
       continue;
@@ -1012,19 +1028,16 @@ export function validateSolutionDirections(): readonly string[] {
     // footage has to say which one it illustrates — otherwise a LiDAR clip sits
     // under a stereo-vision explanation with nothing to tell them apart.
     if (video.approachId) {
-      const approaches = getAllCapabilityExplainerVisuals(video.capabilityId);
+      const approaches = getCapabilityExplainerVisuals(video.capabilityId, video.segment);
       if (!approaches.some((visual) => visual.approachId === video.approachId)) {
         errors.push(
           `${path}: approach ${video.approachId} is not an explainer of ${video.capabilityId}`,
         );
       }
-    } else if (getAllCapabilityExplainerVisuals(video.capabilityId).length > 1) {
+    } else if (getCapabilityExplainerVisuals(video.capabilityId, video.segment).length > 1) {
       errors.push(
         `${path}: the capability has more than one approach, so the video must name the one it illustrates`,
       );
-    }
-    if (video.viewKind !== "measured_environment") {
-      errors.push(`${path}: a primary video shows the measured environment`);
     }
     if (!video.src.endsWith(".mp4")) {
       errors.push(`${path}: served source must be a web-compatible .mp4`);

@@ -50,6 +50,6 @@ export function IntegratedExperience({ initialLocale = 'en', includeAutomotiveRe
  {(area==='pfm'||area==='platforms')&&<PFMContent key={area} locale={locale} area={area} onOpenScene={openScene}/>}
  {area==='packages'&&<Packages locale={locale}/>}
  {area==='follow-up'&&<FollowUp locale={locale}/>}
- {area==='automotive'&&<AutomotiveReview/>}
+ {area==='automotive'&&<AutomotiveReview locale={locale}/>}
  </div>;
 }

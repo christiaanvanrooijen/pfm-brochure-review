@@ -6242,6 +6242,10 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
    graphic, not a measurement — visually distinct from a measurement-principle
    explainer so the two are never confused. */
 .rd-depth__figure--context img { border: 1px solid #eaecf0; }
+.rd-depth__passerby-tabs { display: flex; border-bottom: 1px solid #d0d5dd; margin: 14px 0 18px; }
+.rd-depth__passerby-tabs button { border: 0; border-bottom: 2px solid transparent; background: transparent; padding: 11px 18px; color: #667085; font: inherit; font-size: 13px; cursor: pointer; }
+.rd-depth__passerby-tabs button[aria-pressed="true"] { border-bottom-color: #f04438; color: #0c111d; font-weight: 700; }
+.rd-depth__passerby-tabs button:focus-visible { outline: 2px solid #9e77ed; outline-offset: 2px; }
 
 /* -------------------------------------------------------------- *
    TECHNOLOGY — restrained implementation cards
@@ -6259,7 +6263,7 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
   width: 64px; height: 64px; border-radius: 6px; overflow: hidden;
   background: #f9fafb; display: grid; place-items: center;
 }
-.rd-depth__card-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rd-depth__card-visual img { width: 100%; height: 100%; object-fit: contain; padding: 4px; display: block; }
 .rd-depth__card-blank {
   display: block; width: 100%; height: 100%;
   background: repeating-linear-gradient(135deg, #f2f4f7 0 8px, #f9fafb 8px 16px);
@@ -6291,7 +6295,7 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
 }
 .rd-depth__video-frame { display: grid; gap: 10px; margin-top: 4px; }
 .rd-depth__video-frame video {
-  width: 100%; height: auto; display: block; border-radius: 8px; background: #0c111d;
+  width: 100%; height: auto; display: block; border-radius: 8px; background: #000;
 }
 .rd-depth__video-kicker {
   margin: 0; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pfm-purple-deep);
@@ -7172,7 +7176,10 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
   .rd__output-trigger { transition: none; }
 }
 
-.rd-depth__passerby-tabs { display: flex; border-bottom: 1px solid #d0d5dd; margin: 14px 0 18px; }
-.rd-depth__passerby-tabs button { border: 0; border-bottom: 2px solid transparent; background: transparent; padding: 11px 18px; color: #667085; font: inherit; font-size: 13px; cursor: pointer; }
-.rd-depth__passerby-tabs button[aria-pressed="true"] { border-bottom-color: #f04438; color: #0c111d; font-weight: 700; }
-.rd-depth__passerby-tabs button:focus-visible { outline: 2px solid #9e77ed; outline-offset: 2px; }
+
+.rd-depth__navigation {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fff;
+}

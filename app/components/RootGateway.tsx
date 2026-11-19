@@ -47,7 +47,7 @@ export function RootGateway({
 
   return (
     <div ref={overview} tabIndex={-1} style={{ outline: "none" }}>
-      <IntegratedExperience initialLocale={locale} includeAutomotiveReview={false} showReviewStatus={false} />
+      <IntegratedExperience initialLocale={locale} includeAutomotiveReview showReviewStatus={false} />
     </div>
   );
 }

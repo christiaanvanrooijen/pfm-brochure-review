@@ -72,7 +72,7 @@ import {
   type ImplementationRequirementProfile,
   type ImplementationVisual,
 } from "./technology-visuals.ts";
-import { getCapabilityExplainerVideo, type CapabilityExplainerVideoView } from "./solution-runtime.ts";
+import { getCapabilityExplainerVideos, type CapabilityExplainerVideoView } from "./solution-runtime.ts";
 import { getSegmentCapabilityMediaOverride } from "./segment-capability-media.ts";
 
 /* ==========================================================================
@@ -113,6 +113,8 @@ export interface SceneCapabilityView {
   explainerVisuals: readonly CapabilityExplainerVisual[];
   /** Null where the override withholds the capability's video for this segment. */
   explainerVideo: CapabilityExplainerVideoView | null;
+  /** Primary videos for the capability's segment-specific measurement approaches. */
+  explainerVideos: readonly CapabilityExplainerVideoView[];
   implementations: readonly SceneImplementationView[];
   /** Set only when the override narrows implementations to none, with its reason. */
   implementationNote: string | null;
@@ -187,7 +189,13 @@ export function getSceneCapabilityViews(
           override?.explainerVisuals ??
           getCapabilityExplainerVisuals(capability.id, segmentId),
         explainerVideo:
-          override?.allowCapabilityVideo === false ? null : getCapabilityExplainerVideo(capability.id),
+          override?.allowCapabilityVideo === false
+            ? null
+            : getCapabilityExplainerVideos(capability.id, segmentId)[0] ?? null,
+        explainerVideos:
+          override?.allowCapabilityVideo === false
+            ? []
+            : getCapabilityExplainerVideos(capability.id, segmentId),
         implementationNote: implementations.length === 0 ? (override?.note ?? null) : null,
         implementations: implementations.map(toImplementationView),
       };

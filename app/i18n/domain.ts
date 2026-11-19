@@ -709,8 +709,22 @@ export function resolveVideoCopy(
   locale: Locale,
   capabilityId: TechnologyCapabilityId,
   fallback: VideoCopy,
+  approachId?: string | null,
 ): VideoCopy {
   if (locale === "en") return fallback;
+  if (capabilityId === "TECH-04" && approachId === "3d-path-tracking") {
+    return locale === "fr"
+      ? {
+          actionLabel: "le suivi 3D en magasin",
+          intro: "Découvrez comment le suivi 3D en magasin représente les parcours et les arrêts dans l’espace de vente.",
+          description: "Vue illustrative du dessus d’un magasin montrant des parcours de mouvement anonymes et des arrêts dans l’espace.",
+        }
+      : {
+          actionLabel: "3D-Tracking im Geschäft",
+          intro: "Sehen Sie, wie In-Store-3D-Tracking Wege und Aufenthalte auf der Verkaufsfläche darstellt.",
+          description: "Illustrative Draufsicht auf ein Geschäft mit anonymen Bewegungsrouten und Aufenthalten auf der Fläche.",
+        };
+  }
   return videoTranslations[locale][capabilityId] ?? fallback;
 }
 

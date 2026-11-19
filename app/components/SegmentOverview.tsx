@@ -198,9 +198,9 @@ export function SegmentOverview({ initialLocale, integratedShell = false, includ
                   <img src="/assets/content-candidates/automotive/automotive-showroom-overview-wide.png" alt="Illustrative automotive showroom" />
                 </span>
                 <span className="ov__body">
-                  <span className="ov__head"><span className="ov__name">Automotive</span><span className="ov__status">NL · REVIEW</span></span>
-                  <span className="ov__question">Hoe wordt showroombezoek een commercieel gesprek?</span>
-                  <span className="ov__open">Open de journey →</span>
+                  <span className="ov__head"><span className="ov__name">Automotive</span></span>
+                  <span className="ov__question">{initialLocale === 'fr' ? 'Comment une visite en showroom mène-t-elle à un échange commercial ?' : initialLocale === 'de' ? 'Wie wird aus einem Showroom-Besuch ein Verkaufsgespräch?' : 'How do showroom visits turn into sales conversations?'}</span>
+                  <span className="ov__open">{initialLocale === 'fr' ? 'Ouvrir le parcours' : initialLocale === 'de' ? 'Rundgang öffnen' : 'Open the journey'} →</span>
                 </span>
               </a>
             </li>
