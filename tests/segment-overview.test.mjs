@@ -181,7 +181,7 @@ test("10. every card's question is the one the reader meets one click later", ()
 
 test("11. the front door is the cover, then the overview, and the approved shell keeps its own address", () => {
   // The root renders the gateway, and the gateway renders the Unified Intro
-  // first and the overview after Explore — nothing else.
+  // first and the integrated brochure after Explore.
   const home = read("app/page.tsx");
   assert.match(home, /<RootGateway\s+initialLocale=\{isLocale\(rawLocale\) \? rawLocale : defaultLocale\}\s+startAtSegments=\{startAtSegments\}\s+\/>/);
   assert.match(home, /const startAtSegments = first\(params\.start\) === "segments";/);
@@ -191,7 +191,9 @@ test("11. the front door is the cover, then the overview, and the approved shell
   assert.match(gateway, /if \(!exploring\) \{\s*return <UnifiedIntro locale=\{locale\} onLocaleChange=\{setLocale\} onExplore=\{\(\) => setExploring\(true\)\} \/>;/);
   // The language chosen on the cover is the one the picker opens in.
   assert.match(gateway, /useState<Locale>\(initialLocale\)/);
-  assert.match(gateway, /<SegmentOverview initialLocale=\{locale\} \/>/);
+  assert.match(gateway, /<IntegratedExperience initialLocale=\{locale\} includeAutomotiveReview=\{false\} showReviewStatus=\{false\} \/>/);
+  assert.match(read("app/components/IntegratedExperience.tsx"), /<iframe[^>]+src=\{`\/preview\/demo\?/);
+  assert.match(read("app/components/SegmentOverview.tsx"), /integratedShell && includeAutomotiveReview/);
   assert.doesNotMatch(gateway, /CommercialExperience|router|href=/);
 
   // The cover belongs to the root only: the overview carries no intro logic, so

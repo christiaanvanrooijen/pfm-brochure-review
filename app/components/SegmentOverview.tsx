@@ -39,7 +39,7 @@ import { shellRunsSegment } from "../lib/segment-journey";
 import { customerLogos, logoWidth } from "../content/customer-logos";
 import { brochureRouteAvailable } from "../content/release";
 
-export function SegmentOverview({ initialLocale, integratedShell = false }: { initialLocale: Locale; integratedShell?: boolean }) {
+export function SegmentOverview({ initialLocale, integratedShell = false, includeAutomotiveReview = false }: { initialLocale: Locale; integratedShell?: boolean; includeAutomotiveReview?: boolean }) {
   const [locale, setLocale] = useState<Locale>(initialLocale);
 
   const t = getMessages(locale).ui;
@@ -190,7 +190,7 @@ export function SegmentOverview({ initialLocale, integratedShell = false }: { in
             </li>
             );
           })}
-          {integratedShell && (
+          {integratedShell && includeAutomotiveReview && (
             <li className="ov__card">
               <a className="ov__link" href="/preview/integrated#automotive" data-integrated-automotive="true">
                 <span className="ov__figure">

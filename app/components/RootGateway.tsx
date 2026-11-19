@@ -17,7 +17,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Locale } from "../i18n/locales";
-import { SegmentOverview } from "./SegmentOverview";
+import { IntegratedExperience } from "./IntegratedExperience";
 import { UnifiedIntro } from "./UnifiedIntro/UnifiedIntro";
 
 export function RootGateway({
@@ -47,7 +47,7 @@ export function RootGateway({
 
   return (
     <div ref={overview} tabIndex={-1} style={{ outline: "none" }}>
-      <SegmentOverview initialLocale={locale} />
+      <IntegratedExperience initialLocale={locale} includeAutomotiveReview={false} showReviewStatus={false} />
     </div>
   );
 }

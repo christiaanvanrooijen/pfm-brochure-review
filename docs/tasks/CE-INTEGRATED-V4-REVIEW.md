@@ -1,6 +1,6 @@
 # Geïntegreerde brochure-review op basis van v4
 
-Status: reviewbuild beschikbaar via `/preview/integrated`; wacht op beoordeling door de gebruiker. Gebruikersinstructie: integreer de goedgekeurde v4-opzet met de huidige brochure en gebruik voor deze versie de bestaande talen EN, DE en FR. Op 5 november 2026 heeft de gebruiker het eerdere verzoek om NL en ES voor deze stap ingetrokken. De gebruiker heeft verduidelijkt dat de goedgekeurde v4-opzet van toepassing is op **alle segmenten**; Retail blijft de enige volledig uitgewerkte go-demovertical volgens `AGENTS.md`.
+Status: geïntegreerde v4-opzet is op 19 november 2026 op expliciet verzoek van de gebruiker doorgevoerd in de live hoofdroute (`/`), na de bestaande PFM-intro. `/preview/integrated` blijft beschikbaar als reviewroute. Gebruik de bestaande talen EN, DE en FR. Op 5 november 2026 heeft de gebruiker het eerdere verzoek om NL en ES voor deze stap ingetrokken. De gebruiker heeft verduidelijkt dat de goedgekeurde v4-opzet van toepassing is op **alle segmenten**; Retail blijft de enige volledig uitgewerkte go-demovertical volgens `AGENTS.md`.
 
 De geïntegreerde review bevat daarnaast een aparte, Nederlandstalige Automotive-reviewroute. Deze route is previewmateriaal voor beoordeling en is geen gelanceerde brochurevertical.
 
@@ -29,7 +29,7 @@ Bouw een afzonderlijke reviewroute op de bestaande segmentoverzichten, journeys,
 - Bestaande contentrechten en simulatielabels blijven gelden. Geen live externe systemen of nieuwe prijslogica.
 - Controleer laptop- en tabletweergave, toetsenbord, gereduceerde beweging, talen, bestaande rapportages en technische checks. Registreer bestaande testafwijkingen afzonderlijk.
 
-De geïsoleerde reviewroute is gebouwd. De productie-/livebrochure is niet gewijzigd. Raadpleeg `docs/reviews/digital-brochure-2026-11-04/INTEGRATED-REVIEW-README.md` om de review lokaal te openen en de zichtbare beperkingen te zien. De reviewstatus betekent niet dat inhoud of UI al is goedgekeurd voor productie.
+De geïntegreerde ervaring wordt gedeeld tussen de live hoofdroute en `/preview/integrated`. De gebruiker heeft de bestaande PFM-navigatie en algemene PFM-inhoud expliciet naar de live brochure laten doorvoeren. Automotive blijft uitgesloten van de live segmentkeuze en alleen zichtbaar in de aparte reviewroute; dit maakt Automotive geen gelanceerde brochurevertical. De preview behoudt zijn reviewlabel.
 
 ## Verificatie reviewbuild
 

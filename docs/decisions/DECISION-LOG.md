@@ -386,3 +386,7 @@ The Retail scenes label the radar method as “Radar mmWave” across How it wor
 ## 2026-11-18 — Integrated review and Automotive preview boundary
 
 The approved v4 navigation and PFM, platform, service-package and follow-up content are available through the local `/preview/integrated` review route, alongside the existing segment journeys. Per the user's current direction, the route also contains a Dutch Automotive review journey. This is local review material, not a launch or production integration; Retail remains the only complete go-demo vertical.
+
+## 2026-11-19 — Integrated navigation promoted to the live brochure
+
+The user explicitly directs that the integrated v4 brochure experience be applied to the live brochure, after previously reviewing it at `/preview/integrated`. The root route keeps the existing Unified PFM Intro, then opens the integrated Locations experience with the global `How PFM works`, `Platforms & insights`, `Service packages` and `Follow-up` sections. Existing segment journeys remain embedded from the shared journey implementation. The preview route continues to use the same experience and keeps its review label. Automotive remains preview-only because the user clarified that it is being implemented today, while the product scope still treats Retail as the only complete go-demo vertical; no Automotive launch was inferred.
