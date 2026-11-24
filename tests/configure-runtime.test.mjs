@@ -529,22 +529,36 @@ test("the capability video hangs off the capability, not off a supplier", () => 
    reachable only through the first, and the two say different things.
    ------------------------------------------------------------------ */
 
-test("the tracking view is nested behind the in-store LiDAR video, never beside it", () => {
+test("LiDAR and 3D tracking are separate in-store approaches; each keeps its own view layers", () => {
   const video = solutionRuntime.getCapabilityExplainerVideo("TECH-04");
   assert.ok(video, "spatial movement intelligence has a visual explanation");
   assert.equal(video.capabilityId, "TECH-04");
   assert.equal(video.src, "/assets/videos/lidar-in-a-store-pfm.mp4");
 
-  // The second clip exists ONLY as this one's follow-on. If it were ever
-  // promoted to its own entry, this capability would hold two videos and the
-  // flat-gallery shape the model exists to forbid would be back.
+  // The derived LiDAR reporting clip remains nested under the LiDAR measurement.
   assert.ok(video.followOn, "the derived view hangs off the primary video");
   assert.equal(video.followOn.src, "/assets/videos/lidar-tracking-reporting-visual.mp4");
 
-  const forCapability = solutionRuntime.capabilityExplainerVideos.filter(
-    (entry) => entry.capabilityId === "TECH-04",
+  const approaches = solutionRuntime.getCapabilityExplainerVideos("TECH-04", "retail");
+  assert.deepEqual(
+    approaches.map((entry) => [entry.approachId, entry.src]),
+    [
+      ["lidar-point-cloud", "/assets/videos/lidar-in-a-store-pfm.mp4"],
+      ["3d-path-tracking", "/assets/videos/xovis-tracking-video.mp4"],
+    ],
   );
-  assert.equal(forCapability.length, 1, "one primary video, not two peers");
+  const tracking = approaches[1];
+  assert.equal(tracking.actionLabel, "3D tracking in a store");
+  assert.equal(tracking.viewKind, "derived_representation");
+  assert.equal(tracking.approachName, "3D path tracking");
+  assert.equal(tracking.exampleImplementationId, "impl-xovis-3d-spatial");
+  assert.equal(tracking.followOn, null);
+
+  assert.deepEqual(
+    solutionRuntime.getCapabilityExplainerVideos("TECH-04", "shopping-centre"),
+    [],
+    "Retail store footage stays out of Shopping Centre",
+  );
 
   // No top-level entry anywhere serves the derived clip.
   for (const entry of solutionRuntime.capabilityExplainerVideos) {
@@ -566,6 +580,7 @@ test("the tracking view is nested behind the in-store LiDAR video, never beside 
   );
   assert.equal(withVideo.length, 1);
   assert.equal(withVideo[0].capabilityId, "TECH-04");
+  assert.equal(withVideo[0].explainerVideos.length, 2);
 
   // A follow-on is a distinct type with no capability, approach or example
   // implementation of its own, so it cannot be lifted to a peer by accident.
@@ -577,7 +592,7 @@ test("the tracking view is nested behind the in-store LiDAR video, never beside 
   }
 });
 
-test("the measured view and the derived view stay labelled as different things", () => {
+test("measured footage and the derived tracking representation stay labelled", () => {
   const video = solutionRuntime.getCapabilityExplainerVideo("TECH-04");
 
   assert.equal(video.viewKind, "measured_environment");
@@ -589,9 +604,8 @@ test("the measured view and the derived view stay labelled as different things",
   // The sentence that stops a reporting view being read as the measurement.
   assert.match(video.followOn.distinctionNote, /not the measurement itself/i);
 
-  // Every primary video is a measured view; nothing else may claim to be one.
+  // Each primary clip labels what it actually shows; every nested follow-on is derived.
   for (const entry of solutionRuntime.capabilityExplainerVideos) {
-    assert.equal(entry.viewKind, "measured_environment");
     if (entry.followOn) assert.equal(entry.followOn.viewKind, "derived_representation");
   }
 
@@ -629,19 +643,23 @@ test("no explainer video changes a capability, privacy or source truth", () => {
   );
 
   // A video is never proof, and never appears in a proof result.
-  const video = solutionRuntime.getCapabilityExplainerVideo("TECH-04");
+  const videos = solutionRuntime.getCapabilityExplainerVideos("TECH-04", "retail");
   for (const direction of directions) {
     for (const value of leaves(getSolutionProof(direction.id, "sales"))) {
-      assert.notEqual(value, video.src);
-      assert.notEqual(value, video.followOn.src);
+      for (const video of videos) {
+        assert.notEqual(value, video.src);
+        if (video.followOn) assert.notEqual(value, video.followOn.src);
+      }
     }
   }
 
   // Nor does it appear as an implementation image, or as an explainer still.
   const options = getSolutionImplementationOptions("solution-in-store-intelligence", "sales");
   for (const value of leaves(options)) {
-    assert.notEqual(value, video.src);
-    assert.notEqual(value, video.followOn.src);
+    for (const video of videos) {
+      assert.notEqual(value, video.src);
+      if (video.followOn) assert.notEqual(value, video.followOn.src);
+    }
   }
 });
 

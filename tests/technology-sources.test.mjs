@@ -429,6 +429,7 @@ test("no unreferenced file is left under public/assets/technology", () => {
     // wired segment asset reads as an orphan.
     [
       ...implementationVisuals,
+      ...implementationVisuals.filter(v => v.sourceAssetPath).map(v => ({ assetPath: v.sourceAssetPath })),
       ...capabilityExplainerVisuals,
       ...segmentCapabilityMediaOverrides.flatMap(
         (override) => override.explainerVisuals ?? [],
@@ -512,20 +513,19 @@ test("no stale entrance/bosch-3100i path survives anywhere in the repo", () => {
   }
 });
 
-test("only the Isarsoft asset moved; the position folders keep their assets", () => {
-  // Scoped deliberately. This was a single-asset correction, not a licence to
-  // reorganise the tree, and the other three families must be provably intact.
+test("hardware visuals retain their intended implementations and transparent variants", () => {
+  // Transparent variants approved for both brochure and customer output, 2026-11-06.
   const expected = {
-    "impl-xovis-3d-entrance": "/assets/technology/entrance/xovis-pc2se.jpg",
+    "impl-xovis-3d-entrance": "/assets/technology/entrance/xovis-pc2se-transparent.png",
     "impl-milesight-vs125p-entrance": "/assets/technology/entrance/milesight-vs125p.png",
     "impl-milesight-vs361-passerby": "/assets/technology/passerby/milesight-vs361.jpg",
-    "impl-lidar-spatial": "/assets/technology/spatial/robosense-airy.webp",
-    "impl-xovis-3d-spatial": "/assets/technology/spatial/xovis-pf-l.jpg",
+    "impl-lidar-spatial": "/assets/technology/spatial/robosense-airy-transparent.png",
+    "impl-xovis-3d-spatial": "/assets/technology/spatial/xovis-pf-l-transparent.png",
   };
   for (const [id, assetPath] of Object.entries(expected)) {
     const visual = implementationVisuals.find((item) => item.implementationId === id);
     assert.ok(visual, `${id} still has a visual`);
-    assert.equal(visual.assetPath, assetPath, `${id} must not have moved`);
+    assert.equal(visual.assetPath, assetPath, `${id} must resolve the agreed product image`);
   }
 });
 

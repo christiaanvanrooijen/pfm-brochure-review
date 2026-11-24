@@ -341,9 +341,9 @@ export const retailSolutionDirections: readonly SolutionDirectionDefinition[] = 
  *   routing, tracking, reporting. It is downstream of the measurement and is
  *   never evidence of how the measurement itself works.
  *
- * A primary video is always a measured view; a follow-on is always a derived
- * one. Collapsing the two into one undifferentiated "video" category is exactly
- * the mistake the labelling in the UI, and the validator, exist to prevent.
+ * A primary video may show the measured environment or a derived representation
+ * of one named approach. A follow-on is always derived and nested under its
+ * primary. The labels keep those views distinct in the UI.
  *
  * [Source: SALES-EXPERIENCE-DIRECTION.md §22 Configure direction;
  *          human product decision 2026-08-18, LiDAR explainer video layers]
@@ -408,8 +408,8 @@ export interface CapabilityExplainerVideo {
   intro: string;
   /** Accessible description of what is visible. Carries no measurement claim. */
   description: string;
-  /** Always the measured view. Interpretation belongs to `followOn`. */
-  viewKind: "measured_environment";
+  /** What the clip actually shows: physical measurement or a derived view. */
+  viewKind: ExplainerVideoViewKind;
   /**
    * The implementation the footage was recorded with, where that is known and
    * documented. Not a preference. Null where no implementation is documented for
@@ -480,6 +480,28 @@ export const capabilityExplainerVideos: readonly CapabilityExplainerVideo[] = [
       sourceRefs: [videoSource],
     },
     sourceRefs: [videoSource],
+  },
+  {
+    // Separate primary example for the other Retail TECH-04 approach. This
+    // footage was previously nested under entrance counting; its subject is
+    // in-store spatial tracking, so it belongs beside LiDAR under TECH-04.
+    capabilityId: "TECH-04",
+    segment: "retail",
+    approachId: "3d-path-tracking",
+    src: "/assets/videos/xovis-tracking-video.mp4",
+    originalSrc: null,
+    actionLabel: "3D tracking in a store",
+    intro: "See how in-store 3D tracking represents routes and pauses across the shop floor.",
+    description:
+      "Illustrative top-down store view showing anonymous movement routes and pauses across the floor.",
+    viewKind: "derived_representation",
+    exampleImplementationId: "impl-xovis-3d-spatial",
+    frameRatio: "1920 / 1080",
+    followOn: null,
+    sourceRefs: [
+      "User-supplied file: xovis-tracking-video.mp4",
+      "PFM Commercial Experience in-store 3D tracking example; illustrative media only",
+    ],
   },
 ] satisfies readonly CapabilityExplainerVideo[];
 

@@ -19,6 +19,7 @@ const read = (relative) => readFileSync(fileURLToPath(new URL(`../${relative}`, 
 const RETAIL_TECH04_ASSETS = [
   "lidar-in-a-store-pfm.mp4",
   "lidar-tracking-reporting-visual.mp4",
+  "xovis-tracking-video.mp4",
   "lidar-spatial-pointcloud.png",
   "3d-spatial-tracking.png",
 ];
@@ -37,8 +38,7 @@ test("1. no Shopping Centre TECH-04 view resolves a Retail 3D-sensor asset", () 
   for (const view of views) {
     const media = [
       ...view.explainerVisuals.map((visual) => visual.assetPath),
-      view.explainerVideo?.src,
-      view.explainerVideo?.followOn?.src,
+      ...view.explainerVideos.flatMap((video) => [video.src, video.followOn?.src]),
       ...view.implementations.map((implementation) => implementation.assetPath),
     ].filter(Boolean);
 
@@ -70,11 +70,15 @@ test("2. Retail TECH-04 still resolves its own assets, unchanged", () => {
       "/assets/technology/explainers/3d-spatial-tracking.png",
     ],
   );
-  assert.equal(inside.explainerVideo?.src, "/assets/videos/lidar-in-a-store-pfm.mp4");
-  assert.equal(
-    inside.explainerVideo?.followOn?.src,
-    "/assets/videos/lidar-tracking-reporting-visual.mp4",
+  assert.deepEqual(
+    inside.explainerVideos.map((video) => video.src),
+    [
+      "/assets/videos/lidar-in-a-store-pfm.mp4",
+      "/assets/videos/xovis-tracking-video.mp4",
+    ],
   );
+  assert.equal(inside.explainerVideos[0].followOn?.src, "/assets/videos/lidar-tracking-reporting-visual.mp4");
+  assert.equal(inside.explainerVideos[1].actionLabel, "3D tracking in a store");
   assert.deepEqual(
     inside.implementations.map((implementation) => implementation.supplier),
     ["RoboSense", "Xovis"],
@@ -173,7 +177,7 @@ test("6. the override may narrow a segment's view, never invent an implementatio
 
 test("7. the shared layout carries only the resolver hook, not segment logic", () => {
   const layout = read("app/components/ConfigureSceneLayout.tsx");
-  assert.match(layout, /const video = entry\.explainerVideo;/);
+  assert.match(layout, /entry\.explainerVideos\.map\(\(video\)/);
   assert.ok(
     !layout.includes("getCapabilityExplainerVideo"),
     "the layout must not resolve media itself",

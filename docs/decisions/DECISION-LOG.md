@@ -1,5 +1,19 @@
 # Decision log
 
+## 2026-11-04 — Retail Park Unit Visits hero asset approval
+
+Status: approved for the Retail Park Unit visits scene only.
+
+The product lead approved the existing `retail-park-brand-counting-hero.png`
+for `retail-park-unit-visits` (`VIS-RP-02`). The image was visually reviewed in
+the project and shows retail-unit threshold activity with illustrative purple
+markers. Its visible tenant-style names are accepted as illustrative fictional
+signage for this scene. This does not approve the same asset for
+`retail-park-cross-visitation`; that scene requires a separate review.
+
+No source, capability, customer-proof, or measurement claim is approved by this
+decision.
+
 ## 2026-08-04 — CE-DEMO-001 review
 
 Status: technically completed, product go withheld.
@@ -376,17 +390,201 @@ Update 2026-09-30 (product lead review of version 2):
 - **Choices to review:** where a report has several pages for one scene (footfall report Overview/In-Depth; Portfolio · Operations), the page that answers the scene's question was used; unused pages remain in `work/dashboard-screenshots/` (git-ignored). Portfolio · Country and Overview belong to no scene.
 - **Data and names:** all locations, shops, brands, regions, municipalities and sensors are fictional; figures from seeded fixtures (`report-fixtures.ts`), derived values computed from their rows. No third-party basemap: plans and maps are stylised stand-ins labelled "Map view · illustrative". The PFM logo shown in two reports is the approved logo asset, never a redraw.
 - **FR/DE terms for native review:** YTD → FR "Cumul", DE "YTD"; Capture rate → FR "Taux de captation", DE "Capture Rate"; Brand affinity → FR "Affinité entre enseignes", DE "Markenaffinität"; Trade area → FR "Zone de chalandise", DE "Einzugsgebiet"; Dwell time → FR "Durée de présence", DE "Verweildauer"; Landlord report → FR "Rapport bailleur", DE "Vermieterbericht".
+## 2026-11-03 — Automotive voorbereiding ter review
+
+Status: **REVIEWVOORSTEL op gebruikersverzoek; geen productiegoedkeuring.**
+
+De gebruiker vraagt Automotive in de bestaande segmentstijl voor te bereiden en de aangeleverde visuals op te slaan, vóór implementatie in de brochure. AGENTS.md noemt Retail als enige volledige go-demovertical. Automotive blijft daarom een zelfstandig lokaal reviewpakket in `docs/reviews/automotive/`, met inhoudelijke specificatie in `docs/product/AUTOMOTIVE-SEGMENT-REVIEW.md`; geen runtime- of segmentpickerwijziging.
+
+Materieel bronconflict: het aangeleverde showroomdashboard spreekt over “genuine buying opportunities” en berekent extra deals/orderwaarde uit contacttargets. Het aangeleverde Word-document §3 zegt expliciet dat LiDAR geen koper of inhoudelijk verkoopgesprek herkent; AGENTS.md verbiedt verzonnen uplift/ROI. Het voorstel gebruikt daarom contactindicatoren, geobserveerde bestemmingen en afzonderlijke registraties, zonder target-, uplift-, prijs- of ROI-waarden. Het dashboard blijft inhoudelijke referentie. De cohortperiode en gewogen mediaan van deelmedianen vragen correctie bij eventuele hergebruikte analyses.
+
+Automotive heeft in dit voorstel op expliciete gebruikersinstructie geen passantenverhaal of capture rate. Geo is optionele geaggregeerde context, fysiek entreevolume komt uit de voorgestelde Xovis/Milesight-meetopzet, binnentrajecten uit een nog te valideren LiDAR/Xovis-opstelling. Servicezone, medewerkercontact en deskbezoek worden niet gelijkgesteld aan bezoekdoel, gesprek, offerte of order.
+
+Ontbrekende bron: `docs/design/DESIGN-SYSTEM.md` staat in de bronhiërarchie maar ontbreekt in deze checkout. Voor de review gelden daarom de expliciete merkregels uit AGENTS.md en de bestaande scenestijl als referentie; geen nieuw ontwerpsysteem geïntroduceerd.
+
+Assetstatus: er was geen `location-visuals/automotive/`-map of goedgekeurde Automotive-mapping. Zestien Automotive-beelden zijn als reviewkandidaten opgeslagen in `public/assets/content-candidates/automotive/`, met origineelpad, dimensies en checksum in het manifest. De galerie toont de alternatieven; de hoofdscènes tonen een voorgestelde keuze. De portretten zijn lage resolutie en één breed beeld heeft ongedefinieerde scores. Het winkelstraatbeeld is niet als Automotive geclassificeerd. Productiehero-selectie en eventuele verplaatsing volgen na review.
+
+## 2026-11-03 — Automotive PDF en vijf talen
+
+Status: **GEBRUIKERSINSTRUCTIE toegepast op het reviewpakket.**
+
+De gebruiker vraagt een deelbare PDF en stelt Engels als hoofdtaal met NL, DE, FR en ES als aanvullende talen. Vijf losse PDF’s van 14 pagina’s zijn gemaakt met dezelfde scènes, meetvoorwaarden en galerie; de lokale HTML-review heeft dezelfde taalkeuze met Engels als standaard. De canonieke fasen blijven behouden. De taalvereiste geldt als input voor latere brochure-implementatie; de overige segmenten en runtime-localecontracten zijn binnen deze PDF-opdracht niet gewijzigd. Conceptvertalingen blijven onderdeel van inhoudelijke en lokale taalreview.
+
+## 2026-11-04 — Vaste navigatie voor PFM, services, platforms en pakketten
+
+Status: **LOKAAL REVIEWVOORSTEL op gebruikersverzoek; geen productiegoedkeuring.**
+
+De gebruiker vraagt een volledig klikbaar voorbeeld op basis van de bestaande online brochure en de aangeleverde PPT-screenshots, waarin Data Services, ARC, packages en Toolbox een vaste plaats in UX/navigatie hebben. Het zelfstandige voorstel staat in `docs/reviews/digital-brochure-2026-11-04/v2/`. De eerder gedeelde review-index verwijst hiernaar; de eerdere opzet is behouden als `v1.html`.
+
+Voorgestelde vaste header: Locations / How PFM works / Platforms & insights / Service packages. PFM krijgt About / ARC / Data Services; platforms krijgen Toolbox / Advantage / Pulse / Connected data flow; packages krijgen twee vergelijkingen: Reporting & insights en Service & support. Retail behoudt de zes canonieke fasen in de bestaande volgorde. Ondersteunende pagina’s zijn globaal bereikbaar en bieden terugkeer naar de laatst geopende Retail-fase. Dit vervangt geen goedgekeurde runtime-navigatie.
+
+Bronbehandeling: pakketwaarden zijn uit de aangeleverde screenshots overgenomen, met firmware/statusregels uit de genummerde servicematrix. Contractuele voetnoten en HLA-definitie vragen nadere publicatiecopy. Pulse wordt niet aan een pakket toegekend omdat de bronmatrix die koppeling niet maakt. ARC (Accurate, Reliable, Consistent) is gecontroleerd op de officiële PFM-site; de praktische toelichtingen zijn voorgestelde brochurecopy. Originele slides zijn lokaal beschikbaar in de reviewguide. Toolbox/Advantage-illustraties zijn schematisch, Pulse is een aangeleverde illustratieve appreferentie.
+
+Controles: alle 25 reviewbestemmingen en hun interne links/render-assets gecontroleerd, JavaScript-syntax akkoord; typecheck en productiebuild akkoord; lint 0 fouten, 27 bestaande waarschuwingen. Projecttests 884/885 akkoord; de bestaande test op `tests/content.test.mjs:246` verwacht 2 approved visuals, terwijl de vooraf aanwezige VIS-RP-02-goedkeuring 3 oplevert. Die bronwijziging is niet aangepast voor dit reviewwerk. Visuele browser-QA/screenshots konden niet worden uitgevoerd vanwege ontbrekende toegang tot lokale browserpreview.
+
+## 2026-11-04 — Review v2 vastgehouden als UX- en navigatiebasis
+
+Status: **BEVESTIGD door de gebruiker als basis voor verdere uitwerking.**
+
+De gebruiker geeft aan de complete v2-opzet voorlopig vast te willen houden. De vaste navigatie Locations / How PFM works / Platforms & insights / Service packages, de bijbehorende onderverdeling en de terugkeer naar de Retail-journey vormen daarmee de afgesproken ontwerpbasis. De canonieke zes fasen blijven behouden. Verdere aanpassingen worden in een volgende versie uitgewerkt.
+
+De exacte lokale versie is gearchiveerd in `docs/reviews/digital-brochure-2026-11-04/snapshots/PFM_Brochure_Baseline_2026-11-04_v2.zip`. Bestands- en archiefchecksums staan in `BASELINE-2026-11-04.json` in dezelfde reviewhoofdmap. Het archief is op leesbaarheid en overeenkomende inhoud gecontroleerd. De bestaande inhoudelijke open punten en visuele verificatiebeperking blijven gedocumenteerd in de v2 README; deze bevestiging betreft de UX- en navigatierichting.
+
+## 2026-11-04 — Eerste feedbackronde in zelfstandige v3
+
+Status: **REVIEWVOORSTEL op gebruikersinstructie om verder te gaan met de feedback.**
+
+Het volledige gebundelde feedbackdocument DB-01 t/m DB-21 is gelezen en afgezet tegen de vastgelegde v2. De afgebakende eerste ronde betreft DB-01/02/08/13/19/20: direct Retail-overzicht met acht klantvragen, expliciete capture- en dwell-ingangen, kortere/grotere kerncopy, minder dominant beeld, vervanging van de standaard bronfooter door uitklapbare bronuitleg en directe ARC-/privacy-ingangen. De bronlagen blijven benoemd; er zijn geen KPI’s of generieke privacygaranties toegevoegd. De dwell-uitleg volgt de alternatieve ondersteunde event-/trajectoryvereisten uit het bestaande Retail-contentmodel.
+
+V3 staat in `docs/reviews/digital-brochure-2026-11-04/v3/`. Het volledige ID-register met gedeeltelijke verwerking, validatiepunten en latere ideeën staat in `FEEDBACK-REGISTER-2026-11-04.md` in de reviewhoofdmap. Het document is behandeld als feedbackbron; voorstellen daarin gelden niet zelfstandig als opdrachten of productiegoedkeuring.
+
+De vier vastgelegde hoofditems en de canonieke zes fasen blijven behouden. V2 plus het baseline-archief zijn met de opgeslagen checksums op ongewijzigde inhoud gecontroleerd. De zelfstandige v3-check slaagt voor 32 bestemmingen, links, assets, terugkeer naar Retail, pakketgedrag en de afgebakende navigatie-/footerwijzigingen. Browser-/screensharevalidatie staat open. Applicatiecode is niet gewijzigd. PDF, feedbackopslag, Quotation Builder-integratie en nieuwe hoofdsegmenten zijn buiten deze ronde gehouden.
+
+## 2026-11-05 — ARC objectdetectiedoelstelling en AI-positionering in v4
+
+Status: **GEBRUIKERSINPUT verwerkt in lokale reviewversie; geen claim over behaalde prestaties.**
+
+De gebruiker benoemt 98% nauwkeurigheid in objectdetecties als PFM-doelstelling en vraagt de langdurige focus op betrouwbare en consistente data te verbinden aan het gebruik van agentic business agents in de AI-era. De nieuwe bronnotitie `docs/content/PFM-ARC-POSITIONING-2026-11-05.md` onderscheidt deze aangeleverde doelstelling van een gemeten resultaat of universele prestatiegarantie. Definities van accuracy, objectklassen en validatiemethode zijn niet aangeleverd en worden niet verzonnen.
+
+De ARC-pagina in `docs/reviews/digital-brochure-2026-11-04/v4/` toont een 98%-doelblok met scope/validatiecontext naast de AI-uitleg. Het A/R/C-paneel gebruikt klantgerichte copy. Er wordt geen live PFM-agentproduct of koppeling verondersteld. De gedeelde actie-rijstijl centreert knoppen en tekstlinks verticaal, waarmee ook de afwijkingen op About PFM en Privacy worden aangepakt. V2/v3 blijven behouden.
+
+JavaScript-syntax en alle 32 zelfstandige reviewroutes slagen. Inhoud gecontroleerd op het onderscheid doelstelling/resultaat en de opgegeven scope. Visuele browsercontrole blijft open; het layoutprobleem en de CSS-correctie zijn gebaseerd op de aangeleverde screenshots.
+
+## 2026-11-05 — V4 expliciet akkoord bevonden
+
+Status: **GOEDGEKEURDE REVIEWBASIS door expliciete gebruikersbevestiging: “v4 akkoord bevonden”.**
+
+V4 vervangt v2/v3 als vertrekpunt voor verdere uitwerking. De bevestiging betreft de gepresenteerde navigatie, inhoudsindeling, Retail-feedbackuitwerking, actie-uitlijning en ARC-copy met de 98%-doelstelling en AI-positionering. De bestaande bron- en verificatienotities blijven bewaard; de accuracy-doelstelling wordt niet omgezet in een claim over een gemeten resultaat.
+
+De centrale review-index verwijst nu naar v4. De status staat in `docs/reviews/digital-brochure-2026-11-04/CURRENT-REVIEW.md`; het goedgekeurde archief is `snapshots/PFM_Brochure_Approved_2026-11-05_v4.zip`, met bestands- en archiefchecksums in `BASELINE-2026-11-05-v4.json`. Archiefintegriteit en het ongewijzigd blijven van de eerdere v2-baseline zijn gecontroleerd. Vervolgwijzigingen krijgen een volgende versie. Er is geen deployment uitgevoerd.
+
+## 2026-11-05 — Bestaande segmentervaring behouden bij integratie van v4
+
+Status: **GEBRUIKERSVERDUIDELIJKING bij de v4-goedkeuring.**
+
+De gebruiker vraagt te bevestigen dat de overige segmentpagina’s, beelden, voorbeelden en rapportages niet volledig naar de losse v4-review zijn overgenomen en benadrukt de kwaliteit van de huidige brochure. Bevestigd: de Advantage-visual in v4 is een schematisch reviewvoorbeeld. De bestaande runtime bevat onder meer StoreReportSpecimen, FootfallReportSpecimen, LocationReportSpecimen, CatchmentReportSpecimen, StoreMapSpecimen, LandlordReportSpecimen en PortfolioSpecimen. Deze zijn niet door het schematische voorbeeld vervangen.
+
+Integratierandvoorwaarde: behoud de huidige segmentpagina’s, goedgekeurde assets, rapportvoorbeelden en soepele interacties. Verbind de v4-navigatie, afgesproken aanvullingen en gerichte feedbackwijzigingen aan die bestaande ervaring. V4-goedkeuring geldt niet als toestemming om bestaande rapportages of beelden generiek te vervangen door de tijdelijke mockups. De verduidelijking is ook vastgelegd in CURRENT-REVIEW.md; de goedgekeurde v4-bestanden en het snapshot blijven intact.
+
+## 2026-11-05 — Automotive contactkansen en actiegerichte output
+
+Status: **REVIEWVOORSTEL bijgewerkt op basis van expliciet aangeleverde collega-feedback.**
+
+De gebruiker vraagt de commerciële meerwaarde sterker te maken en levert een dashboard aan als mogelijke “What do we get?”-verdieping. De tien Automotive-scènes behouden de canonieke fasen; contactgaten, tijdige reactie, piekdekking, modelpresentatie, marketing en CRM-opvolging worden concreter. Twee verdiepingen tonen een illustratief outputvoorbeeld en de lus detecteren → reageren → evalueren. De vijf lokale taalversies en PDF's worden bijgewerkt; de bestaande brochure-runtime en de elders goedgekeurde v4-reviewbasis worden niet vervangen.
+
+De collega bevestigt telefoon-/smartwatchmeldingen als reeds mogelijke functie. Dit wordt als aangeleverde productinput gebruikt met configuratievoorwaarden, niet als onbevestigde algemene vendorclaim. Deze review verstuurt geen meldingen. Komende implementatie vraagt een versiecontract, valide personeelsonderscheid, regelversie, routering, beschikbaarheid, herhaalonderdrukking en escalatie.
+
+Materieel interpretatieverschil: de bron noemt 60s modelverblijf “geïnteresseerd”, contact “verkoopgesprek” en toont live-status, groepen/ bezoekers door elkaar en vertrekken na de zichtbare peildatum. De herbouwde output gebruikt daarom fictieve Northstar Retail Group-data en expliciete definities. 60s verblijf is een gedragsregel, geen koopintentie; geen gedetecteerd contact is geen bewijs van geen gesprek of verloren omzet. De definitieve, onafhankelijk fictief aangemaakte fixture bevat 68 geldige persoonsbezoeken = 40 met contact + 22 vertrokken zonder contactsignaal + 6 nog aanwezig zonder contactsignaal, op 96 showroombezoeken; contactsignaaldekking is afgerond 59%. Drempels 60s/90s en waarden zijn illustratief. De zeven CRM-offertes en drie orders blijven aparte dagregistraties zonder bezoekcohortconversie. Geen benchmark, uplift of bewezen campagne-effect toegevoegd.
+
+De originele screenshot is intern bewaard met checksum in docs/reference/automotive/. Geen PON/CUPRA-klantcase of live productkoppeling wordt hiermee geclaimd. De gelokaliseerde “What do we get?”-weergave is een inhoudelijk bespreekvoorbeeld, geen toezegging dat elk productscherm exact zo wordt geleverd.
+
+## 2026-11-05 — Xovis 3D-trackingvideo bij Retail in-store analytics
+
+Status: **GEBRUIKERSINSTRUCTIE verwerkt in de bestaande Retail-ervaring.**
+
+De gebruiker identificeert `public/assets/videos/xovis-tracking-video.mp4` als voorbeeldmateriaal voor 3D-tracking in een winkel en vraagt het naast de LiDAR-uitleg te tonen. De clip is daarom verplaatst uit de entree-meetvideo als vervolgweergave en gekoppeld aan Retail TECH-04 / de bestaande `3d-path-tracking`-aanpak. In de technische zijlade en Configure heeft Retail nu afzonderlijke keuzes “See LiDAR in a store” en “See 3D tracking in a store”. De LiDAR-rapportageclip blijft als afgeleide vervolglaag onder LiDAR.
+
+De Xovis-clip toont een afgeleide trackingweergave, niet de ruwe fysieke meetomgeving; de UI labelt dat onderscheid. Videoresolutie is nu per segment en meetmethode, zodat de Retail-storeclip niet naar Shopping Centre of andere segmenten lekt. De oorspronkelijke Xovis-entreeclip blijft ongewijzigd als directe meting zonder de verkeerde trackingvervolgclip.
+
+## 2026-11-05 — Review van een klantgerichte follow-up
+
+Status: **reviewprototype op verzoek van de gebruiker**. De geïntegreerde review krijgt een aparte Follow-up-ingang met een expliciete selectie voor Retail en een lokaal gegenereerd, zelfstandig HTML-bestand. Geopende scènes gelden niet automatisch als besproken onderwerpen. De bestaande Conversation Brief en zijn `brief-v1`-contract blijven beschikbaar; de nieuwe samensteller doet geen CRM- of n8n-aanroep en verstuurt niets. Andere segmenten zijn zichtbaar als toekomstige uitbreiding. Certificering en hosting verwijzen voorlopig naar het PFM-contact; SOC 2, certificaatbereik en hostingclaims worden niet ingevuld zonder bevestigde bron. De gegenereerde pagina draagt een reviewlabel en is nog geen goedgekeurd klantdocument.
+
+## 2026-11-05 — Aanvulling follow-up met sensorprofielen en PFM-bronbeelden
+
+De gebruiker levert een 3D-dieptebeeld, een illustratie van IP-privacy masking en slides voor certificeringen, Data Services en Toolbox/AWS-infrastructuur aan voor gebruik in de follow-up. Deze zijn opgeslagen onder public/assets/follow-up. Specificaties en installatievoorwaarden komen uit de bestaande implementationRequirementProfiles en hun EN/DE/FR-vertalingen, alleen voor expliciet gekozen meetmethoden. Modelnamen blijven zichtbaar; een videoframe bewijst geen sensorhardwarekeuze of specificatie. De certificeringsslide noemt geen SOC 2; PFM krijgt daarom geen SOC 2-status toegekend. RI&E wordt als proces beschreven. De screenshots van Engelstalige bron-slides behouden hun oorspronkelijke taal naast vertaalde toelichting.
+
+## 2026-11-05 — PFM-informatie als opgemaakte copy, geen ingeplakte slides
+
+Status: **GEBRUIKERSVERDUIDELIJKING verwerkt in de brochure en follow-up review.**
+
+De gebruiker geeft aan dat eerdere follow-up-output te veel losse screenshots bevatte en deelt `public/assets/context/PFM-info-for-brochure.pptx` als tekstbron voor About PFM, Data Services, Toolbox/infrastructuur, accreditaties en maatschappelijke bijdrage. De Data Services-, Toolbox- en accreditatieslides worden niet meer als ingeplakte afbeeldingen in de klantoutput getoond; de inhoud is herzet in PFM-gestileerde tekstblokken en compacte rijen. Bestaande product-/sensorbeelden blijven alleen bij relevante gekozen onderwerpen.
+
+De bestaande vaste About PFM-pagina en standaard PFM-sectie in de Follow-up noemen nu ook de Accessibility Fund, het werk rond KNGF en eZwayZ en de bijdrage per verkochte data licence. Dezelfde About-sectie bevat de bereikcijfers die de deck noemt: 500+ shopping centres, 25.000+ retail locations en 1.500+ drive-thru locations. Ze blijven bronclaims, geen eigen berekende resultaten. Data Services, Toolbox/AWS-datastroom en de in de deck genoemde standaarden/accreditaties zijn klantgericht als tekst opgenomen; RI&E staat expliciet als risicobeoordelingsproces.
+
+SOC 2 staat niet in de aangeleverde deck en wordt niet genoemd of gesuggereerd. De gebruiker kondigt aanvullende informatie aan; eventuele SOC 2-status, scope en hostingdetails blijven open totdat die inhoud beschikbaar is. Vertalingen zijn EN/DE/FR.
+
+## 2026-11-05 — Twee PFM-opmaakvarianten voor klant-follow-up
+
+Status: **GEBRUIKERSINSTRUCTIE verwerkt in de reviewgenerator.**
+
+De gebruiker levert twee lokale HTML-bronvarianten aan in `public/assets/content-candidates/html output/`: de UK Brand-template met donkere cover en PFM-rode accenten, en de Light Version-template met lichte cover en paarse accenten. De Follow-up-preview biedt nu beide opmaakkeuzes. De gekozen variant wordt meegenomen in het zelfstandige HTML-bestand en de downloadnaam. Onderwerpkeuze, inhoud, brongebonden toelichtingen en relevante illustraties blijven hetzelfde; de bron-HTML wordt gebruikt als stijlreferentie, niet als vaste statische klantoutput. Geen commerciële voorwaarden of ongevalideerde claims uit de referentie worden geïmporteerd.
 
 
-## 2026-11-18 — Retail passer-by wording and source boundary
+## 2026-11-06 — Klant-follow-up: technische inhoud en opmaak
 
-The Retail scenes label the radar method as “Radar mmWave” across How it works, Technology and Privacy, in all supported locales. A supplied SensMax family datasheet is retained as reference, but its TAC-B model specifications are not assigned to the confirmed installation without a model-specific source match. The supplied Bosch datasheet and image support the FLEXIDOME micro 3100i outdoor option.
+De klantpresentatie PFM-retail-solutions.pptx (2024, 28 slides) is onderzocht als inhoudelijke referentie. De volgorde klantvraag, meetprincipe, installatie en technische gegevens wordt overgenomen. De legacy radar- en LiDAR-specificaties worden niet aan huidige IP- of RoboSense-modellen toegeschreven. Claims van 99% en absolute GDPR-compliance conflicteren met de huidige bronregels en ARC-doelstelling; de bestaande modelspecifieke requirement profiles blijven leidend.
 
+Selecties voor store visits en visitor composition voegen automatisch een 3D-entrance-voorbeeld toe; spatial journey/zone-selecties voegen 3D-tracking en LiDAR als alternatieven toe. Street opportunity gebruikt de huidige IP-detection-route, niet de legacy radar uit 2024. Technische hoofdstukken worden gededupliceerd en als voorbeeldimplementatie benoemd. De selectiekaart vermeldt welke technische uitleg wordt toegevoegd.
+
+Data Services, Toolbox en certificeringen worden opgebouwd uit HTML-tekst en schemaonderdelen; volledige slides worden niet meer als uitvoerafbeeldingen opgenomen. De HTML bevat hoofdstuklinks, consistente beeldkaders en een afzonderlijk technisch gedeelte.
+
+## 2026-11-06 — Portable customer HTML and Proforto reference
+
+The supplied six-page Proforto PDF is used as a layout reference: a balanced hardware/explanation row, practical installation facts and compact model-specific specifications. Customer names, prices, UWB scope and absolute privacy statements are not copied into the generic brochure output. Existing verified implementation profiles remain the source for the four current method sheets (3D entrance, 3D spatial, LiDAR, IP detection).
+
+The HTML renderer and styles now live in app/lib/customer-document, independent of React and pricing. Brochure output uses this renderer. output/customer-html-template-v1 includes source, plain JavaScript, example data and both standalone themes for Quotation Builder handoff. Integration into the separate Quotation Builder remains a separate action.
+
+
+## 2026-11-06 — Certificeringen vastgelegd
+De aangeleverde PFM_Brochureteksten_Per_Onderwerp.docx, onderdeel 02, is verwerkt in app/content/pfm-certifications.ts (EN/DE/FR). De vaste brochurepagina #pfm/certifications en de HTML-selectie assurance lezen dezelfde inhoud. De zeven onderdelen zijn afzonderlijk uitgewerkt; RI&E wordt als risicobeoordeling benoemd. Certificaten blijven entiteit- en scopegebonden. SOC 2 wordt niet genoemd in deze bron. De absolute privacyclaims uit het document zijn niet universeel toepasbaar op alle implementaties; de huidige implementatiespecifieke uitleg blijft leidend.
+
+## 2026-11-06 — Visual surfaces, portfolio proof and portable PDF layout
+Hardware cutouts were derived from the three supplied product photos with transparent alpha and saved as sibling assets in public/assets/follow-up/hardware. Bosch already has alpha. Original imagery is retained. The customer document now supports per-image stage colour (black tracking/LiDAR, blue Xovis depth view). About PFM always embeds six portfolio logos from the previously approved customer-logos registry, with a configurations-vary caption.
+The generator and standalone HTML expose PDF printing. Dedicated A4 CSS preserves backgrounds and uses technology-page breaks. The portable handoff package documents section order, wording, visual treatment, source rules, logo usage and PDF export. No quote pricing logic is imported into the brochure.
+
+
+## 2026-11-06 — Geïntegreerd in brochure en salesoutput
+De transparante varianten zijn nu de hardwarebeelden in de centrale implementationVisuals-registry voor alle bestaande segmenten. De brochure toont de foto's volledig met contain; videovlakken gebruiken zwart. De algemene About PFM-pagina en de selectie-export delen de goedgekeurde compacte customerProofLogos-set. De bestaande salesgenerator gebruikt de portable HTML-renderer, technische selectieprofielen, certificeringsinhoud en A4-PDF-opmaak. Het betreft de bestaande review-implementatie; er is geen externe publicatie uitgevoerd.
+
+
+## 2026-11-06 — Eén geïntegreerde journeyheader
+Tijdens een segmentjourney beheert de bovenste reviewheader het merk, taalkeuze, segment/scènecontext, canonieke fasen, voortgang, herstart en onderwerpingang. De header en fasenbalk van het same-origin journeyframe worden in geïntegreerde modus verborgen. De getoonde labels/status worden uit de bestaande journey afgeleid; herstart en taal blijven de oorspronkelijke handlers gebruiken. Zelfstandig geopende journeys behouden hun header.
+
+## 2026-11-17 — Retail passerendetelling: alternatieven in review
+
+Er is een concept opgesteld voor radar (SensMax TAC-B) en Bosch IP-objectdetectie als alternatieven voor de momenteel niet leverbare Milesight VS361. De twee aangeleverde beelden zijn uitsluitend conceptuele uitleg, geen meetbereik, installatieplan of prestatiebewijs. De TAC-B-datasheet noemt TAC-B 3D-WP; de productinput noemt TAC-3D EWP. Deze modelidentiteit moet worden bevestigd voordat modelgebonden claims live gaan. De Bosch-fiche betreft FLEXIDOME micro 3100i outdoor; er is geen indoor-datasheet aangeleverd. Passanten buiten de gevel blijven semantisch gescheiden van winkelbezoeken aan de entree. De VS361-beschikbaarheid en opvolgertiming zijn productinput, geen fabrikantbevestiging.
+
+## 2026-11-17 — Automotive in geïntegreerde review
+
+Status: **Nederlandse reviewimplementatie op expliciet gebruikersverzoek; niet gepubliceerd.** De zes canonieke fasen en tien Automotive-scènes zijn toegevoegd binnen de bestaande geïntegreerde review. De segmentkeuze en navigatie openen de reviewroute; de bestaande brochure en talen blijven behouden. De bestaande NL-reviewcopy en fictieve fixtures worden hergebruikt; het dashboard en telefoon-/smartwatchvoorbeeld zijn illustratief en gesimuleerd. Geo is een afzonderlijke contextverdieping.
+
+Materiële scopeafweging: AGENTS.md noemt Retail de enige volledige go-demovertical; de gebruiker vraagt nu expliciet Automotive ter review. De toevoeging is beperkt tot de afzonderlijke geïntegreerde review en wordt niet voorgesteld als productiegoedkeuring. De huidige geïntegreerde brochure ondersteunt EN/DE/FR; Automotive zelf is voorlopig Nederlandstalig, met de bestaande navigatie daaromheen. Er bestaat geen goedgekeurde automotive-map onder location-visuals; de eerder getoonde beeldkandidaten blijven expliciet kandidaten en vormen geen productiehero-goedkeuring.
+
+Controle: lint 0 fouten met 34 waarschuwingen, typecheck en build geslaagd; 883/885 tests geslaagd. De twee bestaande falende tests betreffen visual-registry-aantallen en een test over de bestaande picker. Browsercontrole: Automotive-ingang, eerste en laatste fase en dashboard geopend. Volledige visuele controle op beide opgegeven formaten is nog niet uitgevoerd.
+
+## 2026-11-18 — Automotive review volgt de bestaande brochure-UX
+
+Status: **correctie ter review op expliciete gebruikersfeedback.** De eerdere Automotive-review had eigen tabbladen en een extra hoofdnavigatie-ingang. De gebruiker vroeg Automotive als normaal segment binnen de bestaande brochure-UX. Automotive is daarom als kaart onder Locations bereikbaar; de extra hoofdnavigatie-ingang is verwijderd. De review gebruikt de bestaande scèneklassen en voortgangsbalk, de gedeelde WhatYouGet-component en een Nederlands zijpaneel met dezelfde structuur als de bestaande verdieping. De zes canonieke fasen blijven behouden.
+
+De route blijft een Nederlandstalige geïntegreerde review, zonder externe publicatie. De bovenliggende bestaande brochure ondersteunt EN/DE/FR en is niet globaal naar NL omgezet. Automotive-beeldbestanden blijven kandidaten: er is geen goedgekeurde production-hero-map en geen productiegoedkeuring afgeleid. De dashboardwaarden blijven fictief en illustratief; CRM-cijfers zijn afzonderlijke registraties en de melding is gesimuleerd.
+
+De vergelijking met de aangeleverde screenshots is uitgevoerd, evenals een browsercontrole van de kaart, scène, rapportwissel en zijpaneel. Volledige visuele verificatie op 1440×900 en 1024×768 blijft een open reviewpunt. Typecheck, lint en build slagen; twee al aanwezige projecttests falen (visual-registry-aantal en bestaande picker-test).
+
+## 2026-11-18 — Productbeelden en SensMax-model bevestigd
+
+De product lead bevestigt SensMax TAC-3Dn EWP als de gebruikte radar en leverde een radar- en Bosch-productbeeld aan. Beide beelden zijn opgenomen in de Retail-technologiekaarten. De eerder aangeleverde SensMax-fiche noemt TAC-B 3D-WP; de bevestiging van het gekozen model bewijst niet dat die fiche hetzelfde model beschrijft. Daarom worden de modelspecifieke waarden uit die fiche niet aan TAC-3Dn EWP toegeschreven totdat een passende fiche of bevestiging beschikbaar is. De Bosch-fiche beschrijft FLEXIDOME micro 3100i outdoor NUE-3703-F04.
 
 ## 2026-11-18 — Integrated review and Automotive preview boundary
 
 The approved v4 navigation and PFM, platform, service-package and follow-up content are available through the local `/preview/integrated` review route, alongside the existing segment journeys. Per the user's current direction, the route also contains a Dutch Automotive review journey. This is local review material, not a launch or production integration; Retail remains the only complete go-demo vertical.
 
+## 2026-11-18 — Compact sensor requirements and configured privacy
+
+The shared brochure drawer groups mounting, network, power and processing requirements by sensor. Detailed specs remain expandable. Installation accreditations remain in their dedicated content. The product lead confirms on-device processing, active blur and no video storage or transmission for PFM’s Bosch IVA Traffic configuration. The brochure scopes that description to PFM’s setup because the supplier documentation describes configurable modes.
+
 ## 2026-11-19 — Integrated navigation promoted to the live brochure
 
 The user explicitly directs that the integrated v4 brochure experience be applied to the live brochure, after previously reviewing it at `/preview/integrated`. The root route keeps the existing Unified PFM Intro, then opens the integrated Locations experience with the global `How PFM works`, `Platforms & insights`, `Service packages` and `Follow-up` sections. Existing segment journeys remain embedded from the shared journey implementation. The preview route continues to use the same experience and keeps its review label. Automotive remains preview-only because the user clarified that it is being implemented today, while the product scope still treats Retail as the only complete go-demo vertical; no Automotive launch was inferred.
+
+## 2026-11-19 — Klantbrochure via de bestaande Sales-export
+
+De aangeleverde HTML-voorbeelden bepalen de visuele familie. De brochurevariant bouwt toepassingen, meetmethoden, rapportage en vervolgstap uit de Sales-selectie op. De selectie bevat geen gespreksbron, dus de klanttekst schrijft geen uitspraken aan de prospect toe. De bestaande technische profielen, privacybeschrijvingen en vrijgegeven portfoliologo's blijven leidend. Het illustratieve Advantage-uurprofiel komt uit het aangeleverde brochurevoorbeeld en wordt alleen bij entreetelling opgenomen. Automotive-reviewbeelden hebben geen vrijgave voor deze uitvoer.
+
+Het footerconcept en de [officiële PFM-contactpagina](https://www.pfm-intelligence.com/contact) noemen Redditch, terwijl de interne PFM-company-facts Birmingham noemt. De export gebruikt het actuele adres uit de contactpagina. Andere schermen en de referentiebestanden zijn buiten deze correctie gehouden.
+
+De Retail-correctie gebruikt de twee bestaande contextbeelden uit de journey en generieke sensornamen. De IP-specificaties gelden voor het getoonde outdoor-voorbeeld (NUE-3703-F04, aangeleverde fabrikantdatasheet). De afbeelding en specificaties verwijzen naar dezelfde hardwarefamilie. De passantenrapportage gebruikt de bestaande illustratieve Northstar-tijdvakken en geaggregeerde passantenwaarden. Het aangeleverde In-Depth-scherm bevat ook winkel- en verkoop-KPI’s en wordt daarom niet integraal als passantenrapport weergegeven.
+
+## 2026-11-20 — Bestaande rapportpanelen in de klantbrochure
+
+Your reporting gebruikt uitsneden van de bestaande What you get-rapporten voor de bijbehorende Retail- en Shopping Centre-onderwerpen. De exports sluiten alleen de gekozen panelen in. De Engelse rapportbeelden behouden hun oorspronkelijke labels en krijgen een bijschrift in de exporttaal. Voor winkelbezoeken is het weekdag-/uurpaneel gebruikt, zodat de In-Depth-pagina geen ongerelateerde capture- en verkoopcijfers meeneemt. Het bestaande passantenvoorbeeld blijft bij de passantenmeting.

@@ -273,7 +273,7 @@ test("12. the demo is isolated from the approved shell", () => {
 });
 
 test("13. every explainer the demo can reach is translated", async () => {
-  const { resolveExplainerCopy } = await import("../app/i18n/domain.ts");
+  const { resolveExplainerCopy, resolveVideoCopy } = await import("../app/i18n/domain.ts");
   const reachable = new Set();
   for (const segment of segmentDefinitions) {
     for (const sceneId of segment.coreRoute) {
@@ -296,6 +296,18 @@ test("13. every explainer the demo can reach is translated", async () => {
       assert.notEqual(copy.explanation, visual.explanation, `${visual.approachId} falls back to English in ${locale}`);
       assert.notEqual(copy.approachName, visual.approachName, `${visual.approachId} name untranslated in ${locale}`);
     }
+  }
+
+  const trackingCopy = {
+    actionLabel: "3D tracking in a store",
+    intro: "See how in-store 3D tracking represents routes and pauses across the shop floor.",
+    description: "Illustrative top-down store view showing anonymous movement routes and pauses across the floor.",
+  };
+  for (const locale of ["fr", "de"]) {
+    const copy = resolveVideoCopy(locale, "TECH-04", trackingCopy, "3d-path-tracking");
+    assert.notEqual(copy.actionLabel, trackingCopy.actionLabel, `3D tracking action untranslated in ${locale}`);
+    assert.notEqual(copy.intro, trackingCopy.intro, `3D tracking intro untranslated in ${locale}`);
+    assert.notEqual(copy.description, trackingCopy.description, `3D tracking description untranslated in ${locale}`);
   }
 });
 

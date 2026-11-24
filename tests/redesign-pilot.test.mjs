@@ -217,7 +217,8 @@ test("12. the TECH-04 override is honoured: no video, no implementations, approv
   // from — not re-implemented per tab, and not left to the panel to remember.
   const runtime = sceneRuntime();
   assert.match(runtime, /getSegmentCapabilityMediaOverride/);
-  assert.match(runtime, /override\?\.allowCapabilityVideo === false \? null/);
+  assert.match(runtime, /override\?\.allowCapabilityVideo === false\s*\? null\s*:\s*getCapabilityExplainerVideos\(capability\.id, segmentId\)\[0\] \?\? null/);
+  assert.match(runtime, /override\?\.allowCapabilityVideo === false\s*\? \[\]\s*:\s*getCapabilityExplainerVideos\(capability\.id, segmentId\)/);
   /* Still asked once, in the one resolver every tab reads. Since 2026-09-27
      the drawer may prefer its own per-segment list over the shared one (see
      scene-drawer-overrides.ts), so the check names both sources and the

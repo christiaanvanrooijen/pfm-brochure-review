@@ -97,7 +97,10 @@ export const visualAssets: readonly VisualAssetDefinition[] = [
   visual("VIS-SC-10", "shopping-centre", ["shopping-centre-vehicle-origin"], ["TECH-06", "TECH-07"], "placeholder", `${matrix}: PFM Matrix!A26:M26`),
 
   visual("VIS-RP-01", "retail-park", ["retail-park-vehicle-arrival", "retail-park-parking-occupancy"], ["TECH-06"], "approval_required", `${matrix}: Visual & proof registry!A14:G14`),
-  visual("VIS-RP-02", "retail-park", ["retail-park-unit-visits", "retail-park-cross-visitation"], ["TECH-02", "TECH-05"], "approval_required", `${matrix}: Visual & proof registry!A15:G15`),
+  // Human-approved 2026-11-04 for the Retail Park Unit visits scene only:
+  // retail-park-brand-counting-hero.png. This approval does not extend to
+  // Cross-visitation, which shares the visual asset ID but needs its own review.
+  visual("VIS-RP-02", "retail-park", ["retail-park-unit-visits", "retail-park-cross-visitation"], ["TECH-02", "TECH-05"], "approved", `${matrix}: Visual & proof registry!A15:G15`),
   visual("VIS-RP-03", "retail-park", ["retail-park-competitive-visitation-white-spots"], ["TECH-07"], "approval_required", `${matrix}: Visual & proof registry!A16:G16`),
   visual("VIS-RP-04", "retail-park", ["retail-park-catchment-area", "retail-park-vehicle-origin"], ["TECH-06", "TECH-07"], "approval_required", `${matrix}: Visual & proof registry!A17:G17`),
   visual("VIS-RP-05", "retail-park", ["retail-park-visitor-composition"], ["TECH-03"], "placeholder", `${matrix}: PFM Matrix!A32:M32`),

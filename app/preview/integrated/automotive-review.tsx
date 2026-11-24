@@ -242,7 +242,7 @@ export function AutomotiveReview({ locale = 'en' }: { locale?: Locale }) {
           <h1 className="rd__question">{scene.title}</h1><p className="rd__supporting">{scene.intro}</p><p className="rd__truth">{scene.body}</p>
           <div className="rd__focus" role="group" aria-label={t.topic}>{focusItems.map(item=><button key={item.id} type="button" className={`rd__focus-tab${focus===item.id?' is-active':''}`} aria-pressed={focus===item.id} onClick={()=>setFocus(item.id)}>{item.label}</button>)}</div>
           <p className="rd__focus-body">{focusItems.find(item=>item.id===focus)?.body}</p>
-          <div className="rd__actions"><button type="button" className="rd__output-trigger" onClick={()=>setOutput(true)}><span aria-hidden="true">▣</span> {t.see}</button><button ref={trigger} type="button" className="rd__depth-trigger" aria-haspopup="dialog" aria-expanded={depth} onClick={()=>setDepth(true)}>{ui.howThisWorks} <span aria-hidden="true">+</span></button></div>
+          <div className="rd__actions"><button type="button" className="rd__output-trigger" onClick={()=>setOutput(true)}><span aria-hidden="true">▣</span> {t.see}</button>{scene.id !== 'context' && <button ref={trigger} type="button" className="rd__depth-trigger" aria-haspopup="dialog" aria-expanded={depth} onClick={()=>setDepth(true)}>{ui.howThisWorks} <span aria-hidden="true">+</span></button>}</div>
         </section>
         <figure className="rd__stage-figure automotive-journey__hero"><img src={hero} alt={heroAlt}/><figcaption className="rd__figcaption"><span>{scene.question}</span><span className="rd__figcaption-note">{t.visual}</span></figcaption></figure>
       </div>}

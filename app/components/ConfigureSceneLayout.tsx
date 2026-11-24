@@ -177,7 +177,7 @@ export function ConfigureSceneLayout({
   >({});
   const [technicalDetailOpen, setTechnicalDetailOpen] = useState<readonly string[]>([]);
   /**
-   * Which capabilities have had their example-implementation video opened.
+   * Which approach-specific example videos have been opened.
    *
    * The video sits behind a secondary action rather than playing inline so that
    * the vendor-neutral explanation is what answers "how does this work". Left
@@ -591,36 +591,34 @@ export function ConfigureSceneLayout({
                               so unlike the readiness chips it survives into
                               Presentation Mode.
 
-                              Where a second, DERIVED view exists it is rendered
-                              inside this block, never beside it. Two clips of
-                              equal prominence would read as a media library and
-                              would also flatten the one distinction that has to
-                              survive: the first is the physical space being
-                              measured, the second is a representation
-                              calculated from that measurement afterwards. */}
+                              Where one capability has genuinely different
+                              measurement approaches, each clip stays tied to
+                              its named approach. A derived reporting view stays
+                              nested under its source clip rather than beside it. */}
                           {(() => {
-                            const video = entry.explainerVideo;
-                            if (!video) return null;
-                            const videoOpen = exampleVideoOpen.includes(key);
-                            const derivedOpen = derivedVideoOpen.includes(key);
-                            return (
-                              <>
+                            if (entry.explainerVideos.length === 0) return null;
+                            return entry.explainerVideos.map((video) => {
+                              const videoKey = `${key}:${video.approachId ?? video.src}`;
+                              const videoOpen = exampleVideoOpen.includes(videoKey);
+                              const derivedOpen = derivedVideoOpen.includes(videoKey);
+                              return (
+                              <div key={videoKey}>
                                 <button
                                   type="button"
                                   className="configure__example-toggle"
                                   aria-expanded={videoOpen}
                                   onClick={() => {
                                     setExampleVideoOpen((current) =>
-                                      current.includes(key)
-                                        ? current.filter((id) => id !== key)
-                                        : [...current, key],
+                                      current.includes(videoKey)
+                                        ? current.filter((id) => id !== videoKey)
+                                        : [...current, videoKey],
                                     );
                                     // Closing the measured view closes the
                                     // derived one with it. A reporting view left
                                     // open on its own has nothing above it
                                     // saying what it was derived from.
                                     setDerivedVideoOpen((current) =>
-                                      current.filter((id) => id !== key),
+                                      current.filter((id) => id !== videoKey),
                                     );
                                   }}
                                 >
@@ -656,7 +654,16 @@ export function ConfigureSceneLayout({
                                       instead — which is the honest label, and
                                       keeps a product name out of a layer that
                                       exists to explain a principle. */}
-                                  {video.exampleImplementationRole ? (
+                                  <span className="configure__video-example">
+                                    {video.viewLabel}
+                                    {video.approachName ? (
+                                      <>
+                                        <span aria-hidden="true"> · </span>
+                                        {video.approachName}
+                                      </>
+                                    ) : null}
+                                  </span>
+                                  {video.exampleImplementationRole && (
                                     <span className="configure__video-example">
                                       Example implementation
                                       <span aria-hidden="true"> · </span>
@@ -664,16 +671,6 @@ export function ConfigureSceneLayout({
                                       {video.exampleImplementationName
                                         ? ` · ${video.exampleImplementationName}`
                                         : ""}
-                                    </span>
-                                  ) : (
-                                    <span className="configure__video-example">
-                                      {video.viewLabel}
-                                      {video.approachName ? (
-                                        <>
-                                          <span aria-hidden="true"> · </span>
-                                          {video.approachName}
-                                        </>
-                                      ) : null}
                                     </span>
                                   )}
                                   <span className="configure__video-note">
@@ -705,9 +702,9 @@ export function ConfigureSceneLayout({
                                       aria-expanded={derivedOpen}
                                       onClick={() =>
                                         setDerivedVideoOpen((current) =>
-                                          current.includes(key)
-                                            ? current.filter((id) => id !== key)
-                                            : [...current, key],
+                                          current.includes(videoKey)
+                                            ? current.filter((id) => id !== videoKey)
+                                            : [...current, videoKey],
                                         )
                                       }
                                     >
@@ -745,8 +742,9 @@ export function ConfigureSceneLayout({
                                 )}
                               </figure>
                                 )}
-                              </>
-                            );
+                              </div>
+                              );
+                            });
                           })()}
 
                           {/* A segment that resolves no implementation for this

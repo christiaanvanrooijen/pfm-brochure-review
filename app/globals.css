@@ -6340,6 +6340,7 @@ button.capture__lens:hover .capture__lens-mark { border-color: #e3d5fb; }
 }
 .rd-depth__detail-toggle:focus-visible { outline: 2px solid var(--pfm-purple-deep); outline-offset: 1px; }
 .rd-depth__list--detail { margin-top: 10px; gap: 8px; }
+.rd-depth__list--detail li > strong { color: #8255c7; }
 
 /* -------------------------------------------------------------- *
    PRIVACY — one block per implementation, never merged
