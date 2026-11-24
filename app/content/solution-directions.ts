@@ -390,6 +390,8 @@ export interface CapabilityExplainerFollowOnVideo {
 
 export interface CapabilityExplainerVideo {
   capabilityId: TechnologyCapabilityId;
+  /** Segment whose real-world context the supplied footage illustrates. */
+  segment: SegmentId;
   /**
    * Which measurement approach under that capability this footage illustrates,
    * where the capability has more than one. Matches a `CapabilityExplainerVisual`
@@ -426,6 +428,7 @@ const videoSource = `${salesDirection}: §22 Configure direction — visual expl
 export const capabilityExplainerVideos: readonly CapabilityExplainerVideo[] = [
   {
     capabilityId: "TECH-02",
+    segment: "retail",
     approachId: "threshold-cone",
     src: "/assets/videos/3d-sensor-counting-xovis.mp4",
     originalSrc: "/assets/videos/3d-sensor-counting-xovis.mov",
@@ -448,6 +451,7 @@ export const capabilityExplainerVideos: readonly CapabilityExplainerVideo[] = [
     // would also drag hardware up into the explainer layer, which is precisely
     // where it does not belong. The footage illustrates the APPROACH.
     capabilityId: "TECH-04",
+    segment: "retail",
     approachId: "lidar-point-cloud",
     src: "/assets/videos/lidar-in-a-store-pfm.mp4",
     originalSrc: null,
