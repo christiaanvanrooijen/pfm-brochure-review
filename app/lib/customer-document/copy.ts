@@ -1,0 +1,132 @@
+import type { Locale } from '../../i18n/locales';
+
+export const brochureCopy = {
+  en: {
+    edition: 'Digital brochure', application: 'Your application', measurement: 'Measurement plan',
+    report: 'Your reporting', partner: 'Working with PFM', next: 'Next step', print: 'Print brochure',
+    selection: 'Selected applications', methods: 'Measurement methods', outcome: 'What you can see',
+    decision: 'Decision this supports', example: 'Illustrative report structure', close: 'Close',
+    detail: 'Image detail', zoom: 'Enlarge image', explore: 'Discuss the application',
+    measurementIntro: 'Coverage and configuration are agreed around the location and the question. Where several methods are shown for one application, they are options to assess during the site survey.',
+    nextTitle: 'Where would you like to start?',
+    nextText: 'Bring a floor plan or site photos and one question you want to answer. Together we can identify a first measurement area, agree how to check the data and outline the report you would use.',
+    serviceNext: 'Bring one reporting or service requirement to a short exploratory call. Together we can identify the data, checks and support your location would need.',
+    define: 'Define the measurement', validate: 'Validate on site', interpret: 'Review the first report',
+    defineText: 'Agree the question, measurement boundary, time periods and exceptions on a site plan.',
+    validateText: 'Check coverage on site, compare a sample with direct observations and investigate gaps before interpreting the figures.',
+    interpretText: 'Read the first comparable periods together and agree what to verify on site next.',
+    footer: ['Connected across borders', 'Local expertise.', 'Global reach.', 'Our local teams bring you close to the expertise you need, supported by an international partner network for projects beyond our own offices.', 'Our offices', 'Netherlands', 'United Kingdom', 'Germany', 'France', 'Paris', 'Worldwide partner network', 'International coverage. Local collaboration.', 'Working with partners worldwide to support projects in markets beyond our direct presence.', 'Unlocking location potential'],
+  },
+  de: {
+    edition: 'Digitale Broschüre', application: 'Ihre Anwendung', measurement: 'Messkonzept',
+    report: 'Ihre Auswertung', partner: 'Zusammenarbeit mit PFM', next: 'Nächster Schritt', print: 'Broschüre drucken',
+    selection: 'Ausgewählte Anwendungen', methods: 'Messmethoden', outcome: 'Was Sie sehen können',
+    decision: 'Welche Entscheidung das unterstützt', example: 'Illustrativer Berichtsaufbau', close: 'Schließen',
+    detail: 'Bilddetail', zoom: 'Bild vergrößern', explore: 'Anwendung besprechen',
+    measurementIntro: 'Abdeckung und Konfiguration richten sich nach Standort und Fragestellung. Wenn mehrere Methoden für eine Anwendung gezeigt werden, prüfen wir diese Optionen bei der Standortbegehung.',
+    nextTitle: 'Womit möchten Sie beginnen?',
+    nextText: 'Bringen Sie einen Grundriss oder Standortfotos und eine konkrete Frage mit. Gemeinsam bestimmen wir einen ersten Messbereich, die Datenprüfung und den passenden Bericht.',
+    serviceNext: 'Bringen Sie eine konkrete Anforderung an Berichte oder Service zu einem kurzen Erstgespräch mit. Gemeinsam klären wir, welche Daten, Prüfungen und Unterstützung Ihr Standort benötigt.',
+    define: 'Messung definieren', validate: 'Vor Ort prüfen', interpret: 'Ersten Bericht besprechen',
+    defineText: 'Fragestellung, Messgrenze, Zeiträume und Ausnahmen auf einem Standortplan festlegen.',
+    validateText: 'Abdeckung vor Ort prüfen, eine Stichprobe mit direkten Beobachtungen abgleichen und Datenlücken vor der Auswertung untersuchen.',
+    interpretText: 'Erste vergleichbare Zeiträume gemeinsam auswerten und festlegen, was als Nächstes vor Ort geprüft wird.',
+    footer: ['Über Grenzen hinweg verbunden', 'Lokale Expertise.', 'Weltweite Reichweite.', 'Unsere Teams vor Ort bieten Ihnen direkten Zugang zu Fachwissen. Für Projekte außerhalb unserer eigenen Standorte ergänzt ein internationales Partnernetzwerk diese Unterstützung.', 'Unsere Standorte', 'Niederlande', 'Vereinigtes Königreich', 'Deutschland', 'Frankreich', 'Paris', 'Weltweites Partnernetzwerk', 'Internationale Präsenz. Lokale Zusammenarbeit.', 'Mit Partnern weltweit unterstützen wir Projekte auch in Märkten außerhalb unserer eigenen Standorte.', 'Standortpotenziale erschließen'],
+  },
+  fr: {
+    edition: 'Brochure numérique', application: 'Votre application', measurement: 'Plan de mesure',
+    report: 'Vos rapports', partner: 'Travailler avec PFM', next: 'Prochaine étape', print: 'Imprimer la brochure',
+    selection: 'Applications sélectionnées', methods: 'Méthodes de mesure', outcome: 'Ce que vous pouvez observer',
+    decision: 'Décision que ces données éclairent', example: 'Structure de rapport illustrative', close: 'Fermer',
+    detail: 'Détail de l’image', zoom: 'Agrandir l’image', explore: 'Parler de votre application',
+    measurementIntro: 'La couverture et la configuration dépendent du site et de la question. Lorsque plusieurs méthodes sont présentées pour une application, leurs conditions sont étudiées lors de la visite du site.',
+    nextTitle: 'Par où souhaitez-vous commencer ?',
+    nextText: 'Apportez un plan ou des photos du site et une question précise. Ensemble, nous pourrons définir une première zone de mesure, les contrôles et le rapport à utiliser.',
+    serviceNext: 'Apportez un besoin précis de reporting ou de service à un court entretien. Ensemble, nous pourrons identifier les données, les contrôles et l’assistance nécessaires à votre site.',
+    define: 'Définir la mesure', validate: 'Vérifier sur site', interpret: 'Lire le premier rapport',
+    defineText: 'Définir la question, les limites de mesure, les périodes et les exceptions sur un plan du site.',
+    validateText: 'Vérifier la couverture sur place, comparer un échantillon à des observations directes et examiner les lacunes avant l’interprétation.',
+    interpretText: 'Lire ensemble les premières périodes comparables et choisir le prochain point à vérifier sur place.',
+    footer: ['Connectés au-delà des frontières', 'Une expertise locale.', 'Une présence mondiale.', 'Nos équipes locales vous donnent accès à leur expertise, avec l’appui d’un réseau international de partenaires pour les projets au-delà de nos propres bureaux.', 'Nos bureaux', 'Pays-Bas', 'Royaume-Uni', 'Allemagne', 'France', 'Paris', 'Réseau mondial de partenaires', 'Une couverture internationale. Des partenaires locaux.', 'Nous accompagnons aussi les projets dans les marchés où nous intervenons avec des partenaires.', 'Révéler le potentiel des sites'],
+  },
+} satisfies Record<Locale, Record<string, string | string[]>>;
+
+export const retailCombinedCover = {
+  en: {title:'What happens between the pavement', focus:'and your store entrance?', lead:'Compare when people pass your shopfront and when they enter, using defined areas and comparable hours for each measurement.'},
+  de: {title:'Was passiert zwischen Gehweg', focus:'und Store-Eingang?', lead:'Vergleichen Sie, wann Menschen an Ihrem Schaufenster vorbeigehen und wann sie den Store betreten. Beide Messungen haben einen definierten Bereich und vergleichbare Zeitfenster.'},
+  fr: {title:'Que se passe-t-il entre le trottoir', focus:'et l’entrée du magasin ?', lead:'Comparez les heures de passage devant la vitrine et les heures d’entrée, avec des zones définies et des horaires comparables pour chaque mesure.'},
+} satisfies Record<Locale, {title:string; focus:string; lead:string}>;
+
+type ApplicationCopy = {
+  question: string; answer: string; measurement: string; report: string; decision: string;
+  columns?: readonly [string, string, string];
+  steps?: readonly [string, string, string];
+};
+
+const retail = {
+  'retail-store-visits': {
+    en: {question:'When do shoppers enter your store?', answer:'See when people cross the entrance and how the pattern changes across comparable opening hours.', measurement:'A sensor above the doorway counts crossings at a configured line and distinguishes entry from exit.', report:'Incoming crossings at the selected entrance, grouped by hour across comparable trading days.', decision:'Choose a busy and a quiet hour for an on-site check before changing entrance signage or staff cover.', columns:['Store entrance','Trading hour','Incoming crossings'], steps:['Mark the door and agree the direction that counts as an entry.', 'Compare entries over a short observation window with a manual count at that door.', 'Review the hourly entry profile and choose a busy and a quiet period to observe.']},
+    de: {question:'Wann betreten Kunden Ihren Store?', answer:'Erkennen Sie, wann Menschen die Eingangsschwelle überqueren und wie sich das Muster zu vergleichbaren Öffnungszeiten verändert.', measurement:'Ein Sensor über der Tür zählt Übertritte an einer festgelegten Linie und unterscheidet Ein- und Austritte.', report:'Übertritte in Eingangsrichtung am gewählten Eingang, stündlich gruppiert und über vergleichbare Verkaufstage gegenübergestellt.', decision:'Wählen Sie eine stark und eine schwach frequentierte Stunde für eine Beobachtung vor Ort, bevor Sie Beschilderung oder Personaleinsatz ändern.', columns:['Store-Eingang','Stunde innerhalb der Öffnungszeit','Übertritte in Eingangsrichtung'], steps:['Tür markieren und festlegen, welche Richtung als Eintritt zählt.', 'Die erfassten Eintritte in einem kurzen Zeitfenster mit einer manuellen Zählung an dieser Tür abgleichen.', 'Das stündliche Eintrittsprofil prüfen und eine stark und eine schwach frequentierte Zeit für eine Beobachtung wählen.']},
+    fr: {question:'Quand les clients entrent-ils dans votre magasin ?', answer:'Identifiez quand les clients franchissent le seuil et comment ce profil varie sur des plages d’ouverture comparables.', measurement:'Un capteur au-dessus de la porte compte les franchissements d’une ligne définie et distingue les entrées des sorties.', report:'Franchissements vers l’intérieur à l’entrée retenue, regroupés par heure sur des jours d’ouverture comparables.', decision:'Choisissez une heure de pointe et une heure calme à observer avant d’ajuster la signalétique ou les effectifs.', columns:['Entrée du magasin','Heure d’ouverture','Franchissements entrants'], steps:['Repérer la porte et définir le sens qui compte comme une entrée.', 'Comparer les entrées relevées sur un court créneau avec un comptage manuel à cette porte.', 'Lire le profil horaire et choisir une heure de pointe et une heure calme à observer.']},
+  },
+  'retail-street-opportunity': {
+    en: {question:'When is your shopfront busiest?', answer:'See when pedestrians pass your frontage and whether the pattern changes across comparable periods.', measurement:'Configured camera analytics count pedestrian passages within a defined pavement area along the frontage.', report:'Daily pedestrian passages within the measured frontage area, shown across comparable days.', decision:'Choose which frontage and times to observe before testing a change to window displays or campaign timing.', columns:['Frontage area','Hour of day','Pedestrian passages'], steps:['Mark the section of pavement and agree what counts as a pedestrian passage.', 'Compare passages in the defined area with a manual observation in the same time window.', 'Compare matching hours and pick a time to observe the shopfront before testing a display change.']},
+    de: {question:'Wann gehen die meisten Menschen an Ihrem Schaufenster vorbei?', answer:'Erkennen Sie, wann Menschen an Ihrer Ladenfront vorbeigehen und wie sich das Muster in vergleichbaren Zeiträumen verändert.', measurement:'Konfigurierte Kameraanalytik zählt Passantenbewegungen auf einem definierten Gehwegabschnitt vor der Ladenfront.', report:'Tägliche Passantenbewegungen im erfassten Bereich vor der Ladenfront, über vergleichbare Tage gegenübergestellt.', decision:'Wählen Sie Ladenfront und Zeitfenster für eine Beobachtung, bevor Sie die Schaufenstergestaltung oder den Zeitpunkt einer Aktion testen.', columns:['Bereich vor der Ladenfront','Stunde des Tages','Passantenbewegungen'], steps:['Gehwegabschnitt markieren und definieren, was als Passantenbewegung zählt.', 'Die erfassten Bewegungen im definierten Abschnitt mit einer manuellen Beobachtung im selben Zeitfenster abgleichen.', 'Vergleichbare Stunden prüfen und eine Zeit zur Beobachtung wählen, bevor Sie eine neue Schaufenstergestaltung testen.']},
+    fr: {question:'Quand y a-t-il le plus de passage devant votre vitrine ?', answer:'Identifiez quand les piétons passent devant votre vitrine et comment ce profil varie sur des périodes comparables.', measurement:'Une caméra avec analyse configurée compte les passages piétons sur une portion définie du trottoir.', report:'Passages piétons quotidiens dans la zone mesurée le long de la vitrine, sur des jours comparables.', decision:'Choisissez où et quand observer les passants avant de tester une nouvelle vitrine ou un autre créneau de campagne.', columns:['Zone devant la vitrine','Heure de la journée','Passages piétons'], steps:['Délimiter la portion de trottoir et convenir de ce qui compte comme un passage piéton.', 'Comparer les passages dans la zone définie à une observation manuelle sur le même créneau.', 'Comparer les mêmes heures et choisir un moment d’observation avant de tester un changement de vitrine.']},
+  },
+  'retail-visitor-composition': {
+    en: {question:'How does your visitor mix change through the day?', answer:'Compare estimated anonymous group sizes across similar trading periods when classification is configured and permitted.', measurement:'A compatible overhead sensor records entrance crossing events. The configured classification estimates group size from those events.', report:'Estimated group-size distribution for the selected entrance and period, with comparable hours shown side by side.', decision:'Choose a time to observe how groups use the entrance before changing how the store welcomes them.'},
+    de: {question:'Wie verändert sich der Besuchermix im Tagesverlauf?', answer:'Vergleichen Sie geschätzte anonyme Gruppengrößen in ähnlichen Verkaufszeiträumen, sofern die Klassifikation eingerichtet und zulässig ist.', measurement:'Ein kompatibler Sensor oberhalb des Eingangs erfasst Übertritte. Die konfigurierte Klassifikation schätzt daraus die Gruppengröße.', report:'Geschätzte Verteilung der Gruppengrößen für den gewählten Eingang und Zeitraum, im Vergleich passender Stunden.', decision:'Wählen Sie eine Zeit zur Beobachtung, bevor Sie den Empfang von Besuchergruppen verändern.'},
+    fr: {question:'Comment la composition des visites évolue-t-elle dans la journée ?', answer:'Comparez les tailles estimées de groupes anonymes sur des périodes similaires lorsque la classification est configurée et autorisée.', measurement:'Un capteur compatible au-dessus de l’entrée relève les franchissements. La classification configurée estime la taille des groupes à partir de ces événements.', report:'Répartition estimée des tailles de groupe pour l’entrée et la période retenues, en comparant des heures similaires.', decision:'Choisissez quand observer la façon dont les groupes utilisent l’entrée avant de modifier leur accueil.'},
+  },
+  'retail-in-store-journey': {
+    en: {question:'Which routes do shoppers take through your store?', answer:'See which paths shoppers use and where movement changes between zones.', measurement:'3D tracking or LiDAR can record movement in the agreed coverage area. The floor plan defines the zones and transitions.', report:'A map of paths and zone transitions within measured coverage, compared over like-for-like opening hours.', decision:'Pick a route to observe before moving a display or changing signage.'},
+    de: {question:'Welche Wege nehmen Kunden durch Ihren Store?', answer:'Erkennen Sie häufig genutzte Wege und Übergänge zwischen Zonen.', measurement:'3D-Tracking oder LiDAR erfassen Bewegungen im vereinbarten Bereich. Der Grundriss legt Zonen und Übergänge fest.', report:'Karte der Wege und Zonenübergänge im Messbereich, verglichen über gleiche Öffnungszeiten.', decision:'Wählen Sie eine Route zur Beobachtung, bevor Sie eine Präsentationsfläche oder die Beschilderung ändern.'},
+    fr: {question:'Quels parcours vos clients suivent-ils en magasin ?', answer:'Repérez les trajets empruntés et les transitions entre zones.', measurement:'Le suivi 3D ou le LiDAR peuvent relever les mouvements dans la zone convenue. Le plan définit les zones et leurs transitions.', report:'Carte des trajets et transitions dans le périmètre mesuré, comparés sur des horaires d’ouverture équivalents.', decision:'Choisissez un trajet à observer avant de déplacer une présentation ou de modifier la signalétique.'},
+  },
+  'retail-zone-engagement': {
+    en: {question:'Which areas hold shoppers’ attention?', answer:'Compare which defined areas shoppers reach and how long they remain within each measured zone.', measurement:'3D tracking or LiDAR record movement within configured coverage. Dwell is elapsed time within the zone boundary.', report:'Zone visits and dwell time for the selected zones and comparable trading windows.', decision:'Choose one display or zone to observe before changing its position or layout.'},
+    de: {question:'In welchen Bereichen halten sich Kunden länger auf?', answer:'Vergleichen Sie erreichte Bereiche und die Verweildauer in jeder gemessenen Zone.', measurement:'3D-Tracking oder LiDAR erfassen Bewegung im konfigurierten Bereich. Die Verweildauer ist die Zeit innerhalb der Zonengrenze.', report:'Zonenbesuche und Verweildauer für die gewählten Bereiche und vergleichbare Verkaufszeiten.', decision:'Wählen Sie eine Präsentationsfläche zur Beobachtung, bevor Sie Position oder Aufbau ändern.'},
+    fr: {question:'Dans quelles zones les clients s’attardent-ils ?', answer:'Comparez les zones atteintes et le temps passé dans chacune des zones mesurées.', measurement:'Le suivi 3D ou le LiDAR relève les mouvements dans la couverture configurée. La durée est calculée dans les limites de la zone.', report:'Visites et durées de présence dans les zones retenues sur des plages commerciales comparables.', decision:'Choisissez une zone ou une présentation à observer avant d’en modifier le placement.'},
+  },
+  'retail-conversion-sales-context': {
+    en: {question:'When do store visits and transactions diverge?', answer:'Compare physical store visits with transaction totals supplied by your business.', measurement:'Bring the agreed visit counts and point-of-sale totals together by store and trading period. Each source retains its own definition.', report:'A comparison of the two source series for matching stores and periods, subject to both sources being available.', decision:'Choose a trading period to investigate with the store team before testing a change to staffing or layout.'},
+    de: {question:'Wann entwickeln sich Store-Besuche und Transaktionen unterschiedlich?', answer:'Vergleichen Sie physisch erfasste Store-Besuche mit den Transaktionssummen Ihres Unternehmens.', measurement:'Abgestimmte Besuchszählungen und Kassensummen nach Store und Verkaufszeit zusammenführen. Jede Quelle behält ihre Definition.', report:'Vergleich der beiden Datenreihen für dieselben Stores und Zeiträume, sofern beide Quellen vorliegen.', decision:'Wählen Sie einen Zeitraum, den Ihr Store-Team vor einer Änderung von Personaleinsatz oder Aufbau untersucht.'},
+    fr: {question:'Quand les visites et les transactions évoluent-elles différemment ?', answer:'Comparez les visites mesurées en magasin et les totaux de transactions fournis par votre entreprise.', measurement:'Rapprochez les comptages de visites et les totaux de caisse par magasin et période d’ouverture. Chaque source conserve sa définition.', report:'Comparaison des deux séries pour les mêmes magasins et périodes, si les deux sources sont disponibles.', decision:'Choisissez une période à examiner avec l’équipe avant de tester une modification des effectifs ou de l’agencement.'},
+  },
+} satisfies Record<string, Record<Locale, ApplicationCopy>>;
+
+export const applicationCopy: Readonly<Record<string, Record<Locale, ApplicationCopy>>> = retail;
+
+export const supplementCopy = {
+ en: {
+  'data-services':['How can you trust the data in your report?', 'Data checks flag gaps or anomalies for investigation and follow-up within the agreed service.', 'Agree which gaps or changes should trigger a review with your team.'],
+  toolbox:['How do you follow data from the site to the report?', 'Toolbox brings together device status, operational data checks and configured exports.', 'Choose which exports need to support your own reporting and who will follow up on data gaps.'],
+  advantage:['Which patterns do you need to see in your reports?', 'Use available dashboards to compare agreed location measures and time periods.', 'Choose one recurring location decision and the comparison you want the dashboard to support.'],
+  pulse:['Which location insights should you have to hand?', 'The mobile view shows the insights available for the configured account and solution.', 'Choose which available measures your team needs to consult away from a desk.'],
+  packages:['What reporting and support does your location need?', 'Essential, Professional and Enterprise offer different reporting and service scopes.', 'Choose which reports and follow-up your team needs before agreeing a service scope.'],
+  assurance:['Which assurances apply to your deployment?', 'PFM can provide the relevant certification and hosting scope for review.', 'Ask for the certificates and scopes your team needs to complete its supplier review.'],
+  tracking:['Where do visitors move within your site?', 'See paths and transitions between defined zones within configured coverage.', 'Choose a route to observe before moving a display or changing the layout.'],
+  lidar:['How do visitors use the areas you want to study?', 'See zone visits and dwell within configured coverage and periods.', 'Choose a zone to observe before changing the layout or placement of a display.'],
+ },
+ de: {
+  'data-services':['Wie können Sie sich auf die Daten im Bericht verlassen?', 'Datenprüfungen markieren Lücken oder Auffälligkeiten für Untersuchung und Nachverfolgung im vereinbarten Serviceumfang.', 'Vereinbaren Sie, welche Lücken oder Veränderungen Ihr Team prüfen soll.'],
+  toolbox:['Wie verfolgen Sie die Daten vom Standort bis zum Bericht?', 'Toolbox bündelt Gerätestatus, operative Datenprüfungen und konfigurierte Exporte.', 'Legen Sie fest, welche Exporte Ihre Berichte unterstützen sollen und wer Datenlücken nachverfolgt.'],
+  advantage:['Welche Muster sollen Ihre Berichte sichtbar machen?', 'Verfügbare Dashboards vergleichen abgestimmte Standortkennzahlen und Zeiträume.', 'Wählen Sie eine wiederkehrende Standortentscheidung und den dazu benötigten Vergleich.'],
+  pulse:['Welche Standortinformationen möchten Sie unterwegs sehen?', 'Die mobile Ansicht zeigt verfügbare Einblicke für das konfigurierte Konto und die gewählte Lösung.', 'Wählen Sie die verfügbaren Kennzahlen, die Ihr Team mobil einsehen soll.'],
+  packages:['Welche Berichte und welche Betreuung braucht Ihr Standort?', 'Essential, Professional und Enterprise bieten unterschiedliche Berichts- und Serviceumfänge.', 'Legen Sie vor der Wahl des Serviceumfangs fest, welche Berichte und welche Nachverfolgung Ihr Team braucht.'],
+  assurance:['Welche Nachweise gelten für Ihre Implementierung?', 'PFM kann die einschlägigen Zertifizierungen und den Hostingumfang zur Prüfung vorlegen.', 'Fordern Sie die Zertifikate und Geltungsbereiche an, die Ihr Team für die Lieferantenprüfung braucht.'],
+  tracking:['Welche Wege nehmen Personen an Ihrem Standort?', 'Erkennen Sie Wege und Übergänge zwischen definierten Zonen im konfigurierten Messbereich.', 'Wählen Sie einen Weg zur Beobachtung, bevor Sie eine Präsentationsfläche oder das Layout verändern.'],
+  lidar:['Wie nutzen Besucher die Bereiche, die Sie untersuchen möchten?', 'Erkennen Sie Zonenbesuche und Verweildauer im konfigurierten Messbereich und Zeitraum.', 'Wählen Sie eine Zone zur Beobachtung, bevor Sie die Gestaltung oder Produktplatzierung verändern.'],
+ },
+ fr: {
+  'data-services':['Comment vérifier la fiabilité des données du rapport ?', 'Les contrôles repèrent les lacunes et anomalies à examiner et suivre selon le service convenu.', 'Convenez des lacunes ou variations que votre équipe doit examiner.'],
+  toolbox:['Comment suivre les données du site au rapport ?', 'Toolbox regroupe l’état des appareils, les contrôles opérationnels et les exports configurés.', 'Choisissez les exports nécessaires à vos rapports et les personnes chargées du suivi des lacunes.'],
+  advantage:['Quels profils souhaitez-vous faire ressortir dans vos rapports ?', 'Les tableaux de bord disponibles comparent les mesures et périodes définies pour le site.', 'Choisissez une décision récurrente et la comparaison que le tableau de bord doit éclairer.'],
+  pulse:['Quels indicateurs souhaitez-vous consulter en déplacement ?', 'La vue mobile présente les données disponibles selon le compte et la solution configurés.', 'Choisissez les mesures disponibles que votre équipe devra consulter en déplacement.'],
+  packages:['De quels rapports et de quel accompagnement votre site a-t-il besoin ?', 'Essential, Professional et Enterprise proposent différents périmètres de reporting et de service.', 'Précisez les rapports et le suivi nécessaires avant de convenir du périmètre de service.'],
+  assurance:['Quelles garanties s’appliquent à votre déploiement ?', 'PFM peut fournir le périmètre des certifications et de l’hébergement à examiner.', 'Demandez les certificats et périmètres nécessaires à l’évaluation de votre fournisseur.'],
+  tracking:['Quels parcours les visiteurs suivent-ils sur votre site ?', 'Observez les trajets et transitions entre zones définies dans le périmètre couvert.', 'Choisissez un trajet à observer avant de déplacer une présentation ou de modifier l’agencement.'],
+  lidar:['Comment les visiteurs utilisent-ils les zones étudiées ?', 'Observez la fréquentation par zone et les durées de présence dans le périmètre et les périodes définis.', 'Choisissez une zone à observer avant de modifier l’agencement ou la présentation des produits.'],
+ },
+} satisfies Record<Locale, Record<string, readonly [string, string, string]>>;
