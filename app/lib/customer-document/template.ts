@@ -55,9 +55,9 @@ export interface BrochureDocument {
 export const escapeDocumentText=(value:string)=>value.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
 const e=escapeDocumentText;
 const labels={
- en:{works:'How it works',needs:'What is needed on site',specs:'Technical specifications',example:'Example implementation · site and configuration subject to review',image:'Measurement principle',missing:'Model-specific specifications are confirmed after selecting the camera, processing hardware and site design.'},
- de:{works:'So funktioniert es',needs:'Voraussetzungen vor Ort',specs:'Technische Spezifikationen',example:'Beispielimplementierung · Standort und Konfiguration werden geprüft',image:'Messprinzip',missing:'Modellspezifische Daten werden nach Auswahl der Kamera, Verarbeitungshardware und Standortplanung bestätigt.'},
- fr:{works:'Comment cela fonctionne',needs:'Prérequis sur site',specs:'Spécifications techniques',example:'Exemple d’implémentation · site et configuration à valider',image:'Principe de mesure',missing:'Les spécifications sont confirmées après choix de la caméra, du matériel de traitement et de la conception du site.'},
+ en:{works:'How it works',needs:'What is needed on site',specs:'Technical specifications',example:'Example implementation · site and configuration subject to review',image:'Measurement principle',missing:'Model-specific specifications are confirmed after selecting the device and site design.'},
+ de:{works:'So funktioniert es',needs:'Voraussetzungen vor Ort',specs:'Technische Spezifikationen',example:'Beispielimplementierung · Standort und Konfiguration werden geprüft',image:'Messprinzip',missing:'Modellspezifische Daten werden nach Auswahl des Geräts und der Standortplanung bestätigt.'},
+ fr:{works:'Comment cela fonctionne',needs:'Prérequis sur site',specs:'Spécifications techniques',example:'Exemple d’implémentation · site et configuration à valider',image:'Principe de mesure',missing:'Les spécifications sont confirmées après choix de l’appareil et de la conception du site.'},
 };
 const isImage = (source: string) => /^data:image\/[a-z0-9.+-]+;base64,/i.test(source);
 const imageTag = (source: string, alt: string) => isImage(source) ? `<img src="${e(source)}" alt="${e(alt)}">` : '';

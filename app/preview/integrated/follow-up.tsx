@@ -21,6 +21,7 @@ type Text = Record<Locale, string>;
 type Extra = { id: string; label: Text; body: Text };
 const extras: Extra[] = [
  {id:'counting3d',label:{en:'3D Sensor',de:'3D-Sensor',fr:'Capteur 3D'},body:{en:'Overhead 3D stereo vision counts entrance crossings, with processing on the device. Placement and configured privacy level determine the measurement scope.',de:'3D-Stereosicht von oben zählt Eingangsübertritte mit Verarbeitung im Gerät. Platzierung und Datenschutzstufe bestimmen den Messumfang.',fr:'La vision stéréo 3D en hauteur compte les passages avec traitement dans le capteur. Le placement et le niveau de confidentialité définissent le périmètre.'}},
+ {id:'radar',label:{en:'Radar Sensor',de:'Radarsensor',fr:'Capteur radar'},body:{en:'Radar uses radio reflections to measure movement along a configured section of the shopfront. Coverage and data output depend on the site and configuration.',de:'Radar erfasst Bewegungen anhand von Funkreflexionen in einem definierten Bereich vor der Ladenfront. Abdeckung und Datenausgabe hängen von Standort und Konfiguration ab.',fr:'Le radar mesure les mouvements par réflexion des ondes radio dans une zone définie devant la vitrine. La couverture et les données dépendent du site et de la configuration.'}},
  {id:'ip',label:{en:'IP Detection Sensor',de:'IP-Sensor zur Objekterkennung',fr:'Capteur de détection IP'},body:{en:'Configured camera analytics detect movement in selected views. Privacy masking, processing, retention and access must be defined for the implementation.',de:'Konfigurierte Kameraanalytik erkennt Bewegungen in gewählten Ansichten. Maskierung, Verarbeitung, Speicherung und Zugriff werden je Implementierung festgelegt.',fr:'L’analyse vidéo configurée détecte les mouvements dans les vues choisies. Masquage, traitement, conservation et accès sont définis selon l’implémentation.'}},
  {id:'lidar',label:{en:'LiDAR in store',de:'LiDAR im Store',fr:'LiDAR en magasin'},body:{en:'LiDAR can support spatial movement measurement in a configured area. Coverage and outputs depend on the site and implementation.',de:'LiDAR kann räumliche Bewegungen in einem konfigurierten Bereich erfassen. Abdeckung und Ergebnisse hängen vom Standort und der Implementierung ab.',fr:'Le LiDAR peut mesurer les mouvements spatiaux dans une zone configurée. La couverture et les résultats dépendent du site et de l’implémentation.'}},
  {id:'tracking',label:{en:'3D tracking in store',de:'3D-Tracking im Store',fr:'Suivi 3D en magasin'},body:{en:'Configured 3D tracking can represent movement paths and time in defined areas. The available output depends on the implementation.',de:'Konfiguriertes 3D-Tracking kann Bewegungswege und Aufenthaltszeiten in definierten Bereichen darstellen. Die Ausgabe hängt von der Implementierung ab.',fr:'Le suivi 3D configuré peut représenter les parcours et le temps passé dans des zones définies. Les résultats dépendent de l’implémentation.'}},
@@ -36,6 +37,8 @@ const platformIds = ['data-services','toolbox','advantage','pulse'] as const;
 // Existing review visuals are selected by subject; their captions describe their role.
 const media: Record<string, { path: string; caption: Text }> = {
  counting3d:{path:'/assets/follow-up/3d-depth-detection.png',caption:{en:'Supplied example of a 3D depth detection view · not a thermal measurement',de:'Bereitgestelltes Beispiel einer 3D-Tiefenansicht · keine Wärmemessung',fr:'Exemple fourni de détection en profondeur 3D · pas une mesure thermique'}},
+ radar:{path:'/assets/retail-passersby/radar.png',caption:{en:'Illustration of the radar measurement principle; coverage is not a site plan',de:'Illustration des Radar-Messprinzips; keine geprüfte Abdeckung',fr:'Illustration du principe radar ; la zone ne constitue pas un plan de couverture'}},
+ 'hardware-radar':{path:'/assets/retail-passersby/hardware/sensmax-tac-3dn-ewp.png',caption:{en:'Illustrative radar hardware · exact model image to be confirmed',de:'Illustrative Radarhardware · Modellabbildung noch zu bestätigen',fr:'Matériel radar illustratif · image du modèle à confirmer'}},
  ip:{path:'/assets/follow-up/ip-detection-privacy.png',caption:{en:'Illustration of IP detection and privacy masking · configuration-specific',de:'Illustration von IP-Erkennung und Maskierung · konfigurationsabhängig',fr:'Illustration de détection IP et de masquage · selon la configuration'}},
  'retail-street-opportunity': {path:demoMedia.retail['retail-street-opportunity'].hero!,caption:{en:'Illustrative passer-by measurement',de:'Illustrative Passantenmessung',fr:'Illustration de la mesure des passants'}},
  'retail-store-visits': {path:demoMedia.retail['retail-store-visits'].hero!,caption:{en:'Illustrative entrance measurement',de:'Illustrative Eingangsmessung',fr:'Illustration de la mesure à l’entrée'}},
@@ -104,9 +107,10 @@ const topicMethods: Record<string, readonly string[]> = {
  'retail-in-store-journey':['tracking','lidar'],
  'retail-zone-engagement':['tracking','lidar'],
 };
-const methodHardware = { counting3d:'sensor', tracking:'hardware-tracking', lidar:'hardware-lidar', ip:'hardware-ip' } as const;
+const methodHardware = { radar:'hardware-radar', counting3d:'sensor', tracking:'hardware-tracking', lidar:'hardware-lidar', ip:'hardware-ip' } as const;
 type MethodId = keyof typeof methodHardware;
 const methodProfiles: Record<MethodId, {profile:string; model:string; background?:string}> = {
+ radar:{profile:'',model:'SensMax TAC-B EWP'},
  counting3d:{profile:'impl-xovis-3d-entrance',model:'3D Sensor',background:'#0000ff'},
  tracking:{profile:'impl-xovis-3d-spatial',model:'3D Tracking Sensor',background:'#000000'},
  lidar:{profile:'impl-lidar-spatial',model:'LiDAR Sensor',background:'#000000'},
@@ -125,9 +129,9 @@ function makeSupplements(locale: Locale, selected: readonly string[], methodIds:
  const standaloneMethods = methodIds.filter(id => !topics.some(topic => topic.methodIds.includes(id)));
  const methods = standaloneMethods.map((id): Topic => {
   const item = extras.find(extra => extra.id === id)!;
-  const applied = id === 'counting3d' ? applicationCopy['retail-store-visits'][locale] : id === 'ip' ? applicationCopy['retail-street-opportunity'][locale] : undefined;
+  const applied = id === 'radar' ? applicationCopy['retail-street-opportunity'][locale] : id === 'counting3d' ? applicationCopy['retail-store-visits'][locale] : id === 'ip' ? applicationCopy['retail-street-opportunity'][locale] : undefined;
   if (applied) return {
-   id, title:applied.question, answer:applied.answer, measurement:applied.measurement,
+   id, title:applied.question, answer:applied.answer, measurement:id === 'radar' ? item.body[locale] : applied.measurement,
    report:applied.report, decision:applied.decision, columns:applied.columns, methodIds:[id],
   };
   const [title, report, decision] = supplementCopy[locale][id as 'tracking' | 'lidar'];
@@ -270,6 +274,22 @@ export function FollowUp({locale}: {locale: Locale}) {
    return `<div class="${className}">${rows.map(([title,body])=>`<div><strong>${esc(title)}</strong><p>${esc(body)}</p></div>`).join('')}</div>`;
   };
   const technologies: TechnologySection[] = methodIds.map(id => {
+   if (id === 'radar') {
+    const item = extras.find(extra => extra.id === id)!;
+    const essentials = {
+     en:[{label:'Placement and coverage',value:'Agree the mounting position and measured frontage area during the site survey.'},{label:'Power and connectivity',value:'Confirm power and data connection for the selected installation.'},{label:'Counting definition',value:'Define the passing movement and observation period with the customer.'}],
+     de:[{label:'Montage und Abdeckung',value:'Montageposition und Messbereich vor Ort abstimmen.'},{label:'Strom und Verbindung',value:'Stromversorgung und Datenverbindung für die Installation prüfen.'},{label:'Zähldefinition',value:'Passantenbewegung und Beobachtungszeitraum mit dem Kunden definieren.'}],
+     fr:[{label:'Installation et couverture',value:'Définir la position et la zone mesurée lors de la visite du site.'},{label:'Alimentation et connexion',value:'Confirmer l’alimentation et la connexion de données pour l’installation.'},{label:'Définition du comptage',value:'Définir les passages et la période d’observation avec le client.'}],
+    }[locale];
+    // SensMax TAC-B EWP technical documentation, accessed 2026-11-25:
+    // https://docs.sensmax.eu/tac-b-radar-sensors/tac-b-ewp/0-tac-b-ewp-overview/
+    const specifications = {
+     en:[{label:'Technology',value:'60 GHz mmWave radar'},{label:'Wall mode',value:'120° horizontal, 60° vertical; up to 10 m'},{label:'Overhead mode',value:'106° field of view; coverage depends on mounting height'},{label:'Power',value:'PoE IEEE 802.3af, 37–57 V'},{label:'Connectivity',value:'Ethernet 10/100 Mbps; Wi-Fi 2.4 GHz'},{label:'Environment',value:'Indoor / outdoor; IP68; −25 °C to +65 °C'},{label:'Dimensions and weight',value:'120 × 120 × 71 mm; 450 g'}],
+     de:[{label:'Technologie',value:'60-GHz-mmWave-Radar'},{label:'Wandmodus',value:'120° horizontal, 60° vertikal; bis zu 10 m'},{label:'Überkopfmodus',value:'106° Sichtfeld; Abdeckung abhängig von der Montagehöhe'},{label:'Stromversorgung',value:'PoE IEEE 802.3af, 37–57 V'},{label:'Verbindung',value:'Ethernet 10/100 Mbit/s; WLAN 2,4 GHz'},{label:'Umgebung',value:'Innen / außen; IP68; −25 °C bis +65 °C'},{label:'Maße und Gewicht',value:'120 × 120 × 71 mm; 450 g'}],
+     fr:[{label:'Technologie',value:'Radar mmWave 60 GHz'},{label:'Mode mural',value:'120° horizontal, 60° vertical ; jusqu’à 10 m'},{label:'Mode en hauteur',value:'Champ de 106° ; couverture selon la hauteur de montage'},{label:'Alimentation',value:'PoE IEEE 802.3af, 37–57 V'},{label:'Connexion',value:'Ethernet 10/100 Mbit/s ; Wi-Fi 2,4 GHz'},{label:'Environnement',value:'Intérieur / extérieur ; IP68 ; −25 °C à +65 °C'},{label:'Dimensions et poids',value:'120 × 120 × 71 mm ; 450 g'}],
+    }[locale];
+    return {id, locale, title:item.label[locale], model:methodProfiles.radar.model, description:item.body[locale], hardware:figure(methodHardware.radar), principle:figure('radar'), essentials, specifications};
+   }
    const {profile: implementation, model, background} = methodProfiles[id];
    const profile = implementationRequirementProfiles.find(p => p.implementationId === implementation)!;
    const placement = {
@@ -303,7 +323,7 @@ export function FollowUp({locale}: {locale: Locale}) {
    const reportPath = media[reportId]?.path;
    const reportImage = reportPath && !usedVisualPaths.has(reportPath) ? figure(reportId) : undefined;
    if (reportImage) usedVisualPaths.add(reportPath);
-   const streetReport = topic.id === 'retail-street-opportunity' || topic.id === 'ip';
+   const streetReport = topic.id === 'retail-street-opportunity' || topic.id === 'ip' || topic.id === 'radar';
    return {...topic, image, reportImage,
     reportChart: streetReport ? {
      title: {en:'Street footfall by day',de:'Passantenfrequenz pro Tag',fr:'Passages piétons par jour'}[locale],
@@ -320,7 +340,7 @@ export function FollowUp({locale}: {locale: Locale}) {
   });
   const scenario = sections.find(topic => topic.measurement);
   const example = scenario && (applicationCopy[scenario.id]?.[locale] ??
-   (scenario.id === 'counting3d' ? applicationCopy['retail-store-visits'][locale] : scenario.id === 'ip' ? applicationCopy['retail-street-opportunity'][locale] : undefined));
+   (scenario.id === 'radar' ? applicationCopy['retail-street-opportunity'][locale] : scenario.id === 'counting3d' ? applicationCopy['retail-store-visits'][locale] : scenario.id === 'ip' ? applicationCopy['retail-street-opportunity'][locale] : undefined));
   const steps = scenario ? [
    {label:c.define, value:example?.steps?.[0] ?? c.defineText},
    {label:c.validate, value:example?.steps?.[1] ?? c.validateText},
@@ -328,7 +348,7 @@ export function FollowUp({locale}: {locale: Locale}) {
   ] : pfmPages[locale]['data-services'].rows.filter(row => row.title !== '').map(row => ({label:row.title,value:row.body}));
   const focus = first.id === 'retail-store-visits' || first.id === 'counting3d'
    ? {en:'enter your store?', de:'Ihren Store?', fr:'dans votre magasin ?'}[locale]
-   : first.id === 'retail-street-opportunity' || first.id === 'ip'
+   : first.id === 'retail-street-opportunity' || first.id === 'ip' || first.id === 'radar'
     ? {en:'shopfront busiest?', de:'an Ihrem Schaufenster vorbei?', fr:'devant votre vitrine ?'}[locale] : undefined;
   const cover = selected.includes('retail-street-opportunity') && selected.includes('retail-store-visits')
    ? retailCombinedCover[locale]
@@ -364,7 +384,7 @@ export function FollowUp({locale}: {locale: Locale}) {
   </label>;
  });
  const selectedNames = selected.map(id => ({
-  id, title: sections.find(topic => topic.id === id)?.title ?? extras.find(item => item.id === id)?.label[locale] ?? id,
+  id, title: extras.find(item => item.id === id)?.label[locale] ?? sections.find(topic => topic.id === id)?.title ?? id,
  }));
  const stepStatus=selected.length?`${selected.length} ${c.selectedCount}`:c.empty;
  return <main className="follow-up" lang={locale}>

@@ -588,3 +588,7 @@ De Retail-correctie gebruikt de twee bestaande contextbeelden uit de journey en 
 ## 2026-11-20 — Bestaande rapportpanelen in de klantbrochure
 
 Your reporting gebruikt uitsneden van de bestaande What you get-rapporten voor de bijbehorende Retail- en Shopping Centre-onderwerpen. De exports sluiten alleen de gekozen panelen in. De Engelse rapportbeelden behouden hun oorspronkelijke labels en krijgen een bijschrift in de exporttaal. Voor winkelbezoeken is het weekdag-/uurpaneel gebruikt, zodat de In-Depth-pagina geen ongerelateerde capture- en verkoopcijfers meeneemt. Het bestaande passantenvoorbeeld blijft bij de passantenmeting.
+
+### 2026-11-25 — SensMax TAC-B EWP in Follow-up
+
+De product lead corrigeert het radarmodel naar **SensMax TAC-B EWP**, ter vervanging van de eerdere aanduiding TAC-3Dn EWP. De technische gegevens in Follow-up zijn gebaseerd op de modelspecifieke fabrikantdocumentatie (https://docs.sensmax.eu/tac-b-radar-sensors/tac-b-ewp/0-tac-b-ewp-overview/) en productpagina (https://sensmax.eu/devices/sensmax-tac-b-ewp-poe-indooroutdoor-radar-people-counting-sensor/), geraadpleegd 2026-11-25. Die bronnen verschillen over aanbevolen montagehoogte en maximale snelheid in wandmodus; deze waarden blijven buiten de brochure tot bevestiging. Claims over nauwkeurigheid en absolute privacy blijven buiten de demo conform de truth rules. De bestaande productafbeelding is eerder aangeleverd onder de oude modelnaam; bevestiging dat deze het TAC-B EWP-model toont staat open.
