@@ -24,6 +24,13 @@ img{display:block;max-width:100%}
 .intro{display:grid;grid-template-columns:.95fr 1.05fr;gap:7%;align-items:end;margin-bottom:36px}.intro p{color:var(--muted)}
 .rows{border-top:1px solid var(--line)}.row{display:grid;grid-template-columns:1fr 1fr;gap:7%;padding:24px 0;border-bottom:1px solid var(--line);align-items:start}.row h3{margin-bottom:10px}.row p,.note,.step p{color:var(--muted)}.row:has(.application-visual){grid-template-columns:1.1fr .9fr}
 .row .methods{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px 15px;color:#5830a0;font-size:.86rem}.row .limit{margin-top:12px;font-size:.9rem}.no-image{max-width:100%}
+.accessibility-fund{border-top:1px solid var(--line)}
+.charity-overview,.charity-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,4vw,42px);align-items:start}
+.accessibility-fund h2{margin-bottom:18px}.charity-donation{padding:clamp(20px,4vw,42px);background:#f9f5ff;color:#0c111d;border-top:3px solid var(--pfm-purple)}
+.charity-donation p{margin-top:18px;font-weight:600}.charity-donation strong{display:block;font-size:clamp(42px,7vw,78px);line-height:1;letter-spacing:-.055em;margin-bottom:8px}
+.charity-projects-title{margin:30px 0 16px}.charity-projects article{break-inside:avoid}.charity-projects h4{margin-bottom:8px}.accessibility-fund>a{display:inline-block;margin-top:18px;text-underline-offset:3px}
+@media(max-width:760px){.charity-overview,.charity-projects{grid-template-columns:1fr}}
+@media print{.accessibility-fund{break-inside:avoid}.charity-overview,.charity-projects{gap:4mm}.charity-donation{padding:3mm}.charity-donation strong{font-size:26pt}.charity-projects-title{margin:3mm 0 2mm}}
 .pale{background:#f7f7fa}.note{margin-top:22px;border-left:3px solid var(--pfm-purple);padding-left:15px}
 figcaption{font-size:.77rem;line-height:1.4;padding-top:8px}
 .application-visual img{width:100%;max-height:340px;object-fit:contain;background:#f1f2f5;border-radius:8px}

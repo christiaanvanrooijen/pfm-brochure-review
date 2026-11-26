@@ -1,5 +1,31 @@
 import type { Locale } from '../../i18n/locales';
 
+export const accessibilityFundUrl = 'https://www.pfm-intelligence.com/accessibility';
+
+export const accessibilityFundCopy = {
+  en: {
+    amount: '€0.50',
+    unit: 'per connected sensor point',
+    link: 'More about our accessibility initiative',
+  },
+  de: {
+    amount: '0,50 €',
+    unit: 'pro angeschlossenem Sensorpunkt',
+    link: 'Mehr über unsere Initiative für Barrierefreiheit',
+  },
+  fr: {
+    amount: '0,50 €',
+    unit: 'par point de capteur connecté',
+    link: 'En savoir plus sur notre initiative pour l’accessibilité',
+  },
+} satisfies Record<Locale, { amount: string; unit: string; link: string }>;
+
+export const accessibilityProjectsCopy = {
+  en: {tab:'Charity',title:'Supporting more accessible public spaces',lead:'PFM helps organisations identify features that can make entrances, buildings and public spaces harder to access.',body:'Our Accessibility Fund supports projects that reduce those barriers. PFM contributes to the fund, and partners can also support it.',detailTitle:'Projects we support',rows:[{title:'KNGF Geleidehonden',body:'Our first completed fundraising goal helped sponsor a puppy’s training as a guide dog, in collaboration with KNGF Geleidehonden. A guide dog can help a person with a visual impairment get around independently.'},{title:'Navigation with eZwayZ',body:'PFM has also worked with eZwayZ to improve how people with visual impairments navigate public spaces.'}]},
+  de: {tab:'Soziales Engagement',title:'Gemeinsam für barrierefreie öffentliche Räume',lead:'PFM hilft Organisationen, Hindernisse zu erkennen, die den Zugang zu Eingängen, Gebäuden und öffentlichen Räumen erschweren.',body:'Unser Accessibility Fund unterstützt Projekte, die solche Barrieren abbauen. PFM zahlt in den Fonds ein. Auch Partner können sich beteiligen.',detailTitle:'Projekte, die wir unterstützen',rows:[{title:'KNGF Geleidehonden',body:'Mit unserem ersten erreichten Spendenziel haben wir gemeinsam mit KNGF Geleidehonden die Ausbildung eines Welpen zum Blindenführhund gefördert. Ein Blindenführhund kann Menschen mit Sehbehinderung helfen, selbstständig unterwegs zu sein.'},{title:'Orientierung mit eZwayZ',body:'PFM hat außerdem mit eZwayZ daran gearbeitet, Menschen mit Sehbehinderung die Orientierung in öffentlichen Räumen zu erleichtern.'}]},
+  fr: {tab:'Solidarité',title:'Pour des espaces publics plus accessibles',lead:'PFM aide les organisations à repérer les obstacles qui peuvent compliquer l’accès aux entrées, aux bâtiments et aux espaces publics.',body:'Notre Accessibility Fund soutient des projets qui réduisent ces obstacles. PFM alimente le fonds et ses partenaires peuvent également y contribuer.',detailTitle:'Les projets que nous soutenons',rows:[{title:'KNGF Geleidehonden',body:'Notre premier objectif de collecte atteint a contribué à financer la formation d’un chiot comme chien guide, en collaboration avec KNGF Geleidehonden. Un chien guide peut aider une personne malvoyante à se déplacer de manière autonome.'},{title:'Orientation avec eZwayZ',body:'PFM a également collaboré avec eZwayZ pour aider les personnes malvoyantes à mieux s’orienter dans les espaces publics.'}]},
+};
+
 export const brochureCopy = {
   en: {
     edition: 'Digital brochure', application: 'Your application', measurement: 'Measurement plan',

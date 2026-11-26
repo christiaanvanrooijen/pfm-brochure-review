@@ -1,5 +1,5 @@
 import { brochureStyles } from './styles';
-import { brochureCopy } from './copy';
+import { accessibilityFundCopy, accessibilityFundUrl, accessibilityProjectsCopy, brochureCopy } from './copy';
 
 /** Portable PFM brochure template v2. No React, framework, storage or pricing dependency. */
 export type DocumentLocale = 'en' | 'de' | 'fr';
@@ -148,12 +148,14 @@ function renderReportChart(chart: NonNullable<BrochureApplication['reportChart']
 
 export function renderCustomerDocument(input: BrochureDocument): string {
  const c = brochureCopy[input.locale];
+ const impact = accessibilityFundCopy[input.locale];
+ const charity = accessibilityProjectsCopy[input.locale];
  const { applications, technologies } = input;
  const hasTechnical = applications.some(item => item.measurement) || technologies.length > 0 || !!input.privacy;
  const nav = [
   ['application', c.application],
   ...(hasTechnical ? [['measurement', c.measurement]] : []),
-  ['report', c.report], ['pfm', c.partner], ['next', c.next],
+  ['report', c.report], ['pfm', c.partner], ['charity', charity.tab], ['next', c.next],
  ];
  const logo = imageTag((input.theme === 'brand' ? input.whiteLogo : input.logo) ?? '', 'PFM') || '<strong>PFM.</strong>';
  const hero = input.hero && isImage(input.hero.src) ? `<figure>${imageTag(input.hero.src, input.hero.caption)}<figcaption>${e(input.hero.caption)}</figcaption></figure>` : '';
@@ -200,7 +202,17 @@ export function renderCustomerDocument(input: BrochureDocument): string {
      ${applications.length > 1 ? `<div class="proof-controls" role="group" aria-label="${e(c.report)}" hidden>${applications.map(item => `<button type="button" class="pill" aria-controls="report-${e(item.id)}" aria-pressed="false">${e(item.title)}</button>`).join('')}</div>` : ''}${reports}</section>
     <section id="pfm" class="band"><p class="eyebrow">${e(c.partner)}</p><div class="intro"><h2>${e(input.about.title)}</h2><p>${e(input.about.body)}</p></div>
      <div class="steps">${input.steps.map(step => `<div class="step"><h3>${e(step.label)}</h3><p>${e(step.value)}</p></div>`).join('')}</div>
-     <p class="note">${e(input.about.arc)}</p>${renderCustomerProof(input.locale, input.logos)}</section>
+     <p class="note">${e(input.about.arc)}</p>${renderCustomerProof(input.locale, input.logos)}
+    </section>
+    <section id="charity" class="band accessibility-fund" aria-labelledby="accessibility-fund-title">
+     <div class="charity-overview">
+      <div><h2 id="accessibility-fund-title">${e(charity.title)}</h2><p>${e(charity.lead)}</p><p>${e(charity.body)}</p></div>
+      <div class="charity-donation"><h3>Accessibility Fund</h3><p><strong>${e(impact.amount)}</strong> ${e(impact.unit)}</p></div>
+     </div>
+     <h3 class="charity-projects-title">${e(charity.detailTitle)}</h3>
+     <div class="charity-projects">${charity.rows.map(project => `<article><h4>${e(project.title)}</h4><p>${e(project.body)}</p></article>`).join('')}</div>
+     <a href="${accessibilityFundUrl}">${e(impact.link)}</a>
+    </section>
     <section id="next" class="band next"><div><p class="eyebrow">${e(c.next)}</p><h2>${e(c.nextTitle)}</h2></div><div><p>${e(input.nextText)}</p><a class="btn" href="${contact}">${e(c.explore)}</a></div></section>
    </main>${renderFooter(input.locale, input.whiteLogo)}
    <dialog aria-labelledby="image-detail"><div class="dialog-head"><strong id="image-detail">${e(c.detail)}</strong><form method="dialog"><button class="pill" type="submit">${e(c.close)}</button></form></div><img alt=""><p></p></dialog>

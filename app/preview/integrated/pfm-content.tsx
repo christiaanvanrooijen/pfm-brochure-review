@@ -2,11 +2,12 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { customerProofLogos } from '../../content/customer-logos';
+import { accessibilityFundCopy, accessibilityFundUrl } from '../../lib/customer-document/copy';
 import type { Locale } from '../../i18n/locales';
 import { pfmPages, type PFMArea, type PFMPage } from './pfm-copy';
 
 const areaPages: Readonly<Record<PFMArea, readonly PFMPage[]>> = {
-  pfm: ['about', 'arc', 'data-services', 'privacy', 'certifications'],
+  pfm: ['about', 'arc', 'data-services', 'privacy', 'certifications', 'charity'],
   platforms: ['toolbox', 'advantage', 'pulse', 'data-flow'],
 };
 const areaLabels: Record<Locale, Record<PFMArea, string>> = {
@@ -24,11 +25,6 @@ const arcLabels: Record<Locale, { objective: string; value: string; ai: string; 
   de: { objective: 'Unser Ziel · Objekterkennung', value: '98 %', ai: 'ARC im Zeitalter der KI', aiText: 'Wenn agentische Business Agents operative Daten für Entscheidungen oder Aktionen nutzen, ist die Qualität der Eingaben entscheidend. Genaue Erkennung, dauerhaft zuverlässige Daten und konsistente Definitionen bilden dafür eine Grundlage.' },
   fr: { objective: 'Notre objectif · détection d’objets', value: '98 %', ai: 'ARC à l’ère de l’IA', aiText: 'Lorsque des agents métier utilisent les données opérationnelles pour soutenir des décisions ou déclencher des actions, la qualité des données d’entrée compte. Une détection précise, des données fiables dans le temps et des définitions cohérentes constituent une base pour ces décisions.' },
 };
-const impactCopy: Record<Locale, { kicker: string; title: string; intro: string; fund: string; partnership: string; contribution: string }> = {
-  en: { kicker: 'PFM · accessibility', title: 'Supporting more accessible public spaces.', intro: 'PFM uses its people-flow expertise to help clients identify features that can make public places harder to access.', fund: 'Accessibility Fund', partnership: 'PFM established a fund for accessibility projects, including support for guide-dog training with KNGF and navigation work with eZwayZ for people with visual impairments.', contribution: 'A portion of each data licence sold is donated to the Accessibility Fund.' },
-  de: { kicker: 'PFM · Barrierefreiheit', title: 'Öffentliche Räume zugänglicher machen.', intro: 'PFM nutzt seine Expertise im Personenfluss, um Kunden auf Merkmale aufmerksam zu machen, die den Zugang zu öffentlichen Orten erschweren können.', fund: 'Accessibility Fund', partnership: 'PFM hat einen Fonds für Barrierefreiheitsprojekte eingerichtet. Dazu gehören die Unterstützung der Blindenführhundausbildung mit KNGF und die Zusammenarbeit mit eZwayZ zur Navigation für Menschen mit Sehbehinderung.', contribution: 'Ein Teil jeder verkauften Datenlizenz fließt in den Accessibility Fund.' },
-  fr: { kicker: 'PFM · accessibilité', title: 'Pour des espaces publics plus accessibles.', intro: 'PFM met son expertise des flux de personnes au service de l’identification des éléments qui peuvent compliquer l’accès aux espaces publics.', fund: 'Accessibility Fund', partnership: 'PFM a créé un fonds dédié à des projets d’accessibilité, notamment le soutien à la formation de chiens guides avec KNGF et le travail avec eZwayZ sur la navigation des personnes malvoyantes.', contribution: 'Une partie de chaque licence de données vendue est versée à l’Accessibility Fund.' },
-};
 const reachCopy: Record<Locale, { title: string; values: readonly { value: string; label: string }[] }> = {
   en: { title: 'PFM in commercial locations', values: [{ value: '500+', label: 'shopping centres' }, { value: '25,000+', label: 'retail locations' }, { value: '1,500+', label: 'drive-thru locations' }] },
   de: { title: 'PFM an Gewerbestandorten', values: [{ value: '500+', label: 'Einkaufszentren' }, { value: '25.000+', label: 'Einzelhandelsstandorte' }, { value: '1.500+', label: 'Drive-thru-Standorte' }] },
@@ -37,6 +33,7 @@ const reachCopy: Record<Locale, { title: string; values: readonly { value: strin
 
 /** Global v4 content only. Real segment scenes and report specimens stay in the existing demo. */
 export function PFMContent({ locale, area, onOpenScene }: { locale: Locale; area: PFMArea; onOpenScene: (scene: string, segment: string) => void }) {
+  const impact = accessibilityFundCopy[locale];
   const pageFromHash = useCallback(() => { const id = typeof window === 'undefined' ? '' : window.location.hash.split('/')[1]; return areaPages[area].includes(id as PFMPage) ? id as PFMPage : areaPages[area][0]; }, [area]);
   const [page, setPage] = useState<PFMPage>(pageFromHash);
   useEffect(() => { const restore = () => setPage(pageFromHash()); window.addEventListener('popstate', restore); return () => window.removeEventListener('popstate', restore); }, [pageFromHash]);
@@ -52,14 +49,43 @@ export function PFMContent({ locale, area, onOpenScene }: { locale: Locale; area
     de: { services: 'Data Services ansehen', story: 'Retail-Journey öffnen', portal: 'Advantage-Portal öffnen', illustration: 'Illustrative App-Ansichten · keine Kundendaten', pulseOverview: 'Pulse-Übersicht', pulseTimeline: 'Timeline-Ansicht', pulseBuilding: 'Building-Ansicht', advantageAlt: 'PFM-Advantage-Berichtsansicht mit Standortfiltern, Besucherzahlen und demografischen Diagrammen', advantageNote: 'Illustrative Advantage-Ansicht · Beispielbericht' },
     fr: { services: 'Voir les Data Services', story: 'Suivre le parcours Retail', portal: 'Ouvrir le portail Advantage', illustration: 'Écrans illustratifs de l’application · pas de données client', pulseOverview: 'Vue Pulse', pulseTimeline: 'Vue Timeline', pulseBuilding: 'Vue Building', advantageAlt: 'Écran de rapport PFM Advantage avec filtres de lieu, fréquentation et graphiques démographiques', advantageNote: 'Écran Advantage illustratif · exemple de rapport' },
   })[locale];
-  if(currentPage==='certifications') return <>
-    <nav className="integrated-subnav" aria-label={areaLabels[locale][area]}>{available.map(id=><button type="button" key={id} className={id===currentPage?'active':''} aria-current={id===currentPage?'page':undefined} onClick={()=>navigate(id)}>{pfmPages[locale][id].tab}</button>)}</nav>
-    <main className="integrated-content"><p className="integrated-kicker">{areaLabels[locale][area]} · {content.tab}</p><h1>{content.title}</h1><p style={{fontSize:18,maxWidth:'65ch'}}>{content.lead}</p><p>{content.body}</p><div className="integrated-certifications">{content.rows.map((item,i)=><article key={item.title}><span className="integrated-kicker">{String(i+1).padStart(2,'0')}</span><h2>{item.title}</h2><p>{item.body}</p></article>)}</div><p className="integrated-cert-scope">{content.detail}</p></main>
-  </>;
-  return <>
+  const subnav = (
     <nav className="integrated-subnav" aria-label={areaLabels[locale][area]}>
       {available.map(id => <button type="button" key={id} className={id === currentPage ? 'active' : ''} aria-current={id === currentPage ? 'page' : undefined} onClick={() => navigate(id)}>{pfmPages[locale][id].tab}</button>)}
     </nav>
+  );
+  if (currentPage === 'certifications') return <>
+    {subnav}
+    <main className="integrated-content"><p className="integrated-kicker">{areaLabels[locale][area]} · {content.tab}</p><h1>{content.title}</h1><p style={{fontSize:18,maxWidth:'65ch'}}>{content.lead}</p><p>{content.body}</p><div className="integrated-certifications">{content.rows.map((item,i)=><article key={item.title}><span className="integrated-kicker">{String(i+1).padStart(2,'0')}</span><h2>{item.title}</h2><p>{item.body}</p></article>)}</div><p className="integrated-cert-scope">{content.detail}</p></main>
+  </>;
+  if (currentPage === 'charity') return <>
+    {subnav}
+    <main className="integrated-content integrated-charity">
+      <div className="integrated-split">
+        <div>
+          <h1>{content.title}</h1>
+          <p className="integrated-charity-lead">{content.lead}</p>
+          <p>{content.body}</p>
+        </div>
+        <section className="integrated-impact" aria-labelledby="integrated-impact-title">
+          <h2 id="integrated-impact-title">Accessibility Fund</h2>
+          <p className="integrated-impact-contribution"><strong>{impact.amount}</strong>{' '}{impact.unit}</p>
+        </section>
+      </div>
+      <section className="integrated-charity-projects">
+        <h2>{content.detailTitle}</h2>
+        <div className="integrated-impact-layout">
+          {content.rows.map(project => <article key={project.title}>
+            <h3>{project.title}</h3>
+            <p>{project.body}</p>
+          </article>)}
+        </div>
+        <a href={accessibilityFundUrl}>{impact.link}</a>
+      </section>
+    </main>
+  </>;
+  return <>
+    {subnav}
     <main className="integrated-content">
       <div className="integrated-split">
         <div>
@@ -96,18 +122,9 @@ export function PFMContent({ locale, area, onOpenScene }: { locale: Locale; area
         {content.rows.map((item, i) => <article className="integrated-row" key={item.title} style={{ display: 'grid', gridTemplateColumns: '48px 1fr', gap: '12px' }}><strong style={{ color: '#9e77ed', fontSize: '20px' }}>{isArc ? ['A','R','C'][i] : String(i + 1).padStart(2,'0')}</strong><div><h3>{item.title}</h3><p>{item.body}</p></div></article>)}
       </section>
       {currentPage === 'about' && <section className="integrated-proof" aria-label={locale==='en'?'A selection from our customer portfolio':locale==='de'?'Eine Auswahl aus unserem Kundenportfolio':'Une sélection de notre portefeuille clients'}><p className="integrated-kicker">{locale==='en'?'A selection from our customer portfolio':locale==='de'?'Eine Auswahl aus unserem Kundenportfolio':'Une sélection de notre portefeuille clients'}</p><div>{customerProofLogos.map(customer=><img key={customer.name} src={customer.assetPath} alt={customer.name}/>)}</div><p>{locale==='en'?'Solutions and configurations vary by organisation.':locale==='de'?'Lösungen und Konfigurationen unterscheiden sich je Organisation.':'Les solutions et configurations varient selon les organisations.'}</p></section>}
-      {currentPage === 'about' && <section className="integrated-impact" aria-labelledby="integrated-impact-title">
-        <p className="integrated-kicker">{reachCopy[locale].title}</p>
+      {currentPage === 'about' && <section className="integrated-reach" aria-labelledby="integrated-reach-title">
+        <h2 id="integrated-reach-title" className="integrated-kicker">{reachCopy[locale].title}</h2>
         <div className="integrated-reach-row">{reachCopy[locale].values.map(item => <div key={item.label}><strong>{item.value}</strong><span>{item.label}</span></div>)}</div>
-        <p className="integrated-kicker">{impactCopy[locale].kicker}</p>
-        <div className="integrated-impact-layout">
-          <div><h2 id="integrated-impact-title">{impactCopy[locale].title}</h2><p>{impactCopy[locale].intro}</p></div>
-          <div className="integrated-impact-copy">
-            <h3>{impactCopy[locale].fund}</h3>
-            <p>{impactCopy[locale].partnership}</p>
-            <p className="integrated-impact-contribution">{impactCopy[locale].contribution}</p>
-          </div>
-        </div>
       </section>}
     </main>
   </>;

@@ -592,3 +592,7 @@ Your reporting gebruikt uitsneden van de bestaande What you get-rapporten voor d
 ### 2026-11-25 — SensMax TAC-B EWP in Follow-up
 
 De product lead corrigeert het radarmodel naar **SensMax TAC-B EWP**, ter vervanging van de eerdere aanduiding TAC-3Dn EWP. De technische gegevens in Follow-up zijn gebaseerd op de modelspecifieke fabrikantdocumentatie (https://docs.sensmax.eu/tac-b-radar-sensors/tac-b-ewp/0-tac-b-ewp-overview/) en productpagina (https://sensmax.eu/devices/sensmax-tac-b-ewp-poe-indooroutdoor-radar-people-counting-sensor/), geraadpleegd 2026-11-25. Die bronnen verschillen over aanbevolen montagehoogte en maximale snelheid in wandmodus; deze waarden blijven buiten de brochure tot bevestiging. Claims over nauwkeurigheid en absolute privacy blijven buiten de demo conform de truth rules. De bestaande productafbeelding is eerder aangeleverd onder de oude modelnaam; bevestiging dat deze het TAC-B EWP-model toont staat open.
+
+## 2026-11-25 — Donatiegrondslag in Over PFM en follow-up
+
+Op verzoek van PFM noemt de brochure € 0,50 per aangesloten sensorpunt voor het Accessibility Fund en gebruikt ze KNGF Geleidehonden als concreet voorbeeld. Dit vervangt de eerdere formulering per verkochte datalicentie. De publieke toegankelijkheidspagina noemt een bijdrage per verkochte sensor. De brochure en de gegenereerde follow-up delen de door PFM opgegeven grondslag.
